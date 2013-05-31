@@ -339,6 +339,7 @@
     //[_currentLocationButton configureFlatButtonWithColor:[UIColor belizeHoleColor] highlightedColor:[UIColor peterRiverColor] cornerRadius:3];
     //[self.navigationItem.backBarButtonItem configureFlatButtonWithColor:[UIColor belizeHoleColor] highlightedColor:[UIColor peterRiverColor] cornerRadius:3];
     
+    
     [[NSWEventData sharedData] setDelegate:self];
     
     [self reloadView];
@@ -347,6 +348,8 @@
 
 - (void)viewDidLoad
 {
+    self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Events" image:nil tag:0];
+    [[self tabBarItem] setFinishedSelectedImage:[UIImage imageNamed:@"calendaricon.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"calendaricon.png"]];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }

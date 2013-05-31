@@ -26,9 +26,13 @@
 
 #define kGlobalNavBarColour [UIColor tangerineColor]
 
-#define kGlobalNavBarItemColour [UIColor belizeHoleColor]
+#define kGlobalNavBarItemColour [UIColor pomegranateColor]
 
-#define kGlobalNavBarItemColourHighlighted [UIColor peterRiverColor]
+//[UIColor colorWithRed:4.0/255.0 green:19.0/255.0 blue:78.0/255.0 alpha:1]
+
+//[UIColor belizeHoleColor]
+
+#define kGlobalNavBarItemColourHighlighted [UIColor pomegranateColor]
 
 #define kGlobalNavBarItemFont [UIFont flatFontOfSize:14.0]
 
@@ -36,6 +40,11 @@
 
 #define kNavBarButtonCornerRadius 3
 
+//TabBat settings
+
+#define kGlobalTabBarItemFont [UIFont flatFontOfSize:12.0]
+
+#define kGlobalTabBarBoldItemFont [UIFont boldFlatFontOfSize:13.0]
 
 //Detail Screen
 

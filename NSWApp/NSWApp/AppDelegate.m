@@ -14,6 +14,7 @@
 #import "EventsListViewController.h"
 #import "UIFont+FlatUI.h"
 #import "NSWAppAppearanceConfig.h"
+#import "UITabBar+FlatUI.h"
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -41,6 +42,20 @@
     //[[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:245/255.0 green:140/245.0 blue:30/245.0 alpha:1.0]];
     
     //[[UITabBar appearance] setSelectedImageTintColor:[UIColor colorWithRed:245/255.0 green:140/245.0 blue:30/245.0 alpha:1.0]];
+    UITabBarController *tabController = (UITabBarController *)self.window.rootViewController;
+    [tabController.tabBar configureFlatTabBarWithColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1] selectedColor:[UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1]];
+    
+    
+    NSDictionary *tabBarButtonAppearanceDict = @{UITextAttributeFont : kGlobalTabBarItemFont, UITextAttributeTextColor: [UIColor whiteColor]};
+    [[UITabBarItem appearance] setTitleTextAttributes:tabBarButtonAppearanceDict forState:UIControlStateNormal];
+    tabBarButtonAppearanceDict = @{UITextAttributeFont : kGlobalTabBarBoldItemFont, UITextAttributeTextColor: [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1]};
+    [[UITabBarItem appearance] setTitleTextAttributes:tabBarButtonAppearanceDict forState:UIControlStateSelected];
+    
+    //[[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, 10)forBarMetrics:UIBarMetricsDefault];
+    
+    //[[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+
+    
     NSDictionary *barButtonAppearanceDict = @{UITextAttributeFont : kGlobalNavBarItemFont};
     [[UIBarButtonItem appearance] setTitleTextAttributes:barButtonAppearanceDict forState:UIControlStateNormal];
     NSDictionary *barAppearanceDict = @{UITextAttributeFont : kGlobalNavBarFont,UITextAttributeTextShadowColor : [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8], UITextAttributeTextShadowOffset : [NSValue valueWithUIOffset:UIOffsetMake(0, -1)]};

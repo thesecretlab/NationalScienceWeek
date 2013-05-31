@@ -506,6 +506,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    
     self.eventTitleLabel.font = kDetailEventTitleFont;
     self.eventTimeLabel.font = kDetailEventFont;
     self.eventLocationLabel.font = kDetailEventFont;
@@ -518,6 +519,7 @@
     self.eventContactTextView.font = kDetailEventFont;
     [self.navigationController.navigationBar configureFlatNavigationBarWithColor:kGlobalNavBarColour];
 
+    
     NSLog(@"Event %@", self.event);
     [self updateAndRelayoutView];
 

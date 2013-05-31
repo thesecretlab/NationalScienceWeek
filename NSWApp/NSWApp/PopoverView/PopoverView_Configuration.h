@@ -63,9 +63,11 @@
 // BACKGROUND GRADIENT
 
 //bottom color white in gradient bg
-#define kGradientBottomColor [UIColor peterRiverColor]
+#define kGradientBottomColor [UIColor alizarinColor]
+//[UIColor peterRiverColor]
 //top color white value in gradient bg
-#define kGradientTopColor [UIColor peterRiverColor]
+#define kGradientTopColor [UIColor alizarinColor]
+//[UIColor peterRiverColor]
 
 
 // TITLE GRADIENT
@@ -74,10 +76,14 @@
 #define kDrawTitleGradient YES
 
 //bottom color white value in title gradient bg
-#define kGradientTitleBottomColor [UIColor belizeHoleColor]
+#define kGradientTitleBottomColor [UIColor pomegranateColor]
+
+//[UIColor belizeHoleColor]
 
 //top color white value in title gradient bg
-#define kGradientTitleTopColor [UIColor belizeHoleColor]
+#define kGradientTitleTopColor [UIColor pomegranateColor]
+
+//[UIColor belizeHoleColor]
 
 
 // FONTS
