@@ -119,17 +119,35 @@ static NSWEventData* _sharedData = nil;
     //NSArray *rxmlIndividualEvents = [rootXML children:@"Event"];
    
     __block NSMutableArray *fields = [NSMutableArray array];
+   __block NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    
     [rootXML iterate:@"Event" usingBlock: ^(RXMLElement *event) {
         NSMutableDictionary *eventDict = [NSMutableDictionary dictionary];
         
         [eventDict setObject:[event child:@"EventID"].text forKey:@"Event ID"];
         [eventDict setObject:[event child:@"EventName"].text forKey:@"Title"];
         
+        [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss"];
+
+        NSDate *startDate = [dateFormatter dateFromString:[event child:@"EventStart"].text];
+         NSDate *endDate = [dateFormatter dateFromString:[event child:@"EventEnd"].text];
+        NSLog(@"Date: %@, %@", startDate, endDate);
+
+        [dateFormatter setDateFormat:@"dd/MM/yyyy"];
+        
+        [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:startDate]]  forKey:@"Date"];
+        [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:endDate]]  forKey:@"End Date"];
+
+        [dateFormatter setDateFormat:@"hh:mm a"];
+
+        [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:startDate]]  forKey:@"Start Time"];
+        [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:endDate]]  forKey:@"End Time"];
         
         [eventDict setObject:[NSString stringWithFormat:@"%@\n\nFor: %@ \n\nEvent Price: %@",[event child:@"EventDescription"].text,[event child:@"EventTargetAudience"].text,[event child:@"EventPayment"].text] forKey:@"Description"];
         
         RXMLElement *venue = [event child:@"Venue"];
-        NSLog(@"Venue: %@", venue);
+        //NSLog(@"Venue: %@", venue);
         [eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"VenueName"].text] forKey:@"Location"];
         NSString *addressString = [NSString stringWithFormat:@" %@, %@, %@", [venue child:@"VenueStreetName"].text, [venue child:@"VenueSuburb"].text, [venue child:@"VenuePostcode"].text];
         [eventDict setObject:addressString forKey:@"Address"];
