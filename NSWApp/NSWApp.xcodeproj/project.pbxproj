@@ -19,6 +19,9 @@
 		6841DC1415CE60DE004BEAB0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6841DC1315CE60DE004BEAB0 /* SystemConfiguration.framework */; };
 		6E2DB3A415B87B7C00270481 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2DB3A315B87B7C00270481 /* Icon.png */; };
 		7C0A35AB15BE9CB200A25D3B /* FavouriteEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0A35AA15BE9CB200A25D3B /* FavouriteEventsViewController.m */; };
+		7C2A7395175E3297008CD94B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C2A7394175E3297008CD94B /* libz.dylib */; };
+		7C2A7399175E33E6008CD94B /* RXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2A7398175E33E6008CD94B /* RXMLElement.m */; };
+		7C2A739B175E3421008CD94B /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C2A739A175E3421008CD94B /* libxml2.dylib */; };
 		7C3B18DC15B83CCD00A94F12 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B18C815B83CCD00A94F12 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7C3B18DD15B83CCD00A94F12 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B18CA15B83CCD00A94F12 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7C3B18DE15B83CCD00A94F12 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B18CC15B83CCD00A94F12 /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -121,6 +124,10 @@
 		6E2DB3A315B87B7C00270481 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
 		7C0A35A915BE9CB200A25D3B /* FavouriteEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouriteEventsViewController.h; sourceTree = "<group>"; };
 		7C0A35AA15BE9CB200A25D3B /* FavouriteEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouriteEventsViewController.m; sourceTree = "<group>"; };
+		7C2A7394175E3297008CD94B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		7C2A7397175E33E6008CD94B /* RXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXMLElement.h; sourceTree = "<group>"; };
+		7C2A7398175E33E6008CD94B /* RXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXMLElement.m; sourceTree = "<group>"; };
+		7C2A739A175E3421008CD94B /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		7C3B18C715B83CCD00A94F12 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		7C3B18C815B83CCD00A94F12 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		7C3B18C915B83CCD00A94F12 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -269,6 +276,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C2A739B175E3421008CD94B /* libxml2.dylib in Frameworks */,
+				7C2A7395175E3297008CD94B /* libz.dylib in Frameworks */,
 				7CF7632A1755A75700F9088E /* CoreText.framework in Frameworks */,
 				6841DC1415CE60DE004BEAB0 /* SystemConfiguration.framework in Frameworks */,
 				7C79595915BE1EB6005A5A3E /* EventKitUI.framework in Frameworks */,
@@ -285,6 +294,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C2A7396175E33E6008CD94B /* RaptureXML */ = {
+			isa = PBXGroup;
+			children = (
+				7C2A7397175E33E6008CD94B /* RXMLElement.h */,
+				7C2A7398175E33E6008CD94B /* RXMLElement.m */,
+			);
+			path = RaptureXML;
+			sourceTree = "<group>";
+		};
 		7C3B18C515B83C8200A94F12 /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +334,8 @@
 		7C55861715B51DC100068067 = {
 			isa = PBXGroup;
 			children = (
+				7C2A739A175E3421008CD94B /* libxml2.dylib */,
+				7C2A7394175E3297008CD94B /* libz.dylib */,
 				7CC027D31757C82000B97C3C /* Default-568h@2x.png */,
 				7CF763291755A75700F9088E /* CoreText.framework */,
 				682FF8DF15C0BC2100353608 /* Default@2x.png */,
@@ -359,6 +379,7 @@
 				7C9D951A15BEC46A00B212CE /* Controllers */,
 				7C9D951915BEC45900B212CE /* Models */,
 				7C9D951715BEC44300B212CE /* Images */,
+				7C2A7396175E33E6008CD94B /* RaptureXML */,
 				7C55862D15B51DC200068067 /* Supporting Files */,
 				7C3B18C515B83C8200A94F12 /* AFNetworking */,
 				7CF763401755B57400F9088E /* PopoverView */,
@@ -713,6 +734,7 @@
 				7CC027D01757A15B00B97C3C /* PrettyShadowPlainTableview.m in Sources */,
 				7CC027D11757A15B00B97C3C /* PrettyTabBar.m in Sources */,
 				7CC027D21757A15B00B97C3C /* PrettyToolbar.m in Sources */,
+				7C2A7399175E33E6008CD94B /* RXMLElement.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -789,6 +811,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NSWApp/NSWApp-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SDK_DIR)\"/usr/include/libxml2";
 				INFOPLIST_FILE = "NSWApp/NSWApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "Science Week";
@@ -801,6 +824,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NSWApp/NSWApp-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(SDK_DIR)\"/usr/include/libxml2";
 				INFOPLIST_FILE = "NSWApp/NSWApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "Science Week";

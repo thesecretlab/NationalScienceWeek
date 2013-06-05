@@ -162,7 +162,7 @@
             CGFloat totalHeight = 0;
             NSString *text = [[[[NSWEventData sharedData] multiDateEvents] objectAtIndex:indexPath.row] objectForKey:@"Title"];
             
-            CGSize constraint = CGSizeMake(320 - (10 * 2), 20000.0f);
+            CGSize constraint = CGSizeMake(320 -70, 20000.0f);
             
             CGSize size = [text sizeWithFont:kEventListCellTitleFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
             
@@ -172,7 +172,7 @@
             
             text = [[[[NSWEventData sharedData] multiDateEvents] objectAtIndex:indexPath.row] objectForKey:@"Location"];
             
-            constraint = CGSizeMake(320 - (10 * 2), 20000.0f);
+            constraint = CGSizeMake(320 -70, 20000.0f);
             
             size = [text sizeWithFont:kEventListCellDetailFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
             

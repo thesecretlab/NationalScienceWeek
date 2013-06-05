@@ -72,7 +72,7 @@ static NSWEventData* _sharedData = nil;
         self.favouriteEvents = [NSMutableArray array];
         [self changeLocation:@"Southern Tasmania"];
         self.latestVersionNumber = [NSNumber numberWithInt:-1];
-       [self loadCSVEventsFromCSVFile]; //TAKE AWAY IF YOU DON'T WANT DEFAULT LOADING DONE
+      // [self loadCSVEventsFromCSVFile]; //TAKE AWAY IF YOU DON'T WANT DEFAULT LOADING DONE
         
     }
     
@@ -95,7 +95,7 @@ static NSWEventData* _sharedData = nil;
     [self saveToFile];
 }
 
--(void)updateEventDataFromDownload:(NSString*)newCSVData withVersionNumber:(NSNumber*)newVersionNumber;
+-(void)updateEventDataFromDownload:(NSString*)newCSVData;
 {
 
     NSLog(@"Data definately here: %@", newCSVData);
@@ -105,18 +105,51 @@ static NSWEventData* _sharedData = nil;
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *filePath = [documentsDirectory stringByAppendingString:@"/NSWNewEventData.csv"];
+    NSString *filePath = [documentsDirectory stringByAppendingString:@"/NSWNewEventData.xml"];
 
     [newCSVData writeToFile:filePath atomically:YES 
                     encoding:NSUTF8StringEncoding error:&error];
         
 	NSStringEncoding encoding = 0;
-	NSArray * fields = [NSArray arrayWithContentsOfCSVFile:filePath usedEncoding:&encoding error:&error];
+    RXMLElement *rootXML = [RXMLElement elementFromXMLString:newCSVData encoding:NSUTF8StringEncoding];
+    
+    //RXMLElement *rxmlEvents = [rootXML child:@"Events"];
+    
+    
+    //NSArray *rxmlIndividualEvents = [rootXML children:@"Event"];
+   
+    __block NSMutableArray *fields = [NSMutableArray array];
+    [rootXML iterate:@"Event" usingBlock: ^(RXMLElement *event) {
+        NSMutableDictionary *eventDict = [NSMutableDictionary dictionary];
+        
+        [eventDict setObject:[event child:@"EventID"].text forKey:@"Event ID"];
+        [eventDict setObject:[event child:@"EventName"].text forKey:@"Title"];
+        
+        
+        [eventDict setObject:[NSString stringWithFormat:@"%@\n\nFor: %@ \n\nEvent Price: %@",[event child:@"EventDescription"].text,[event child:@"EventTargetAudience"].text,[event child:@"EventPayment"].text] forKey:@"Description"];
+        
+        RXMLElement *venue = [event child:@"Venue"];
+        NSLog(@"Venue: %@", venue);
+        [eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"VenueName"].text] forKey:@"Location"];
+        NSString *addressString = [NSString stringWithFormat:@" %@, %@, %@", [venue child:@"VenueStreetName"].text, [venue child:@"VenueSuburb"].text, [venue child:@"VenuePostcode"].text];
+        [eventDict setObject:addressString forKey:@"Address"];
+        
+        [eventDict setObject:[NSString stringWithFormat:@"%@\n%@\n\n%@\n\n%@",[event child:@"EventContactName"].text, [event child:@"EventContactOrganisation"].text, [event child:@"EventContactTelephone"].text, [event child:@"EventContactEmail"].text] forKey:@"Contact"];
+        [eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"EventWebsite"].text] forKey:@"Website"];
+
+        
+        [eventDict setObject:@"Northern Tasmania" forKey:@"Region"];  //EXPLICIT STATE REGION DATA NEEDS TO BE INCLUDED IN THE DATA
+        [fields addObject:eventDict];
+        //NSLog(@"Event: %@", [event child:@"EventName"]);
+    }];
+    
+	//NSArray * fields = nil; //PARSE XML HERE
+    
+    //[NSArray arrayWithContentsOfCSVFile:filePath usedEncoding:&encoding error:&error];
     
     if (fields) {
 
         [self processNewEventsArray:fields];
-        self.latestVersionNumber = newVersionNumber;
         [self revalidateFavourites];
         [self saveToFile];
         if (self.delegate) {
@@ -131,6 +164,7 @@ static NSWEventData* _sharedData = nil;
 
 - (void)processNewEventsArray:(NSArray *)fields
 {
+    /*
     NSMutableArray * csvEventArray = [NSMutableArray array];
     
     for (NSArray *event in fields) {
@@ -149,8 +183,9 @@ static NSWEventData* _sharedData = nil;
             [csvEventArray addObject:eventDictionary];
         }
     }
+     */
     //NSLog(@"read: %@", csvEventArray);
-    self.eventData = csvEventArray;
+    self.eventData = [fields mutableCopy];
     
     [self refilterEventsForLocation];
 }

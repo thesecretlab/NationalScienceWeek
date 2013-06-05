@@ -50,7 +50,7 @@
 -(NSArray*)multiDateEvents;
 -(void)previousLocation;
 -(void)nextLocation;
--(void)updateEventDataFromDownload:(NSString*)newCSVData withVersionNumber:(NSNumber*)newVersionNumber;
+-(void)updateEventDataFromDownload:(NSString*)newCSVData;
 -(NSDictionary*)eventForKey:(NSString*)eventKey;
 -(void)checkUsersLocation;
 -(NSArray*)uniqueSingleDatesForFavourites;
