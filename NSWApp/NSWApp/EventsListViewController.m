@@ -18,6 +18,7 @@
 #import "PopoverView.h"
 #import "NSWAppAppearanceConfig.h"
 #import "PrettyTableViewCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface EventsListViewController ()
 
@@ -69,8 +70,18 @@
         [dateFormatter setDateFormat:@"EEEE, MMM d"];
         
         NSString *prefixDateString = [dateFormatter stringFromDate:titleDate];
-        
-        [dateFormatter setDateFormat:@"d"];         
+        UIView *backingView = [[UIView alloc] initWithFrame: CGRectMake(12, 6, 296, 34)];
+        backingView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
+        backingView.layer.cornerRadius = 5;
+        backingView.clipsToBounds = YES;
+        [customTitleView addSubview:backingView];
+        UIImageView *imageview = [[UIImageView alloc]initWithImage:kImageForCellHeaderBackground];
+        imageview.frame = customTitleView.frame;
+
+        //[customTitleView addSubview:imageview];
+        //imageview.backgroundColor = [UIColor whiteColor];
+        NSLog(@"%f, %f", imageview.image.size.height, imageview.image.size.width);
+        [dateFormatter setDateFormat:@"d"];
         int date_day = [[dateFormatter stringFromDate:titleDate] intValue];      
         NSString *suffix_string = @"|st|nd|rd|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|st|nd|rd|th|th|th|th|th|th|th|st";
         NSArray *suffixes = [suffix_string componentsSeparatedByString: @"|"];

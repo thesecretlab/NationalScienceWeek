@@ -36,6 +36,9 @@
     
     UILabel *titleLabel = [ [UILabel alloc] initWithFrame:CGRectMake(18, 0, 300, 44)];
     
+    UIImageView *imageview = [[UIImageView alloc]initWithImage:kImageForCellHeaderBackground];
+    imageview.frame = customTitleView.frame;
+    [customTitleView addSubview:imageview];
     
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"dd/MM/yyyy"];

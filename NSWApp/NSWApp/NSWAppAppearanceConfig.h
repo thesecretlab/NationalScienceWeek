@@ -26,7 +26,9 @@
 
 #define kGlobalNavBarColour [UIColor tangerineColor]
 
-#define kGlobalNavBarItemColour [UIColor pomegranateColor]
+#define kGlobalNavBarItemColour [UIColor colorWithRed:255.0/255.0 green:102.0/255.0 blue: 0.0/255.0 alpha:1]
+
+//[UIColor pomegranateColor]
 
 //[UIColor colorWithRed:4.0/255.0 green:19.0/255.0 blue:78.0/255.0 alpha:1]
 
@@ -34,7 +36,7 @@
 
 #define kGlobalNavBarItemColourHighlighted [UIColor pomegranateColor]
 
-#define kGlobalNavBarItemFont [UIFont flatFontOfSize:14.0]
+#define kGlobalNavBarItemFont [UIFont boldFlatFontOfSize:14.0]
 
 #define kGlobalNavBarFont [UIFont boldFlatFontOfSize:18.0]
 
@@ -62,3 +64,8 @@
 //Favourites Screen
 
 #define kNoFavouritesFont [UIFont boldFlatFontOfSize:23.0]
+
+//AllTableViews
+
+#define kImageForCellHeaderBackground [UIImage imageNamed:@"tablviewcell-header.png"]
+

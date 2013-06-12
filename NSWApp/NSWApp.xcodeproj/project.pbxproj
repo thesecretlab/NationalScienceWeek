@@ -67,6 +67,7 @@
 		7C79596815BE4D1F005A5A3E /* favouritesicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C79596715BE4D1F005A5A3E /* favouritesicon.png */; };
 		7C79596B15BE4DD5005A5A3E /* favouritesiconbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C79596915BE4DD4005A5A3E /* favouritesiconbutton.png */; };
 		7C79596E15BE4E68005A5A3E /* favouritesiconbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C79596D15BE4E67005A5A3E /* favouritesiconbutton@2x.png */; };
+		7C7D01941762D688006D9F4A /* tablviewcell-header.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C7D01931762D688006D9F4A /* tablviewcell-header.png */; };
 		7C82D89815BD306B00AAA9F5 /* locationarrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C82D89715BD306B00AAA9F5 /* locationarrow@2x.png */; };
 		7C987EF315B8EAD200302F71 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C987EF015B8EACA00302F71 /* CoreLocation.framework */; };
 		7CC027CA1757A15B00B97C3C /* PrettyCustomViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC027B81757A15B00B97C3C /* PrettyCustomViewTableViewCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -202,6 +203,7 @@
 		7C79596715BE4D1F005A5A3E /* favouritesicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favouritesicon.png; sourceTree = "<group>"; };
 		7C79596915BE4DD4005A5A3E /* favouritesiconbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favouritesiconbutton.png; sourceTree = "<group>"; };
 		7C79596D15BE4E67005A5A3E /* favouritesiconbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favouritesiconbutton@2x.png"; sourceTree = "<group>"; };
+		7C7D01931762D688006D9F4A /* tablviewcell-header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tablviewcell-header.png"; sourceTree = "<group>"; };
 		7C82D89715BD306B00AAA9F5 /* locationarrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "locationarrow@2x.png"; sourceTree = "<group>"; };
 		7C987EF015B8EACA00302F71 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7CC027B117579C7D00B97C3C /* NSWAppAppearanceConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWAppAppearanceConfig.h; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 		7C9D951715BEC44300B212CE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7C7D01931762D688006D9F4A /* tablviewcell-header.png */,
 				7C55863E15B51DC200068067 /* first.png */,
 				7C55864015B51DC200068067 /* first@2x.png */,
 				7C55864515B51DC200068067 /* second.png */,
@@ -612,7 +615,7 @@
 		7C55861915B51DC100068067 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0460;
 			};
 			buildConfigurationList = 7C55861C15B51DC100068067 /* Build configuration list for PBXProject "NSWApp" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -675,6 +678,7 @@
 				7CF7633E1755AEA900F9088E /* Lato-LightItalic.ttf in Resources */,
 				7CF7633F1755AEA900F9088E /* Lato-Regular.ttf in Resources */,
 				7CC027D41757C82000B97C3C /* Default-568h@2x.png in Resources */,
+				7C7D01941762D688006D9F4A /* tablviewcell-header.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,6 +770,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -791,6 +799,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

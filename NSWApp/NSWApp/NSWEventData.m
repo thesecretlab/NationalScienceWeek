@@ -139,6 +139,11 @@ static NSWEventData* _sharedData = nil;
         [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:startDate]]  forKey:@"Date"];
         [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:endDate]]  forKey:@"End Date"];
 
+        if ([endDate timeIntervalSinceDate:startDate]<60*60*24)
+        {
+            [eventDict setObject:[NSString stringWithFormat:@""] forKey:@"End Date"];
+        }
+        
         [dateFormatter setDateFormat:@"hh:mm a"];
 
         [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:startDate]]  forKey:@"Start Time"];
@@ -155,8 +160,10 @@ static NSWEventData* _sharedData = nil;
         [eventDict setObject:[NSString stringWithFormat:@"%@\n%@\n\n%@\n\n%@",[event child:@"EventContactName"].text, [event child:@"EventContactOrganisation"].text, [event child:@"EventContactTelephone"].text, [event child:@"EventContactEmail"].text] forKey:@"Contact"];
         [eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"EventWebsite"].text] forKey:@"Website"];
 
-        
-        [eventDict setObject:@"Northern Tasmania" forKey:@"Region"];  //EXPLICIT STATE REGION DATA NEEDS TO BE INCLUDED IN THE DATA
+        [eventDict setObject:@"" forKey:@"Latitude"];
+        [eventDict setObject:@"" forKey:@"Longitude"];
+
+        //[eventDict setObject:@"Northern Tasmania" forKey:@"Region"];  //EXPLICIT STATE REGION DATA NEEDS TO BE INCLUDED IN THE DATA
         [fields addObject:eventDict];
         //NSLog(@"Event: %@", [event child:@"EventName"]);
     }];
@@ -376,7 +383,7 @@ static NSWEventData* _sharedData = nil;
     NSMutableArray *eventsForNewLocation = [NSMutableArray array];
     
     for (NSMutableDictionary *event in self.eventData) {
-        if ([[event objectForKey:@"Region"] isEqualToString:newLocation]) 
+        //if ([[event objectForKey:@"Region"] isEqualToString:newLocation]) //DISABLED FILTERING BY LOCATION, WHEN REGION IS RESTORED MAKE SURE TO TAKE THIS OUT
         {
             [eventsForNewLocation addObject:event];
             if (![[event objectForKey:@"End Date"] isEqualToString:@""]) 
