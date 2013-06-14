@@ -74,7 +74,7 @@ static NSWNetwork* _sharedNetwork = nil;
 {
     [self getPath:@"/event-transfer/scienceweek-events.xml" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *stringData = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        NSLog(@"New Event Data %@", stringData);
+        //NSLog(@"New Event Data %@", stringData);
         [[NSWEventData sharedData] updateEventDataFromDownload:stringData];
         completionHandler();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

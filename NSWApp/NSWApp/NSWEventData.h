@@ -25,6 +25,7 @@
     CLLocation *bestEffortAtLocation;
 
     int currentLocationCounter;
+    BOOL datesNeedUpdating;
 }
 + (NSWEventData*)sharedData;
 @property (nonatomic, strong) NSMutableArray *eventData;
@@ -34,6 +35,8 @@
 
 @property (nonatomic, strong) NSString *location;
 @property (nonatomic, strong) NSArray* locationValues;
+@property (nonatomic, strong) NSArray* uniqueDatesForLocation;
+
 @property (nonatomic, strong) NSNumber* latestVersionNumber;
 @property (nonatomic, strong) id<NSWEventDataDelegate> delegate;
 @property (nonatomic, strong) id<NSWEventDataDelegate> favouritesDelegate;

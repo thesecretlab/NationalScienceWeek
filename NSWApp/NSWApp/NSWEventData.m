@@ -98,10 +98,11 @@ static NSWEventData* _sharedData = nil;
 -(void)updateEventDataFromDownload:(NSString*)newCSVData;
 {
 
-    NSLog(@"Data definately here: %@", newCSVData);
+    //NSLog(@"Data definately here: %@", newCSVData);
     NSError *error;
     
 
+    datesNeedUpdating = YES;
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -132,7 +133,7 @@ static NSWEventData* _sharedData = nil;
 
         NSDate *startDate = [dateFormatter dateFromString:[event child:@"EventStart"].text];
          NSDate *endDate = [dateFormatter dateFromString:[event child:@"EventEnd"].text];
-        NSLog(@"Date: %@, %@", startDate, endDate);
+        //NSLog(@"Date: %@, %@", startDate, endDate);
 
         [dateFormatter setDateFormat:@"dd/MM/yyyy"];
         
@@ -222,8 +223,9 @@ static NSWEventData* _sharedData = nil;
 -(NSArray*)uniqueSingleDates
 {
     NSLog(@"Getting all dates");
-    NSMutableArray *uniqueDates = [NSMutableArray array];
     
+    /* OLD NECESSARY WRANGLING
+
     for(NSMutableDictionary *event in self.eventsForLocation)
     {
         if ([[event objectForKey:@"Date"] length] == 9) {
@@ -249,18 +251,36 @@ static NSWEventData* _sharedData = nil;
         NSDate *dateObject = [dateFormatter dateFromString:stringDate];
         [arrayOfDates addObject:dateObject];
     }
+    */
     
-    
-    [arrayOfDates sortUsingSelector:@selector(compare:)];
-    
-    NSMutableArray *arrayToReturn = [NSMutableArray array];
-    
-    for (NSDate *currentDate in arrayOfDates) {
-        [arrayToReturn addObject:[dateFormatter stringFromDate:currentDate]];
+
+    if (datesNeedUpdating || self.uniqueDatesForLocation == nil) {
+        NSLog(@"Processing Dates");
+        datesNeedUpdating = NO;
+        NSMutableArray *uniqueDates = [NSMutableArray array];
+
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"dd/MM/yyyy"];
+
+        for(NSMutableDictionary *event in self.eventsForLocation)
+        {
+            NSDate *dateObject = [dateFormatter dateFromString:[event objectForKey:@"Date"]];
+            [uniqueDates addObject:dateObject];
+        }
+        NSMutableArray *arrayOfDates = [NSMutableArray array];
+
+        [arrayOfDates addObjectsFromArray:[[NSSet setWithArray:uniqueDates] allObjects]];
+        [arrayOfDates sortUsingSelector:@selector(compare:)];
+        
+        NSMutableArray *arrayToReturn = [NSMutableArray array];
+        
+        for (NSDate *currentDate in arrayOfDates) {
+            [arrayToReturn addObject:[dateFormatter stringFromDate:currentDate]];
+        }
+        self.uniqueDatesForLocation = arrayToReturn;
     }
-    
-    //NSLog(@"Unique dates: %@", [uniqueDates sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]);
-    return arrayToReturn;
+    NSLog(@"Done");
+    return self.uniqueDatesForLocation;
 }
 
 -(NSArray*)multiDateEvents
@@ -377,7 +397,7 @@ static NSWEventData* _sharedData = nil;
 
 -(void)changeLocation:(NSString*)newLocation
 {
-    
+    datesNeedUpdating = YES;
     self.location = newLocation;
     currentLocationCounter = [self.locationValues indexOfObject:newLocation];
     NSMutableArray *eventsForNewLocation = [NSMutableArray array];

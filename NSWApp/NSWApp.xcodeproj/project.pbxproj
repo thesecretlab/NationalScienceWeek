@@ -83,6 +83,9 @@
 		7CC3224315BBC478002F37E0 /* calendaricon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC3224215BBC478002F37E0 /* calendaricon.png */; };
 		7CC3224615BBC49D002F37E0 /* mapicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC3224515BBC49D002F37E0 /* mapicon.png */; };
 		7CC3224915BBF021002F37E0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC3224715BBF017002F37E0 /* QuartzCore.framework */; };
+		7CCE1E4F1769A84D000AE659 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CCE1E4E1769A84D000AE659 /* MainStoryboard_iPad.storyboard */; };
+		7CCE1E531769D248000AE659 /* NSWiPadSideTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCE1E521769D248000AE659 /* NSWiPadSideTableViewController.m */; };
+		7CCE1E56176A2909000AE659 /* EventDetailViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCE1E55176A2909000AE659 /* EventDetailViewController_iPad.m */; };
 		7CF1028015C0F4C400A69FDC /* NSWkAPPSpreadsheet.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7CF1027F15C0F4C400A69FDC /* NSWkAPPSpreadsheet.csv */; };
 		7CF7631C1755A71C00F9088E /* FUIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF763031755A5C600F9088E /* FUIAlertView.m */; };
 		7CF7631D1755A71C00F9088E /* FUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF763051755A5C600F9088E /* FUIButton.m */; };
@@ -230,6 +233,11 @@
 		7CC3224215BBC478002F37E0 /* calendaricon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendaricon.png; sourceTree = "<group>"; };
 		7CC3224515BBC49D002F37E0 /* mapicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapicon.png; sourceTree = "<group>"; };
 		7CC3224715BBF017002F37E0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		7CCE1E4E1769A84D000AE659 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		7CCE1E511769D248000AE659 /* NSWiPadSideTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWiPadSideTableViewController.h; sourceTree = "<group>"; };
+		7CCE1E521769D248000AE659 /* NSWiPadSideTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWiPadSideTableViewController.m; sourceTree = "<group>"; };
+		7CCE1E54176A2909000AE659 /* EventDetailViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailViewController_iPad.h; sourceTree = "<group>"; };
+		7CCE1E55176A2909000AE659 /* EventDetailViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailViewController_iPad.m; sourceTree = "<group>"; };
 		7CF1027F15C0F4C400A69FDC /* NSWkAPPSpreadsheet.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NSWkAPPSpreadsheet.csv; sourceTree = "<group>"; };
 		7CF763021755A5C600F9088E /* FUIAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUIAlertView.h; sourceTree = "<group>"; };
 		7CF763031755A5C600F9088E /* FUIAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FUIAlertView.m; sourceTree = "<group>"; };
@@ -377,6 +385,7 @@
 			children = (
 				7C55863515B51DC200068067 /* AppDelegate.h */,
 				7C55863615B51DC200068067 /* AppDelegate.m */,
+				7CCE1E501769D198000AE659 /* iPad */,
 				7C9D951B15BEC48C00B212CE /* Views */,
 				7C9D951A15BEC46A00B212CE /* Controllers */,
 				7C9D951915BEC45900B212CE /* Models */,
@@ -526,6 +535,18 @@
 				7CC027BE1757A15B00B97C3C /* PrettyTableViewCell.m */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		7CCE1E501769D198000AE659 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				7CCE1E4E1769A84D000AE659 /* MainStoryboard_iPad.storyboard */,
+				7CCE1E511769D248000AE659 /* NSWiPadSideTableViewController.h */,
+				7CCE1E521769D248000AE659 /* NSWiPadSideTableViewController.m */,
+				7CCE1E54176A2909000AE659 /* EventDetailViewController_iPad.h */,
+				7CCE1E55176A2909000AE659 /* EventDetailViewController_iPad.m */,
+			);
+			name = iPad;
 			sourceTree = "<group>";
 		};
 		7CF763011755A5B500F9088E /* FlatUI */ = {
@@ -679,6 +700,7 @@
 				7CF7633F1755AEA900F9088E /* Lato-Regular.ttf in Resources */,
 				7CC027D41757C82000B97C3C /* Default-568h@2x.png in Resources */,
 				7C7D01941762D688006D9F4A /* tablviewcell-header.png in Resources */,
+				7CCE1E4F1769A84D000AE659 /* MainStoryboard_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -739,6 +761,8 @@
 				7CC027D11757A15B00B97C3C /* PrettyTabBar.m in Sources */,
 				7CC027D21757A15B00B97C3C /* PrettyToolbar.m in Sources */,
 				7C2A7399175E33E6008CD94B /* RXMLElement.m in Sources */,
+				7CCE1E531769D248000AE659 /* NSWiPadSideTableViewController.m in Sources */,
+				7CCE1E56176A2909000AE659 /* EventDetailViewController_iPad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -821,12 +845,15 @@
 		7C55864C15B51DC200068067 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NSWApp/NSWApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SDK_DIR)\"/usr/include/libxml2";
 				INFOPLIST_FILE = "NSWApp/NSWApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "Science Week";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -834,12 +861,15 @@
 		7C55864D15B51DC200068067 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NSWApp/NSWApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SDK_DIR)\"/usr/include/libxml2";
 				INFOPLIST_FILE = "NSWApp/NSWApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "Science Week";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

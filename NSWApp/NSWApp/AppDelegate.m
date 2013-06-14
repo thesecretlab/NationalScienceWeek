@@ -21,18 +21,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
-    [[NSWNetwork sharedNetwork] setReachabilityStatusChangeBlock:^(BOOL isNetworkReachable) {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            if (isNetworkReachable == NO) {
-                [(UITabBarController*)[self.window rootViewController] setSelectedIndex: 1];
-            }
-        });
-    }];
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    {
+        [[NSWNetwork sharedNetwork] setReachabilityStatusChangeBlock:^(BOOL isNetworkReachable) {
+            static dispatch_once_t onceToken;
+            dispatch_once(&onceToken, ^{
+                if (isNetworkReachable == NO) {
+                    [(UITabBarController*)[self.window rootViewController] setSelectedIndex: 1];
+                }
+            });
+        }];
+           
+        [[NSWEventData sharedData] checkUsersLocation];
+    }
     [self keepUpAppearances];
-       
-    [[NSWEventData sharedData] checkUsersLocation];
+
     return YES;
 }
 
@@ -42,8 +45,9 @@
     //[[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:245/255.0 green:140/245.0 blue:30/245.0 alpha:1.0]];
     
     //[[UITabBar appearance] setSelectedImageTintColor:[UIColor colorWithRed:245/255.0 green:140/245.0 blue:30/245.0 alpha:1.0]];
-    UITabBarController *tabController = (UITabBarController *)self.window.rootViewController;
-    [tabController.tabBar configureFlatTabBarWithColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1] selectedColor:[UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1]];
+
+        UITabBarController *tabController = (UITabBarController *)self.window.rootViewController;
+        [tabController.tabBar configureFlatTabBarWithColor:[UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1] selectedColor:[UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1]];
     
     
     NSDictionary *tabBarButtonAppearanceDict = @{UITextAttributeFont : kGlobalTabBarItemFont, UITextAttributeTextColor: [UIColor whiteColor]};
@@ -58,7 +62,7 @@
     
     NSDictionary *barButtonAppearanceDict = @{UITextAttributeFont : kGlobalNavBarItemFont};
     [[UIBarButtonItem appearance] setTitleTextAttributes:barButtonAppearanceDict forState:UIControlStateNormal];
-    NSDictionary *barAppearanceDict = @{UITextAttributeFont : kGlobalNavBarFont,UITextAttributeTextShadowColor : [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8], UITextAttributeTextShadowOffset : [NSValue valueWithUIOffset:UIOffsetMake(0, -1)]};
+    NSDictionary *barAppearanceDict = @{UITextAttributeFont : kGlobalNavBarFont,UITextAttributeTextShadowColor : [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8], UITextAttributeTextColor : [UIColor whiteColor], UITextAttributeTextShadowOffset : [NSValue valueWithUIOffset:UIOffsetMake(0, -1)]};
     
     [[UINavigationBar appearance] setTitleTextAttributes:barAppearanceDict];
     [UIBarButtonItem configureFlatButtonsWithColor:kGlobalNavBarItemColour
