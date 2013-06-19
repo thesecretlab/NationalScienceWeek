@@ -13,6 +13,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UINavigationBar+FlatUI.h"
 #import "EventDetailViewController_iPad.h"
+#import "FUISegmentedControl.h"
 @interface NSWiPadSideTableViewController ()
 
 @end
@@ -57,15 +58,16 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    self.uniqueSingleDates = [[NSWEventData sharedData] uniqueSingleDates];
+    if (displayData == ListEvents)
+    {
+        self.uniqueSingleDates = [[NSWEventData sharedData] uniqueSingleDates];
+    }
+    else if (displayData == ListFavourites)
+    {
+        self.uniqueSingleDates = [[NSWEventData sharedData] uniqueSingleDatesForFavourites];
+    }
     
-    if ([[[NSWEventData sharedData] multiDateEvents] count] > 0) {
-        return [self.uniqueSingleDates count]+1;
-        
-    }
-    else {
-        return [self.uniqueSingleDates count];
-    }
+    return [self.uniqueSingleDates count];
 }
 
 
@@ -73,7 +75,7 @@
     
     UIView *customTitleView = [ [UIView alloc] initWithFrame:CGRectMake(10, 0, 300, 44)];
     
-    UILabel *titleLabel = [ [UILabel alloc] initWithFrame:CGRectMake(18, 0, 300, 44)];
+    UILabel *titleLabel = [ [UILabel alloc] initWithFrame:customTitleView.frame];
     
     
     if (section < [self.uniqueSingleDates count]) {
@@ -123,34 +125,22 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 44;
 }
-/*
- - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
- {
- if (section < [self.uniqueSingleDates count]) {
- 
- NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
- [dateFormatter setDateFormat:@"dd/MM/yyyy"];
- NSDate *titleDate = [dateFormatter dateFromString:[self.uniqueSingleDates objectAtIndex:section]];
- [dateFormatter setDateFormat:@"EEEE, MMM d"];
- return [dateFormatter stringFromDate:titleDate];
- }
- else {
- return @"Multi-Date Events";
- }
- 
- }
- */
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section < [self.uniqueSingleDates count]) {
-        return [[[NSWEventData sharedData] eventsForDate:[self.uniqueSingleDates objectAtIndex:section]]count];
+        
+        if (displayData == ListEvents) {
+            return [[[NSWEventData sharedData] eventsForDate:[self.uniqueSingleDates objectAtIndex:section]]count];
+
+        }
+        else if(displayData == ListFavourites)
+        {
+            return [[[NSWEventData sharedData] eventsForDateInFavourites:[self.uniqueSingleDates objectAtIndex:section]]count];
+        }
+
     }
-    else {
-        return [[[NSWEventData sharedData] multiDateEvents] count];
-    }
-    
-    
-    //return 0; //[[[NSWEventData sharedData] eventData] count];
+    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -259,5 +249,20 @@
         
 }
 
+
+-(IBAction) valueChanged: (id) sender {
+    FUISegmentedControl *segmentedControl = (FUISegmentedControl*) sender;
+    switch ([segmentedControl selectedSegmentIndex]) {
+        case ListEvents:
+            displayData = ListEvents;
+            break;
+        case ListFavourites:
+            displayData = ListFavourites;
+            break;
+        default:
+            NSLog(@"No option for: %d", [segmentedControl selectedSegmentIndex]);
+    }
+    [_eventListView reloadData];
+}
 
 @end

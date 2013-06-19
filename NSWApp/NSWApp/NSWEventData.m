@@ -158,8 +158,26 @@ static NSWEventData* _sharedData = nil;
         NSString *addressString = [NSString stringWithFormat:@" %@, %@, %@", [venue child:@"VenueStreetName"].text, [venue child:@"VenueSuburb"].text, [venue child:@"VenuePostcode"].text];
         [eventDict setObject:addressString forKey:@"Address"];
         
-        [eventDict setObject:[NSString stringWithFormat:@"%@\n%@\n\n%@\n\n%@",[event child:@"EventContactName"].text, [event child:@"EventContactOrganisation"].text, [event child:@"EventContactTelephone"].text, [event child:@"EventContactEmail"].text] forKey:@"Contact"];
-        [eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"EventWebsite"].text] forKey:@"Website"];
+        if ([event child:@"EventContactName"].text) {
+            [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventContactName"].text] forKey:@"Contact"];
+        }
+        if ([event child:@"EventContactOrganisation"].text) {
+            [eventDict setObject:[NSString stringWithFormat:@"%@\n%@", [eventDict objectForKey:@"Contact"],[event child:@"EventContactOrganisation"].text]  forKey:@"Contact"];
+        }
+        if ([event child:@"EventContactTelephone"].text) {
+            [eventDict setObject:[NSString stringWithFormat:@"%@\n%@", [eventDict objectForKey:@"Contact"],[event child:@"EventContactTelephone"].text]  forKey:@"Contact"];
+        }
+        if ([event child:@"EventContactEmail"].text) {
+            [eventDict setObject:[NSString stringWithFormat:@"%@\n%@", [eventDict objectForKey:@"Contact"],[event child:@"EventContactEmail"].text]  forKey:@"Contact"];
+        }
+        if ([event child:@"Website"].text) {
+            [eventDict setObject:[NSString stringWithFormat:@"%@\n%@", [eventDict objectForKey:@"Contact"],[event child:@"Website"].text]  forKey:@"Contact"];
+        }
+        
+        
+       // [eventDict setObject:[NSString stringWithFormat:@"%@\n%@\n\n%@\n\n%@",[event child:@"EventContactName"].text, [event child:@"EventContactOrganisation"].text, [event child:@"EventContactTelephone"].text, [event child:@"EventContactEmail"].text] forKey:@"Contact"];
+        
+        //[eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"EventWebsite"].text] forKey:@"Website"];
 
         [eventDict setObject:@"" forKey:@"Latitude"];
         [eventDict setObject:@"" forKey:@"Longitude"];
@@ -278,9 +296,17 @@ static NSWEventData* _sharedData = nil;
             [arrayToReturn addObject:[dateFormatter stringFromDate:currentDate]];
         }
         self.uniqueDatesForLocation = arrayToReturn;
+        
     }
     NSLog(@"Done");
+
     return self.uniqueDatesForLocation;
+}
+
+-(void)prePrepare2DEventArray
+{
+
+    
 }
 
 -(NSArray*)multiDateEvents

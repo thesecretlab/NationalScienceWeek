@@ -187,7 +187,7 @@
                                     </view>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" id="W0L-du-4U9">
                                         <rect key="frame" x="29" y="698" width="350" height="51"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <view hidden="YES" contentMode="scaleToFill" id="sHD-vP-AkM" customClass="UACellBackgroundView">
                                                 <rect key="frame" x="0.0" y="0.0" width="350" height="51"/>
@@ -268,7 +268,7 @@
             </objects>
             <point key="canvasLocation" x="514" y="25"/>
         </scene>
-        <!--Wi Pad Side Table View Controller - Magic is happening.-->
+        <!--Wi Pad Side Table View Controller-->
         <scene sceneID="rM6-qy-vpZ">
             <objects>
                 <viewController id="PdL-yl-Q5E" customClass="NSWiPadSideTableViewController" sceneMemberID="viewController">
@@ -292,9 +292,26 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Magic is happening." id="xV2-Ou-5oj"/>
+                    <navigationItem key="navigationItem" id="xV2-Ou-5oj">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="RVo-hJ-1Zj">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="ZPe-wQ-D9R" customClass="FUISegmentedControl">
+                                <rect key="frame" x="7" y="7" width="172" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Events"/>
+                                    <segment title="Favourites"/>
+                                </segments>
+                                <connections>
+                                    <action selector="valueChanged:" destination="PdL-yl-Q5E" eventType="valueChanged" id="TkD-fr-MuK"/>
+                                </connections>
+                            </segmentedControl>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Today" id="emH-Nb-kmD"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="eventListView" destination="Cgd-UO-8im" id="lst-CK-pzy"/>
+                        <outlet property="listSegmentedControl" destination="ZPe-wQ-D9R" id="hkL-eS-YGb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dmy-Nh-AH0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -331,16 +348,47 @@
             </objects>
             <point key="canvasLocation" x="-1442" y="-479"/>
         </scene>
-        <!--View Controller - Item 2-->
+        <!--Info View Controller i Pad - Item 2-->
         <scene sceneID="K2m-gh-Bir">
             <objects>
-                <viewController id="cms-xb-Vth" sceneMemberID="viewController">
+                <viewController id="cms-xb-Vth" customClass="NSWInfoViewController_iPad" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JJu-gY-Ajq">
                         <rect key="frame" x="0.0" y="20" width="768" height="955"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" id="IRH-OR-II9">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="955"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.031372550870000002" green="0.082352943720000002" blue="0.27450981740000002" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="cms-xb-Vth" id="B9q-R2-l2b"/>
+                                </connections>
+                            </webView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="backgroundgradient.png" id="G6d-o1-chN">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="955"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="d1y-K9-HET">
+                                <rect key="frame" x="366" y="420" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Internet appears to be down. Please check your connection and try again." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" id="jgx-Vo-WBU">
+                                <rect key="frame" x="224" y="314" width="320" height="98"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="0ES-NQ-4TO"/>
+                    <connections>
+                        <outlet property="backgroundColourView" destination="G6d-o1-chN" id="eji-Y6-xSe"/>
+                        <outlet property="internetDownMessage" destination="jgx-Vo-WBU" id="QUF-Bo-5eb"/>
+                        <outlet property="spinner" destination="d1y-K9-HET" id="QyM-0j-MPX"/>
+                        <outlet property="webView" destination="IRH-OR-II9" id="Shu-XK-35x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0L-j9-baL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -350,7 +398,7 @@
         <scene sceneID="xJK-Id-520">
             <objects>
                 <tabBarController definesPresentationContext="YES" id="k8s-vj-aNm" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="WzB-hB-hO3">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -413,10 +461,24 @@
                 <relationship kind="outlet" name="topRowView" candidateClass="UIView"/>
             </relationships>
         </class>
+        <class className="FUISegmentedControl" superclassName="UISegmentedControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FUISegmentedControl.h"/>
+        </class>
+        <class className="NSWInfoViewController_iPad" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSWInfoViewController_iPad.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backgroundColourView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="internetDownMessage" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
         <class className="NSWiPadSideTableViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSWiPadSideTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="valueChanged:"/>
                 <relationship kind="outlet" name="eventListView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="listSegmentedControl" candidateClass="FUISegmentedControl"/>
             </relationships>
         </class>
         <class className="UACellBackgroundView" superclassName="UIView">

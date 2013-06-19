@@ -268,7 +268,7 @@
 {
     
     [self reloadView];
-    
+    [self.eventListTableView reloadData];
     if ([[self.navigationController viewControllers] count]> 1) {
         [(EventDetailViewController*)[[self.navigationController viewControllers] objectAtIndex:1] refreshDetailedEventData];
     }
@@ -361,6 +361,7 @@
 {
     self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Events" image:nil tag:0];
     [[self tabBarItem] setFinishedSelectedImage:[UIImage imageNamed:@"calendaricon.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"calendaricon.png"]];
+    [self.eventListTableView reloadData];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -385,21 +386,10 @@
 - (void)reloadView
 {
     
-    if ([[[NSWEventData sharedData] location] isEqualToString:@"Southern Tasmania"]) 
-    {
-        self.segmentedLocationControl.selectedSegmentIndex = 0;
-    }
-    else if([[[NSWEventData sharedData] location] isEqualToString:@"Northern Tasmania"]) 
-    {
-        self.segmentedLocationControl.selectedSegmentIndex = 1;        
-    }
-    else if([[[NSWEventData sharedData] location] isEqualToString:@"North-western Tasmania"]) 
-    {
-        self.segmentedLocationControl.selectedSegmentIndex = 2;        
-    }
+    //TODO: Update the display of which location is selected 
     
     self.currentLocationLabel.text = [[NSWEventData sharedData] location];
-    [self.eventListTableView reloadData];
+    //[self.eventListTableView reloadData];
 }
 
 - (IBAction)nextLocationPressed:(id)sender 

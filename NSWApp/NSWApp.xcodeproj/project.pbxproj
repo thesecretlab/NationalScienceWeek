@@ -69,6 +69,7 @@
 		7C79596E15BE4E68005A5A3E /* favouritesiconbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C79596D15BE4E67005A5A3E /* favouritesiconbutton@2x.png */; };
 		7C7D01941762D688006D9F4A /* tablviewcell-header.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C7D01931762D688006D9F4A /* tablviewcell-header.png */; };
 		7C82D89815BD306B00AAA9F5 /* locationarrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C82D89715BD306B00AAA9F5 /* locationarrow@2x.png */; };
+		7C9534A5176ECD7500A7C05B /* NSWInfoViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9534A4176ECD7500A7C05B /* NSWInfoViewController_iPad.m */; };
 		7C987EF315B8EAD200302F71 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C987EF015B8EACA00302F71 /* CoreLocation.framework */; };
 		7CC027CA1757A15B00B97C3C /* PrettyCustomViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC027B81757A15B00B97C3C /* PrettyCustomViewTableViewCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7CC027CB1757A15B00B97C3C /* PrettyGridTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC027BA1757A15B00B97C3C /* PrettyGridTableViewCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -208,6 +209,8 @@
 		7C79596D15BE4E67005A5A3E /* favouritesiconbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favouritesiconbutton@2x.png"; sourceTree = "<group>"; };
 		7C7D01931762D688006D9F4A /* tablviewcell-header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tablviewcell-header.png"; sourceTree = "<group>"; };
 		7C82D89715BD306B00AAA9F5 /* locationarrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "locationarrow@2x.png"; sourceTree = "<group>"; };
+		7C9534A3176ECD7500A7C05B /* NSWInfoViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWInfoViewController_iPad.h; sourceTree = "<group>"; };
+		7C9534A4176ECD7500A7C05B /* NSWInfoViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWInfoViewController_iPad.m; sourceTree = "<group>"; };
 		7C987EF015B8EACA00302F71 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7CC027B117579C7D00B97C3C /* NSWAppAppearanceConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWAppAppearanceConfig.h; sourceTree = "<group>"; };
 		7CC027B71757A15B00B97C3C /* PrettyCustomViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyCustomViewTableViewCell.h; sourceTree = "<group>"; };
@@ -545,6 +548,8 @@
 				7CCE1E521769D248000AE659 /* NSWiPadSideTableViewController.m */,
 				7CCE1E54176A2909000AE659 /* EventDetailViewController_iPad.h */,
 				7CCE1E55176A2909000AE659 /* EventDetailViewController_iPad.m */,
+				7C9534A3176ECD7500A7C05B /* NSWInfoViewController_iPad.h */,
+				7C9534A4176ECD7500A7C05B /* NSWInfoViewController_iPad.m */,
 			);
 			name = iPad;
 			sourceTree = "<group>";
@@ -763,6 +768,7 @@
 				7C2A7399175E33E6008CD94B /* RXMLElement.m in Sources */,
 				7CCE1E531769D248000AE659 /* NSWiPadSideTableViewController.m in Sources */,
 				7CCE1E56176A2909000AE659 /* EventDetailViewController_iPad.m in Sources */,
+				7C9534A5176ECD7500A7C05B /* NSWInfoViewController_iPad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

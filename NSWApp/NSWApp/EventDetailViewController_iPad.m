@@ -78,17 +78,9 @@
     }
     
     
-    if (![[_event objectForKey:@"Contact"] isEqualToString:@""] && ![[_event objectForKey:@"Website"] isEqualToString:@""])
-    {
-        self.eventContactTextView.text = [NSString stringWithFormat:@"%@\n\n%@", [_event objectForKey:@"Contact"], [_event objectForKey:@"Website"]];
-    }
-    else if (![[_event objectForKey:@"Contact"] isEqualToString:@""])
+    if (![[_event objectForKey:@"Contact"] isEqualToString:@""])
     {
         self.eventContactTextView.text = [NSString stringWithFormat:@"%@", [_event objectForKey:@"Contact"]];
-    }
-    else if (![[_event objectForKey:@"Website"] isEqualToString:@""])
-    {
-        self.eventContactTextView.text = [NSString stringWithFormat:@"%@", [_event objectForKey:@"Website"]];
     }
     
     self.eventContactTextView.contentInset = UIEdgeInsetsMake(-8,-8,0,0);
