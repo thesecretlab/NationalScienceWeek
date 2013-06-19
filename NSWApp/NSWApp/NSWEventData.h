@@ -23,7 +23,7 @@
 
     NSMutableArray *locationMeasurements;
     CLLocation *bestEffortAtLocation;
-
+    NSMutableArray *prePrepared2DEventArray;
     int currentLocationCounter;
     BOOL datesNeedUpdating;
 }

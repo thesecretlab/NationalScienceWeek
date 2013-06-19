@@ -296,17 +296,31 @@ static NSWEventData* _sharedData = nil;
             [arrayToReturn addObject:[dateFormatter stringFromDate:currentDate]];
         }
         self.uniqueDatesForLocation = arrayToReturn;
-        
+        [self prePrepareOptimised2DEventArray];
     }
     NSLog(@"Done");
 
     return self.uniqueDatesForLocation;
 }
 
--(void)prePrepare2DEventArray
+-(void)prePrepareOptimised2DEventArray
 {
+    NSMutableArray *twoDeeArray = [NSMutableArray array];
+    for (NSString* date in self.uniqueDatesForLocation)
+    {
+        NSMutableArray *singleDateEvents = [NSMutableArray array];
 
-    
+        for(NSMutableDictionary *event in self.eventsForLocation)
+        {
+            if ([[event objectForKey:@"Date"] isEqualToString:date]) {
+                [singleDateEvents addObject:event];
+            }
+        }
+        [twoDeeArray addObject:singleDateEvents];
+    }
+
+    prePrepared2DEventArray = twoDeeArray;
+
 }
 
 -(NSArray*)multiDateEvents
@@ -329,6 +343,8 @@ static NSWEventData* _sharedData = nil;
 
 -(NSArray*)eventsForDate:(NSString*) date
 {
+    
+    /* OLD PREOPTIMISEDCODE
     NSMutableArray *singleDateEvents = [NSMutableArray array];
     
     for(NSMutableDictionary *event in self.eventsForLocation)
@@ -341,10 +357,18 @@ static NSWEventData* _sharedData = nil;
         }
         
         
+    }*/
+    
+    
+    for (NSString* uniqueDate in self.uniqueDatesForLocation)
+    {
+        if ([uniqueDate isEqualToString:date]) {
+            return [prePrepared2DEventArray objectAtIndex:[self.uniqueDatesForLocation indexOfObject:uniqueDate]];
+            }
+        
     }
     
-    
-    return singleDateEvents;
+    return nil;
 }
 
 -(NSDictionary*)eventForKey:(NSString*)eventKey

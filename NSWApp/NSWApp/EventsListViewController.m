@@ -389,7 +389,7 @@
     //TODO: Update the display of which location is selected 
     
     self.currentLocationLabel.text = [[NSWEventData sharedData] location];
-    //[self.eventListTableView reloadData];
+    [self.eventListTableView reloadData];
 }
 
 - (IBAction)nextLocationPressed:(id)sender 
