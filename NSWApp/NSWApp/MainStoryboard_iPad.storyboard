@@ -242,7 +242,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="8Ke-hQ-vIr"/>
+                    <navigationItem key="navigationItem" id="8Ke-hQ-vIr">
+                        <barButtonItem key="rightBarButtonItem" title="Fav" id="nWx-QZ-opp">
+                            <connections>
+                                <action selector="favouriteEvent:" destination="qUv-YJ-6of" id="HzS-HN-RtF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="eventAddressLabel" destination="ah7-vN-lWj" id="iZt-ym-T8I"/>
                         <outlet property="eventAddressView" destination="Ewp-Dx-cZC" id="mdT-vl-rAw"/>
@@ -257,6 +263,7 @@
                         <outlet property="eventTimeLabel" destination="MfV-22-xfH" id="PPf-ac-Rxb"/>
                         <outlet property="eventTimeView" destination="Wl8-BH-xuk" id="gAo-kh-ghB"/>
                         <outlet property="eventTitleLabel" destination="y2Z-b8-Mid" id="apj-RV-yW8"/>
+                        <outlet property="favouriteButton" destination="nWx-QZ-opp" id="3cd-nQ-itM"/>
                         <outlet property="labelScrollView" destination="ELa-47-iUe" id="T6U-We-et4"/>
                         <outlet property="onlineOnlyOpenInSafariView" destination="OkD-Sk-peR" id="Nd3-y2-4Al"/>
                         <outlet property="openInMapsButton" destination="dr8-Ba-tgY" id="fDQ-hY-Sl4"/>
@@ -440,6 +447,7 @@
         <class className="EventDetailViewController_iPad" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EventDetailViewController_iPad.h"/>
             <relationships>
+                <relationship kind="action" name="favouriteEvent:"/>
                 <relationship kind="outlet" name="eventAddressLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="eventAddressView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="eventContactTextView" candidateClass="UITextView"/>

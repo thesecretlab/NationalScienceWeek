@@ -67,7 +67,7 @@
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"dd/MM/yyyy"];
         NSDate *titleDate = [dateFormatter dateFromString:[self.uniqueSingleDates objectAtIndex:section]];
-        [dateFormatter setDateFormat:@"EEEE, MMM d"];
+        [dateFormatter setDateFormat:@"EEEE, MMMM d"];
         
         NSString *prefixDateString = [dateFormatter stringFromDate:titleDate];
         //UIView *backingView = [[UIView alloc] initWithFrame: CGRectMake(12, 6, 296, 34)];

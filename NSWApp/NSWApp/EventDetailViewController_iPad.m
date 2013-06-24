@@ -10,7 +10,8 @@
 #import "NSWAppAppearanceConfig.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UINavigationBar+FlatUI.h"
-
+#import "NSWEventData.h"
+#import "UIBarButtonItem+FlatUI.h"
 @interface EventDetailViewController_iPad ()
 
 @end
@@ -179,8 +180,37 @@
     
     self.labelScrollView.contentSize = CGSizeMake(320, currentLayoutHeight);
     
-    //[self checkFavouriteButton];
+    [self checkFavouriteButton];
     
+}
+
+- (void)checkFavouriteButton
+{
+    if ([[NSWEventData sharedData] favouritesArrayContainsEventWithID:[_event objectForKey:@"Event ID"]])
+    {
+        [self.favouriteButton configureFlatButtonWithColor:kDetailFavouriteSelected
+                                          highlightedColor:kDetailFavouriteSelected
+                                              cornerRadius:kNavBarButtonCornerRadius];
+    }
+    else
+    {
+        [self.favouriteButton configureFlatButtonWithColor:kGlobalNavBarItemColour
+                                          highlightedColor:kGlobalNavBarItemColourHighlighted
+                                              cornerRadius:kNavBarButtonCornerRadius];    }
+}
+
+- (IBAction)favouriteEvent:(id)sender
+{
+    if ([[NSWEventData sharedData] favouritesArrayContainsEventWithID:[_event objectForKey:@"Event ID"]])
+    {
+        [[NSWEventData sharedData] removeEventFromFavouritesArrayWithID:[_event objectForKey:@"Event ID"]];
+    }
+    else
+    {
+        [[NSWEventData sharedData] addEventToFavouritesArray:_event];
+    }
+    
+    [self checkFavouriteButton];
 }
 
 - (void)positionLabelOnScreen:(UILabel *)currentLabel withFont:(UIFont *)fontForLabel sizeForMinumumLabel:(float)sizeForMinumumLabel bufferToNextLabel:(float)bufferToNextLabel

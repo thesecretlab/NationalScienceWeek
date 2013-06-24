@@ -126,8 +126,8 @@ static NSWEventData* _sharedData = nil;
     [rootXML iterate:@"Event" usingBlock: ^(RXMLElement *event) {
         NSMutableDictionary *eventDict = [NSMutableDictionary dictionary];
         
-        [eventDict setObject:[event child:@"EventID"].text forKey:@"Event ID"];
-        [eventDict setObject:[event child:@"EventName"].text forKey:@"Title"];
+        [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventID"].text] forKey:@"Event ID"];
+        [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventName"].text] forKey:@"Title"];
         
         [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss"];
 
@@ -140,7 +140,7 @@ static NSWEventData* _sharedData = nil;
         [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:startDate]]  forKey:@"Date"];
         [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:endDate]]  forKey:@"End Date"];
 
-        if ([endDate timeIntervalSinceDate:startDate]<60*60*24)
+        if ([endDate timeIntervalSinceDate:startDate]<60*60*24) //<-Seconds in a day
         {
             [eventDict setObject:[NSString stringWithFormat:@""] forKey:@"End Date"];
         }
@@ -179,10 +179,10 @@ static NSWEventData* _sharedData = nil;
         
         //[eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"EventWebsite"].text] forKey:@"Website"];
 
-        [eventDict setObject:@"" forKey:@"Latitude"];
-        [eventDict setObject:@"" forKey:@"Longitude"];
+        [eventDict setObject:@"0" forKey:@"Latitude"];
+        [eventDict setObject:@"0" forKey:@"Longitude"];
 
-        //[eventDict setObject:@"Northern Tasmania" forKey:@"Region"];  //EXPLICIT STATE REGION DATA NEEDS TO BE INCLUDED IN THE DATA
+       // [eventDict setObject:@"Northern Tasmania" forKey:@"Region"];  //EXPLICIT STATE REGION DATA NEEDS TO BE INCLUDED IN THE DATA
         [fields addObject:eventDict];
         //NSLog(@"Event: %@", [event child:@"EventName"]);
     }];

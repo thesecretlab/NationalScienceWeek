@@ -83,7 +83,7 @@
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"dd/MM/yyyy"];
         NSDate *titleDate = [dateFormatter dateFromString:[self.uniqueSingleDates objectAtIndex:section]];
-        [dateFormatter setDateFormat:@"EEEE, MMM d"];
+        [dateFormatter setDateFormat:@"EEEE, MMMM d"];
         
         NSString *prefixDateString = [dateFormatter stringFromDate:titleDate];
         //UIView *backingView = [[UIView alloc] initWithFrame: CGRectMake(12, 6, 296, 34)];
@@ -145,10 +145,19 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        
+
+    NSArray *eventArray;
+    if (displayData == ListEvents) {
+        eventArray = [[NSWEventData sharedData] eventsForDate:[self.uniqueSingleDates objectAtIndex:indexPath.section]];
+    }
+    else if(displayData == ListFavourites)
+    {
+        eventArray = [[NSWEventData sharedData] eventsForDateInFavourites:[self.uniqueSingleDates objectAtIndex:indexPath.section]];
+    }
+    
         if (indexPath.section < [self.uniqueSingleDates count]) {
             CGFloat totalHeight = 0;
-            NSString *text = [[[[NSWEventData sharedData] eventsForDate:[self.uniqueSingleDates objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row] objectForKey:@"Title"];
+            NSString *text = [[eventArray objectAtIndex:indexPath.row] objectForKey:@"Title"];
             
             CGSize constraint = CGSizeMake(320 - 70, 20000.0f);
             
@@ -158,7 +167,7 @@
             
             totalHeight = totalHeight + height;
             
-            text = [[[[NSWEventData sharedData] eventsForDate:[self.uniqueSingleDates objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row] objectForKey:@"Location"];
+            text = [[eventArray objectAtIndex:indexPath.row] objectForKey:@"Location"];
             
             constraint = CGSizeMake(320 - 70, 20000.0f);
             
@@ -170,30 +179,6 @@
             return totalHeight + 20+ [PrettyTableViewCell
                                       tableView:tableView neededHeightForIndexPath:indexPath];
         }
-        else {
-            CGFloat totalHeight = 0;
-            NSString *text = [[[[NSWEventData sharedData] multiDateEvents] objectAtIndex:indexPath.row] objectForKey:@"Title"];
-            
-            CGSize constraint = CGSizeMake(320 -70, 20000.0f);
-            
-            CGSize size = [text sizeWithFont:kEventListCellTitleFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-            
-            CGFloat height = MAX(size.height, 21.0f);
-            
-            totalHeight = totalHeight + height;
-            
-            text = [[[[NSWEventData sharedData] multiDateEvents] objectAtIndex:indexPath.row] objectForKey:@"Location"];
-            
-            constraint = CGSizeMake(320 -70, 20000.0f);
-            
-            size = [text sizeWithFont:kEventListCellDetailFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-            
-            height = MAX(size.height, 18.0f);
-            
-            totalHeight = totalHeight + height;
-            return totalHeight + 20;
-        }
-        
 	
     
     return 0;
@@ -216,8 +201,15 @@
     [cell prepareForTableView:tableView indexPath:indexPath];
     if (indexPath.section < [self.uniqueSingleDates count])
     {
-        
-        NSArray *eventsForDate = [[NSWEventData sharedData] eventsForDate:[self.uniqueSingleDates objectAtIndex:indexPath.section]];
+        NSArray *eventsForDate;
+        if (displayData == ListEvents)
+        {
+            eventsForDate = [[NSWEventData sharedData] eventsForDate:[self.uniqueSingleDates objectAtIndex:indexPath.section]];
+        }
+        else if (displayData == ListFavourites)
+        {
+            eventsForDate = [[NSWEventData sharedData] eventsForDateInFavourites:[self.uniqueSingleDates objectAtIndex:indexPath.section]];
+        }
         
         cell.textLabel.text = [[eventsForDate objectAtIndex:indexPath.row] objectForKey:@"Title"];
         cell.detailTextLabel.text = [[eventsForDate objectAtIndex:indexPath.row] objectForKey:@"Location"];
@@ -225,12 +217,7 @@
         
         
     }
-    else
-    {
-        cell.textLabel.text = [[[[NSWEventData sharedData] multiDateEvents] objectAtIndex:indexPath.row] objectForKey:@"Title"];
-        cell.detailTextLabel.text = [[[[NSWEventData sharedData] multiDateEvents] objectAtIndex:indexPath.row] objectForKey:@"Location"];
-        
-    }
+
     
     cell.textLabel.font = kEventListCellTitleFont;
     cell.detailTextLabel.font = kEventListCellDetailFont;
@@ -244,7 +231,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [(EventDetailViewController_iPad*)[[[self.splitViewController.viewControllers lastObject] viewControllers]objectAtIndex:0] setEvent:[[[NSWEventData sharedData] eventsForDate:[self.uniqueSingleDates objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row]];
+    if (displayData == ListEvents)
+    {
+        [(EventDetailViewController_iPad*)[[[self.splitViewController.viewControllers lastObject] viewControllers]objectAtIndex:0] setEvent:[[[NSWEventData sharedData] eventsForDate:[self.uniqueSingleDates objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row]];
+    }
+    else if (displayData == ListFavourites)
+    {
+        [(EventDetailViewController_iPad*)[[[self.splitViewController.viewControllers lastObject] viewControllers]objectAtIndex:0] setEvent:[[[NSWEventData sharedData] eventsForDateInFavourites:[self.uniqueSingleDates objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row]];
+    }
+    
     [(EventDetailViewController_iPad*)[[[self.splitViewController.viewControllers lastObject] viewControllers]objectAtIndex:0] updateAndRelayoutView];
         
 }
