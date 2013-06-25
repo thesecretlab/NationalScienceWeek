@@ -18,6 +18,8 @@ enum DisplayListPickerValue {
 @interface NSWiPadSideTableViewController : UIViewController <NSWEventDataDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     enum DisplayListPickerValue displayData;
+    float lastEventListOffset;
+    float lastFavouritesListOffset;
 }
 @property (weak, nonatomic) IBOutlet FUISegmentedControl *listSegmentedControl;
 

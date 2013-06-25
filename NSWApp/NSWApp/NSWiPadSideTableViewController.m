@@ -34,6 +34,8 @@
 
 - (void)viewDidLoad
 {
+    lastFavouritesListOffset = 0.0;
+    lastEventListOffset = 0.0;
     [self.eventListView reloadData];
 
     [super viewDidLoad];
@@ -254,9 +256,13 @@
     switch ([segmentedControl selectedSegmentIndex]) {
         case ListEvents:
             displayData = ListEvents;
+            lastFavouritesListOffset = self.eventListView.contentOffset.y;
+            [self.eventListView setContentOffset:CGPointMake(0, lastEventListOffset)];
             break;
         case ListFavourites:
             displayData = ListFavourites;
+            lastEventListOffset = self.eventListView.contentOffset.y;
+            [self.eventListView setContentOffset:CGPointMake(0, lastFavouritesListOffset)];
             break;
         default:
             NSLog(@"No option for: %d", [segmentedControl selectedSegmentIndex]);
@@ -267,6 +273,9 @@
 -(void)scrollToTodaysDate
 {
     
+    if ([self.uniqueSingleDates count] == 0) {
+        return;
+    }
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd/MM/yyyy"];
     
@@ -306,6 +315,7 @@
         }
         else
         {
+            
             [self.eventListView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:[self.uniqueSingleDates indexOfObject:dateToScrollTo]+1]atScrollPosition:UITableViewScrollPositionTop animated:YES];
         }
         
