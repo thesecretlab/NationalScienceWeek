@@ -284,5 +284,89 @@
     
 }
 
+-(void)refreshDetailedEventData
+{
+    
+    NSDictionary *updatedEvent = [[NSWEventData sharedData] eventForKey:[self.event objectForKey:@"Event ID"]];
+    if (updatedEvent)
+    {
+        self.event = updatedEvent;
+        [self updateAndRelayoutView];
+    }
+    else
+    {
+        //TODO: Put in a way to clear the detail view
+    }
+
+
+}
+
+- (IBAction)openInMaps:(id)sender
+{
+    if (![[_event objectForKey:@"Latitude"] isEqualToString:@""]&& ![[_event objectForKey:@"Longitude"] isEqualToString:@""]) {
+        NSString *url = [NSString stringWithFormat: @"http://maps.google.com/maps?q=%f,%f&t=m", [[_event objectForKey:@"Latitude"] floatValue], [[_event objectForKey:@"Longitude"] floatValue]];
+        // [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+        UIApplication *app = [UIApplication sharedApplication];
+        // NSURL* urlURL = [[NSURL alloc] initWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        
+        [app openURL:[NSURL URLWithString:url]];
+    }
+    
+}
+
+- (IBAction)createEvent:(id)sender
+{
+    
+    EKEventStore *eventStore = [[EKEventStore alloc] init];
+    
+    EKEvent *newEvent  = [EKEvent eventWithEventStore:eventStore];
+    newEvent.title     = [_event objectForKey:@"Title"];
+    newEvent.location  = [NSString stringWithFormat:@"%@ %@",[_event objectForKey:@"Location"], [_event objectForKey:@"Address"]];
+    
+    if (![[_event objectForKey:@"Website"] isEqualToString:@""]) {
+        newEvent.URL = [NSURL URLWithString:[_event objectForKey:@"Website"]];
+    }
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd/MM/yyyy hh:mm a"];
+    NSDate *startDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@ %@",[_event objectForKey:@"Date"], [_event objectForKey:@"Start Time"]]];
+    
+    newEvent.startDate = startDate;
+    
+    if (![[_event objectForKey:@"End Time"] isEqualToString:@""]) {
+        NSDate *endDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@ %@",[_event objectForKey:@"Date"], [_event objectForKey:@"End Time"]]];
+        newEvent.endDate   = endDate;
+        
+    }
+    else
+    {
+        newEvent.allDay = YES;
+    }
+    
+    
+    newEvent.notes = [_event objectForKey:@"Description"];
+    
+    
+    
+    [newEvent setCalendar:[eventStore defaultCalendarForNewEvents]];
+    
+    EKEventEditViewController* controller = [[EKEventEditViewController alloc] init];
+    controller.eventStore = eventStore;
+    controller.editViewDelegate = self;
+    controller.event = newEvent;
+    [controller.navigationBar configureFlatNavigationBarWithColor:kGlobalNavBarColour];
+    [self presentModalViewController: controller animated:YES];
+    
+}
+- (void)eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action {
+    [self dismissModalViewControllerAnimated:YES];
+}
+- (IBAction)openInSafari:(id)sender
+{
+    NSURL *websiteToOpen = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@",[_event objectForKey:@"Website"]]];
+    NSLog(@" WEBSITE? %@", websiteToOpen);
+    [[UIApplication sharedApplication] openURL:websiteToOpen];
+    
+}
 
 @end

@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <EventKitUI/EventKitUI.h>
 
-@interface EventDetailViewController_iPad : UIViewController
+@interface EventDetailViewController_iPad : UIViewController <EKEventEditViewDelegate>
 {
     float currentLayoutHeight;
 }
@@ -36,6 +36,16 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *favouriteButton;
 @property (weak, nonatomic) IBOutlet UIView *eventContactView;
 
+- (IBAction)favouriteEvent:(id)sender;
+
 - (void)updateAndRelayoutView;
+-(void)refreshDetailedEventData;
+
+- (void)positionLabelOnScreen:(UILabel *)currentLabel withFont:(UIFont *)fontForLabel sizeForMinumumLabel:(float)sizeForMinumumLabel bufferToNextLabel:(float)bufferToNextLabel;
+-(void)positionLabelViewOnScreen:(UIView*)currentView withLabel:(UILabel*)currentLabel bufferToNextView:(float)bufferToNextView;
+
+- (IBAction)openInMaps:(id)sender;
+- (IBAction)createEvent:(id)sender;
+- (IBAction)openInSafari:(id)sender;
 
 @end

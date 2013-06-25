@@ -106,7 +106,7 @@
     controller.editViewDelegate = self;
     controller.event = newEvent;
     [controller.navigationBar configureFlatNavigationBarWithColor:kGlobalNavBarColour];
-    [self presentModalViewController: controller animated:YES];
+    [self.splitViewController presentModalViewController: controller animated:YES];
     
 }
 
@@ -367,7 +367,7 @@
     if (![currentLabel.text isEqualToString:@""]) {
             
         
-        CGSize constraint = CGSizeMake(currentView.frame.size.width-24, 20000.0f);
+        CGSize constraint = CGSizeMake(currentView.frame.size.width-34, 20000.0f);
         
         CGSize size = [currentLabel.text sizeWithFont:currentLabel.font constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
         

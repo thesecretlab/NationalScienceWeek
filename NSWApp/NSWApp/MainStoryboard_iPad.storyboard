@@ -50,6 +50,9 @@
                                                         <state key="highlighted">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="openInMaps:" destination="qUv-YJ-6of" eventType="touchUpInside" id="l55-Zk-ac1"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -82,6 +85,9 @@
                                                         <state key="highlighted">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="createEvent:" destination="qUv-YJ-6of" eventType="touchUpInside" id="1lI-nl-cfq"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -114,6 +120,9 @@
                                                         <state key="highlighted">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="createEvent:" destination="qUv-YJ-6of" eventType="touchUpInside" id="qy8-UA-EpQ"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -169,6 +178,9 @@
                                                 <state key="highlighted">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="openInMaps:" destination="qUv-YJ-6of" eventType="touchUpInside" id="TD2-FM-np2"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FJe-8H-sGM">
                                                 <rect key="frame" x="335" y="19" width="10" height="14"/>
@@ -232,6 +244,9 @@
                                                 <state key="highlighted">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="openInSafari:" destination="qUv-YJ-6of" eventType="touchUpInside" id="qWK-1s-WRO"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -288,7 +303,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Cgd-UO-8im">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="739"/>
+                                <rect key="frame" x="0.0" y="42" width="320" height="697"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -296,29 +311,43 @@
                                     <outlet property="delegate" destination="PdL-yl-Q5E" id="VJ9-k3-lSz"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" id="h2y-WZ-ORv">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Wpw-a6-2kx" customClass="FUISegmentedControl">
+                                        <rect key="frame" x="35" y="7" width="248" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="Events"/>
+                                            <segment title="Favourites"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="valueChanged:" destination="PdL-yl-Q5E" eventType="valueChanged" id="Wbr-F2-yVp"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="xV2-Ou-5oj">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="RVo-hJ-1Zj">
-                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="ZPe-wQ-D9R" customClass="FUISegmentedControl">
-                                <rect key="frame" x="7" y="7" width="172" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Events"/>
-                                    <segment title="Favourites"/>
-                                </segments>
-                                <connections>
-                                    <action selector="valueChanged:" destination="PdL-yl-Q5E" eventType="valueChanged" id="TkD-fr-MuK"/>
-                                </connections>
-                            </segmentedControl>
+                        <barButtonItem key="leftBarButtonItem" title="About" id="GN8-Kd-AKf">
+                            <connections>
+                                <action selector="pushModalView:" destination="PdL-yl-Q5E" id="Wiw-fP-MsQ"/>
+                            </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Today" id="emH-Nb-kmD"/>
+                        <barButtonItem key="rightBarButtonItem" title="Today" id="emH-Nb-kmD">
+                            <connections>
+                                <action selector="scrollToTodaysDate" destination="PdL-yl-Q5E" id="Xim-nJ-HcU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="eventListView" destination="Cgd-UO-8im" id="lst-CK-pzy"/>
-                        <outlet property="listSegmentedControl" destination="ZPe-wQ-D9R" id="hkL-eS-YGb"/>
+                        <outlet property="listSegmentedControl" destination="Wpw-a6-2kx" id="okv-wd-cXK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dmy-Nh-AH0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -340,11 +369,11 @@
             </objects>
             <point key="canvasLocation" x="-460" y="-948"/>
         </scene>
-        <!--Split View Controller - Item-->
+        <!--Split View Controller - Events-->
         <scene sceneID="PSo-1Z-gl2">
             <objects>
                 <splitViewController id="cVR-Jw-MPi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="YUH-22-rt8"/>
+                    <tabBarItem key="tabBarItem" title="Events" image="calendaricon.png" id="YUH-22-rt8"/>
                     <toolbarItems/>
                     <connections>
                         <segue destination="yWC-0r-E99" kind="relationship" relationship="masterViewController" id="u2v-R4-d3S"/>
@@ -355,16 +384,54 @@
             </objects>
             <point key="canvasLocation" x="-1442" y="-479"/>
         </scene>
-        <!--Info View Controller i Pad - Item 2-->
-        <scene sceneID="K2m-gh-Bir">
+        <!--Events Map View Controller i Pad-->
+        <scene sceneID="UvK-0S-0Uq">
             <objects>
-                <viewController id="cms-xb-Vth" customClass="NSWInfoViewController_iPad" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JJu-gY-Ajq">
-                        <rect key="frame" x="0.0" y="20" width="768" height="955"/>
+                <viewController id="cfr-Vp-WrZ" customClass="NSWEventsMapViewController_iPad" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jVT-uH-tQP">
+                        <rect key="frame" x="0.0" y="64" width="768" height="911"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="13A-Mh-nAL">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="911"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="cfr-Vp-WrZ" id="JAc-KP-Nzq"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Awv-kF-OfH">
+                        <barButtonItem key="leftBarButtonItem" image="locationarrow.png" id="6Aj-a4-xwJ">
+                            <connections>
+                                <action selector="centerOnUser:" destination="cfr-Vp-WrZ" id="p3x-d9-BX1"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Nearest Event" id="Jvw-7q-m4h">
+                            <connections>
+                                <action selector="findClosestEvent:" destination="cfr-Vp-WrZ" id="SaF-Lc-cBF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="eventMap" destination="13A-Mh-nAL" id="YTb-vh-OWO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Fv-VY-hrt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-516" y="1241"/>
+        </scene>
+        <!--Info View Controller i Pad-->
+        <scene sceneID="K2m-gh-Bir">
+            <objects>
+                <viewController storyboardIdentifier="" id="cms-xb-Vth" customClass="NSWInfoViewController_iPad" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JJu-gY-Ajq">
+                        <rect key="frame" x="0.0" y="64" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
                             <webView contentMode="scaleToFill" id="IRH-OR-II9">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="955"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.031372550870000002" green="0.082352943720000002" blue="0.27450981740000002" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
@@ -372,16 +439,16 @@
                                 </connections>
                             </webView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="backgroundgradient.png" id="G6d-o1-chN">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="955"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="d1y-K9-HET">
-                                <rect key="frame" x="366" y="420" width="37" height="37"/>
+                                <rect key="frame" x="142" y="286" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Internet appears to be down. Please check your connection and try again." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" id="jgx-Vo-WBU">
-                                <rect key="frame" x="224" y="314" width="320" height="98"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="0.0" y="190" width="320" height="98"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -389,7 +456,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="0ES-NQ-4TO"/>
+                    <navigationItem key="navigationItem" id="kRN-Mj-SYL">
+                        <barButtonItem key="rightBarButtonItem" title="Close" id="9SB-5E-z9F"/>
+                    </navigationItem>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="backgroundColourView" destination="G6d-o1-chN" id="eji-Y6-xSe"/>
                         <outlet property="internetDownMessage" destination="jgx-Vo-WBU" id="QUF-Bo-5eb"/>
@@ -399,7 +469,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0L-j9-baL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1375" y="1309"/>
+            <point key="canvasLocation" x="1340" y="-1092"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xJK-Id-520">
@@ -412,8 +482,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="cms-xb-Vth" kind="relationship" relationship="viewControllers" id="kqP-WI-b35"/>
                         <segue destination="cVR-Jw-MPi" kind="relationship" relationship="viewControllers" id="8bl-lC-udJ"/>
+                        <segue destination="d1X-ai-pPS" kind="relationship" relationship="viewControllers" id="ZS3-do-aeG"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGL-eb-R3R" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -438,16 +508,60 @@
             </objects>
             <point key="canvasLocation" x="-460" y="25"/>
         </scene>
+        <!--Navigation Controller - Map-->
+        <scene sceneID="f03-Iw-Ye1">
+            <objects>
+                <navigationController id="d1X-ai-pPS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" image="mapicon.png" id="3fm-d5-VJY"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="75V-Iq-zZN">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cfr-Vp-WrZ" kind="relationship" relationship="rootViewController" id="AyK-ON-AdJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8PC-OE-Oqa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1490" y="1241"/>
+        </scene>
+        <!--Navigation Controller - Item 2-->
+        <scene sceneID="M4v-gR-ADs">
+            <objects>
+                <navigationController storyboardIdentifier="infoPanel" id="0G6-ih-oLZ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item 2" id="0ES-NQ-4TO"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="euP-KK-ccH">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cms-xb-Vth" kind="relationship" relationship="rootViewController" id="bby-jo-4Ul"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yU7-2a-eKt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="464" y="-1097"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow_right.png" width="10" height="13"/>
         <image name="backgroundgradient.png" width="640" height="1040"/>
+        <image name="calendaricon.png" width="23" height="25"/>
+        <image name="locationarrow.png" width="14" height="14"/>
+        <image name="mapicon.png" width="26" height="21"/>
     </resources>
     <classes>
         <class className="EventDetailViewController_iPad" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EventDetailViewController_iPad.h"/>
             <relationships>
+                <relationship kind="action" name="createEvent:"/>
                 <relationship kind="action" name="favouriteEvent:"/>
+                <relationship kind="action" name="openInMaps:"/>
+                <relationship kind="action" name="openInSafari:"/>
                 <relationship kind="outlet" name="eventAddressLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="eventAddressView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="eventContactTextView" candidateClass="UITextView"/>
@@ -472,6 +586,14 @@
         <class className="FUISegmentedControl" superclassName="UISegmentedControl">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FUISegmentedControl.h"/>
         </class>
+        <class className="NSWEventsMapViewController_iPad" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSWEventsMapViewController_iPad.h"/>
+            <relationships>
+                <relationship kind="action" name="centerOnUser:"/>
+                <relationship kind="action" name="findClosestEvent:"/>
+                <relationship kind="outlet" name="eventMap" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
         <class className="NSWInfoViewController_iPad" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSWInfoViewController_iPad.h"/>
             <relationships>
@@ -484,6 +606,8 @@
         <class className="NSWiPadSideTableViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSWiPadSideTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="pushModalView:"/>
+                <relationship kind="action" name="scrollToTodaysDate"/>
                 <relationship kind="action" name="valueChanged:"/>
                 <relationship kind="outlet" name="eventListView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="listSegmentedControl" candidateClass="FUISegmentedControl"/>

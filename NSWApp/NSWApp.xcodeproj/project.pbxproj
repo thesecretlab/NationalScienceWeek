@@ -18,6 +18,7 @@
 		682FF8F015C0C38000353608 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 682FF8ED15C0C38000353608 /* Icon@2x.png */; };
 		6841DC1415CE60DE004BEAB0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6841DC1315CE60DE004BEAB0 /* SystemConfiguration.framework */; };
 		6E2DB3A415B87B7C00270481 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2DB3A315B87B7C00270481 /* Icon.png */; };
+		7C04A6BF1779DF28005B0C87 /* NSWEventsMapViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C04A6BE1779DF28005B0C87 /* NSWEventsMapViewController_iPad.m */; };
 		7C0A35AB15BE9CB200A25D3B /* FavouriteEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0A35AA15BE9CB200A25D3B /* FavouriteEventsViewController.m */; };
 		7C2A7395175E3297008CD94B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C2A7394175E3297008CD94B /* libz.dylib */; };
 		7C2A7399175E33E6008CD94B /* RXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2A7398175E33E6008CD94B /* RXMLElement.m */; };
@@ -127,6 +128,8 @@
 		682FF8ED15C0C38000353608 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		6841DC1315CE60DE004BEAB0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6E2DB3A315B87B7C00270481 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
+		7C04A6BD1779DF28005B0C87 /* NSWEventsMapViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWEventsMapViewController_iPad.h; sourceTree = "<group>"; };
+		7C04A6BE1779DF28005B0C87 /* NSWEventsMapViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWEventsMapViewController_iPad.m; sourceTree = "<group>"; };
 		7C0A35A915BE9CB200A25D3B /* FavouriteEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouriteEventsViewController.h; sourceTree = "<group>"; };
 		7C0A35AA15BE9CB200A25D3B /* FavouriteEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouriteEventsViewController.m; sourceTree = "<group>"; };
 		7C2A7394175E3297008CD94B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -550,6 +553,8 @@
 				7CCE1E55176A2909000AE659 /* EventDetailViewController_iPad.m */,
 				7C9534A3176ECD7500A7C05B /* NSWInfoViewController_iPad.h */,
 				7C9534A4176ECD7500A7C05B /* NSWInfoViewController_iPad.m */,
+				7C04A6BD1779DF28005B0C87 /* NSWEventsMapViewController_iPad.h */,
+				7C04A6BE1779DF28005B0C87 /* NSWEventsMapViewController_iPad.m */,
 			);
 			name = iPad;
 			sourceTree = "<group>";
@@ -769,6 +774,7 @@
 				7CCE1E531769D248000AE659 /* NSWiPadSideTableViewController.m in Sources */,
 				7CCE1E56176A2909000AE659 /* EventDetailViewController_iPad.m in Sources */,
 				7C9534A5176ECD7500A7C05B /* NSWInfoViewController_iPad.m in Sources */,
+				7C04A6BF1779DF28005B0C87 /* NSWEventsMapViewController_iPad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -856,7 +862,7 @@
 				GCC_PREFIX_HEADER = "NSWApp/NSWApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SDK_DIR)\"/usr/include/libxml2";
 				INFOPLIST_FILE = "NSWApp/NSWApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "Science Week";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -872,7 +878,7 @@
 				GCC_PREFIX_HEADER = "NSWApp/NSWApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SDK_DIR)\"/usr/include/libxml2";
 				INFOPLIST_FILE = "NSWApp/NSWApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "Science Week";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

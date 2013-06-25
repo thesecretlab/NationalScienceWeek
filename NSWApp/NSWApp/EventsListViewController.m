@@ -282,9 +282,10 @@
     [dateFormatter setDateFormat:@"dd/MM/yyyy"];
     
     NSString *dateToScrollTo;
+    BOOL foundExactMatch = NO;
     for (NSString *dateString in self.uniqueSingleDates) 
     {
-        
+
         NSDate *eventDate = [dateFormatter dateFromString:dateString];
         
         NSComparisonResult compareResult = [(NSDate*)[NSDate date] compare:eventDate];
@@ -297,6 +298,11 @@
         {
             
         }
+        if ([dateString isEqualToString:[dateFormatter stringFromDate:[NSDate date]]])
+        {
+            dateToScrollTo = dateString;
+            foundExactMatch = YES;
+        }
         
     }
     
@@ -306,7 +312,14 @@
     }
     else
     {
-        [self.eventListTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:[self.uniqueSingleDates indexOfObject:dateToScrollTo]]atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        if (foundExactMatch) {
+            [self.eventListTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:[self.uniqueSingleDates indexOfObject:dateToScrollTo]]atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        }
+        else
+        {
+            [self.eventListTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:[self.uniqueSingleDates indexOfObject:dateToScrollTo]+1]atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        }
+
     }
     
 }

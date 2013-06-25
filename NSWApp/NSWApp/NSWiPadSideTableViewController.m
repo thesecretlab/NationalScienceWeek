@@ -14,6 +14,7 @@
 #import "UINavigationBar+FlatUI.h"
 #import "EventDetailViewController_iPad.h"
 #import "FUISegmentedControl.h"
+#import "NSWInfoViewController_iPad.h"
 @interface NSWiPadSideTableViewController ()
 
 @end
@@ -33,6 +34,8 @@
 
 - (void)viewDidLoad
 {
+    [self.eventListView reloadData];
+
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -44,7 +47,8 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    
+    [self.navigationController.navigationBar configureFlatNavigationBarWithColor:kGlobalNavBarColour];
+
     [self.navigationController.navigationBar configureFlatNavigationBarWithColor:kGlobalNavBarColour];
 }
 
@@ -258,6 +262,78 @@
             NSLog(@"No option for: %d", [segmentedControl selectedSegmentIndex]);
     }
     [_eventListView reloadData];
+}
+
+-(void)scrollToTodaysDate
+{
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd/MM/yyyy"];
+    
+    NSString *dateToScrollTo;
+    BOOL foundExactMatch = NO;
+    for (NSString *dateString in self.uniqueSingleDates)
+    {
+        
+        NSDate *eventDate = [dateFormatter dateFromString:dateString];
+        
+        NSComparisonResult compareResult = [(NSDate*)[NSDate date] compare:eventDate];
+        
+        if(compareResult == NSOrderedDescending)
+        {
+            dateToScrollTo = dateString;
+        }
+        else if(compareResult == NSOrderedAscending)
+        {
+            
+        }
+        if ([dateString isEqualToString:[dateFormatter stringFromDate:[NSDate date]]])
+        {
+            dateToScrollTo = dateString;
+            foundExactMatch = YES;
+        }
+        
+    }
+    
+    if(dateToScrollTo == nil)
+    {
+        [self.eventListView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
+    else
+    {
+        if (foundExactMatch) {
+            [self.eventListView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:[self.uniqueSingleDates indexOfObject:dateToScrollTo]]atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        }
+        else
+        {
+            [self.eventListView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:[self.uniqueSingleDates indexOfObject:dateToScrollTo]+1]atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        }
+        
+    }
+    
+}
+
+- (IBAction)pushModalView:(id)sender
+{
+    UIViewController *infoPanel = [self.storyboard instantiateViewControllerWithIdentifier:@"infoPanel"];
+    infoPanel.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self.splitViewController presentModalViewController:infoPanel animated:YES];
+}
+
+- (void)reloadView
+{
+
+    [self.eventListView reloadData];
+}
+
+- (void)newDataWasDownloaded
+{
+    
+    [self reloadView];
+    [self.eventListView reloadData];
+    [(EventDetailViewController_iPad*)[[self.splitViewController viewControllers] objectAtIndex:1] refreshDetailedEventData];
+    
+    
 }
 
 @end

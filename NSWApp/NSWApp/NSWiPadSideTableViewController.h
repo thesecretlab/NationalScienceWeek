@@ -25,5 +25,9 @@ enum DisplayListPickerValue {
 
 @property (nonatomic, strong) NSArray* uniqueSingleDates;
 -(IBAction) valueChanged: (id) sender;
-
+- (IBAction)pushModalView:(id)sender;
+-(IBAction)scrollToTodaysDate;
+- (void)reloadView;
+- (void)newDataWasDownloaded;
+//TODO: Add location picker
 @end

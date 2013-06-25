@@ -1,23 +1,23 @@
 //
-//  EventsMapViewController.m
+//  NSWEventsMapViewController_iPad.m
 //  NSWApp
 //
-//  Created by Nicholas Wittison on 17/07/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Nicholas Wittison on 26/06/13.
+//
 //
 
-#import "EventsMapViewController.h"
+#import "NSWEventsMapViewController_iPad.h"
 #import <MapKit/MapKit.h>
 #import "MyLocation.h"
 #import "NSWEventData.h"
 #import "EventDetailViewController.h"
 #import "NSWAppAppearanceConfig.h"
 #import "UINavigationBar+FlatUI.h"
-@interface EventsMapViewController ()
+@interface NSWEventsMapViewController_iPad ()
 
 @end
 
-@implementation EventsMapViewController
+@implementation NSWEventsMapViewController_iPad
 @synthesize eventMap, lastLocationShown;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -50,7 +50,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [[NSWEventData sharedData] setMapsDelegate:self];
-
+    
     if ([[[NSWEventData sharedData] eventData] count] > 0) {
         
         if ([self.eventMap.annotations count] == 0) {
@@ -63,9 +63,9 @@
             [self plotEvents];
             [self zoomToCurrentRegionAnnotationBounds];
             self.lastLocationShown = [[NSWEventData sharedData] location];
-
+            
         }
-
+        
     }
 }
 
@@ -75,7 +75,7 @@
 }
 
 
-- (IBAction)findClosestEvent:(id)sender 
+- (IBAction)findClosestEvent:(id)sender
 {
     float shortestDistance = MAXFLOAT;
     id<MKAnnotation> foundAnnotation;
@@ -83,18 +83,18 @@
     for (id<MKAnnotation> annotation in self.eventMap.annotations)
     {
         float dist = [self kilometresBetweenPlace1:self.eventMap.userLocation.coordinate andPlace2: annotation.coordinate];
-        if (dist < shortestDistance && dist != 0.00) 
+        if (dist < shortestDistance && dist != 0.00)
         {
             shortestDistance = dist;
             foundAnnotation = annotation;
         }
     }
-
+    
     [self.eventMap selectAnnotation:foundAnnotation
-                             animated:YES];
+                           animated:YES];
 }
 
-- (IBAction)centerOnUser:(id)sender 
+- (IBAction)centerOnUser:(id)sender
 {
     MKCoordinateRegion region;
     MKCoordinateSpan span;
@@ -110,10 +110,10 @@
 }
 
 
--(float)kilometresBetweenPlace1:(CLLocationCoordinate2D) currentLocation andPlace2:(CLLocationCoordinate2D) place2 
+-(float)kilometresBetweenPlace1:(CLLocationCoordinate2D) currentLocation andPlace2:(CLLocationCoordinate2D) place2
 {
     CLLocation *userLoc = [[CLLocation alloc] initWithLatitude:currentLocation.latitude longitude:currentLocation.longitude];
-    CLLocation *poiLoc = [[CLLocation alloc] initWithLatitude:place2.latitude longitude:place2.longitude];  
+    CLLocation *poiLoc = [[CLLocation alloc] initWithLatitude:place2.latitude longitude:place2.longitude];
     CLLocationDistance dist = [userLoc distanceFromLocation:poiLoc];
     NSString *strDistance = [NSString stringWithFormat:@"%.2f", dist];
     return [strDistance floatValue];
@@ -127,20 +127,20 @@
     
     for (NSDictionary * event in [[NSWEventData sharedData] eventData]) {
         
-        if (![[event objectForKey:@"Longitude"] isEqualToString:@""] && ![[event objectForKey:@"Latitude"] isEqualToString:@""]) 
+        if (![[event objectForKey:@"Longitude"] isEqualToString:@""] && ![[event objectForKey:@"Latitude"] isEqualToString:@""])
         {
             NSNumber * latitude = [NSNumber numberWithDouble:[[event objectForKey:@"Latitude"] doubleValue]];
-            NSNumber * longitude = [NSNumber numberWithDouble:[[event objectForKey:@"Longitude"] doubleValue]]; 
+            NSNumber * longitude = [NSNumber numberWithDouble:[[event objectForKey:@"Longitude"] doubleValue]];
             
             NSString * purchaseDescription = [NSString stringWithFormat:[event objectForKey:@"Title"]];
-            NSString * purchaseLocation = [event objectForKey:@"Location"]; 
+            NSString * purchaseLocation = [event objectForKey:@"Location"];
             
             CLLocationCoordinate2D coordinate;
             coordinate.latitude = latitude.doubleValue;
-            coordinate.longitude = longitude.doubleValue;            
+            coordinate.longitude = longitude.doubleValue;
             MyLocation *annotation = [[MyLocation alloc] initWithName:purchaseDescription address:purchaseLocation coordinate:coordinate] ;
             annotation.event = event;
-            [self.eventMap addAnnotation:annotation];    
+            [self.eventMap addAnnotation:annotation];
         }
         
     }
@@ -148,7 +148,7 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     
-    static NSString *identifier = @"MyLocation";   
+    static NSString *identifier = @"MyLocation";
     if ([annotation isKindOfClass:[MyLocation class]]) {
         
         MKPinAnnotationView *annotationView = (MKPinAnnotationView *) [self.eventMap dequeueReusableAnnotationViewWithIdentifier:identifier];
@@ -168,7 +168,7 @@
         return annotationView;
     }
     
-    return nil;    
+    return nil;
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
@@ -176,10 +176,10 @@
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     EventDetailViewController* eventDetail = [storyboard instantiateViewControllerWithIdentifier:@"EventDetail"];
     
-    eventDetail.event = [(MyLocation*)[view annotation] event]; 
+    eventDetail.event = [(MyLocation*)[view annotation] event];
     
     [self.navigationController pushViewController:eventDetail animated:YES];
-
+    
 }
 
 - (void) zoomToCurrentRegionAnnotationBounds {
@@ -261,7 +261,6 @@
         maxLongitude = fmax(annotationLong, maxLongitude);
     }
     
-    
     // See function below
     [self setMapRegionForMinLat:minLatitude minLong:minLongitude maxLat:maxLatitude maxLong:maxLongitude];
     
@@ -309,3 +308,4 @@
 }
 
 @end
+
