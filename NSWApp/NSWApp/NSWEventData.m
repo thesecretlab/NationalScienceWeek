@@ -8,7 +8,7 @@
 
 #import "NSWEventData.h"
 #import "CHCSV.h"
-
+#import "TouchXML.h"
 static NSWEventData* _sharedData = nil;
 
 @implementation NSWEventData
@@ -18,12 +18,12 @@ static NSWEventData* _sharedData = nil;
     if (_sharedData == nil) 
     {  
         _sharedData = [[NSWEventData alloc] init];
-        [_sharedData loadFromFile];
         _sharedData.locationValues = [NSArray arrayWithObjects:@"Southern Tasmania", @"Northern Tasmania", @"North-western Tasmania", nil];
         [_sharedData setCurrentLocationCounter:0];
         _sharedData.latestVersionNumber = [NSNumber numberWithInt:-1];
         _sharedData.locationMeasurements = [NSMutableArray array];
         _sharedData.favouriteEvents = [NSMutableArray array];
+        [_sharedData loadFromFile];
 
     }
     
@@ -72,13 +72,28 @@ static NSWEventData* _sharedData = nil;
         self.favouriteEvents = [NSMutableArray array];
         [self changeLocation:@"Southern Tasmania"];
         self.latestVersionNumber = [NSNumber numberWithInt:-1];
-      // [self loadCSVEventsFromCSVFile]; //TAKE AWAY IF YOU DON'T WANT DEFAULT LOADING DONE
+        [self loadXMLPreBakedData]; //TAKE AWAY IF YOU DON'T WANT DEFAULT LOADING DONE
         
     }
     
 }
 
+-(void)loadXMLPreBakedData
+{
+    NSString * file = [[NSBundle bundleForClass:[self class]] pathForResource:@"scienceweek-events" ofType:@"xml"];
+	NSLog(@"%@", file);
+    NSError * error = nil;
 
+    NSString *fileAsString = [NSString stringWithContentsOfFile:file encoding:0 error:&error];
+    NSLog(@"%@", error);
+
+    self.latestVersionNumber = [NSNumber numberWithInt:-1];
+    [self updateEventDataFromDownload:fileAsString];
+    //[self saveToFile];
+    
+}
+
+/*
 -(void)loadCSVEventsFromCSVFile
 {
     
@@ -94,140 +109,154 @@ static NSWEventData* _sharedData = nil;
     
     [self saveToFile];
 }
+ */
 
 -(void)updateEventDataFromDownload:(NSString*)newCSVData;
 {
 
     //NSLog(@"Data definately here: %@", newCSVData);
-    NSError *error;
     
-
     datesNeedUpdating = YES;
+    NSError *error;
+    CXMLDocument *rssParser = [[CXMLDocument alloc] initWithXMLString:newCSVData options:0 error:&error];
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *filePath = [documentsDirectory stringByAppendingString:@"/NSWNewEventData.xml"];
-
-    [newCSVData writeToFile:filePath atomically:YES 
-                    encoding:NSUTF8StringEncoding error:&error];
-        
-	NSStringEncoding encoding = 0;
-    RXMLElement *rootXML = [RXMLElement elementFromXMLString:newCSVData encoding:NSUTF8StringEncoding];
+    NSLog(@"ERROR: %@",error);
     
-    //RXMLElement *rxmlEvents = [rootXML child:@"Events"];
-    
-    
-    //NSArray *rxmlIndividualEvents = [rootXML children:@"Event"];
-   
-    __block NSMutableArray *fields = [NSMutableArray array];
-   __block NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    
-    
-    [rootXML iterate:@"Event" usingBlock: ^(RXMLElement *event) {
-        NSMutableDictionary *eventDict = [NSMutableDictionary dictionary];
-        
-        [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventID"].text] forKey:@"Event ID"];
-        [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventName"].text] forKey:@"Title"];
-        
-        [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss"];
+    if (error == nil) {
+        RXMLElement *rootXML = [RXMLElement elementFromXMLString:newCSVData encoding:NSUTF8StringEncoding];
 
-        NSDate *startDate = [dateFormatter dateFromString:[event child:@"EventStart"].text];
-         NSDate *endDate = [dateFormatter dateFromString:[event child:@"EventEnd"].text];
-        //NSLog(@"Date: %@, %@", startDate, endDate);
+        NSError *error;
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *filePath = [documentsDirectory stringByAppendingString:@"/LastKnownGoodXML.xml"];
+        
+        [newCSVData writeToFile:filePath atomically:YES
+                       encoding:NSUTF8StringEncoding error:&error];
+       
+        __block NSMutableArray *fields = [NSMutableArray array];
+       __block NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        
+        
+        [rootXML iterate:@"Event" usingBlock: ^(RXMLElement *event) {
+            NSMutableDictionary *eventDict = [NSMutableDictionary dictionary];
+            
+            [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventID"].text] forKey:@"Event ID"];
+            [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventName"].text] forKey:@"Title"];
+            
+            [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss"];
 
-        [dateFormatter setDateFormat:@"dd/MM/yyyy"];
-        
-        [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:startDate]]  forKey:@"Date"];
-        [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:endDate]]  forKey:@"End Date"];
+            NSDate *startDate = [dateFormatter dateFromString:[event child:@"EventStart"].text];
+             NSDate *endDate = [dateFormatter dateFromString:[event child:@"EventEnd"].text];
+            //NSLog(@"Date: %@, %@", startDate, endDate);
 
-        if ([endDate timeIntervalSinceDate:startDate]<60*60*24) //<-Seconds in a day
-        {
-            [eventDict setObject:[NSString stringWithFormat:@""] forKey:@"End Date"];
-        }
-        
-        [dateFormatter setDateFormat:@"hh:mm a"];
+            [dateFormatter setDateFormat:@"dd/MM/yyyy"];
+            
+            [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:startDate]]  forKey:@"Date"];
+            [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:endDate]]  forKey:@"End Date"];
 
-        [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:startDate]]  forKey:@"Start Time"];
-        [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:endDate]]  forKey:@"End Time"];
-        
-        if ([event child:@"EventDescription"].text) {
-            [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventDescription"].text] forKey:@"Description"];
-        }
-        if ([event child:@"EventTargetAudience"].text) {
-            [eventDict setObject:[NSString stringWithFormat:@"%@\n\nFor: %@", [eventDict objectForKey:@"Description"],[event child:@"EventTargetAudience"].text]  forKey:@"Description"];
-        }
-        
-        if ([[event child:@"EventIsFree"].text isEqualToString:@"true"])
-        {
-            [eventDict setObject:[NSString stringWithFormat:@"%@\n\nEvent Price: %@", [eventDict objectForKey:@"Description"], @"Free"]  forKey:@"Description"];
-        }
-        else
-        {
-            [eventDict setObject:[NSString stringWithFormat:@"%@\n\nEvent Price: %@", [eventDict objectForKey:@"Description"],[event child:@"EventPayment"].text]  forKey:@"Description"];
-        }
-
-
-        
-        //[eventDict setObject:[NSString stringWithFormat:@"%@\n\nFor: %@ \n\nEvent Price: %@",[event child:@"EventDescription"].text,[event child:@"EventTargetAudience"].text,[event child:@"EventPayment"].text] forKey:@"Description"];
-        
-        RXMLElement *venue = [event child:@"Venue"];
-        //NSLog(@"Venue: %@", venue);
-        if (venue != nil)
-        {
-            [eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"VenueName"].text] forKey:@"Location"];
-            NSString *addressString = [NSString stringWithFormat:@"%@, %@, %@", [venue child:@"VenueStreetName"].text, [venue child:@"VenueSuburb"].text, [venue child:@"VenuePostcode"].text];
-            [eventDict setObject:addressString forKey:@"Address"];
-        }
-        else
-        {
-            [eventDict setObject:@"" forKey:@"Location"];
-            [eventDict setObject:@"" forKey:@"Address"];
-        }
-        
-            if ([event child:@"EventContactName"].text) {
-                [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventContactName"].text] forKey:@"Contact"];
+            if ([endDate timeIntervalSinceDate:startDate]<60*60*24) //<-Seconds in a day
+            {
+                [eventDict setObject:[NSString stringWithFormat:@""] forKey:@"End Date"];
             }
-            if ([event child:@"EventContactOrganisation"].text) {
-                [eventDict setObject:[NSString stringWithFormat:@"%@\n%@", [eventDict objectForKey:@"Contact"],[event child:@"EventContactOrganisation"].text]  forKey:@"Contact"];
-            }
-            if ([event child:@"EventContactTelephone"].text) {
-                [eventDict setObject:[NSString stringWithFormat:@"%@\n%@", [eventDict objectForKey:@"Contact"],[event child:@"EventContactTelephone"].text]  forKey:@"Contact"];
-            }
-            if ([event child:@"EventContactEmail"].text) {
-                [eventDict setObject:[NSString stringWithFormat:@"%@\n%@", [eventDict objectForKey:@"Contact"],[event child:@"EventContactEmail"].text]  forKey:@"Contact"];
-            }
-            if ([event child:@"Website"].text) {
-                [eventDict setObject:[NSString stringWithFormat:@"%@\n%@", [eventDict objectForKey:@"Contact"],[event child:@"Website"].text]  forKey:@"Contact"];
-            }
-                
-        
-        
-       // [eventDict setObject:[NSString stringWithFormat:@"%@\n%@\n\n%@\n\n%@",[event child:@"EventContactName"].text, [event child:@"EventContactOrganisation"].text, [event child:@"EventContactTelephone"].text, [event child:@"EventContactEmail"].text] forKey:@"Contact"];
-        
-        //[eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"EventWebsite"].text] forKey:@"Website"];
+            
+            [dateFormatter setDateFormat:@"hh:mm a"];
 
-        [eventDict setObject:@"" forKey:@"Latitude"];
-        [eventDict setObject:@"" forKey:@"Longitude"];
+            [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:startDate]]  forKey:@"Start Time"];
+            [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:endDate]]  forKey:@"End Time"];
+            
+            if ([event child:@"EventDescription"].text) {
+                [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventDescription"].text] forKey:@"Description"];
+            }
+            if ([event child:@"EventTargetAudience"].text) {
+                [eventDict setObject:[NSString stringWithFormat:@"%@\n\nFor: %@", [eventDict objectForKey:@"Description"],[event child:@"EventTargetAudience"].text]  forKey:@"Description"];
+            }
+            
+            if ([[event child:@"EventIsFree"].text isEqualToString:@"true"])
+            {
+                [eventDict setObject:[NSString stringWithFormat:@"%@\n\nEvent Price: %@", [eventDict objectForKey:@"Description"], @"Free"]  forKey:@"Description"];
+            }
+            else
+            {
+                [eventDict setObject:[NSString stringWithFormat:@"%@\n\nEvent Price: %@", [eventDict objectForKey:@"Description"],[event child:@"EventPayment"].text]  forKey:@"Description"];
+            }
 
-       // [eventDict setObject:@"Northern Tasmania" forKey:@"Region"];  //EXPLICIT STATE REGION DATA NEEDS TO BE INCLUDED IN THE DATA
-        [fields addObject:eventDict];
-        //NSLog(@"Event: %@", [event child:@"EventName"]);
-    }];
-    
-	//NSArray * fields = nil; //PARSE XML HERE
-    
-    //[NSArray arrayWithContentsOfCSVFile:filePath usedEncoding:&encoding error:&error];
-    
-    if (fields) {
 
-        [self processNewEventsArray:fields];
-        [self revalidateFavourites];
-        [self saveToFile];
-        if (self.delegate) {
-            [self.delegate newDataWasDownloaded];
+            
+            //[eventDict setObject:[NSString stringWithFormat:@"%@\n\nFor: %@ \n\nEvent Price: %@",[event child:@"EventDescription"].text,[event child:@"EventTargetAudience"].text,[event child:@"EventPayment"].text] forKey:@"Description"];
+            
+            RXMLElement *venue = [event child:@"Venue"];
+            //NSLog(@"Venue: %@", venue);
+            if (venue != nil)
+            {
+                [eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"VenueName"].text] forKey:@"Location"];
+                NSString *addressString = [NSString stringWithFormat:@"%@, %@, %@", [venue child:@"VenueStreetName"].text, [venue child:@"VenueSuburb"].text, [venue child:@"VenuePostcode"].text];
+                [eventDict setObject:addressString forKey:@"Address"];
+            }
+            else
+            {
+                [eventDict setObject:@"" forKey:@"Location"];
+                [eventDict setObject:@"" forKey:@"Address"];
+            }
+            
+                if ([event child:@"EventContactName"].text) {
+                    [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventContactName"].text] forKey:@"Contact"];
+                }
+                if ([event child:@"EventContactOrganisation"].text) {
+                    [eventDict setObject:[NSString stringWithFormat:@"%@\n%@", [eventDict objectForKey:@"Contact"],[event child:@"EventContactOrganisation"].text]  forKey:@"Contact"];
+                }
+                if ([event child:@"EventContactTelephone"].text) {
+                    [eventDict setObject:[NSString stringWithFormat:@"%@\n%@", [eventDict objectForKey:@"Contact"],[event child:@"EventContactTelephone"].text]  forKey:@"Contact"];
+                }
+                if ([event child:@"EventContactEmail"].text) {
+                    [eventDict setObject:[NSString stringWithFormat:@"%@\n%@", [eventDict objectForKey:@"Contact"],[event child:@"EventContactEmail"].text]  forKey:@"Contact"];
+                }
+                if ([event child:@"Website"].text) {
+                    [eventDict setObject:[NSString stringWithFormat:@"%@\n%@", [eventDict objectForKey:@"Contact"],[event child:@"Website"].text]  forKey:@"Contact"];
+                }
+                    
+            
+            
+           // [eventDict setObject:[NSString stringWithFormat:@"%@\n%@\n\n%@\n\n%@",[event child:@"EventContactName"].text, [event child:@"EventContactOrganisation"].text, [event child:@"EventContactTelephone"].text, [event child:@"EventContactEmail"].text] forKey:@"Contact"];
+            
+            //[eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"EventWebsite"].text] forKey:@"Website"];
+
+            [eventDict setObject:@"" forKey:@"Latitude"];
+            [eventDict setObject:@"" forKey:@"Longitude"];
+
+           // [eventDict setObject:@"Northern Tasmania" forKey:@"Region"];  //EXPLICIT STATE REGION DATA NEEDS TO BE INCLUDED IN THE DATA
+            [fields addObject:eventDict];
+            //NSLog(@"Event: %@", [event child:@"EventName"]);
+        }];
+        
+        //NSArray * fields = nil; //PARSE XML HERE
+        
+        //[NSArray arrayWithContentsOfCSVFile:filePath usedEncoding:&encoding error:&error];
+        
+        if (fields) {
+
+            [self processNewEventsArray:fields];
+            [self revalidateFavourites];
+            [self saveToFile];
+            if (self.delegate) {
+                [self.delegate newDataWasDownloaded];
+            }
+            if (self.mapsDelegate) {
+                [self.mapsDelegate newDataWasDownloaded];
+            }
         }
-        if (self.mapsDelegate) {
-            [self.mapsDelegate newDataWasDownloaded];
+    }
+    else
+    {
+        
+        NSError *error;
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *filePath = [documentsDirectory stringByAppendingString:@"/LastKnownGoodXML.xml"];
+        
+        NSString *xmlRecover = [NSString stringWithContentsOfFile:filePath encoding:0 error:&error];
+        NSLog(@"Attempting a recovery");
+        if (error == nil) {
+            [self updateEventDataFromDownload:xmlRecover];
         }
     }
 
@@ -586,12 +615,12 @@ static NSWEventData* _sharedData = nil;
     
     if (foundDict == nil) 
     {
-        NSLog(@"NO");
+        //NSLog(@"NO");
         return NO;
     }
     else 
     {
-        NSLog(@"YES");
+        //NSLog(@"YES");
         return YES;
     }
     
