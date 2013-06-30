@@ -25,7 +25,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [[NSWEventData sharedData] setDelegate:self];
         
         // Custom initialization
     }
@@ -34,6 +33,14 @@
 
 - (void)viewDidLoad
 {
+    [[NSWEventData sharedData] setDelegate:self];
+
+    listDefaultFrame = CGRectMake(0, 42, _eventListView.frame.size.width, _eventListView.frame.size.height);
+    listDownFrame = CGRectMake(0, 42+_locationSelectView.frame.size.height, _eventListView.frame.size.width, _eventListView.frame.size.height);
+    locationSelectDefaultFrame = CGRectMake(0, 42-_locationSelectView.frame.size.height, _eventListView.frame.size.width, _locationSelectView.frame.size.height);
+    locationSelectDownFrame = CGRectMake(0, 42, _eventListView.frame.size.width, _locationSelectView.frame.size.height);
+
+    
     lastFavouritesListOffset = 0.0;
     lastEventListOffset = 0.0;
     [self.eventListView reloadData];
@@ -346,4 +353,80 @@
     
 }
 
+- (IBAction)chooseLocation:(UIButton*)sender
+{
+    
+    //[PopoverView showPopoverAtPoint:CGPointMake(sender.width, 0) inView:self.view withTitle:@"Choose Location" withStringArray:[NSArray arrayWithObjects:@"TAS", @"QLD", @"NT", @"SA", @"WA", @"ACT", @"VIC", @"NSW", nil] delegate:self];
+    if (_eventListView.frame.origin.y >44) {
+        
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+            _eventListView.frame = listDefaultFrame;
+            self.locationSelectView.frame = locationSelectDefaultFrame;
+        } completion:nil];
+        [sender setTitle:[sender.titleLabel.text stringByReplacingOccurrencesOfString:@"▲" withString:@"▼"] forState:UIControlStateNormal];
+        
+        _eventListView.userInteractionEnabled = YES;
+    }
+    else
+    {
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+            _eventListView.frame = listDownFrame;
+            self.locationSelectView.frame = locationSelectDownFrame;
+        } completion:nil];
+        
+        [sender setTitle:[sender.titleLabel.text stringByReplacingOccurrencesOfString:@"▼" withString:@"▲"] forState:UIControlStateNormal];
+        _eventListView.userInteractionEnabled = NO;
+
+    }
+    
+    
+    //@"Tasmania", @"Queensland", @"New South Wales", @"Victoria", @"South Australia", @"Western Australia", @"Australian Capital Territory",@"Northern Territory"
+}
+
+-(void)newLocationButtonPressed:(UIButton*)sender
+{
+    NSString *mappedStateChoice;
+    if ([sender.titleLabel.text isEqualToString:@"Australian Capital Territory"])
+    {
+        mappedStateChoice = @"ACT";
+    }
+    if ([sender.titleLabel.text isEqualToString:@"New South Wales"])
+    {
+        mappedStateChoice = @"NSW";
+    }
+    if ([sender.titleLabel.text isEqualToString:@"Northern Territory"])
+    {
+        mappedStateChoice = @"NT";
+    }
+    if ([sender.titleLabel.text isEqualToString:@"Queensland"])
+    {
+        mappedStateChoice = @"QLD";
+    }
+    if ([sender.titleLabel.text isEqualToString:@"South Australia"])
+    {
+        mappedStateChoice = @"SA";
+    }
+    if ([sender.titleLabel.text isEqualToString:@"Tasmania"])
+    {
+        mappedStateChoice = @"TAS";
+    }
+    if ([sender.titleLabel.text isEqualToString:@"Victoria"])
+    {
+        mappedStateChoice = @"VIC";
+    }
+    if ([sender.titleLabel.text isEqualToString:@"Western Australia"])
+    {
+        mappedStateChoice = @"WA";
+    }
+    
+    [[NSWEventData sharedData]changeLocation:mappedStateChoice];
+    [_currentLocationButton setTitle:[NSString stringWithFormat:@"%@ | ▼", mappedStateChoice] forState:UIControlStateNormal];
+    [self chooseLocation:nil];
+}
+
+- (void)viewDidUnload {
+    [self setLocationSelectView:nil];
+    [self setCurrentLocationButton:nil];
+    [super viewDidUnload];
+}
 @end

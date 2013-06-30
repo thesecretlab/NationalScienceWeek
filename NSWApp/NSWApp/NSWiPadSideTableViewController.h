@@ -20,8 +20,15 @@ enum DisplayListPickerValue {
     enum DisplayListPickerValue displayData;
     float lastEventListOffset;
     float lastFavouritesListOffset;
+    CGRect listDownFrame;
+    CGRect listDefaultFrame;
+    CGRect locationSelectDownFrame;
+    CGRect locationSelectDefaultFrame;
+    
 }
 @property (weak, nonatomic) IBOutlet FUISegmentedControl *listSegmentedControl;
+@property (weak, nonatomic) IBOutlet UIView *locationSelectView;
+@property (weak, nonatomic) IBOutlet UIButton *currentLocationButton;
 
 @property (weak, nonatomic) IBOutlet UITableView *eventListView;
 
@@ -31,5 +38,7 @@ enum DisplayListPickerValue {
 -(IBAction)scrollToTodaysDate;
 - (void)reloadView;
 - (void)newDataWasDownloaded;
-//TODO: Add location picker
+-(IBAction)newLocationButtonPressed:(UIButton*)sender;
+-(IBAction)chooseLocation:(UIButton*)sender;
+
 @end

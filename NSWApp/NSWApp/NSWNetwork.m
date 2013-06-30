@@ -18,7 +18,7 @@ static NSWNetwork* _sharedNetwork = nil;
     {  
         NSString *baseURLString;
         baseURLString = @"http://www.scienceweek.net.au";
-        
+        _sharedNetwork.shouldCheckForNewContent = YES;
         _sharedNetwork = [[NSWNetwork alloc] initWithBaseURL:[NSURL URLWithString:baseURLString]];
         //_sharedNetwork.parameterEncoding = AFJSONParameterEncoding;
         
@@ -83,6 +83,18 @@ static NSWNetwork* _sharedNetwork = nil;
     
 }
 
+- (void) checkLatestHeader:(void (^)(void))completionHandler errorHandler:(void (^)(NSError *error))errorHandler
+{
+    NSLog(@"Checking varsion");
+    [self HTTPRequestOperationWithRequest:[self requestWithMethod:@"HEAD" path:@"/event-transfer/scienceweek-events.xml" parameters:nil] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *stringData = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSLog(@"New Event Data %@", stringData);
 
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", error);
+        errorHandler(error);
+
+    }];
+}
 
 @end

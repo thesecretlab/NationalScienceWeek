@@ -18,8 +18,8 @@ static NSWEventData* _sharedData = nil;
     if (_sharedData == nil) 
     {  
         _sharedData = [[NSWEventData alloc] init];
-        _sharedData.locationValues = [NSArray arrayWithObjects:@"Southern Tasmania", @"Northern Tasmania", @"North-western Tasmania", nil];
-        [_sharedData setCurrentLocationCounter:0];
+        _sharedData.locationValues = [NSArray arrayWithObjects:@"TAS", @"QLD", @"NT", @"SA", @"WA", @"ACT", @"VIC", @"NSW", nil];
+        [_sharedData setCurrentLocationCounter:5];
         _sharedData.latestVersionNumber = [NSNumber numberWithInt:-1];
         _sharedData.locationMeasurements = [NSMutableArray array];
         _sharedData.favouriteEvents = [NSMutableArray array];
@@ -70,7 +70,7 @@ static NSWEventData* _sharedData = nil;
     else {
         self.eventData = [NSMutableArray array];
         self.favouriteEvents = [NSMutableArray array];
-        [self changeLocation:@"Southern Tasmania"];
+        [self changeLocation:@"TAS"];
         self.latestVersionNumber = [NSNumber numberWithInt:-1];
         [self loadXMLPreBakedData]; //TAKE AWAY IF YOU DON'T WANT DEFAULT LOADING DONE
         
@@ -132,7 +132,6 @@ static NSWEventData* _sharedData = nil;
         
         [newCSVData writeToFile:filePath atomically:YES
                        encoding:NSUTF8StringEncoding error:&error];
-       
         __block NSMutableArray *fields = [NSMutableArray array];
        __block NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         
@@ -223,7 +222,8 @@ static NSWEventData* _sharedData = nil;
             [eventDict setObject:@"" forKey:@"Latitude"];
             [eventDict setObject:@"" forKey:@"Longitude"];
 
-           // [eventDict setObject:@"Northern Tasmania" forKey:@"Region"];  //EXPLICIT STATE REGION DATA NEEDS TO BE INCLUDED IN THE DATA
+
+            [eventDict setObject:[NSString stringWithFormat:@"%@", [event child:@"EventState"].text] forKey:@"Region"];  //EXPLICIT STATE REGION DATA NEEDS TO BE INCLUDED IN THE DATA
             [fields addObject:eventDict];
             //NSLog(@"Event: %@", [event child:@"EventName"]);
         }];
@@ -479,6 +479,7 @@ static NSWEventData* _sharedData = nil;
     [locationManager stopUpdatingLocation];
     locationManager.delegate = nil;
     
+    /* This needs to be updated to state information
     if (bestEffortAtLocation != nil) {
         if (bestEffortAtLocation.coordinate.latitude < -42.00) {
             [self changeLocation:@"Southern Tasmania"];
@@ -492,6 +493,7 @@ static NSWEventData* _sharedData = nil;
             }
         }
     }
+     */
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
@@ -509,8 +511,7 @@ static NSWEventData* _sharedData = nil;
     NSMutableArray *eventsForNewLocation = [NSMutableArray array];
     
     for (NSMutableDictionary *event in self.eventData) {
-        //if ([[event objectForKey:@"Region"] isEqualToString:newLocation]) //DISABLED FILTERING BY LOCATION, WHEN REGION IS RESTORED MAKE SURE TO TAKE THIS OUT
-        {
+        if ([[event objectForKey:@"Region"] isEqualToString:newLocation])         {
             [eventsForNewLocation addObject:event];
             if (![[event objectForKey:@"End Date"] isEqualToString:@""]) 
             {

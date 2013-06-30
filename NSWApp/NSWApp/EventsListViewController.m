@@ -339,8 +339,85 @@
 - (IBAction)chooseLocation:(UIBarButtonItem*)sender
 {
     
-    [PopoverView showPopoverAtPoint:CGPointMake(sender.width, 0) inView:self.view withTitle:@"Choose Location" withStringArray:[NSArray arrayWithObjects:@"Tasmania", @"Queensland", @"New South Wales", @"Victoria", @"South Australia", @"Western Australia", @"Australian Capital Territory",@"Northern Territory", nil] delegate:self];
+    //[PopoverView showPopoverAtPoint:CGPointMake(sender.width, 0) inView:self.view withTitle:@"Choose Location" withStringArray:[NSArray arrayWithObjects:@"TAS", @"QLD", @"NT", @"SA", @"WA", @"ACT", @"VIC", @"NSW", nil] delegate:self];
+    if (eventListTableView.frame.origin.y >0) {
+        
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+            self.eventListTableView.frame = listDefaultFrame;
+            self.locationSelectView.frame = locationSelectDefaultFrame;
+        } completion:nil];        
+        sender.title = [sender.title stringByReplacingOccurrencesOfString:@"▲" withString:@"▼"];
+
+    }
+    else
+    {
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+            self.eventListTableView.frame = listDownFrame;
+            self.locationSelectView.frame = locationSelectDownFrame;
+        } completion:nil];
+        
+        sender.title = [sender.title stringByReplacingOccurrencesOfString:@"▼" withString:@"▲"];
+    }
+
+    
+    //@"Tasmania", @"Queensland", @"New South Wales", @"Victoria", @"South Australia", @"Western Australia", @"Australian Capital Territory",@"Northern Territory"
 }
+
+-(void)newLocationButtonPressed:(UIButton*)sender
+{
+    NSString *mappedStateChoice;
+    if ([sender.titleLabel.text isEqualToString:@"Australian Capital Territory"])
+    {
+        mappedStateChoice = @"ACT";
+    }
+    if ([sender.titleLabel.text isEqualToString:@"New South Wales"])
+    {
+        mappedStateChoice = @"NSW";
+    }
+    if ([sender.titleLabel.text isEqualToString:@"Northern Territory"])
+    {
+        mappedStateChoice = @"NT";
+    }
+    if ([sender.titleLabel.text isEqualToString:@"Queensland"])
+    {
+        mappedStateChoice = @"QLD";
+    }
+    if ([sender.titleLabel.text isEqualToString:@"South Australia"])
+    {
+        mappedStateChoice = @"SA";
+    }
+    if ([sender.titleLabel.text isEqualToString:@"Tasmania"])
+    {
+        mappedStateChoice = @"TAS";
+    }
+    if ([sender.titleLabel.text isEqualToString:@"Victoria"])
+    {
+        mappedStateChoice = @"VIC";
+    }
+    if ([sender.titleLabel.text isEqualToString:@"Western Australia"])
+    {
+        mappedStateChoice = @"WA";
+    }
+    
+    [[NSWEventData sharedData]changeLocation:mappedStateChoice];
+    _currentLocationButton.title = [NSString stringWithFormat:@"%@ | ▼", mappedStateChoice];
+    [self chooseLocation:nil];
+}
+
+- (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index
+{
+    
+    NSArray *states = [NSArray arrayWithObjects:@"TAS", @"QLD", @"NT", @"SA", @"WA", @"ACT", @"VIC", @"NSW", nil];
+    [[NSWEventData sharedData] changeLocation:[states objectAtIndex:index]];
+    [popoverView dismiss];
+
+}
+
+- (void)popoverViewDidDismiss:(PopoverView *)popoverView
+{
+    
+}
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -372,6 +449,12 @@
 
 - (void)viewDidLoad
 {
+    
+    listDefaultFrame = CGRectMake(0, 0, self.eventListTableView.frame.size.width, self.eventListTableView.frame.size.height);
+    listDownFrame = CGRectMake(0, self.eventListTableView.frame.size.height, self.eventListTableView.frame.size.width, self.eventListTableView.frame.size.height);
+    locationSelectDefaultFrame = CGRectMake(0, -self.eventListTableView.frame.size.height, self.eventListTableView.frame.size.width, self.eventListTableView.frame.size.height);
+    locationSelectDownFrame = CGRectMake(0, 0, self.eventListTableView.frame.size.width, self.eventListTableView.frame.size.height);
+
     self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Events" image:nil tag:0];
     [[self tabBarItem] setFinishedSelectedImage:[UIImage imageNamed:@"calendaricon.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"calendaricon.png"]];
     [self.eventListTableView reloadData];
@@ -387,6 +470,7 @@
     [self setDoubleTap:nil];
     [self setTodayButton:nil];
     [self setCurrentLocationButton:nil];
+    [self setLocationSelectView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

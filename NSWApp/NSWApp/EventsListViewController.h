@@ -9,7 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "NSWEventData.h"
 #import "FUISegmentedControl.h"
-@interface EventsListViewController : UIViewController <NSWEventDataDelegate>
+#import "PopoverView.h"
+@interface EventsListViewController : UIViewController <NSWEventDataDelegate, PopoverViewDelegate>
+{
+    CGRect listDownFrame;
+    CGRect listDefaultFrame;
+    CGRect locationSelectDownFrame;
+    CGRect locationSelectDefaultFrame;
+}
+@property (weak, nonatomic) IBOutlet UIView *locationSelectView;
 @property (weak, nonatomic) IBOutlet UITableView *eventListTableView;
 @property (nonatomic, strong) NSArray* uniqueSingleDates;
 @property (weak, nonatomic) IBOutlet FUISegmentedControl *segmentedLocationControl;
@@ -24,5 +32,6 @@
 -(IBAction)scrollToTodaysDate;
 - (IBAction)cellDoubleTapped:(id)sender;
 - (IBAction)chooseLocation:(id)sender;
+-(IBAction)newLocationButtonPressed:(UIButton*)sender;
 
 @end
