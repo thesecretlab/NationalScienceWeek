@@ -7,7 +7,8 @@
 //
 
 #import "NSWInfoViewController_iPad.h"
-
+#import "NSWAppAppearanceConfig.h"
+#import "UINavigationBar+FlatUI.h"  
 @interface NSWInfoViewController_iPad ()
 
 @end
@@ -70,6 +71,8 @@
 }
 - (void)viewDidLoad
 {
+    [self.navigationController.navigationBar configureFlatNavigationBarWithColor:kGlobalNavBarColour];
+
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -80,4 +83,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)dismissModalView:(id)sender {
+    if (self.delegate) {
+        [self.delegate dismissModalViewControllerAnimated:YES];
+    }
+}
 @end

@@ -30,6 +30,7 @@ enum DisplayListPickerValue {
 @property (weak, nonatomic) IBOutlet UIView *locationSelectView;
 @property (weak, nonatomic) IBOutlet UIButton *currentLocationButton;
 
+@property (weak, nonatomic) IBOutlet UIView *segmentedControlBackground;
 @property (weak, nonatomic) IBOutlet UITableView *eventListView;
 
 @property (nonatomic, strong) NSArray* uniqueSingleDates;

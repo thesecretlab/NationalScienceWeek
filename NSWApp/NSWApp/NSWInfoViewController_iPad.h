@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundColourView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) id delegate;
+- (IBAction)dismissModalView:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *internetDownMessage;
 @property (strong, nonatomic) NSError *error;
 @end

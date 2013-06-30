@@ -36,7 +36,7 @@
 @property (nonatomic, strong) NSString *location;
 @property (nonatomic, strong) NSArray* locationValues;
 @property (nonatomic, strong) NSArray* uniqueDatesForLocation;
-
+@property BOOL shouldRevertToBakedInData;
 @property (nonatomic, strong) NSNumber* latestVersionNumber;
 @property (nonatomic, strong) id<NSWEventDataDelegate> delegate;
 @property (nonatomic, strong) id<NSWEventDataDelegate> favouritesDelegate;
@@ -53,7 +53,7 @@
 -(NSArray*)multiDateEvents;
 -(void)previousLocation;
 -(void)nextLocation;
--(void)updateEventDataFromDownload:(NSString*)newCSVData;
+-(void)updateEventDataFromDownload:(NSString*)newCSVData withVersionNumber:(NSNumber*)newVersionNumber;
 -(NSDictionary*)eventForKey:(NSString*)eventKey;
 -(void)checkUsersLocation;
 -(NSArray*)uniqueSingleDatesForFavourites;
@@ -61,5 +61,8 @@
 -(BOOL)favouritesArrayContainsEventWithID:(NSString*)eventID;
 -(void)removeEventFromFavouritesArrayWithID:(NSString*)eventID;
 -(void)addEventToFavouritesArray:(NSDictionary*)event;
+-(void)revertDataAndStopDownload;
+-(void)resumeNormalUpdates;
+
 
 @end

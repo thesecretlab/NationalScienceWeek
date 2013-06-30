@@ -41,6 +41,35 @@
 
 - (void)updateAndRelayoutView
 {
+    if (_event == nil) {
+        self.topRowView.hidden = YES;
+        self.eventContactView.hidden = YES;
+        self.eventAddressView.hidden = YES;
+        self.eventDetailView.hidden = YES;
+        self.eventTitleLabel.hidden = YES;
+        self.eventMapHolderView.hidden = YES;
+        self.eventMapView.hidden = YES;
+        self.openInMapsButton.hidden = YES;
+        self.favouriteButton.enabled = NO;
+        return;
+    }
+    else{
+        self.topRowView.hidden = NO;
+        self.eventContactView.hidden = NO;
+        self.eventAddressView.hidden = NO;
+        self.eventDetailView.hidden = NO;
+        self.eventTitleLabel.hidden = NO;
+        self.eventMapHolderView.hidden = NO;
+        self.eventMapView.hidden = NO;
+        self.openInMapsButton.hidden = NO;
+        self.favouriteButton.enabled = YES;
+
+
+    }
+    
+    
+    
+    
     self.eventTitleLabel.text = [_event objectForKey:@"Title"];
     
     if (![[_event objectForKey:@"Start Time"] isEqualToString:@""] && ![[_event objectForKey:@"End Time"] isEqualToString:@""])
@@ -124,7 +153,7 @@
     if (![[_event objectForKey:@"Location"] isEqualToString:@"Online"])
     {
         
-        [self positionLabelOnScreen:self.eventTitleLabel withFont:kDetailEventTitleFont sizeForMinumumLabel:21.0 bufferToNextLabel:10];
+        [self positionLabelOnScreen:self.eventTitleLabel withFont:kDetailEventTitleFont_iPad sizeForMinumumLabel:21.0 bufferToNextLabel:10];
         
         self.topRowView.frame = CGRectMake(self.topRowView.frame.origin.x, currentLayoutHeight, self.topRowView.frame.size.width, self.topRowView.frame.size.height);
         currentLayoutHeight = currentLayoutHeight + self.topRowView.frame.size.height + 10;
@@ -137,7 +166,7 @@
         
     }
     else {
-        [self positionLabelOnScreen:self.eventTitleLabel withFont:kDetailEventTitleFont sizeForMinumumLabel:21.0 bufferToNextLabel:10];
+        [self positionLabelOnScreen:self.eventTitleLabel withFont:kDetailEventTitleFont_iPad sizeForMinumumLabel:21.0 bufferToNextLabel:10];
         
         self.topRowView.hidden = YES;
         self.eventContactView.hidden = YES;
@@ -178,7 +207,7 @@
         self.openInMapsButton.hidden = YES;
     }
     
-    self.labelScrollView.contentSize = CGSizeMake(320, currentLayoutHeight);
+    self.labelScrollView.contentSize = CGSizeMake(self.labelScrollView.frame.size.width, currentLayoutHeight+20);
     
     [self checkFavouriteButton];
     
@@ -223,7 +252,7 @@
         
         CGFloat height = MAX(size.height, sizeForMinumumLabel);
         
-        currentLabel.frame = CGRectMake(currentLabel.frame.origin.x, currentLabel.frame.origin.y, currentLabel.frame.size.width, height);
+        currentLabel.frame = CGRectMake(currentLabel.frame.origin.x, currentLayoutHeight, currentLabel.frame.size.width, height);
         
         
         currentLayoutHeight = currentLabel.frame.size.height + currentLayoutHeight + bufferToNextLabel;
@@ -269,13 +298,13 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     
-    self.eventTitleLabel.font = kDetailEventTitleFont;
-    self.eventTimeLabel.font = kDetailEventFont;
-    self.eventAddressLabel.font = kDetailEventFont;
-    self.eventDescriptionLabel.font = kDetailEventFont;
-    self.eventDateLabel.font = kDetailEventFont;
+    self.eventTitleLabel.font = kDetailEventTitleFont_iPad;
+    self.eventTimeLabel.font = kDetailEventFont_iPad;
+    self.eventAddressLabel.font = kDetailEventFont_iPad;
+    self.eventDescriptionLabel.font = kDetailEventFont_iPad;
+    self.eventDateLabel.font = kDetailEventFont_iPad;
     self.openInSafariLabel.font = kDetailOpenInSafariFont;
-    self.eventContactTextView.font = kDetailEventFont;
+    self.eventContactTextView.font = kDetailEventFont_iPad;
     [self.navigationController.navigationBar configureFlatNavigationBarWithColor:kGlobalNavBarColour];
     
     
@@ -295,7 +324,8 @@
     }
     else
     {
-        //TODO: Put in a way to clear the detail view
+        self.event = nil;
+        [self updateAndRelayoutView];
     }
 
 

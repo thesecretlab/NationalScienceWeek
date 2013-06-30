@@ -54,6 +54,10 @@
 
 #define kDetailEventFont [UIFont flatFontOfSize:14.0]
 
+#define kDetailEventTitleFont_iPad [UIFont boldFlatFontOfSize:25.0]
+
+#define kDetailEventFont_iPad [UIFont flatFontOfSize:20.0]
+
 #define kDetailOpenInSafariFont [UIFont boldFlatFontOfSize:17.0]
 
 #define kDetailCornerRadius 3

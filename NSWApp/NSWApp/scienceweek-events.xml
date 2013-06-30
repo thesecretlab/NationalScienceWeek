@@ -7654,7 +7654,8 @@ $7 for general public</EventPayment>
 		<EventEnd>2013-08-16T16:00:00</EventEnd>
 	<EventDescription>Fun excursions conducted by Physics is Fun at Luna Park in Sydney.</EventDescription>
 	<EventTargetAudience>All ages</EventTargetAudience>
-	<EventPayment>$25.50 (plus GST) per student &lt;br&gt; OR $17.50 (plus GST) for students 7 years &amp; under
+	<EventPayment>$25.50 (plus GST) per student &lt;br&gt;
+OR $17.50 (plus GST) for students 7 years &amp; under
 &lt;br&gt;There is also a booking fee of only $20 (plus GST) per school.</EventPayment>
 	<EventIsFree>false</EventIsFree>
 	<EventContactName>Robert Garner</EventContactName>

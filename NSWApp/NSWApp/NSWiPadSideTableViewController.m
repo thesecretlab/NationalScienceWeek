@@ -56,6 +56,13 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    
+    self.segmentedControlBackground.backgroundColor = kGlobalNavBarColour;
+    self.listSegmentedControl.selectedColor = kGlobalNavBarItemColourHighlighted;
+    self.listSegmentedControl.deselectedColor = kGlobalNavBarItemColour;
+    self.listSegmentedControl.selectedFont = kGlobalNavBarItemFont;
+    self.listSegmentedControl.deselectedFont = kGlobalNavBarItemFont;
+
     [self.navigationController.navigationBar configureFlatNavigationBarWithColor:kGlobalNavBarColour];
 
     [self.navigationController.navigationBar configureFlatNavigationBarWithColor:kGlobalNavBarColour];
@@ -332,8 +339,9 @@
 
 - (IBAction)pushModalView:(id)sender
 {
-    UIViewController *infoPanel = [self.storyboard instantiateViewControllerWithIdentifier:@"infoPanel"];
+    UINavigationController *infoPanel = [self.storyboard instantiateViewControllerWithIdentifier:@"infoPanel"];
     infoPanel.modalPresentationStyle = UIModalPresentationFormSheet;
+    [(NSWInfoViewController_iPad*)[[infoPanel viewControllers] objectAtIndex:0] setDelegate:self.splitViewController];
     [self.splitViewController presentModalViewController:infoPanel animated:YES];
 }
 
@@ -348,7 +356,7 @@
     
     [self reloadView];
     [self.eventListView reloadData];
-    [(EventDetailViewController_iPad*)[[self.splitViewController viewControllers] objectAtIndex:1] refreshDetailedEventData];
+    [(EventDetailViewController_iPad*)[[[[self.splitViewController viewControllers] objectAtIndex:1] viewControllers] objectAtIndex:0] refreshDetailedEventData];
     
     
 }
@@ -427,6 +435,7 @@
 - (void)viewDidUnload {
     [self setLocationSelectView:nil];
     [self setCurrentLocationButton:nil];
+    [self setSegmentedControlBackground:nil];
     [super viewDidUnload];
 }
 @end

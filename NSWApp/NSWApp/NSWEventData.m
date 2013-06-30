@@ -23,6 +23,7 @@ static NSWEventData* _sharedData = nil;
         _sharedData.latestVersionNumber = [NSNumber numberWithInt:-1];
         _sharedData.locationMeasurements = [NSMutableArray array];
         _sharedData.favouriteEvents = [NSMutableArray array];
+        _sharedData.shouldRevertToBakedInData = NO;
         [_sharedData loadFromFile];
 
     }
@@ -81,16 +82,27 @@ static NSWEventData* _sharedData = nil;
 -(void)loadXMLPreBakedData
 {
     NSString * file = [[NSBundle bundleForClass:[self class]] pathForResource:@"scienceweek-events" ofType:@"xml"];
-	NSLog(@"%@", file);
+	//NSLog(@"%@", file);
     NSError * error = nil;
 
-    NSString *fileAsString = [NSString stringWithContentsOfFile:file encoding:0 error:&error];
-    NSLog(@"%@", error);
+    NSString *fileAsString = [NSString stringWithContentsOfFile:file encoding:NSASCIIStringEncoding error:&error];
+    //NSLog(@"%@", error);
 
     self.latestVersionNumber = [NSNumber numberWithInt:-1];
-    [self updateEventDataFromDownload:fileAsString];
+    [self updateEventDataFromDownload:fileAsString withVersionNumber:[NSNumber numberWithInt:-1]];
     //[self saveToFile];
     
+}
+
+-(void)revertDataAndStopDownload
+{
+    _shouldRevertToBakedInData = YES;
+    [self loadXMLPreBakedData];
+}
+
+-(void)resumeNormalUpdates
+{
+    _shouldRevertToBakedInData = NO;
 }
 
 /*
@@ -111,16 +123,21 @@ static NSWEventData* _sharedData = nil;
 }
  */
 
--(void)updateEventDataFromDownload:(NSString*)newCSVData;
+-(void)updateEventDataFromDownload:(NSString*)newCSVData withVersionNumber:(NSNumber*)newVersionNumber
 {
 
     //NSLog(@"Data definately here: %@", newCSVData);
+    
+    if (_shouldRevertToBakedInData == YES && [newVersionNumber intValue] != -1) {
+        NSLog(@"Not Processing data because staying with baked in");
+        return;
+    }
     
     datesNeedUpdating = YES;
     NSError *error;
     CXMLDocument *rssParser = [[CXMLDocument alloc] initWithXMLString:newCSVData options:0 error:&error];
     
-    NSLog(@"ERROR: %@",error);
+    //NSLog(@"ERROR: %@",error);
     
     if (error == nil) {
         RXMLElement *rootXML = [RXMLElement elementFromXMLString:newCSVData encoding:NSUTF8StringEncoding];
@@ -233,7 +250,8 @@ static NSWEventData* _sharedData = nil;
         //[NSArray arrayWithContentsOfCSVFile:filePath usedEncoding:&encoding error:&error];
         
         if (fields) {
-
+            
+            self.latestVersionNumber = newVersionNumber;
             [self processNewEventsArray:fields];
             [self revalidateFavourites];
             [self saveToFile];
@@ -253,10 +271,10 @@ static NSWEventData* _sharedData = nil;
         NSString *documentsDirectory = [paths objectAtIndex:0];
         NSString *filePath = [documentsDirectory stringByAppendingString:@"/LastKnownGoodXML.xml"];
         
-        NSString *xmlRecover = [NSString stringWithContentsOfFile:filePath encoding:0 error:&error];
+        NSString *xmlRecover = [NSString stringWithContentsOfFile:filePath encoding:NSASCIIStringEncoding error:&error];
         NSLog(@"Attempting a recovery");
         if (error == nil) {
-            [self updateEventDataFromDownload:xmlRecover];
+            [self updateEventDataFromDownload:xmlRecover withVersionNumber:[NSNumber numberWithInt:-1]];
         }
     }
 
@@ -353,8 +371,8 @@ static NSWEventData* _sharedData = nil;
         }
         self.uniqueDatesForLocation = arrayToReturn;
         [self prePrepareOptimised2DEventArray];
+        NSLog(@"Done processing dates");
     }
-    NSLog(@"Done");
 
     return self.uniqueDatesForLocation;
 }
