@@ -129,14 +129,9 @@ static NSWNetwork* _sharedNetwork = nil;
         }
         else //key for SHOULD NOT revert (i.e. keep downloading current data)
         {
-            if ([[NSWEventData sharedData] shouldRevertToBakedInData] == YES) {
-                [[NSWEventData sharedData] resumeNormalUpdates];
-                [self checkLatestHeader:^{} errorHandler:^(NSError *error) {}];
-            }
-            else
-            {
-                [[NSWEventData sharedData] resumeNormalUpdates];
-            }
+
+            [[NSWEventData sharedData] resumeNormalUpdates];
+            [self checkLatestHeader:^{} errorHandler:^(NSError *error) {}];
 
         }
 

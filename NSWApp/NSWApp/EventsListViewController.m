@@ -347,6 +347,8 @@
             self.locationSelectView.frame = locationSelectDefaultFrame;
         } completion:nil];        
         sender.title = [sender.title stringByReplacingOccurrencesOfString:@"▲" withString:@"▼"];
+        self.eventListTableView.userInteractionEnabled = YES;
+
 
     }
     else
@@ -357,6 +359,8 @@
         } completion:nil];
         
         sender.title = [sender.title stringByReplacingOccurrencesOfString:@"▼" withString:@"▲"];
+        self.eventListTableView.userInteractionEnabled = NO;
+
     }
 
     
@@ -451,10 +455,33 @@
 {
     
     listDefaultFrame = CGRectMake(0, 0, self.eventListTableView.frame.size.width, self.eventListTableView.frame.size.height);
-    listDownFrame = CGRectMake(0, self.eventListTableView.frame.size.height, self.eventListTableView.frame.size.width, self.eventListTableView.frame.size.height);
-    locationSelectDefaultFrame = CGRectMake(0, -self.eventListTableView.frame.size.height, self.eventListTableView.frame.size.width, self.eventListTableView.frame.size.height);
-    locationSelectDownFrame = CGRectMake(0, 0, self.eventListTableView.frame.size.width, self.eventListTableView.frame.size.height);
+    listDownFrame = CGRectMake(0, self.locationSelectView.frame.size.height, self.eventListTableView.frame.size.width, self.eventListTableView.frame.size.height);
+    locationSelectDefaultFrame = CGRectMake(0, -self.locationSelectView.frame.size.height, self.eventListTableView.frame.size.width, self.locationSelectView.frame.size.height);
+    locationSelectDownFrame = CGRectMake(0, 0, self.eventListTableView.frame.size.width, self.locationSelectView.frame.size.height);
 
+    _locationSelectView.backgroundColor = [UIColor midnightBlueColor];
+    _locationSelectHeaderView.backgroundColor = [UIColor midnightBlueColor];
+    
+    
+    NSArray *locationButtons = [NSArray arrayWithObjects:_locationACTButton, _locationNSWButton, _locationNTButton, _locationQLDButton, _locationSAButton, _locationTASButton, _locationVICButton, _locationWAButton, nil];
+    
+    for (FUIButton* locationButton in locationButtons) {
+        [locationButton.titleLabel setFont:kGlobalNavBarItemFont];
+        locationButton.buttonColor = kGlobalNavBarItemColour;
+        locationButton.titleLabel.textColor = [UIColor whiteColor];
+        locationButton.shadowColor = [UIColor grayColor];
+        locationButton.cornerRadius = 3;
+    }
+    
+    _locationSelectTitleLabel.font = kGlobalNavBarFont;
+    _locationSelectTitleLabel.textColor = [UIColor whiteColor];
+    //NSDictionary *barButtonAppearanceDict = @{UITextAttributeFont : kGlobalNavBarItemFont};
+
+    
+    //[[UIButton appearanceWhenContainedIn:[EventsListViewController class], nil] setTitleTextAttributes:barButtonAppearanceDict forState:UIControlStateNormal];
+    
+    //_locationACTButton
+    
     self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Events" image:nil tag:0];
     [[self tabBarItem] setFinishedSelectedImage:[UIImage imageNamed:@"calendaricon.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"calendaricon.png"]];
     [self.eventListTableView reloadData];
@@ -471,6 +498,16 @@
     [self setTodayButton:nil];
     [self setCurrentLocationButton:nil];
     [self setLocationSelectView:nil];
+    [self setLocationSAButton:nil];
+    [self setLocationTASButton:nil];
+    [self setLocationVICButton:nil];
+    [self setLocationWAButton:nil];
+    [self setLocationACTButton:nil];
+    [self setLocationNSWButton:nil];
+    [self setLocationNTButton:nil];
+    [self setLocationQLDButton:nil];
+    [self setLocationSelectHeaderView:nil];
+    [self setLocationSelectTitleLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

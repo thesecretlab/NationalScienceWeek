@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NSWEventData.h"
 #import "FUISegmentedControl.h"
-
+#import "FUIButton.h"
 enum DisplayListPickerValue {
     ListEvents = 0,
     ListFavourites = 1
@@ -28,6 +28,18 @@ enum DisplayListPickerValue {
 }
 @property (weak, nonatomic) IBOutlet FUISegmentedControl *listSegmentedControl;
 @property (weak, nonatomic) IBOutlet UIView *locationSelectView;
+@property (weak, nonatomic) IBOutlet UIView *locationSelectHeaderView;
+@property (weak, nonatomic) IBOutlet FUIButton *locationSAButton;
+@property (weak, nonatomic) IBOutlet FUIButton *locationTASButton;
+@property (weak, nonatomic) IBOutlet FUIButton *locationVICButton;
+@property (weak, nonatomic) IBOutlet FUIButton *locationWAButton;
+@property (weak, nonatomic) IBOutlet FUIButton *locationACTButton;
+@property (weak, nonatomic) IBOutlet FUIButton *locationNSWButton;
+@property (weak, nonatomic) IBOutlet FUIButton *locationNTButton;
+@property (weak, nonatomic) IBOutlet FUIButton *locationQLDButton;
+@property (weak, nonatomic) IBOutlet UILabel *locationSelectTitleLabel;
+
+
 @property (weak, nonatomic) IBOutlet UIButton *currentLocationButton;
 
 @property (weak, nonatomic) IBOutlet UIView *segmentedControlBackground;

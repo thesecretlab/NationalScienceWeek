@@ -103,23 +103,31 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" id="H4W-4w-e5K">
-                                <rect key="frame" x="0.0" y="-372" width="320" height="372"/>
+                                <rect key="frame" x="0.0" y="-365" width="320" height="365"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Select a location:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lXr-Dr-Rze">
-                                        <rect key="frame" x="0.0" y="10" width="320" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rQU-KH-2Bn">
-                                        <rect key="frame" x="0.0" y="203" width="320" height="40"/>
+                                    <view contentMode="scaleToFill" id="pY3-U4-ZLn">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Select a location:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lXr-Dr-Rze">
+                                                <rect key="frame" x="0.0" y="10" width="320" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rQU-KH-2Bn" customClass="FUIButton">
+                                        <rect key="frame" x="5" y="202" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="South Australia">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -128,13 +136,14 @@
                                             <action selector="newLocationButtonPressed:" destination="2" eventType="touchUpInside" id="BnX-aN-3ZU"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JD7-uI-ac2">
-                                        <rect key="frame" x="0.0" y="244" width="320" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JD7-uI-ac2" customClass="FUIButton">
+                                        <rect key="frame" x="5" y="242" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Tasmania">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -143,13 +152,14 @@
                                             <action selector="newLocationButtonPressed:" destination="2" eventType="touchUpInside" id="gO9-5y-Oh6"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Cll-eF-f4Y">
-                                        <rect key="frame" x="0.0" y="285" width="320" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Cll-eF-f4Y" customClass="FUIButton">
+                                        <rect key="frame" x="5" y="282" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Victoria">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -158,13 +168,14 @@
                                             <action selector="newLocationButtonPressed:" destination="2" eventType="touchUpInside" id="BLa-in-KjH"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jGH-o4-EQj">
-                                        <rect key="frame" x="0.0" y="326" width="320" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jGH-o4-EQj" customClass="FUIButton">
+                                        <rect key="frame" x="5" y="322" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Western Australia">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -173,13 +184,14 @@
                                             <action selector="newLocationButtonPressed:" destination="2" eventType="touchUpInside" id="G9h-NH-Car"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="guZ-P0-b8d">
-                                        <rect key="frame" x="0.0" y="39" width="320" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="guZ-P0-b8d" customClass="FUIButton">
+                                        <rect key="frame" x="5" y="42" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Australian Capital Territory">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -188,13 +200,14 @@
                                             <action selector="newLocationButtonPressed:" destination="2" eventType="touchUpInside" id="BtZ-wz-tHT"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ISq-yR-S1J">
-                                        <rect key="frame" x="0.0" y="80" width="320" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ISq-yR-S1J" customClass="FUIButton">
+                                        <rect key="frame" x="5" y="82" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="New South Wales">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -203,13 +216,14 @@
                                             <action selector="newLocationButtonPressed:" destination="2" eventType="touchUpInside" id="05c-S5-xLi"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="76c-28-Zp4">
-                                        <rect key="frame" x="0.0" y="121" width="320" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="76c-28-Zp4" customClass="FUIButton">
+                                        <rect key="frame" x="5" y="122" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Northern Territory">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -218,13 +232,14 @@
                                             <action selector="newLocationButtonPressed:" destination="2" eventType="touchUpInside" id="aZ6-Ua-mx5"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ams-5P-hdO">
-                                        <rect key="frame" x="0.0" y="162" width="320" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ams-5P-hdO" customClass="FUIButton">
+                                        <rect key="frame" x="5" y="162" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Queensland">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -274,7 +289,17 @@
                         <outlet property="currentLocationLabel" destination="aWv-fJ-Uhy" id="ryh-kT-0ZQ"/>
                         <outlet property="doubleTap" destination="bl6-Fs-rVf" id="n9B-Wv-HbX"/>
                         <outlet property="eventListTableView" destination="R0Z-TW-t6Z" id="MEf-ng-Xgf"/>
+                        <outlet property="locationACTButton" destination="guZ-P0-b8d" id="Btt-JJ-1ON"/>
+                        <outlet property="locationNSWButton" destination="ISq-yR-S1J" id="j7O-fH-u0F"/>
+                        <outlet property="locationNTButton" destination="76c-28-Zp4" id="NSt-9D-I6n"/>
+                        <outlet property="locationQLDButton" destination="ams-5P-hdO" id="QRG-Qh-cF7"/>
+                        <outlet property="locationSAButton" destination="rQU-KH-2Bn" id="05f-wg-Wt7"/>
+                        <outlet property="locationSelectHeaderView" destination="pY3-U4-ZLn" id="iGg-Iw-mas"/>
+                        <outlet property="locationSelectTitleLabel" destination="lXr-Dr-Rze" id="27X-PP-Ygl"/>
                         <outlet property="locationSelectView" destination="H4W-4w-e5K" id="Mfh-G1-eBI"/>
+                        <outlet property="locationTASButton" destination="JD7-uI-ac2" id="0JQ-bo-7SS"/>
+                        <outlet property="locationVICButton" destination="Cll-eF-f4Y" id="Pex-Ta-arc"/>
+                        <outlet property="locationWAButton" destination="jGH-o4-EQj" id="qWB-6H-S04"/>
                         <outlet property="segmentedLocationControl" destination="8FK-iC-LeZ" id="Ju4-dE-VQh"/>
                         <outlet property="todayButton" destination="yJO-71-yRQ" id="94J-fN-sSX"/>
                     </connections>
@@ -870,6 +895,108 @@
         <image name="mapicon.png" width="26" height="21"/>
         <image name="scienceicon.png" width="20" height="24"/>
     </resources>
+    <classes>
+        <class className="EventDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="createEvent:"/>
+                <relationship kind="action" name="favouriteEvent:"/>
+                <relationship kind="action" name="openInMaps:"/>
+                <relationship kind="action" name="openInSafari:"/>
+                <relationship kind="outlet" name="eventAddressLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventAddressView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="eventContactLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventContactTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="eventContactView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="eventDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventDateView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventDetailView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="eventLocationLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventMapHolderView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="eventMapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="eventTimeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventTimeView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="eventTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventWebsiteLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="favouriteButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="labelScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="onlineOnlyOpenInSafariView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="openInMapsButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="openInSafariLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="topRowView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="EventListCell" superclassName="PrettyTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventListCell.h"/>
+        </class>
+        <class className="EventsListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventsListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cellDoubleTapped:"/>
+                <relationship kind="action" name="chooseLocation:"/>
+                <relationship kind="action" name="newLocationButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="nextLocationPressed:"/>
+                <relationship kind="action" name="previousLocationPressed:"/>
+                <relationship kind="action" name="scrollToTodaysDate"/>
+                <relationship kind="outlet" name="currentLocationButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="currentLocationLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="doubleTap" candidateClass="UITapGestureRecognizer"/>
+                <relationship kind="outlet" name="eventListTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="locationACTButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="locationNSWButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="locationNTButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="locationQLDButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="locationSAButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="locationSelectHeaderView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="locationSelectTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="locationSelectView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="locationTASButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="locationVICButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="locationWAButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="segmentedLocationControl" candidateClass="FUISegmentedControl"/>
+                <relationship kind="outlet" name="todayButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="EventsMapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventsMapViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="centerOnUser:"/>
+                <relationship kind="action" name="findClosestEvent:"/>
+                <relationship kind="outlet" name="eventMap" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="FUIButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FUIButton.h"/>
+        </class>
+        <class className="FUISegmentedControl" superclassName="UISegmentedControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FUISegmentedControl.h"/>
+        </class>
+        <class className="FavouriteEventsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavouriteEventsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cellDoubleTapped:" candidateClass="UITapGestureRecognizer"/>
+                <relationship kind="outlet" name="doubleTapRecogniser" candidateClass="UITapGestureRecognizer"/>
+                <relationship kind="outlet" name="favouriteEventsTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="noFavouritedEventsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NSWInfoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSWInfoViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backgroundColourView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="internetDownMessage" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="PrettyTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PrettyTableViewCell.h"/>
+        </class>
+        <class className="UACellBackgroundView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UACellBackgroundView.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

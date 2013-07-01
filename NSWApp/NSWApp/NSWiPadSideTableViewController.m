@@ -40,6 +40,22 @@
     locationSelectDefaultFrame = CGRectMake(0, 42-_locationSelectView.frame.size.height, _eventListView.frame.size.width, _locationSelectView.frame.size.height);
     locationSelectDownFrame = CGRectMake(0, 42, _eventListView.frame.size.width, _locationSelectView.frame.size.height);
 
+    _locationSelectView.backgroundColor = [UIColor midnightBlueColor];
+
+    
+    NSArray *locationButtons = [NSArray arrayWithObjects:_locationACTButton, _locationNSWButton, _locationNTButton, _locationQLDButton, _locationSAButton, _locationTASButton, _locationVICButton, _locationWAButton, nil];
+    
+    for (FUIButton* locationButton in locationButtons) {
+        [locationButton.titleLabel setFont:kGlobalNavBarItemFont];
+        locationButton.buttonColor = kGlobalNavBarItemColour;
+        locationButton.titleLabel.textColor = [UIColor whiteColor];
+        locationButton.shadowColor = [UIColor grayColor];
+        locationButton.cornerRadius = 3;
+    }
+    
+    _locationSelectTitleLabel.font = kGlobalNavBarFont;
+    _locationSelectTitleLabel.textColor = [UIColor whiteColor];
+    
     
     lastFavouritesListOffset = 0.0;
     lastEventListOffset = 0.0;
