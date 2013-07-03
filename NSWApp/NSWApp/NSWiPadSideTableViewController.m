@@ -36,7 +36,10 @@
 
 - (void)viewDidLoad
 {
-    self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor whiteColor];
+    //self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor midnightBlueColor];
+    
+    self.noEventsLabel.font = kLargeLabelFont;
+    
     [[NSWEventData sharedData] setDelegate:self];
 
     listDefaultFrame = CGRectMake(0, 42, _eventListView.frame.size.width, _eventListView.frame.size.height);
@@ -49,12 +52,22 @@
     
     NSArray *locationButtons = [NSArray arrayWithObjects:_locationACTButton, _locationNSWButton, _locationNTButton, _locationQLDButton, _locationSAButton, _locationTASButton, _locationVICButton, _locationWAButton, nil];
     
+    UIImage *highlightedBackgroundImage = [UIImage buttonImageWithColor:kGlobalNavBarItemColourHighlighted
+                                                           cornerRadius:kDetailCornerRadius
+                                                            shadowColor:[UIColor clearColor]
+                                                           shadowInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+
+    
+    
     for (FUIButton* locationButton in locationButtons) {
         [locationButton.titleLabel setFont:kGlobalNavBarItemFont];
         locationButton.buttonColor = kGlobalNavBarItemColour;
+        
         locationButton.titleLabel.textColor = [UIColor whiteColor];
         locationButton.shadowColor = [UIColor grayColor];
         locationButton.cornerRadius = 3;
+        [locationButton setBackgroundImage:highlightedBackgroundImage forState:UIControlStateHighlighted];
+
     }
     
     _locationSelectTitleLabel.font = kGlobalNavBarFont;
@@ -72,17 +85,24 @@
     
     self.searchBar.backgroundColor = kGlobalNavBarColour;
     [[[self.searchBar subviews] objectAtIndex:0] setAlpha:0.0];
-    //we can still add a tint color so as the search bar buttons match our new background
     self.searchBar.tintColor = kGlobalNavBarItemColour;
-    //if you put the search bar in a table view header, a one pixel line will appear when you scroll
     
-    self.eventListView.tableHeaderView = self.searchBar;
+    
+    self.currentLocationButton.titleLabel.font = kGlobalNavBarFont;
+    UIImage *normalBackgroundImage = [UIImage buttonImageWithColor:kGlobalNavBarItemColour
+                                                      cornerRadius:kDetailCornerRadius
+                                                       shadowColor:[UIColor grayColor]
+                                                      shadowInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+
+    
+    [self.currentLocationButton setBackgroundImage:normalBackgroundImage forState:UIControlStateNormal];
+    [self.currentLocationButton setBackgroundImage:highlightedBackgroundImage forState:UIControlStateHighlighted];
     
     
     lastFavouritesListOffset = 0.0;
     lastEventListOffset = 0.0;
     [self.eventListView reloadData];
-
+    [self scrollToTodaysDate];
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -344,6 +364,7 @@
         cell.textLabel.text = [[searchResults objectAtIndex:indexPath.row] objectForKey:@"Title"];
         cell.detailTextLabel.text = [[searchResults objectAtIndex:indexPath.row] objectForKey:@"Location"];
         cell.backgroundColor = [UIColor whiteColor];
+        cell.position = PrettyTableViewCellPositionAlone; //Sets it to be alone. FOREVERALONE
     }
     else
     {
@@ -488,6 +509,7 @@
 - (void)reloadView
 {
 
+    [_currentLocationButton setTitle:[NSString stringWithFormat:@"%@ | ▼", [[NSWEventData sharedData] currentLocationAcronym]] forState:UIControlStateNormal];
     [self.eventListView reloadData];
 }
 

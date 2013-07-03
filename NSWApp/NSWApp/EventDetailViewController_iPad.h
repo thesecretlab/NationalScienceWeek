@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UIView *topRowView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *favouriteButton;
 @property (weak, nonatomic) IBOutlet UIView *eventContactView;
+@property (weak, nonatomic) IBOutlet UIImageView *noEventImageView;
 
 - (IBAction)favouriteEvent:(id)sender;
 

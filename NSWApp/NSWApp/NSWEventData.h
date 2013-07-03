@@ -63,6 +63,8 @@
 -(void)addEventToFavouritesArray:(NSDictionary*)event;
 -(void)revertDataAndStopDownload;
 -(void)resumeNormalUpdates;
+-(NSString*)currentLocationAcronym;
+-(void)delegateRefresh;
 
 
 @end

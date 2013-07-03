@@ -37,6 +37,7 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -59,6 +60,7 @@
         self.eventMapView.hidden = YES;
         self.openInMapsButton.hidden = YES;
         self.favouriteButton.enabled = NO;
+        self.noEventImageView.hidden = NO;
         return;
     }
     else{
@@ -71,7 +73,7 @@
         self.eventMapView.hidden = NO;
         self.openInMapsButton.hidden = NO;
         self.favouriteButton.enabled = YES;
-
+        self.noEventImageView.hidden = YES;
 
     }
     
@@ -453,7 +455,7 @@
 - (IBAction)openInMaps:(id)sender
 {
     if (![[_event objectForKey:@"Latitude"] isEqualToString:@""]&& ![[_event objectForKey:@"Longitude"] isEqualToString:@""]) {
-        NSString *url = [NSString stringWithFormat: @"http://maps.google.com/maps?q=%f,%f&t=m", [[_event objectForKey:@"Latitude"] floatValue], [[_event objectForKey:@"Longitude"] floatValue]];
+        NSString *url = [NSString stringWithFormat: @"http://maps.apple.com/maps?q=%f,%f&t=m", [[_event objectForKey:@"Latitude"] floatValue], [[_event objectForKey:@"Longitude"] floatValue]];
         // [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
         UIApplication *app = [UIApplication sharedApplication];
         // NSURL* urlURL = [[NSURL alloc] initWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
@@ -518,4 +520,8 @@
     
 }
 
+- (void)viewDidUnload {
+    [self setNoEventImageView:nil];
+    [super viewDidUnload];
+}
 @end

@@ -42,7 +42,7 @@ enum DisplayListPickerValue {
 
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (weak, nonatomic) IBOutlet UIButton *currentLocationButton;
+@property (weak, nonatomic) IBOutlet FUIButton *currentLocationButton;
 @property (weak, nonatomic) IBOutlet UILabel *noEventsLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *segmentedControlBackground;

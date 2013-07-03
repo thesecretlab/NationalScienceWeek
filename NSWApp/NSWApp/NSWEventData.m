@@ -578,6 +578,18 @@ static NSWEventData* _sharedData = nil;
     }
 }
 
+-(NSString*)currentLocationAcronym
+{
+    return self.location;
+}
+
+-(void)delegateRefresh
+{
+    if (self.delegate) {
+        [delegate reloadView];
+    }
+}
+
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
 
@@ -660,6 +672,7 @@ static NSWEventData* _sharedData = nil;
 {
     
     [self.favouriteEvents addObject:event];
+    [self delegateRefresh];
     
 }
 
@@ -681,6 +694,7 @@ static NSWEventData* _sharedData = nil;
     {
         [self.favouriteEvents removeObject:foundDict];
     }
+    [self delegateRefresh];
 }
 
 -(BOOL)favouritesArrayContainsEventWithID:(NSString*)eventID

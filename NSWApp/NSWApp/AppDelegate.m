@@ -69,6 +69,8 @@
     [UIBarButtonItem configureFlatButtonsWithColor:kGlobalNavBarItemColour
                                   highlightedColor:kGlobalNavBarItemColourHighlighted
                                       cornerRadius:kNavBarButtonCornerRadius];
+
+    
     //[[UIBarButtonItem appearance] setTitlePositionAdjustment:UIOffsetMake(0.0f, 5.0f) forBarMetrics:UIBarMetricsDefault];
 
    

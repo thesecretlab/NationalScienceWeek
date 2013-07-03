@@ -103,6 +103,8 @@
     CLLocationCoordinate2D location;
     location.latitude = self.eventMap.userLocation.coordinate.latitude;
     location.longitude = self.eventMap.userLocation.coordinate.longitude;
+    
+    NSLog(@"%f, %f", location.latitude, location.longitude);
     region.span = span;
     region.center = location;
     [self.eventMap setRegion:region animated:YES];

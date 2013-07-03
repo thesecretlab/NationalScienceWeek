@@ -256,12 +256,16 @@
                                     </view>
                                 </subviews>
                             </scrollView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" id="se4-ff-YUl">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="911"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="8Ke-hQ-vIr">
-                        <barButtonItem key="rightBarButtonItem" title="Fav" id="nWx-QZ-opp">
+                        <barButtonItem key="rightBarButtonItem" image="favouritesiconbutton.png" id="nWx-QZ-opp">
                             <connections>
                                 <action selector="favouriteEvent:" destination="qUv-YJ-6of" id="HzS-HN-RtF"/>
                             </connections>
@@ -283,6 +287,7 @@
                         <outlet property="eventTitleLabel" destination="y2Z-b8-Mid" id="apj-RV-yW8"/>
                         <outlet property="favouriteButton" destination="nWx-QZ-opp" id="3cd-nQ-itM"/>
                         <outlet property="labelScrollView" destination="ELa-47-iUe" id="T6U-We-et4"/>
+                        <outlet property="noEventImageView" destination="se4-ff-YUl" id="V4y-YV-xRx"/>
                         <outlet property="onlineOnlyOpenInSafariView" destination="OkD-Sk-peR" id="Nd3-y2-4Al"/>
                         <outlet property="openInMapsButton" destination="dr8-Ba-tgY" id="fDQ-hY-Sl4"/>
                         <outlet property="openInSafariLabel" destination="HuU-D6-2SX" id="7Wb-f4-mLL"/>
@@ -324,7 +329,7 @@
                                 </connections>
                             </tableView>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="There are no events in this list." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bVw-Av-5wk">
-                                <rect key="frame" x="37" y="281" width="247" height="177"/>
+                                <rect key="frame" x="37" y="302" width="247" height="177"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -501,12 +506,13 @@
                             </connections>
                         </barButtonItem>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0Wn-3Y-IUG" customClass="FUIButton">
-                            <rect key="frame" x="93" y="7" width="133" height="30"/>
+                            <rect key="frame" x="113" y="7" width="94" height="30"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                            <state key="normal" title="Location | ▼">
-                                <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            <size key="titleShadowOffset" width="0.0" height="-1"/>
+                            <state key="normal" title="TAS | ▼">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
                             </state>
                             <state key="highlighted">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -755,9 +761,95 @@
         <image name="arrow_right.png" width="10" height="13"/>
         <image name="backgroundgradient.png" width="640" height="1040"/>
         <image name="calendaricon.png" width="23" height="25"/>
+        <image name="favouritesiconbutton.png" width="16" height="16"/>
         <image name="locationarrow.png" width="14" height="14"/>
         <image name="mapicon.png" width="26" height="21"/>
     </resources>
+    <classes>
+        <class className="EventDetailViewController_iPad" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventDetailViewController_iPad.h"/>
+            <relationships>
+                <relationship kind="action" name="createEvent:"/>
+                <relationship kind="action" name="favouriteEvent:"/>
+                <relationship kind="action" name="openInMaps:"/>
+                <relationship kind="action" name="openInSafari:"/>
+                <relationship kind="outlet" name="eventAddressLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventAddressView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="eventContactTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="eventContactView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="eventDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventDateView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventDetailView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="eventMapHolderView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="eventMapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="eventTimeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventTimeView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="eventTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="favouriteButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="labelScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="noEventImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="onlineOnlyOpenInSafariView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="openInMapsButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="openInSafariLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="topRowView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="FUIButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FUIButton.h"/>
+        </class>
+        <class className="FUISegmentedControl" superclassName="UISegmentedControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FUISegmentedControl.h"/>
+        </class>
+        <class className="NSWEventsMapViewController_iPad" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSWEventsMapViewController_iPad.h"/>
+            <relationships>
+                <relationship kind="action" name="centerOnUser:"/>
+                <relationship kind="action" name="findClosestEvent:"/>
+                <relationship kind="outlet" name="eventMap" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="NSWInfoViewController_iPad" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSWInfoViewController_iPad.h"/>
+            <relationships>
+                <relationship kind="action" name="dismissModalView:"/>
+                <relationship kind="outlet" name="backgroundColourView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="internetDownMessage" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="NSWiPadSideTableViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSWiPadSideTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="chooseLocation:" candidateClass="UIButton"/>
+                <relationship kind="action" name="newLocationButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="pushModalView:"/>
+                <relationship kind="action" name="scrollToTodaysDate"/>
+                <relationship kind="action" name="valueChanged:"/>
+                <relationship kind="outlet" name="currentLocationButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="eventListView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="listSegmentedControl" candidateClass="FUISegmentedControl"/>
+                <relationship kind="outlet" name="locationACTButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="locationNSWButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="locationNTButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="locationQLDButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="locationSAButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="locationSelectHeaderView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="locationSelectTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="locationSelectView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="locationTASButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="locationVICButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="locationWAButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="noEventsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="segmentedControlBackground" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="UACellBackgroundView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UACellBackgroundView.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

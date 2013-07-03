@@ -42,6 +42,9 @@
 
 #define kNavBarButtonCornerRadius 3
 
+#define kLargeLabelFont [UIFont flatFontOfSize:28.0]
+
+
 //TabBat settings
 
 #define kGlobalTabBarItemFont [UIFont flatFontOfSize:12.0]
