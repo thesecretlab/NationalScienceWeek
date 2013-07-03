@@ -35,9 +35,12 @@
                                                 <rect key="frame" x="572" y="0.0" width="140" height="140"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                                 <subviews>
-                                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" showsUserLocation="YES" id="HSG-L5-3k6">
+                                                    <mapView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" showsUserLocation="YES" id="HSG-L5-3k6">
                                                         <rect key="frame" x="0.0" y="1" width="140" height="140"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="qUv-YJ-6of" id="N7I-kR-6xF"/>
+                                                        </connections>
                                                     </mapView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="i8a-kL-zPo">
                                                         <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
@@ -294,23 +297,39 @@
         <scene sceneID="rM6-qy-vpZ">
             <objects>
                 <viewController id="PdL-yl-Q5E" customClass="NSWiPadSideTableViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="niL-ng-gJz">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="niL-ng-gJz">
                         <rect key="frame" x="0.0" y="64" width="320" height="739"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="backgroundgradient.png" id="tME-TI-E7e">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="739"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Cgd-UO-8im">
                                 <rect key="frame" x="0.0" y="42" width="320" height="697"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="Search Events" id="n2U-K7-Iam">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="PdL-yl-Q5E" id="3Wy-2h-KwC"/>
+                                    </connections>
+                                </searchBar>
+                                <sections/>
                                 <connections>
                                     <outlet property="dataSource" destination="PdL-yl-Q5E" id="52E-T9-Vob"/>
                                     <outlet property="delegate" destination="PdL-yl-Q5E" id="VJ9-k3-lSz"/>
                                 </connections>
                             </tableView>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="There are no events in this list." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bVw-Av-5wk">
+                                <rect key="frame" x="37" y="281" width="247" height="177"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" id="TQf-QX-0mB">
                                 <rect key="frame" x="0.0" y="-323" width="320" height="365"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
@@ -516,12 +535,24 @@
                         <outlet property="locationTASButton" destination="H1J-ZM-krZ" id="qez-KF-Nx2"/>
                         <outlet property="locationVICButton" destination="V3w-pE-fit" id="3qx-Nu-A40"/>
                         <outlet property="locationWAButton" destination="67s-vm-9ww" id="ldW-CB-731"/>
+                        <outlet property="noEventsLabel" destination="bVw-Av-5wk" id="tKE-CW-Ws8"/>
+                        <outlet property="searchBar" destination="n2U-K7-Iam" id="SYg-7Y-8b9"/>
+                        <outlet property="searchDisplayController" destination="gLR-Xm-RKh" id="HdA-G1-Ham"/>
                         <outlet property="segmentedControlBackground" destination="h2y-WZ-ORv" id="cSt-t9-dTo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dmy-Nh-AH0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="gLR-Xm-RKh">
+                    <connections>
+                        <outlet property="delegate" destination="PdL-yl-Q5E" id="DI8-e7-qTX"/>
+                        <outlet property="searchBar" destination="n2U-K7-Iam" id="dwD-Q4-3n5"/>
+                        <outlet property="searchContentsController" destination="PdL-yl-Q5E" id="yAA-XD-ylb"/>
+                        <outlet property="searchResultsDataSource" destination="PdL-yl-Q5E" id="ZbH-ba-IUy"/>
+                        <outlet property="searchResultsDelegate" destination="PdL-yl-Q5E" id="XcM-kC-OfS"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-69" y="-948"/>
+            <point key="canvasLocation" x="-74" y="-970"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="M3K-Ec-o2b">
@@ -727,88 +758,6 @@
         <image name="locationarrow.png" width="14" height="14"/>
         <image name="mapicon.png" width="26" height="21"/>
     </resources>
-    <classes>
-        <class className="EventDetailViewController_iPad" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventDetailViewController_iPad.h"/>
-            <relationships>
-                <relationship kind="action" name="createEvent:"/>
-                <relationship kind="action" name="favouriteEvent:"/>
-                <relationship kind="action" name="openInMaps:"/>
-                <relationship kind="action" name="openInSafari:"/>
-                <relationship kind="outlet" name="eventAddressLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="eventAddressView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="eventContactTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="eventContactView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="eventDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="eventDateView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="eventDetailView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="eventMapHolderView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="eventMapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="eventTimeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="eventTimeView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="eventTitleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="favouriteButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="labelScrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="onlineOnlyOpenInSafariView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="openInMapsButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="openInSafariLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="topRowView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="FUIButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FUIButton.h"/>
-        </class>
-        <class className="FUISegmentedControl" superclassName="UISegmentedControl">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FUISegmentedControl.h"/>
-        </class>
-        <class className="NSWEventsMapViewController_iPad" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSWEventsMapViewController_iPad.h"/>
-            <relationships>
-                <relationship kind="action" name="centerOnUser:"/>
-                <relationship kind="action" name="findClosestEvent:"/>
-                <relationship kind="outlet" name="eventMap" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="NSWInfoViewController_iPad" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSWInfoViewController_iPad.h"/>
-            <relationships>
-                <relationship kind="action" name="dismissModalView:"/>
-                <relationship kind="outlet" name="backgroundColourView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="internetDownMessage" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="NSWiPadSideTableViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSWiPadSideTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="chooseLocation:" candidateClass="UIButton"/>
-                <relationship kind="action" name="newLocationButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="pushModalView:"/>
-                <relationship kind="action" name="scrollToTodaysDate"/>
-                <relationship kind="action" name="valueChanged:"/>
-                <relationship kind="outlet" name="currentLocationButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="eventListView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="listSegmentedControl" candidateClass="FUISegmentedControl"/>
-                <relationship kind="outlet" name="locationACTButton" candidateClass="FUIButton"/>
-                <relationship kind="outlet" name="locationNSWButton" candidateClass="FUIButton"/>
-                <relationship kind="outlet" name="locationNTButton" candidateClass="FUIButton"/>
-                <relationship kind="outlet" name="locationQLDButton" candidateClass="FUIButton"/>
-                <relationship kind="outlet" name="locationSAButton" candidateClass="FUIButton"/>
-                <relationship kind="outlet" name="locationSelectHeaderView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="locationSelectTitleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="locationSelectView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="locationTASButton" candidateClass="FUIButton"/>
-                <relationship kind="outlet" name="locationVICButton" candidateClass="FUIButton"/>
-                <relationship kind="outlet" name="locationWAButton" candidateClass="FUIButton"/>
-                <relationship kind="outlet" name="segmentedControlBackground" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="UACellBackgroundView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UACellBackgroundView.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

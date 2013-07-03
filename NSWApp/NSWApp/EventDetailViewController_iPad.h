@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <EventKitUI/EventKitUI.h>
 
-@interface EventDetailViewController_iPad : UIViewController <EKEventEditViewDelegate>
+@interface EventDetailViewController_iPad : UIViewController <EKEventEditViewDelegate, UISplitViewControllerDelegate>
 {
     float currentLayoutHeight;
 }

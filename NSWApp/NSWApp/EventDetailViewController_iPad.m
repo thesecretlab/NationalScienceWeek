@@ -12,6 +12,8 @@
 #import "UINavigationBar+FlatUI.h"
 #import "NSWEventData.h"
 #import "UIBarButtonItem+FlatUI.h"
+#import "MyLocation.h"
+
 @interface EventDetailViewController_iPad ()
 
 @end
@@ -22,9 +24,15 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+
         // Custom initialization
     }
     return self;
+}
+
+- (void) awakeFromNib{
+    [super awakeFromNib];
+    self.splitViewController.delegate = self;
 }
 
 - (void)viewDidLoad
@@ -198,8 +206,8 @@
         
         self.eventMapView.layer.cornerRadius = kDetailCornerRadius;
         
-        //[self plotEvent];
-        //[self zoomToAnnotationsBounds];
+        [self plotEvent];
+        [self zoomToAnnotationsBounds];
     }
     else {
         self.eventMapHolderView.hidden = YES;
@@ -294,6 +302,117 @@
     
     
 }
+
+
+-(void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)pc
+{
+    barButtonItem.title = @"Events";
+    [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
+    //self.masterPopoverController = pc;
+}
+
+
+
+- (void)plotEvent{
+    
+    
+    for (id<MKAnnotation> annotation in self.eventMapView.annotations) {
+        [self.eventMapView removeAnnotation:annotation];
+    }
+    
+    
+    NSNumber * latitude = [NSNumber numberWithDouble:[[_event objectForKey:@"Latitude"] doubleValue]];
+    NSNumber * longitude = [NSNumber numberWithDouble:[[_event objectForKey:@"Longitude"] doubleValue]];
+    
+    NSString * purchaseDescription = [NSString stringWithFormat:[_event objectForKey:@"Title"]];
+    NSString * purchaseLocation = [_event objectForKey:@"Location"];
+    
+    CLLocationCoordinate2D coordinate;
+    coordinate.latitude = latitude.doubleValue;
+    coordinate.longitude = longitude.doubleValue;
+    MyLocation *annotation = [[MyLocation alloc] initWithName:purchaseDescription address:purchaseLocation coordinate:coordinate] ;
+    annotation.event = _event;
+    [self.eventMapView addAnnotation:annotation];
+    
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    
+    static NSString *identifier = @"MyLocation";
+    if ([annotation isKindOfClass:[MyLocation class]]) {
+        
+        MKPinAnnotationView *annotationView = (MKPinAnnotationView *) [self.eventMapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+        if (annotationView == nil) {
+            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+        } else {
+            annotationView.annotation = annotation;
+        }
+        
+        annotationView.enabled = NO;
+        annotationView.canShowCallout = NO;
+        annotationView.animatesDrop = YES;
+        
+        return annotationView;
+    }
+    
+    return nil;
+}
+
+- (void) zoomToAnnotationsBounds {
+    
+    NSArray *annotations = self.eventMapView.annotations;
+    
+    CLLocationDegrees minLatitude = DBL_MAX;
+    CLLocationDegrees maxLatitude = -DBL_MAX;
+    CLLocationDegrees minLongitude = DBL_MAX;
+    CLLocationDegrees maxLongitude = -DBL_MAX;
+    
+    for (MyLocation *annotation in annotations) {
+        double annotationLat = annotation.coordinate.latitude;
+        double annotationLong = annotation.coordinate.longitude;
+        minLatitude = fmin(annotationLat, minLatitude);
+        maxLatitude = fmax(annotationLat, maxLatitude);
+        minLongitude = fmin(annotationLong, minLongitude);
+        maxLongitude = fmax(annotationLong, maxLongitude);
+    }
+    
+    // See function below
+    [self setMapRegionForMinLat:minLatitude minLong:minLongitude maxLat:maxLatitude maxLong:maxLongitude];
+    
+    UIEdgeInsets mapPadding = UIEdgeInsetsMake(60.0, 10.0, 0.0, 10.0);
+    CLLocationCoordinate2D relativeFromCoord = [self.eventMapView convertPoint:CGPointMake(0, 0) toCoordinateFromView:self.eventMapView];
+    
+    // Calculate the additional lat/long required at the current zoom level to add the padding
+    CLLocationCoordinate2D topCoord = [self.eventMapView convertPoint:CGPointMake(0, mapPadding.top) toCoordinateFromView:self.eventMapView];
+    CLLocationCoordinate2D rightCoord = [self.eventMapView convertPoint:CGPointMake(0, mapPadding.right) toCoordinateFromView:self.eventMapView];
+    CLLocationCoordinate2D bottomCoord = [self.eventMapView convertPoint:CGPointMake(0, mapPadding.bottom) toCoordinateFromView:self.eventMapView];
+    CLLocationCoordinate2D leftCoord = [self.eventMapView convertPoint:CGPointMake(0, mapPadding.left) toCoordinateFromView:self.eventMapView];
+    
+    double latitudeSpanToBeAddedToTop = relativeFromCoord.latitude - topCoord.latitude;
+    double longitudeSpanToBeAddedToRight = relativeFromCoord.latitude - rightCoord.latitude;
+    double latitudeSpanToBeAddedToBottom = relativeFromCoord.latitude - bottomCoord.latitude;
+    double longitudeSpanToBeAddedToLeft = relativeFromCoord.latitude - leftCoord.latitude;
+    
+    maxLatitude = maxLatitude + latitudeSpanToBeAddedToTop;
+    minLatitude = minLatitude - latitudeSpanToBeAddedToBottom;
+    
+    maxLongitude = maxLongitude + longitudeSpanToBeAddedToRight;
+    minLongitude = minLongitude - longitudeSpanToBeAddedToLeft;
+    
+    [self setMapRegionForMinLat:minLatitude minLong:minLongitude maxLat:maxLatitude maxLong:maxLongitude];
+}
+
+-(void) setMapRegionForMinLat:(double)minLatitude minLong:(double)minLongitude maxLat:(double)maxLatitude maxLong:(double)maxLongitude {
+    
+    MKCoordinateRegion region;
+    region.center.latitude = (minLatitude + maxLatitude) / 2;
+    region.center.longitude = (minLongitude + maxLongitude) / 2;
+    region.span.latitudeDelta = (maxLatitude - minLatitude);
+    region.span.longitudeDelta = (maxLongitude - minLongitude);
+    
+    [self.eventMapView setRegion:region animated:YES];
+}
+
 
 -(void)viewWillAppear:(BOOL)animated
 {

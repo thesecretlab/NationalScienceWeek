@@ -15,6 +15,9 @@
 #import "EventDetailViewController_iPad.h"
 #import "FUISegmentedControl.h"
 #import "NSWInfoViewController_iPad.h"
+#import "CustomSearchBar.h"
+#import "UIImage+FlatUI.h"
+
 @interface NSWiPadSideTableViewController ()
 
 @end
@@ -33,6 +36,7 @@
 
 - (void)viewDidLoad
 {
+    self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor whiteColor];
     [[NSWEventData sharedData] setDelegate:self];
 
     listDefaultFrame = CGRectMake(0, 42, _eventListView.frame.size.width, _eventListView.frame.size.height);
@@ -55,6 +59,24 @@
     
     _locationSelectTitleLabel.font = kGlobalNavBarFont;
     _locationSelectTitleLabel.textColor = [UIColor whiteColor];
+    
+    
+    for(UIView *subView in self.searchBar.subviews) {
+        if ([subView isKindOfClass:[UITextField class]]) {
+            UITextField *searchField = (UITextField *)subView;
+            searchField.font = kGlobalNavBarItemFont;
+        }
+    }
+    
+    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6],UITextAttributeTextShadowColor,[NSValue valueWithUIOffset:UIOffsetMake(0, -1)],UITextAttributeTextShadowOffset, kGlobalNavBarItemFont, UITextAttributeFont, nil] forState:UIControlStateNormal];
+    
+    self.searchBar.backgroundColor = kGlobalNavBarColour;
+    [[[self.searchBar subviews] objectAtIndex:0] setAlpha:0.0];
+    //we can still add a tint color so as the search bar buttons match our new background
+    self.searchBar.tintColor = kGlobalNavBarItemColour;
+    //if you put the search bar in a table view header, a one pixel line will appear when you scroll
+    
+    self.eventListView.tableHeaderView = self.searchBar;
     
     
     lastFavouritesListOffset = 0.0;
@@ -84,6 +106,36 @@
     [self.navigationController.navigationBar configureFlatNavigationBarWithColor:kGlobalNavBarColour];
 }
 
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    // only show the status bar’s cancel button while in edit mode sbar (UISearchBar)
+    searchBar.showsCancelButton = YES;
+    searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
+    UIColor *desiredColor = [UIColor colorWithRed:212.0/255.0 green:237.0/255.0 blue:187.0/255.0 alpha:1.0];
+
+    UIImage *normalBackgroundImage = [UIImage buttonImageWithColor:kGlobalNavBarItemColour
+                                                      cornerRadius:kDetailCornerRadius
+                                                       shadowColor:[UIColor grayColor]
+                                                      shadowInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
+    UIImage *highlightedBackgroundImage = [UIImage buttonImageWithColor:kGlobalNavBarItemColourHighlighted
+                                                              cornerRadius:kDetailCornerRadius
+                                                                shadowColor:[UIColor grayColor]
+                                                           shadowInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
+    
+    
+    for (UIView *subView in searchBar.subviews){
+        if([subView isKindOfClass:[UIButton class]]){
+            NSLog(@"this is button type");
+            
+            [(UIButton *)subView setBackgroundImage:normalBackgroundImage forState:UIControlStateNormal];
+            [(UIButton *)subView setBackgroundImage:highlightedBackgroundImage forState:UIControlStateHighlighted];
+
+        }
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -94,6 +146,10 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+    {
+        return 1;
+    }
     if (displayData == ListEvents)
     {
         self.uniqueSingleDates = [[NSWEventData sharedData] uniqueSingleDates];
@@ -109,6 +165,10 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+    {
+        return nil;
+    }
     UIView *customTitleView = [ [UIView alloc] initWithFrame:CGRectMake(10, 0, 300, 44)];
     
     UILabel *titleLabel = [ [UILabel alloc] initWithFrame:customTitleView.frame];
@@ -159,65 +219,108 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 44;
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+    {
+        return 0;
+    }
+    else
+    {
+        return 44;
+
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section < [self.uniqueSingleDates count]) {
-        
-        if (displayData == ListEvents) {
-            return [[[NSWEventData sharedData] eventsForDate:[self.uniqueSingleDates objectAtIndex:section]]count];
-
-        }
-        else if(displayData == ListFavourites)
-        {
-            return [[[NSWEventData sharedData] eventsForDateInFavourites:[self.uniqueSingleDates objectAtIndex:section]]count];
-        }
-
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+    {
+        return [searchResults count];
     }
-    return 0;
+    else {
+        if (section < [self.uniqueSingleDates count]) {
+            
+            if (displayData == ListEvents) {
+                return [[[NSWEventData sharedData] eventsForDate:[self.uniqueSingleDates objectAtIndex:section]]count];
+
+            }
+            else if(displayData == ListFavourites)
+            {
+                return [[[NSWEventData sharedData] eventsForDateInFavourites:[self.uniqueSingleDates objectAtIndex:section]]count];
+            }
+
+        }
+        return 0;
+    }
 }
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    NSArray *eventArray;
-    if (displayData == ListEvents) {
-        eventArray = [[NSWEventData sharedData] eventsForDate:[self.uniqueSingleDates objectAtIndex:indexPath.section]];
-    }
-    else if(displayData == ListFavourites)
+    if (tableView == self.searchDisplayController.searchResultsTableView)
     {
-        eventArray = [[NSWEventData sharedData] eventsForDateInFavourites:[self.uniqueSingleDates objectAtIndex:indexPath.section]];
+        CGFloat totalHeight = 0;
+        NSString *text = [[searchResults objectAtIndex:indexPath.row] objectForKey:@"Title"];
+        
+        CGSize constraint = CGSizeMake(320 - 70, 20000.0f);
+        
+        CGSize size = [text sizeWithFont:kEventListCellTitleFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+        
+        CGFloat height = MAX(size.height, 21.0f);
+        
+        totalHeight = totalHeight + height;
+        
+        text = [[searchResults objectAtIndex:indexPath.row] objectForKey:@"Location"];
+        
+        constraint = CGSizeMake(320 - 70, 20000.0f);
+        
+        size = [text sizeWithFont:kEventListCellDetailFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+        
+        height = MAX(size.height, 18.0f);
+        
+        totalHeight = totalHeight + height;
+        return totalHeight + 20+ [PrettyTableViewCell
+                                  tableView:tableView neededHeightForIndexPath:indexPath];
     }
-    
-        if (indexPath.section < [self.uniqueSingleDates count]) {
-            CGFloat totalHeight = 0;
-            NSString *text = [[eventArray objectAtIndex:indexPath.row] objectForKey:@"Title"];
-            
-            CGSize constraint = CGSizeMake(320 - 70, 20000.0f);
-            
-            CGSize size = [text sizeWithFont:kEventListCellTitleFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-            
-            CGFloat height = MAX(size.height, 21.0f);
-            
-            totalHeight = totalHeight + height;
-            
-            text = [[eventArray objectAtIndex:indexPath.row] objectForKey:@"Location"];
-            
-            constraint = CGSizeMake(320 - 70, 20000.0f);
-            
-            size = [text sizeWithFont:kEventListCellDetailFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-            
-            height = MAX(size.height, 18.0f);
-            
-            totalHeight = totalHeight + height;
-            return totalHeight + 20+ [PrettyTableViewCell
-                                      tableView:tableView neededHeightForIndexPath:indexPath];
+    else
+    {
+        NSArray *eventArray;
+        if (displayData == ListEvents) {
+            eventArray = [[NSWEventData sharedData] eventsForDate:[self.uniqueSingleDates objectAtIndex:indexPath.section]];
         }
-	
-    
-    return 0;
+        else if(displayData == ListFavourites)
+        {
+            eventArray = [[NSWEventData sharedData] eventsForDateInFavourites:[self.uniqueSingleDates objectAtIndex:indexPath.section]];
+        }
+        
+            if (indexPath.section < [self.uniqueSingleDates count]) {
+                CGFloat totalHeight = 0;
+                NSString *text = [[eventArray objectAtIndex:indexPath.row] objectForKey:@"Title"];
+                
+                CGSize constraint = CGSizeMake(320 - 70, 20000.0f);
+                
+                CGSize size = [text sizeWithFont:kEventListCellTitleFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+                
+                CGFloat height = MAX(size.height, 21.0f);
+                
+                totalHeight = totalHeight + height;
+                
+                text = [[eventArray objectAtIndex:indexPath.row] objectForKey:@"Location"];
+                
+                constraint = CGSizeMake(320 - 70, 20000.0f);
+                
+                size = [text sizeWithFont:kEventListCellDetailFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+                
+                height = MAX(size.height, 18.0f);
+                
+                totalHeight = totalHeight + height;
+                return totalHeight + 20+ [PrettyTableViewCell
+                                          tableView:tableView neededHeightForIndexPath:indexPath];
+            }
+        
+        
+        return 0;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -234,26 +337,32 @@
         cell.detailTextLabel.numberOfLines = 0;
     }
     
-    [cell prepareForTableView:tableView indexPath:indexPath];
-    if (indexPath.section < [self.uniqueSingleDates count])
+    [cell prepareForTableView:self.eventListView indexPath:indexPath];
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView)
     {
-        NSArray *eventsForDate;
-        if (displayData == ListEvents)
-        {
-            eventsForDate = [[NSWEventData sharedData] eventsForDate:[self.uniqueSingleDates objectAtIndex:indexPath.section]];
-        }
-        else if (displayData == ListFavourites)
-        {
-            eventsForDate = [[NSWEventData sharedData] eventsForDateInFavourites:[self.uniqueSingleDates objectAtIndex:indexPath.section]];
-        }
-        
-        cell.textLabel.text = [[eventsForDate objectAtIndex:indexPath.row] objectForKey:@"Title"];
-        cell.detailTextLabel.text = [[eventsForDate objectAtIndex:indexPath.row] objectForKey:@"Location"];
-        
-        
-        
+        cell.textLabel.text = [[searchResults objectAtIndex:indexPath.row] objectForKey:@"Title"];
+        cell.detailTextLabel.text = [[searchResults objectAtIndex:indexPath.row] objectForKey:@"Location"];
+        cell.backgroundColor = [UIColor whiteColor];
     }
-
+    else
+    {
+        if (indexPath.section < [self.uniqueSingleDates count])
+        {
+            NSArray *eventsForDate;
+            if (displayData == ListEvents)
+            {
+                eventsForDate = [[NSWEventData sharedData] eventsForDate:[self.uniqueSingleDates objectAtIndex:indexPath.section]];
+            }
+            else if (displayData == ListFavourites)
+            {
+                eventsForDate = [[NSWEventData sharedData] eventsForDateInFavourites:[self.uniqueSingleDates objectAtIndex:indexPath.section]];
+            }
+            
+            cell.textLabel.text = [[eventsForDate objectAtIndex:indexPath.row] objectForKey:@"Title"];
+            cell.detailTextLabel.text = [[eventsForDate objectAtIndex:indexPath.row] objectForKey:@"Location"];
+        }
+    }
     
     cell.textLabel.font = kEventListCellTitleFont;
     cell.detailTextLabel.font = kEventListCellDetailFont;
@@ -267,7 +376,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (displayData == ListEvents)
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+    {
+       [(EventDetailViewController_iPad*)[[[self.splitViewController.viewControllers lastObject] viewControllers]objectAtIndex:0] setEvent:[searchResults objectAtIndex:indexPath.row]];
+        
+    }
+    else if (displayData == ListEvents)
     {
         [(EventDetailViewController_iPad*)[[[self.splitViewController.viewControllers lastObject] viewControllers]objectAtIndex:0] setEvent:[[[NSWEventData sharedData] eventsForDate:[self.uniqueSingleDates objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row]];
     }
@@ -298,6 +413,15 @@
             NSLog(@"No option for: %d", [segmentedControl selectedSegmentIndex]);
     }
     [_eventListView reloadData];
+    
+    if(self.eventListView.numberOfSections == 0)
+    {
+        self.noEventsLabel.hidden = NO;
+    }
+    else
+    {
+        self.noEventsLabel.hidden = YES;
+    }
 }
 
 -(void)scrollToTodaysDate
@@ -371,7 +495,6 @@
 {
     
     [self reloadView];
-    [self.eventListView reloadData];
     [(EventDetailViewController_iPad*)[[[[self.splitViewController viewControllers] objectAtIndex:1] viewControllers] objectAtIndex:0] refreshDetailedEventData];
     
     
@@ -448,10 +571,30 @@
     [self chooseLocation:nil];
 }
 
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    NSPredicate *resultPredicate = [NSPredicate
+                                    predicateWithFormat:@"(Title contains[cd] %@ OR Description contains[cd] %@)",
+                                    searchText, searchText];
+    
+    searchResults = [[[NSWEventData sharedData] eventsForLocation] filteredArrayUsingPredicate:resultPredicate];
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString
+                               scope:nil];
+    
+    return YES;
+}
+
 - (void)viewDidUnload {
     [self setLocationSelectView:nil];
     [self setCurrentLocationButton:nil];
     [self setSegmentedControlBackground:nil];
+    [self setNoEventsLabel:nil];
+    [self setSearchBar:nil];
     [super viewDidUnload];
 }
 @end

@@ -19,7 +19,7 @@ static NSWEventData* _sharedData = nil;
     {  
         _sharedData = [[NSWEventData alloc] init];
         _sharedData.locationValues = [NSArray arrayWithObjects:@"TAS", @"QLD", @"NT", @"SA", @"WA", @"ACT", @"VIC", @"NSW", nil];
-        [_sharedData setCurrentLocationCounter:5];
+        [_sharedData setCurrentLocationCounter:0];
         _sharedData.latestVersionNumber = [NSNumber numberWithInt:-1];
         _sharedData.locationMeasurements = [NSMutableArray array];
         _sharedData.favouriteEvents = [NSMutableArray array];
@@ -200,6 +200,9 @@ static NSWEventData* _sharedData = nil;
             
             //[eventDict setObject:[NSString stringWithFormat:@"%@\n\nFor: %@ \n\nEvent Price: %@",[event child:@"EventDescription"].text,[event child:@"EventTargetAudience"].text,[event child:@"EventPayment"].text] forKey:@"Description"];
             
+            [eventDict setObject:@"" forKey:@"Latitude"];
+            [eventDict setObject:@"" forKey:@"Longitude"];
+            
             RXMLElement *venue = [event child:@"Venue"];
             //NSLog(@"Venue: %@", venue);
             if (venue != nil)
@@ -216,6 +219,19 @@ static NSWEventData* _sharedData = nil;
                 if ([event child:@"VenuePostcode"].text) {
                     [eventDict setObject:[NSString stringWithFormat:@"%@, %@", [eventDict objectForKey:@"Address"],[event child:@"VenuePostcode"].text]  forKey:@"Address"];
                 }
+                
+                if ([venue child:@"VenueLatitude"].text)
+                {
+                    [eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"VenueLatitude"].text] forKey:@"Latitude"];
+
+                }
+                if ([venue child:@"VenueLongitude"].text)
+                {
+
+                    [eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"VenueLongitude"].text] forKey:@"Longitude"];
+                }
+
+
                 //NSString *addressString = [NSString stringWithFormat:@"%@, %@, %@", [venue child:@"VenueStreetName"].text, [venue child:@"VenueSuburb"].text, [venue child:@"VenuePostcode"].text];
                 //[eventDict setObject:addressString forKey:@"Address"];
             }
@@ -248,8 +264,6 @@ static NSWEventData* _sharedData = nil;
             
             //[eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"EventWebsite"].text] forKey:@"Website"];
 
-            [eventDict setObject:@"" forKey:@"Latitude"];
-            [eventDict setObject:@"" forKey:@"Longitude"];
 
 
             [eventDict setObject:[NSString stringWithFormat:@"%@", [event child:@"EventState"].text] forKey:@"Region"];  //EXPLICIT STATE REGION DATA NEEDS TO BE INCLUDED IN THE DATA
@@ -503,28 +517,67 @@ static NSWEventData* _sharedData = nil;
     }
 }
 
+- (void)setMapCurrentLocationUsingKey:(NSString *)stateInfo {
+    NSString *mappedStateChoice;
+    
+    if ([stateInfo isEqualToString:@"Australian Capital Territory"])
+    {
+        mappedStateChoice = @"ACT";
+    }
+    if ([stateInfo isEqualToString:@"New South Wales"])
+    {
+        mappedStateChoice = @"NSW";
+    }
+    if ([stateInfo isEqualToString:@"Northern Territory"])
+    {
+        mappedStateChoice = @"NT";
+    }
+    if ([stateInfo isEqualToString:@"Queensland"])
+    {
+        mappedStateChoice = @"QLD";
+    }
+    if ([stateInfo isEqualToString:@"South Australia"])
+    {
+        mappedStateChoice = @"SA";
+    }
+    if ([stateInfo isEqualToString:@"Tasmania"])
+    {
+        mappedStateChoice = @"TAS";
+    }
+    if ([stateInfo isEqualToString:@"Victoria"])
+    {
+        mappedStateChoice = @"VIC";
+    }
+    if ([stateInfo isEqualToString:@"Western Australia"])
+    {
+        mappedStateChoice = @"WA";
+    }
+    
+    if (stateInfo == nil) {
+        mappedStateChoice = @"TAS";
+    }
+    
+    [self changeLocation:mappedStateChoice];
+}
+
 - (void)stopUpdatingLocation:(NSString *)state {
     
     //NSLog(@"Location %@", bestEffortAtLocation);
     [locationManager stopUpdatingLocation];
     locationManager.delegate = nil;
     
-    /* This needs to be updated to state information
     if (bestEffortAtLocation != nil) {
-        if (bestEffortAtLocation.coordinate.latitude < -42.00) {
-            [self changeLocation:@"Southern Tasmania"];
-        }
-        else {
-            if (bestEffortAtLocation.coordinate.longitude > 146.6 ) {
-                [self changeLocation:@"Northern Tasmania"];
+        CLGeocoder * geoCoder = [[CLGeocoder alloc] init];
+        [geoCoder reverseGeocodeLocation:bestEffortAtLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+            if ([placemarks objectAtIndex:0])
+            {
+                [self setMapCurrentLocationUsingKey:[[placemarks objectAtIndex:0] administrativeArea]];
             }
-            else {
-                [self changeLocation:@"North-western Tasmania"];
-            }
-        }
+        }];
+
     }
-     */
 }
+
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
 

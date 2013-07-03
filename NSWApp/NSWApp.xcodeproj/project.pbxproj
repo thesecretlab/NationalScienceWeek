@@ -36,6 +36,7 @@
 		7C3B18E815B83D3000A94F12 /* NSWNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B18E715B83D3000A94F12 /* NSWNetwork.m */; };
 		7C3B18ED15B8672700A94F12 /* MyLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B18EC15B8672600A94F12 /* MyLocation.m */; };
 		7C3B18F015B86CF200A94F12 /* EventListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B18EF15B86CF200A94F12 /* EventListCell.m */; };
+		7C412B291784A77F00FBAFEF /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C412B281784A77F00FBAFEF /* CustomSearchBar.m */; };
 		7C49806C15BCD066004A1AEF /* locationarrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C49806B15BCD066004A1AEF /* locationarrow.png */; };
 		7C49807015BCD441004A1AEF /* UACellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C49806F15BCD441004A1AEF /* UACellBackgroundView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7C55862715B51DC200068067 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C55862615B51DC200068067 /* UIKit.framework */; };
@@ -174,6 +175,8 @@
 		7C3B18EC15B8672600A94F12 /* MyLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLocation.m; sourceTree = "<group>"; };
 		7C3B18EE15B86CF100A94F12 /* EventListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListCell.h; sourceTree = "<group>"; };
 		7C3B18EF15B86CF200A94F12 /* EventListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListCell.m; sourceTree = "<group>"; };
+		7C412B271784A77F00FBAFEF /* CustomSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSearchBar.h; sourceTree = "<group>"; };
+		7C412B281784A77F00FBAFEF /* CustomSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSearchBar.m; sourceTree = "<group>"; };
 		7C49806B15BCD066004A1AEF /* locationarrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locationarrow.png; sourceTree = "<group>"; };
 		7C49806E15BCD441004A1AEF /* UACellBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UACellBackgroundView.h; sourceTree = "<group>"; };
 		7C49806F15BCD441004A1AEF /* UACellBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UACellBackgroundView.m; sourceTree = "<group>"; };
@@ -540,6 +543,8 @@
 				7C3B18EF15B86CF200A94F12 /* EventListCell.m */,
 				7C49806E15BCD441004A1AEF /* UACellBackgroundView.h */,
 				7C49806F15BCD441004A1AEF /* UACellBackgroundView.m */,
+				7C412B271784A77F00FBAFEF /* CustomSearchBar.h */,
+				7C412B281784A77F00FBAFEF /* CustomSearchBar.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -868,6 +873,7 @@
 				7CAE0A8F177B41C200258D93 /* CXMLNode_PrivateExtensions.m in Sources */,
 				7CAE0A90177B41C200258D93 /* CXMLNode_XPathExtensions.m in Sources */,
 				7CAE0A91177B41C200258D93 /* CTidy.m in Sources */,
+				7C412B291784A77F00FBAFEF /* CustomSearchBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

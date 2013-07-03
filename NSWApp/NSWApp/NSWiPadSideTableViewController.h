@@ -24,6 +24,7 @@ enum DisplayListPickerValue {
     CGRect listDefaultFrame;
     CGRect locationSelectDownFrame;
     CGRect locationSelectDefaultFrame;
+    NSArray *searchResults;
     
 }
 @property (weak, nonatomic) IBOutlet FUISegmentedControl *listSegmentedControl;
@@ -40,7 +41,9 @@ enum DisplayListPickerValue {
 @property (weak, nonatomic) IBOutlet UILabel *locationSelectTitleLabel;
 
 
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIButton *currentLocationButton;
+@property (weak, nonatomic) IBOutlet UILabel *noEventsLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *segmentedControlBackground;
 @property (weak, nonatomic) IBOutlet UITableView *eventListView;

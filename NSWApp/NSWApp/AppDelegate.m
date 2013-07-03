@@ -32,8 +32,9 @@
             });
         }];
            
-        [[NSWEventData sharedData] checkUsersLocation];
     }
+    [[NSWEventData sharedData] checkUsersLocation];
+
     [self keepUpAppearances];
 
     return YES;
@@ -96,6 +97,7 @@
     NSLog(@"HOW MANY? ");
     [[NSWEventData sharedData] loadFromFile];
     [[NSWNetwork sharedNetwork] checkShouldRevertToPreBakeFailsafe:^{} errorHandler:^(NSError *error) {}];
+    //THIS CURRENTLY CHECKS THE REVERT FILE FIRST THEN CHAINS TO REAL DATA
     //[[NSWNetwork sharedNetwork] checkLatestHeader:^{} errorHandler:^(NSError *error) {}];
     //[[NSWNetwork sharedNetwork] downloadEventXMLWithCompletionHandler:^{} errorHandler:^(NSError *error) {}];
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.

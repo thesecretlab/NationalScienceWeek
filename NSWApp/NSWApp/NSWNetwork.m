@@ -140,6 +140,9 @@ static NSWNetwork* _sharedNetwork = nil;
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error);
         errorHandler(error);
+        
+        //Failsafe for failsafe. (This is here incase the file dissappears so the app can continue downloading.)
+        [self checkLatestHeader:^{} errorHandler:^(NSError *error) {}];
     }]];
 }
 
