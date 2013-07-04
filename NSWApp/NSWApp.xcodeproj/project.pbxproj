@@ -714,6 +714,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7C55864B15B51DC200068067 /* Build configuration list for PBXNativeTarget "NSWApp" */;
 			buildPhases = (
+				683AD3C517851D0400219C26 /* Version Numbering */,
 				7C55861E15B51DC200068067 /* Sources */,
 				7C55861F15B51DC200068067 /* Frameworks */,
 				7C55862015B51DC200068067 /* Resources */,
@@ -802,6 +803,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		683AD3C517851D0400219C26 /* Version Numbering */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Version Numbering";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n#\ngit=`sh /etc/profile; which git`\nversion_number=\"1.0\"\ncount=`git rev-parse --short HEAD`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version_number.$count\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\necho \"Set version number to $version_number.$count\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7C55861E15B51DC200068067 /* Sources */ = {
