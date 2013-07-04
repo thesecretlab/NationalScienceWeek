@@ -17,8 +17,9 @@
 				<string>Icon.png</string>
 				<string>Default.png</string>
 				<string>Default@2x.png</string>
-				<string>Icon-iPad.png</string>
-				<string>Icon-iPad@2x.png</string>
+				<string>Icon-72.png</string>
+				<string>Icon-72@2x.png</string>
+				<string>Icon@2x.png</string>
 			</array>
 		</dict>
 	</dict>
