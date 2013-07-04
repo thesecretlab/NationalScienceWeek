@@ -69,6 +69,21 @@
 {
     
     EKEventStore *eventStore = [[EKEventStore alloc] init];
+
+    __block BOOL accessGranted = NO;
+    
+    if([eventStore respondsToSelector:@selector(requestAccessToEntityType:completion:)]) {
+        dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+        [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+            accessGranted = granted;
+            dispatch_semaphore_signal(sema);
+        }];
+        dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+    } else { // we're on iOS 5 or older
+        accessGranted = YES;
+    }
+    
+    
     
     EKEvent *newEvent  = [EKEvent eventWithEventStore:eventStore];
     newEvent.title     = [event objectForKey:@"Title"];
