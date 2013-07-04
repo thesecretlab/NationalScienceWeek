@@ -38,6 +38,9 @@
 {
     //self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor midnightBlueColor];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onKeyboardHide:) name:UIKeyboardWillHideNotification object:nil];
+
+    
     self.noEventsLabel.font = kLargeLabelFont;
     
     [[NSWEventData sharedData] setDelegate:self];
@@ -114,7 +117,8 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    
+    [self updateTableViewAndBackgroundFrames];
+
     self.segmentedControlBackground.backgroundColor = kGlobalNavBarColour;
     self.listSegmentedControl.selectedColor = kGlobalNavBarItemColourHighlighted;
     self.listSegmentedControl.deselectedColor = kGlobalNavBarItemColour;
@@ -124,6 +128,11 @@
     [self.navigationController.navigationBar configureFlatNavigationBarWithColor:kGlobalNavBarColour];
 
     [self.navigationController.navigationBar configureFlatNavigationBarWithColor:kGlobalNavBarColour];
+}
+
+-(void)onKeyboardHide:(NSNotification *)notification
+{
+   // [self updateTableViewAndBackgroundFrames];
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
@@ -525,6 +534,8 @@
 
 - (void)reloadView
 {
+    [self updateTableViewAndBackgroundFrames];
+
     [_currentLocationButton setTitle:[NSString stringWithFormat:@"%@ | ▼", [[NSWEventData sharedData] currentLocationAcronym]] forState:UIControlStateNormal];
     [self.eventListView reloadData];
     [self updateListNoEventsLabel];
@@ -630,12 +641,26 @@ shouldReloadTableForSearchString:(NSString *)searchString
     return YES;
 }
 
+- (void)updateTableViewAndBackgroundFrames
+{
+    self.eventListView.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.x+self.segmentedControlBackground.frame.size.height, self.view.frame.size.width, self.view.frame.size.height-44); //Minus Nav Bar Height (its including it for some reason.. weird master view thing I suspect
+    self.tableViewBackgroundImage.frame = self.eventListView.frame;
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [self updateTableViewAndBackgroundFrames];
+    
+    //[self resizeScrollViewContentSize];
+}
+
 - (void)viewDidUnload {
     [self setLocationSelectView:nil];
     [self setCurrentLocationButton:nil];
     [self setSegmentedControlBackground:nil];
     [self setNoEventsLabel:nil];
     [self setSearchBar:nil];
+    [self setTableViewBackgroundImage:nil];
     [super viewDidUnload];
 }
 @end

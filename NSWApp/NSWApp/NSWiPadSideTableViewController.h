@@ -27,6 +27,7 @@ enum DisplayListPickerValue {
     NSArray *searchResults;
     
 }
+@property (weak, nonatomic) IBOutlet UIImageView *tableViewBackgroundImage;
 @property (weak, nonatomic) IBOutlet FUISegmentedControl *listSegmentedControl;
 @property (weak, nonatomic) IBOutlet UIView *locationSelectView;
 @property (weak, nonatomic) IBOutlet UIView *locationSelectHeaderView;

@@ -105,6 +105,12 @@
     controller.eventStore = eventStore;
     controller.editViewDelegate = self;
     controller.event = newEvent;
+    
+    NSDictionary *barAppearanceDict = @{UITextAttributeFont : kGlobalNavBarFont,UITextAttributeTextShadowColor : [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8], UITextAttributeTextColor : [UIColor whiteColor], UITextAttributeTextShadowOffset : [NSValue valueWithUIOffset:UIOffsetMake(0, -1)]};
+    
+    [controller.navigationBar setTitleTextAttributes:barAppearanceDict];
+    
+    
     [controller.navigationBar configureFlatNavigationBarWithColor:kGlobalNavBarColour];
     [self presentModalViewController: controller animated:YES];
     

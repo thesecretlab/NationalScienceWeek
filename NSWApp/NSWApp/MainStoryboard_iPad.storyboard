@@ -303,15 +303,15 @@
             <objects>
                 <viewController id="PdL-yl-Q5E" customClass="NSWiPadSideTableViewController" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="niL-ng-gJz">
-                        <rect key="frame" x="0.0" y="64" width="320" height="739"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <rect key="frame" x="0.0" y="44" width="320" height="759"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="backgroundgradient.png" id="tME-TI-E7e">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="739"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="759"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Cgd-UO-8im">
-                                <rect key="frame" x="0.0" y="42" width="320" height="697"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="715"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="Filter Events" id="n2U-K7-Iam">
@@ -545,6 +545,7 @@
                         <outlet property="searchBar" destination="n2U-K7-Iam" id="SYg-7Y-8b9"/>
                         <outlet property="searchDisplayController" destination="gLR-Xm-RKh" id="HdA-G1-Ham"/>
                         <outlet property="segmentedControlBackground" destination="h2y-WZ-ORv" id="cSt-t9-dTo"/>
+                        <outlet property="tableViewBackgroundImage" destination="tME-TI-E7e" id="GOX-MY-VNt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dmy-Nh-AH0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -564,6 +565,7 @@
         <scene sceneID="M3K-Ec-o2b">
             <objects>
                 <navigationController id="yWC-0r-E99" sceneMemberID="viewController">
+                    <nil key="simulatedStatusBarMetrics"/>
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="XHh-F2-j9T">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
