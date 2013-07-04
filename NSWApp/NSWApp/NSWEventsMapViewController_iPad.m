@@ -77,6 +77,7 @@
 
 - (IBAction)findClosestEvent:(id)sender
 {
+    
     float shortestDistance = MAXFLOAT;
     id<MKAnnotation> foundAnnotation;
     

@@ -84,6 +84,7 @@
 		7C9534A5176ECD7500A7C05B /* NSWInfoViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9534A4176ECD7500A7C05B /* NSWInfoViewController_iPad.m */; };
 		7C987EF315B8EAD200302F71 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C987EF015B8EACA00302F71 /* CoreLocation.framework */; };
 		7CA5D21617853B9800BA9018 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA5D21417853B9800BA9018 /* libTestFlight.a */; };
+		7CA5D2191785DA9100BA9018 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA5D2181785DA9100BA9018 /* MKMapView+ZoomLevel.m */; };
 		7CAE0A6C177B322E00258D93 /* scienceweek-events.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7CAE0A6B177B322E00258D93 /* scienceweek-events.xml */; };
 		7CAE0A87177B41C200258D93 /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CAE0A70177B41C200258D93 /* CXMLDocument_CreationExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7CAE0A88177B41C200258D93 /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CAE0A72177B41C200258D93 /* CXMLNode_CreationExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -253,6 +254,8 @@
 		7C987EF015B8EACA00302F71 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7CA5D21417853B9800BA9018 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		7CA5D21517853B9800BA9018 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		7CA5D2171785DA9000BA9018 /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
+		7CA5D2181785DA9100BA9018 /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
 		7CAE0A6B177B322E00258D93 /* scienceweek-events.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "scienceweek-events.xml"; sourceTree = "<group>"; };
 		7CAE0A6F177B41C200258D93 /* CXMLDocument_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument_CreationExtensions.h; sourceTree = "<group>"; };
 		7CAE0A70177B41C200258D93 /* CXMLDocument_CreationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLDocument_CreationExtensions.m; sourceTree = "<group>"; };
@@ -490,6 +493,8 @@
 				7C55862F15B51DC200068067 /* InfoPlist.strings */,
 				7C55863215B51DC200068067 /* main.m */,
 				7C55863415B51DC200068067 /* NSWApp-Prefix.pch */,
+				7CA5D2171785DA9000BA9018 /* MKMapView+ZoomLevel.h */,
+				7CA5D2181785DA9100BA9018 /* MKMapView+ZoomLevel.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -948,6 +953,7 @@
 				7CAE0A90177B41C200258D93 /* CXMLNode_XPathExtensions.m in Sources */,
 				7CAE0A91177B41C200258D93 /* CTidy.m in Sources */,
 				7C412B291784A77F00FBAFEF /* CustomSearchBar.m in Sources */,
+				7CA5D2191785DA9100BA9018 /* MKMapView+ZoomLevel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

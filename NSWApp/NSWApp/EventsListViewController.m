@@ -297,6 +297,9 @@
     cell.detailTextLabel.font = kEventListCellDetailFont;
     cell.borderColor = kEventCellBorderColor;
     cell.cornerRadius = kEventCellCornerRadius;
+    cell.selectionGradientStartColor = [UIColor colorWithRed:0 green:30/255.0 blue:150/255.0 alpha:1];
+    cell.selectionGradientEndColor = [UIColor colorWithRed:0 green:30/255.0 blue:150/255.0 alpha:1];
+
 
     return cell;
 }

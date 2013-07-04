@@ -15,6 +15,7 @@
 #import "UINavigationBar+FlatUI.h"
 #import "NSWAppAppearanceConfig.h"
 #import "UIBarButtonItem+FlatUI.h"
+#import "MKMapView+ZoomLevel.h"
 @interface EventDetailViewController ()
 
 @end
@@ -462,6 +463,7 @@
     return nil;    
 }
 
+/*
 - (void) zoomToAnnotationsBounds {
     
     NSArray *annotations = self.eventMapView.annotations;
@@ -505,7 +507,14 @@
     
     [self setMapRegionForMinLat:minLatitude minLong:minLongitude maxLat:maxLatitude maxLong:maxLongitude];
 }
-
+*/
+-(void)zoomToAnnotationsBounds
+{
+    
+    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake([[event objectForKey:@"Latitude"] doubleValue], [[event objectForKey:@"Longitude"] doubleValue]);
+    
+    [self.eventMapView setCenterCoordinate:coord zoomLevel:14 animated:NO];
+}
 -(void) setMapRegionForMinLat:(double)minLatitude minLong:(double)minLongitude maxLat:(double)maxLatitude maxLong:(double)maxLongitude {
     
     MKCoordinateRegion region;

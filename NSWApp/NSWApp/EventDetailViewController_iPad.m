@@ -13,7 +13,7 @@
 #import "NSWEventData.h"
 #import "UIBarButtonItem+FlatUI.h"
 #import "MyLocation.h"
-
+#import "MKMapView+ZoomLevel.h"
 @interface EventDetailViewController_iPad ()
 
 @end
@@ -229,6 +229,9 @@
         
         self.eventMapView.layer.cornerRadius = kDetailCornerRadius;
         
+        //MKCoordinateRegion worldRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(-28.471555, 133.491902), MKCoordinateSpanMake(60.335858, 100.414989));
+        //self.eventMapView.region = worldRegion;
+        
         [self plotEvent];
         [self zoomToAnnotationsBounds];
     }
@@ -338,7 +341,6 @@
 
 - (void)plotEvent{
     
-    
     for (id<MKAnnotation> annotation in self.eventMapView.annotations) {
         [self.eventMapView removeAnnotation:annotation];
     }
@@ -381,6 +383,7 @@
     return nil;
 }
 
+/*
 - (void) zoomToAnnotationsBounds {
     
     NSArray *annotations = self.eventMapView.annotations;
@@ -402,7 +405,7 @@
     // See function below
     [self setMapRegionForMinLat:minLatitude minLong:minLongitude maxLat:maxLatitude maxLong:maxLongitude];
     
-    UIEdgeInsets mapPadding = UIEdgeInsetsMake(60.0, 10.0, 0.0, 10.0);
+    UIEdgeInsets mapPadding = UIEdgeInsetsMake(60.0, 60.0, 60.0, 60.0);
     CLLocationCoordinate2D relativeFromCoord = [self.eventMapView convertPoint:CGPointMake(0, 0) toCoordinateFromView:self.eventMapView];
     
     // Calculate the additional lat/long required at the current zoom level to add the padding
@@ -423,6 +426,15 @@
     minLongitude = minLongitude - longitudeSpanToBeAddedToLeft;
     
     [self setMapRegionForMinLat:minLatitude minLong:minLongitude maxLat:maxLatitude maxLong:maxLongitude];
+}
+ */
+
+-(void)zoomToAnnotationsBounds
+{
+   
+    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake([[_event objectForKey:@"Latitude"] doubleValue], [[_event objectForKey:@"Longitude"] doubleValue]);
+    
+    [self.eventMapView setCenterCoordinate:coord zoomLevel:14 animated:NO];
 }
 
 -(void) setMapRegionForMinLat:(double)minLatitude minLong:(double)minLongitude maxLat:(double)maxLatitude maxLong:(double)maxLongitude {

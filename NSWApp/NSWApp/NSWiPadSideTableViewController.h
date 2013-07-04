@@ -25,6 +25,7 @@ enum DisplayListPickerValue {
     CGRect locationSelectDownFrame;
     CGRect locationSelectDefaultFrame;
     NSArray *searchResults;
+    BOOL trayOut;
     
 }
 @property (weak, nonatomic) IBOutlet UIImageView *tableViewBackgroundImage;

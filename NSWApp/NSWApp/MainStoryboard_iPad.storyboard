@@ -39,7 +39,7 @@
                                                         <rect key="frame" x="0.0" y="1" width="140" height="140"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                                         <connections>
-                                                            <outlet property="delegate" destination="qUv-YJ-6of" id="N7I-kR-6xF"/>
+                                                            <outlet property="delegate" destination="qUv-YJ-6of" id="5YG-2m-IgR"/>
                                                         </connections>
                                                     </mapView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="i8a-kL-zPo">
@@ -846,6 +846,7 @@
                 <relationship kind="outlet" name="noEventsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
                 <relationship kind="outlet" name="segmentedControlBackground" candidateClass="UIView"/>
+                <relationship kind="outlet" name="tableViewBackgroundImage" candidateClass="UIImageView"/>
             </relationships>
         </class>
         <class className="UACellBackgroundView" superclassName="UIView">

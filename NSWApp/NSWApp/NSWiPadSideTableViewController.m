@@ -36,6 +36,7 @@
 
 - (void)viewDidLoad
 {
+    trayOut = NO;
     //self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor midnightBlueColor];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onKeyboardHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -117,6 +118,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    
     [self updateTableViewAndBackgroundFrames];
 
     self.segmentedControlBackground.backgroundColor = kGlobalNavBarColour;
@@ -422,7 +424,9 @@
     cell.detailTextLabel.font = kEventListCellDetailFont;
     cell.borderColor = kEventCellBorderColor;
     cell.cornerRadius = kEventCellCornerRadius;
-    
+    cell.selectionGradientStartColor = [UIColor colorWithRed:0 green:30/255.0 blue:150/255.0 alpha:1];
+    cell.selectionGradientEndColor = [UIColor colorWithRed:0 green:30/255.0 blue:150/255.0 alpha:1];
+
     return cell;
 }
 
@@ -534,8 +538,8 @@
 
 - (void)reloadView
 {
-    [self updateTableViewAndBackgroundFrames];
 
+    [self updateTableViewAndBackgroundFrames];
     [_currentLocationButton setTitle:[NSString stringWithFormat:@"%@ | ▼", [[NSWEventData sharedData] currentLocationAcronym]] forState:UIControlStateNormal];
     [self.eventListView reloadData];
     [self updateListNoEventsLabel];
@@ -555,26 +559,32 @@
 {
     
     //[PopoverView showPopoverAtPoint:CGPointMake(sender.width, 0) inView:self.view withTitle:@"Choose Location" withStringArray:[NSArray arrayWithObjects:@"TAS", @"QLD", @"NT", @"SA", @"WA", @"ACT", @"VIC", @"NSW", nil] delegate:self];
-    if (_eventListView.frame.origin.y >44) {
+    if (trayOut) {
         
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
             _eventListView.frame = listDefaultFrame;
             self.locationSelectView.frame = locationSelectDefaultFrame;
-        } completion:nil];
+        } completion:^(BOOL finished) {
+            [self updateTableViewAndBackgroundFrames];
+        }];
         [sender setTitle:[sender.titleLabel.text stringByReplacingOccurrencesOfString:@"▲" withString:@"▼"] forState:UIControlStateNormal];
         
         _eventListView.userInteractionEnabled = YES;
+        trayOut = NO;
     }
     else
     {
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
             _eventListView.frame = listDownFrame;
             self.locationSelectView.frame = locationSelectDownFrame;
-        } completion:nil];
+        } completion:^(BOOL finished)
+        {
+            [self updateTableViewAndBackgroundFrames];
+        }];
         
         [sender setTitle:[sender.titleLabel.text stringByReplacingOccurrencesOfString:@"▼" withString:@"▲"] forState:UIControlStateNormal];
         _eventListView.userInteractionEnabled = NO;
-
+        trayOut = YES;
     }
     
     
@@ -643,15 +653,23 @@ shouldReloadTableForSearchString:(NSString *)searchString
 
 - (void)updateTableViewAndBackgroundFrames
 {
-    self.eventListView.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.x+self.segmentedControlBackground.frame.size.height, self.view.frame.size.width, self.view.frame.size.height-44); //Minus Nav Bar Height (its including it for some reason.. weird master view thing I suspect
-    self.tableViewBackgroundImage.frame = self.eventListView.frame;
+    
+    if (!trayOut) {
+        self.eventListView.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.x+self.segmentedControlBackground.frame.size.height, self.view.frame.size.width, self.view.frame.size.height-44); //Minus Nav Bar Height (its including it for some reason.. weird master view thing I suspect
+        self.tableViewBackgroundImage.frame = self.eventListView.frame;
+    }
+    else{
+        self.tableViewBackgroundImage.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.x+self.segmentedControlBackground.frame.size.height, self.view.frame.size.width, self.view.frame.size.height-44);        
+    }
+    
+
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
+
     [self updateTableViewAndBackgroundFrames];
     
-    //[self resizeScrollViewContentSize];
 }
 
 - (void)viewDidUnload {
