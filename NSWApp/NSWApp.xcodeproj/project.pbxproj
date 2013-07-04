@@ -180,7 +180,7 @@
 		7C49806B15BCD066004A1AEF /* locationarrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locationarrow.png; sourceTree = "<group>"; };
 		7C49806E15BCD441004A1AEF /* UACellBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UACellBackgroundView.h; sourceTree = "<group>"; };
 		7C49806F15BCD441004A1AEF /* UACellBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UACellBackgroundView.m; sourceTree = "<group>"; };
-		7C55862215B51DC200068067 /* Science Week.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Science Week.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C55862215B51DC200068067 /* ScienceWeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScienceWeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C55862615B51DC200068067 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7C55862815B51DC200068067 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7C55862A15B51DC200068067 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -402,7 +402,7 @@
 		7C55862315B51DC200068067 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7C55862215B51DC200068067 /* Science Week.app */,
+				7C55862215B51DC200068067 /* ScienceWeek.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -724,7 +724,7 @@
 			);
 			name = NSWApp;
 			productName = NSWApp;
-			productReference = 7C55862215B51DC200068067 /* Science Week.app */;
+			productReference = 7C55862215B51DC200068067 /* ScienceWeek.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -932,7 +932,7 @@
 				HEADER_SEARCH_PATHS = "\"$(SDK_DIR)\"/usr/include/libxml2";
 				INFOPLIST_FILE = "NSWApp/NSWApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				PRODUCT_NAME = "Science Week";
+				PRODUCT_NAME = ScienceWeek;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -1002,7 +1002,7 @@
 				HEADER_SEARCH_PATHS = "\"$(SDK_DIR)\"/usr/include/libxml2";
 				INFOPLIST_FILE = "NSWApp/NSWApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				PRODUCT_NAME = "Science Week";
+				PRODUCT_NAME = ScienceWeek;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -1018,7 +1018,7 @@
 				HEADER_SEARCH_PATHS = "\"$(SDK_DIR)\"/usr/include/libxml2";
 				INFOPLIST_FILE = "NSWApp/NSWApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				PRODUCT_NAME = "Science Week";
+				PRODUCT_NAME = ScienceWeek;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
