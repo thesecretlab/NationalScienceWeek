@@ -19,7 +19,7 @@
 #import "NSWAppAppearanceConfig.h"
 #import "PrettyTableViewCell.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "UIImage+FlatUI.h"
 @interface EventsListViewController ()
 
 @end
@@ -43,19 +43,32 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    self.uniqueSingleDates = [[NSWEventData sharedData] uniqueSingleDates];
     
-    if ([[[NSWEventData sharedData] multiDateEvents] count] > 0) {
-        return [self.uniqueSingleDates count]+1;
-
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+    {
+        return 1;
     }
-    else {
-        return [self.uniqueSingleDates count];
+    else
+    {
+        self.uniqueSingleDates = [[NSWEventData sharedData] uniqueSingleDates];
+        
+        if ([[[NSWEventData sharedData] multiDateEvents] count] > 0) {
+            return [self.uniqueSingleDates count]+1;
+
+        }
+        else {
+            return [self.uniqueSingleDates count];
+        }
     }
 }
 
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+    {
+        return nil;
+    }
     
     UIView *customTitleView = [ [UIView alloc] initWithFrame:CGRectMake(10, 0, 300, 44)];
     
@@ -107,7 +120,14 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 44; 
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+    {
+        return 0;
+    }
+    else
+    {
+        return 44;
+    }
 }
 /*
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -128,6 +148,11 @@
 */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+    {
+        return [searchResults count];
+    }
+    
     if (section < [self.uniqueSingleDates count]) {
         return [[[NSWEventData sharedData] eventsForDate:[self.uniqueSingleDates objectAtIndex:section]]count];
     }
@@ -141,7 +166,34 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (tableView == eventListTableView) 
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+    {
+        CGFloat totalHeight = 0;
+        NSString *text = [[searchResults objectAtIndex:indexPath.row] objectForKey:@"Title"];
+        
+        CGSize constraint = CGSizeMake(320 - 70, 20000.0f);
+        
+        CGSize size = [text sizeWithFont:kEventListCellTitleFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+        
+        CGFloat height = MAX(size.height, 21.0f);
+        
+        totalHeight = totalHeight + height;
+        
+        text = [[searchResults objectAtIndex:indexPath.row] objectForKey:@"Location"];
+        
+        constraint = CGSizeMake(320 - 70, 20000.0f);
+        
+        size = [text sizeWithFont:kEventListCellDetailFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+        
+        height = MAX(size.height, 18.0f);
+        
+        totalHeight = totalHeight + height;
+        return totalHeight + 20+ [PrettyTableViewCell
+                                  tableView:tableView neededHeightForIndexPath:indexPath];
+    }
+    
+    
+	if (tableView == eventListTableView)
 	{
 
         
@@ -212,25 +264,35 @@
         cell.detailTextLabel.numberOfLines = 0;
     }
     
-    [cell prepareForTableView:tableView indexPath:indexPath];
-    if (indexPath.section < [self.uniqueSingleDates count])
+    [cell prepareForTableView:self.eventListTableView indexPath:indexPath];
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView)
     {
-        
-        NSArray *eventsForDate = [[NSWEventData sharedData] eventsForDate:[self.uniqueSingleDates objectAtIndex:indexPath.section]];
-        
-        cell.textLabel.text = [[eventsForDate objectAtIndex:indexPath.row] objectForKey:@"Title"]; 
-        cell.detailTextLabel.text = [[eventsForDate objectAtIndex:indexPath.row] objectForKey:@"Location"];
-        
+        cell.textLabel.text = [[searchResults objectAtIndex:indexPath.row] objectForKey:@"Title"];
+        cell.detailTextLabel.text = [[searchResults objectAtIndex:indexPath.row] objectForKey:@"Location"];
+        cell.backgroundColor = [UIColor whiteColor];
+        cell.position = PrettyTableViewCellPositionAlone; //Sets it to be alone. FOREVERALONE
+    }
+    else
+    {
+        if (indexPath.section < [self.uniqueSingleDates count])
+        {
+            
+            NSArray *eventsForDate = [[NSWEventData sharedData] eventsForDate:[self.uniqueSingleDates objectAtIndex:indexPath.section]];
+            
+            cell.textLabel.text = [[eventsForDate objectAtIndex:indexPath.row] objectForKey:@"Title"]; 
+            cell.detailTextLabel.text = [[eventsForDate objectAtIndex:indexPath.row] objectForKey:@"Location"];
+            
 
+            
+        }
+        else 
+        {
+            cell.textLabel.text = [[[[NSWEventData sharedData] multiDateEvents] objectAtIndex:indexPath.row] objectForKey:@"Title"]; 
+            cell.detailTextLabel.text = [[[[NSWEventData sharedData] multiDateEvents] objectAtIndex:indexPath.row] objectForKey:@"Location"];
         
+        }
     }
-    else 
-    {
-        cell.textLabel.text = [[[[NSWEventData sharedData] multiDateEvents] objectAtIndex:indexPath.row] objectForKey:@"Title"]; 
-        cell.detailTextLabel.text = [[[[NSWEventData sharedData] multiDateEvents] objectAtIndex:indexPath.row] objectForKey:@"Location"];
-    
-    }
-    
     cell.textLabel.font = kEventListCellTitleFont;
     cell.detailTextLabel.font = kEventListCellDetailFont;
     cell.borderColor = kEventCellBorderColor;
@@ -240,13 +302,31 @@
 }
 - (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath: (NSIndexPath *) indexPath
 {
-    [self performSegueWithIdentifier:@"PushToDetail" sender:[tableView cellForRowAtIndexPath:indexPath]];
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+    {
+        [self performSegueWithIdentifier:@"PushFromSearch" sender:[tableView cellForRowAtIndexPath:indexPath]];
+
+        
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"PushToDetail" sender:[tableView cellForRowAtIndexPath:indexPath]];
+    }
 
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSLog(@"Segue %@, sender %@", segue.identifier, sender);
+    
+    if ([segue.identifier isEqualToString:@"PushFromSearch"])
+    {
+        
+        NSIndexPath *indexPath = [self.searchDisplayController.searchResultsTableView indexPathForCell:sender];
+
+        [(EventDetailViewController*)segue.destinationViewController setEvent:[searchResults objectAtIndex:indexPath.row]];
+    }
     if ([segue.identifier isEqualToString:@"PushToDetail"]) {
 
     NSIndexPath *indexPath = [self.eventListTableView indexPathForCell:sender];
@@ -482,9 +562,25 @@
     
     //_locationACTButton
     
+    
+    for(UIView *subView in self.searchBar.subviews) {
+        if ([subView isKindOfClass:[UITextField class]]) {
+            UITextField *searchField = (UITextField *)subView;
+            searchField.font = kGlobalNavBarItemFont;
+        }
+    }
+    
+    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6],UITextAttributeTextShadowColor,[NSValue valueWithUIOffset:UIOffsetMake(0, -1)],UITextAttributeTextShadowOffset, kGlobalNavBarItemFont, UITextAttributeFont, nil] forState:UIControlStateNormal];
+    
+    self.searchBar.backgroundColor = kGlobalNavBarColour;
+    [[[self.searchBar subviews] objectAtIndex:0] setAlpha:0.0];
+    self.searchBar.tintColor = kGlobalNavBarItemColour;
+    
+    
     self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Events" image:nil tag:0];
     [[self tabBarItem] setFinishedSelectedImage:[UIImage imageNamed:@"calendaricon.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"calendaricon.png"]];
     [self.eventListTableView reloadData];
+    [self scrollToTodaysDate];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -508,6 +604,7 @@
     [self setLocationQLDButton:nil];
     [self setLocationSelectHeaderView:nil];
     [self setLocationSelectTitleLabel:nil];
+    [self setSearchBar:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -516,6 +613,42 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    // only show the status bar’s cancel button while in edit mode sbar (UISearchBar)
+    searchBar.showsCancelButton = YES;
+    searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
+    UIColor *desiredColor = [UIColor colorWithRed:212.0/255.0 green:237.0/255.0 blue:187.0/255.0 alpha:1.0];
+    
+    UIImage *normalBackgroundImage = [UIImage buttonImageWithColor:kGlobalNavBarItemColour
+                                                      cornerRadius:kDetailCornerRadius
+                                                       shadowColor:[UIColor grayColor]
+                                                      shadowInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
+    UIImage *highlightedBackgroundImage = [UIImage buttonImageWithColor:kGlobalNavBarItemColourHighlighted
+                                                           cornerRadius:kDetailCornerRadius
+                                                            shadowColor:[UIColor grayColor]
+                                                           shadowInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
+    
+    
+    for (UIView *subView in searchBar.subviews){
+        if([subView isKindOfClass:[UIButton class]]){
+            NSLog(@"this is button type");
+            
+            [(UIButton *)subView setBackgroundImage:normalBackgroundImage forState:UIControlStateNormal];
+            [(UIButton *)subView setBackgroundImage:highlightedBackgroundImage forState:UIControlStateHighlighted];
+            
+        }
+    }
+}
+
+
+
+
+
 
 - (void)reloadView
 {
@@ -552,6 +685,24 @@
         default:
             NSLog(@"No option for: %d", [segmentedControl selectedSegmentIndex]);
     }
+}
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    NSPredicate *resultPredicate = [NSPredicate
+                                    predicateWithFormat:@"(Title contains[cd] %@ OR Description contains[cd] %@)",
+                                    searchText, searchText];
+    
+    searchResults = [[[NSWEventData sharedData] eventsForLocation] filteredArrayUsingPredicate:resultPredicate];
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString
+                               scope:nil];
+    
+    return YES;
 }
 
 

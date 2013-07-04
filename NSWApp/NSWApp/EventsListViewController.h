@@ -17,6 +17,9 @@
     CGRect listDefaultFrame;
     CGRect locationSelectDownFrame;
     CGRect locationSelectDefaultFrame;
+    
+    NSArray *searchResults;
+
 }
 @property (weak, nonatomic) IBOutlet UITableView *eventListTableView;
 @property (nonatomic, strong) NSArray* uniqueSingleDates;
@@ -38,6 +41,7 @@
 @property (weak, nonatomic) IBOutlet FUIButton *locationQLDButton;
 @property (weak, nonatomic) IBOutlet UILabel *locationSelectTitleLabel;
 
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 - (IBAction)nextLocationPressed:(id)sender;
 - (IBAction)previousLocationPressed:(id)sender;
