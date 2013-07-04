@@ -238,8 +238,8 @@
         self.openInMapsButton.hidden = YES;
     }
     
-    self.labelScrollView.contentSize = CGSizeMake(self.labelScrollView.frame.size.width, currentLayoutHeight+20);
-    
+    currentLayoutHeight = currentLayoutHeight +29; //Top Label buffer
+    [self resizeScrollViewContentSize];
     [self checkFavouriteButton];
     
 }
@@ -440,6 +440,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     
+    self.labelScrollView.frame = self.view.frame;
 
     [self.navigationController.navigationBar configureFlatNavigationBarWithColor:kGlobalNavBarColour];
     
@@ -534,6 +535,26 @@
     [[UIApplication sharedApplication] openURL:websiteToOpen];
     
 }
+
+- (void)resizeScrollViewContentSize
+{
+    if (currentLayoutHeight > self.labelScrollView.frame.size.height)
+    {
+        self.labelScrollView.contentSize = CGSizeMake(self.labelScrollView.frame.size.width, currentLayoutHeight);
+    }
+    else
+    {
+        self.labelScrollView.contentSize = CGSizeMake(self.labelScrollView.frame.size.width, self.labelScrollView.frame.size.height+1);
+    }
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    self.labelScrollView.frame = self.view.frame;
+    
+    [self resizeScrollViewContentSize];
+}
+
 
 - (void)viewDidUnload {
     [self setNoEventImageView:nil];

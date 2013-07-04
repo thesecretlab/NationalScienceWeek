@@ -21,7 +21,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search events" id="n0B-FL-Ugu">
+                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Filter events" id="n0B-FL-Ugu">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -281,7 +281,7 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="OQZ-1Y-Xnp">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" title="Tasmania | ▼" id="pFA-Tr-env">
+                        <barButtonItem key="leftBarButtonItem" title="TAS | ▼" id="pFA-Tr-env">
                             <connections>
                                 <action selector="chooseLocation:" destination="2" id="k5c-jH-QMs"/>
                             </connections>
@@ -333,7 +333,7 @@
             </objects>
             <point key="canvasLocation" x="1059" y="-147"/>
         </scene>
-        <!--Event Detail View Controller - Event Detail-->
+        <!--Event Detail View Controller - Event-->
         <scene sceneID="Ts9-vZ-uLf">
             <objects>
                 <viewController storyboardIdentifier="EventDetail" id="GGA-Tb-P3v" customClass="EventDetailViewController" sceneMemberID="viewController">
@@ -603,7 +603,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Event Detail" id="QKe-1J-Zs2">
+                    <navigationItem key="navigationItem" title="Event" id="QKe-1J-Zs2">
                         <barButtonItem key="rightBarButtonItem" image="favouritesiconbutton.png" id="TKR-iO-V5K">
                             <connections>
                                 <action selector="favouriteEvent:" destination="GGA-Tb-P3v" id="srL-nA-lk5"/>
@@ -915,6 +915,109 @@
         <image name="mapicon.png" width="26" height="21"/>
         <image name="scienceicon.png" width="20" height="24"/>
     </resources>
+    <classes>
+        <class className="EventDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="createEvent:"/>
+                <relationship kind="action" name="favouriteEvent:"/>
+                <relationship kind="action" name="openInMaps:"/>
+                <relationship kind="action" name="openInSafari:"/>
+                <relationship kind="outlet" name="eventAddressLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventAddressView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="eventContactLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventContactTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="eventContactView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="eventDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventDateView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventDetailView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="eventLocationLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventMapHolderView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="eventMapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="eventTimeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventTimeView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="eventTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventWebsiteLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="favouriteButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="labelScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="onlineOnlyOpenInSafariView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="openInMapsButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="openInSafariLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="topRowView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="EventListCell" superclassName="PrettyTableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventListCell.h"/>
+        </class>
+        <class className="EventsListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventsListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cellDoubleTapped:"/>
+                <relationship kind="action" name="chooseLocation:"/>
+                <relationship kind="action" name="newLocationButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="nextLocationPressed:"/>
+                <relationship kind="action" name="previousLocationPressed:"/>
+                <relationship kind="action" name="scrollToTodaysDate"/>
+                <relationship kind="outlet" name="currentLocationButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="currentLocationLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="doubleTap" candidateClass="UITapGestureRecognizer"/>
+                <relationship kind="outlet" name="eventListTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="locationACTButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="locationNSWButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="locationNTButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="locationQLDButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="locationSAButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="locationSelectHeaderView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="locationSelectTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="locationSelectView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="locationTASButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="locationVICButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="locationWAButton" candidateClass="FUIButton"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="segmentedLocationControl" candidateClass="FUISegmentedControl"/>
+                <relationship kind="outlet" name="todayButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="EventsMapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventsMapViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="centerOnUser:"/>
+                <relationship kind="action" name="findClosestEvent:"/>
+                <relationship kind="outlet" name="eventMap" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="FUIButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FUIButton.h"/>
+        </class>
+        <class className="FUISegmentedControl" superclassName="UISegmentedControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FUISegmentedControl.h"/>
+        </class>
+        <class className="FavouriteEventsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavouriteEventsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cellDoubleTapped:" candidateClass="UITapGestureRecognizer"/>
+                <relationship kind="outlet" name="doubleTapRecogniser" candidateClass="UITapGestureRecognizer"/>
+                <relationship kind="outlet" name="favouriteEventsTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="noFavouritedEventsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="NSWInfoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSWInfoViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backgroundColourView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="internetDownMessage" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="PrettyTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PrettyTableViewCell.h"/>
+        </class>
+        <class className="UACellBackgroundView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UACellBackgroundView.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

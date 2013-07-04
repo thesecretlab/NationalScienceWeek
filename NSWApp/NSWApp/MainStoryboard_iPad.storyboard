@@ -7,7 +7,7 @@
         <!--Event Detail View Controller i Pad-->
         <scene sceneID="gJX-MD-uxx">
             <objects>
-                <viewController id="qUv-YJ-6of" customClass="EventDetailViewController_iPad" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventDetail_iPad" id="qUv-YJ-6of" customClass="EventDetailViewController_iPad" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XLM-en-E7m">
                         <rect key="frame" x="0.0" y="64" width="768" height="911"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -314,7 +314,7 @@
                                 <rect key="frame" x="0.0" y="42" width="320" height="697"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="Search Events" id="n2U-K7-Iam">
+                                <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="Filter Events" id="n2U-K7-Iam">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>

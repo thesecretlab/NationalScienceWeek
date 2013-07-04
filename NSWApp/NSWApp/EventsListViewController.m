@@ -348,7 +348,6 @@
 {
     
     [self reloadView];
-    [self.eventListTableView reloadData];
     if ([[self.navigationController viewControllers] count]> 1) {
         [(EventDetailViewController*)[[self.navigationController viewControllers] objectAtIndex:1] refreshDetailedEventData];
     }
@@ -486,6 +485,7 @@
     [[NSWEventData sharedData]changeLocation:mappedStateChoice];
     _currentLocationButton.title = [NSString stringWithFormat:@"%@ | ▼", mappedStateChoice];
     [self chooseLocation:nil];
+    [self scrollToTodaysDate];
 }
 
 - (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index
@@ -539,8 +539,8 @@
     locationSelectDefaultFrame = CGRectMake(0, -self.locationSelectView.frame.size.height, self.eventListTableView.frame.size.width, self.locationSelectView.frame.size.height);
     locationSelectDownFrame = CGRectMake(0, 0, self.eventListTableView.frame.size.width, self.locationSelectView.frame.size.height);
 
-    _locationSelectView.backgroundColor = [UIColor midnightBlueColor];
-    _locationSelectHeaderView.backgroundColor = [UIColor midnightBlueColor];
+    _locationSelectView.backgroundColor = [UIColor clearColor];
+    _locationSelectHeaderView.backgroundColor = [UIColor clearColor];
     
     
     NSArray *locationButtons = [NSArray arrayWithObjects:_locationACTButton, _locationNSWButton, _locationNTButton, _locationQLDButton, _locationSAButton, _locationTASButton, _locationVICButton, _locationWAButton, nil];
@@ -579,7 +579,7 @@
     
     self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Events" image:nil tag:0];
     [[self tabBarItem] setFinishedSelectedImage:[UIImage imageNamed:@"calendaricon.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"calendaricon.png"]];
-    [self.eventListTableView reloadData];
+    [self reloadView];
     [self scrollToTodaysDate];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.

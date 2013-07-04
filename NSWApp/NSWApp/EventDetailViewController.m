@@ -55,7 +55,7 @@
 - (IBAction)openInMaps:(id)sender 
 {
     if (![[event objectForKey:@"Latitude"] isEqualToString:@""]&& ![[event objectForKey:@"Longitude"] isEqualToString:@""]) {
-        NSString *url = [NSString stringWithFormat: @"http://maps.google.com/maps?q=%f,%f&t=m", [[event objectForKey:@"Latitude"] floatValue], [[event objectForKey:@"Longitude"] floatValue]]; 
+        NSString *url = [NSString stringWithFormat: @"http://maps.apple.com/maps?q=%f,%f&t=m", [[event objectForKey:@"Latitude"] floatValue], [[event objectForKey:@"Longitude"] floatValue]]; 
        // [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
         UIApplication *app = [UIApplication sharedApplication];  
        // NSURL* urlURL = [[NSURL alloc] initWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
@@ -106,7 +106,7 @@
     controller.editViewDelegate = self;
     controller.event = newEvent;
     [controller.navigationBar configureFlatNavigationBarWithColor:kGlobalNavBarColour];
-    [self.splitViewController presentModalViewController: controller animated:YES];
+    [self presentModalViewController: controller animated:YES];
     
 }
 

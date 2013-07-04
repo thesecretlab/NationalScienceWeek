@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "MyLocation.h"
 #import "NSWEventData.h"
-#import "EventDetailViewController.h"
+#import "EventDetailViewController_iPad.h"
 #import "NSWAppAppearanceConfig.h"
 #import "UINavigationBar+FlatUI.h"
 @interface NSWEventsMapViewController_iPad ()
@@ -156,6 +156,7 @@
         MKPinAnnotationView *annotationView = (MKPinAnnotationView *) [self.eventMap dequeueReusableAnnotationViewWithIdentifier:identifier];
         if (annotationView == nil) {
             annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+            
         } else {
             annotationView.annotation = annotation;
         }
@@ -175,8 +176,8 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    EventDetailViewController* eventDetail = [storyboard instantiateViewControllerWithIdentifier:@"EventDetail"];
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+    EventDetailViewController_iPad* eventDetail = [storyboard instantiateViewControllerWithIdentifier:@"EventDetail_iPad"];
     
     eventDetail.event = [(MyLocation*)[view annotation] event];
     
@@ -307,6 +308,14 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)didReceiveMemoryWarning
+{
+    for (id<MKAnnotation> annotation in self.eventMap.annotations) {
+        [self.eventMap removeAnnotation:annotation];
+    }
+    [super didReceiveMemoryWarning];
 }
 
 @end

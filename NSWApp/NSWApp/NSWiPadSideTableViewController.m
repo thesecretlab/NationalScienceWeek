@@ -47,7 +47,7 @@
     locationSelectDefaultFrame = CGRectMake(0, 42-_locationSelectView.frame.size.height, _eventListView.frame.size.width, _locationSelectView.frame.size.height);
     locationSelectDownFrame = CGRectMake(0, 42, _eventListView.frame.size.width, _locationSelectView.frame.size.height);
 
-    _locationSelectView.backgroundColor = [UIColor midnightBlueColor];
+    _locationSelectView.backgroundColor = [UIColor clearColor];
 
     
     NSArray *locationButtons = [NSArray arrayWithObjects:_locationACTButton, _locationNSWButton, _locationNTButton, _locationQLDButton, _locationSAButton, _locationTASButton, _locationVICButton, _locationWAButton, nil];
@@ -101,7 +101,7 @@
     
     lastFavouritesListOffset = 0.0;
     lastEventListOffset = 0.0;
-    [self.eventListView reloadData];
+    [self reloadView];
     [self scrollToTodaysDate];
     [super viewDidLoad];
 
@@ -163,8 +163,31 @@
 
 #pragma mark - Table view data source
 
+- (void)updateListNoEventsLabel
+{
+    if(self.eventListView.numberOfSections == 0)
+    {
+        self.noEventsLabel.hidden = NO;
+    }
+    else
+    {
+        self.noEventsLabel.hidden = YES;
+    }
+    
+    if (displayData == ListEvents)
+    {
+        self.noEventsLabel.text = @"There are no events in this list";
+    }
+    else if (displayData == ListFavourites)
+    {
+        self.noEventsLabel.text = @"No favourited events";
+        
+    }
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    
     if (tableView == self.searchDisplayController.searchResultsTableView)
     {
         return 1;
@@ -251,6 +274,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    [self updateListNoEventsLabel];
+
     if (tableView == self.searchDisplayController.searchResultsTableView)
     {
         return [searchResults count];
@@ -432,16 +457,9 @@
         default:
             NSLog(@"No option for: %d", [segmentedControl selectedSegmentIndex]);
     }
-    [_eventListView reloadData];
-    
-    if(self.eventListView.numberOfSections == 0)
-    {
-        self.noEventsLabel.hidden = NO;
-    }
-    else
-    {
-        self.noEventsLabel.hidden = YES;
-    }
+    [self reloadView];
+    [self updateListNoEventsLabel];
+
 }
 
 -(void)scrollToTodaysDate
@@ -507,9 +525,10 @@
 
 - (void)reloadView
 {
-
     [_currentLocationButton setTitle:[NSString stringWithFormat:@"%@ | ▼", [[NSWEventData sharedData] currentLocationAcronym]] forState:UIControlStateNormal];
     [self.eventListView reloadData];
+    [self updateListNoEventsLabel];
+
 }
 
 - (void)newDataWasDownloaded
@@ -590,6 +609,7 @@
     [[NSWEventData sharedData]changeLocation:mappedStateChoice];
     [_currentLocationButton setTitle:[NSString stringWithFormat:@"%@ | ▼", mappedStateChoice] forState:UIControlStateNormal];
     [self chooseLocation:nil];
+    [self scrollToTodaysDate];
 }
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
