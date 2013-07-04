@@ -21,6 +21,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+     [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+    
+    [TestFlight takeOff:@"ca26bc23-eddf-40b9-aed1-efeba65c61ed"];
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
     {
         [[NSWNetwork sharedNetwork] setReachabilityStatusChangeBlock:^(BOOL isNetworkReachable) {

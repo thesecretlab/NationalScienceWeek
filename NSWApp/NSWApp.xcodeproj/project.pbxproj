@@ -83,6 +83,7 @@
 		7C82D89815BD306B00AAA9F5 /* locationarrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C82D89715BD306B00AAA9F5 /* locationarrow@2x.png */; };
 		7C9534A5176ECD7500A7C05B /* NSWInfoViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9534A4176ECD7500A7C05B /* NSWInfoViewController_iPad.m */; };
 		7C987EF315B8EAD200302F71 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C987EF015B8EACA00302F71 /* CoreLocation.framework */; };
+		7CA5D21617853B9800BA9018 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA5D21417853B9800BA9018 /* libTestFlight.a */; };
 		7CAE0A6C177B322E00258D93 /* scienceweek-events.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7CAE0A6B177B322E00258D93 /* scienceweek-events.xml */; };
 		7CAE0A87177B41C200258D93 /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CAE0A70177B41C200258D93 /* CXMLDocument_CreationExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7CAE0A88177B41C200258D93 /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CAE0A72177B41C200258D93 /* CXMLNode_CreationExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -250,6 +251,8 @@
 		7C9534A3176ECD7500A7C05B /* NSWInfoViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWInfoViewController_iPad.h; sourceTree = "<group>"; };
 		7C9534A4176ECD7500A7C05B /* NSWInfoViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWInfoViewController_iPad.m; sourceTree = "<group>"; };
 		7C987EF015B8EACA00302F71 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		7CA5D21417853B9800BA9018 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		7CA5D21517853B9800BA9018 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		7CAE0A6B177B322E00258D93 /* scienceweek-events.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "scienceweek-events.xml"; sourceTree = "<group>"; };
 		7CAE0A6F177B41C200258D93 /* CXMLDocument_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument_CreationExtensions.h; sourceTree = "<group>"; };
 		7CAE0A70177B41C200258D93 /* CXMLDocument_CreationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLDocument_CreationExtensions.m; sourceTree = "<group>"; };
@@ -350,8 +353,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C2A739B175E3421008CD94B /* libxml2.dylib in Frameworks */,
 				7C2A7395175E3297008CD94B /* libz.dylib in Frameworks */,
+				7C2A739B175E3421008CD94B /* libxml2.dylib in Frameworks */,
 				7CF7632A1755A75700F9088E /* CoreText.framework in Frameworks */,
 				6841DC1415CE60DE004BEAB0 /* SystemConfiguration.framework in Frameworks */,
 				7C79595915BE1EB6005A5A3E /* EventKitUI.framework in Frameworks */,
@@ -362,6 +365,7 @@
 				7C55862715B51DC200068067 /* UIKit.framework in Frameworks */,
 				7C55862915B51DC200068067 /* Foundation.framework in Frameworks */,
 				7C55862B15B51DC200068067 /* CoreGraphics.framework in Frameworks */,
+				7CA5D21617853B9800BA9018 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +471,7 @@
 				7C9D951715BEC44300B212CE /* Images */,
 				7CAE0A6D177B41C200258D93 /* TouchXML (Used for Validation) */,
 				7C2A7396175E33E6008CD94B /* RaptureXML */,
+				7CA5D21317853B8400BA9018 /* TestFlight SDK */,
 				7C55862D15B51DC200068067 /* Supporting Files */,
 				7C3B18C515B83C8200A94F12 /* AFNetworking */,
 				7CF763401755B57400F9088E /* PopoverView */,
@@ -579,6 +584,15 @@
 				7C412B281784A77F00FBAFEF /* CustomSearchBar.m */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		7CA5D21317853B8400BA9018 /* TestFlight SDK */ = {
+			isa = PBXGroup;
+			children = (
+				7CA5D21417853B9800BA9018 /* libTestFlight.a */,
+				7CA5D21517853B9800BA9018 /* TestFlight.h */,
+			);
+			name = "TestFlight SDK";
 			sourceTree = "<group>";
 		};
 		7CAE0A6D177B41C200258D93 /* TouchXML (Used for Validation) */ = {
@@ -992,6 +1006,10 @@
 				HEADER_SEARCH_PATHS = "\"$(SDK_DIR)\"/usr/include/libxml2";
 				INFOPLIST_FILE = "NSWApp/NSWApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/NSWApp\"",
+				);
 				PRODUCT_NAME = ScienceWeek;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1062,6 +1080,10 @@
 				HEADER_SEARCH_PATHS = "\"$(SDK_DIR)\"/usr/include/libxml2";
 				INFOPLIST_FILE = "NSWApp/NSWApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/NSWApp\"",
+				);
 				PRODUCT_NAME = ScienceWeek;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1078,6 +1100,10 @@
 				HEADER_SEARCH_PATHS = "\"$(SDK_DIR)\"/usr/include/libxml2";
 				INFOPLIST_FILE = "NSWApp/NSWApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/NSWApp\"",
+				);
 				PRODUCT_NAME = ScienceWeek;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
