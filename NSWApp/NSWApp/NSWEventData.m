@@ -202,33 +202,61 @@ static NSWEventData* _sharedData = nil;
             
             [eventDict setObject:@"" forKey:@"Latitude"];
             [eventDict setObject:@"" forKey:@"Longitude"];
-            
+            [eventDict setObject:@"" forKey:@"Address"];
+
             RXMLElement *venue = [event child:@"Venue"];
             //NSLog(@"Venue: %@", venue);
             if (venue != nil)
             {
                 [eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"VenueName"].text] forKey:@"Location"];
                 
-                [eventDict setObject:@"" forKey:@"Address"];
-                if ([event child:@"VenueStreetName"].text) {
-                    [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"VenueStreetName"].text] forKey:@"Address"];
+                if ([venue child:@"VenueStreetName"].text) {                    
+                    if ([[venue child:@"VenueStreetName"].text length] > 2) {
+                        [eventDict setObject:[NSString stringWithFormat:@"%@",[venue child:@"VenueStreetName"].text] forKey:@"Address"];
+                    }
                 }
-                if ([event child:@"VenueSuburb"].text) {
-                    [eventDict setObject:[NSString stringWithFormat:@"%@, %@", [eventDict objectForKey:@"Address"],[event child:@"VenueSuburb"].text]  forKey:@"Address"];
+                if ([venue child:@"VenueSuburb"].text) {
+                    if ([[venue child:@"VenueSuburb"].text length] > 2) {
+                        
+                        if ([[eventDict objectForKey:@"Address"] isEqualToString:@""])
+                        {
+                            [eventDict setObject:[NSString stringWithFormat:@"%@",[venue child:@"VenueSuburb"].text]  forKey:@"Address"];
+                        }
+                        else
+                        {
+                            [eventDict setObject:[NSString stringWithFormat:@"%@, %@", [eventDict objectForKey:@"Address"],[venue child:@"VenueSuburb"].text]  forKey:@"Address"];
+                        }
+                    }
                 }
-                if ([event child:@"VenuePostcode"].text) {
-                    [eventDict setObject:[NSString stringWithFormat:@"%@, %@", [eventDict objectForKey:@"Address"],[event child:@"VenuePostcode"].text]  forKey:@"Address"];
+                    
+                if ([venue child:@"VenuePostcode"].text) {
+                    if ([[venue child:@"VenuePostcode"].text length] > 2) {
+                        
+                        if ([[eventDict objectForKey:@"Address"] isEqualToString:@""])
+                        {
+                            [eventDict setObject:[NSString stringWithFormat:@"%@",[venue child:@"VenuePostcode"].text]  forKey:@"Address"];
+                        }
+                        else
+                        {
+                            [eventDict setObject:[NSString stringWithFormat:@"%@, %@", [eventDict objectForKey:@"Address"],[venue child:@"VenuePostcode"].text]  forKey:@"Address"];
+                        }
+                    }
+                    
                 }
                 
                 if ([venue child:@"VenueLatitude"].text)
                 {
-                    [eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"VenueLatitude"].text] forKey:@"Latitude"];
+                    if (![[venue child:@"VenueLatitude"].text isEqualToString:@"0"]) {
+                        [eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"VenueLatitude"].text] forKey:@"Latitude"];
+                    }
 
                 }
                 if ([venue child:@"VenueLongitude"].text)
                 {
-
-                    [eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"VenueLongitude"].text] forKey:@"Longitude"];
+                    if (![[venue child:@"VenueLongitude"].text isEqualToString:@"0"]) 
+                        {
+                            [eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"VenueLongitude"].text] forKey:@"Longitude"];
+                        }
                 }
 
 

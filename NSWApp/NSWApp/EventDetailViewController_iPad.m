@@ -31,9 +31,14 @@
 }
 
 - (void) awakeFromNib{
+    
     [super awakeFromNib];
     self.splitViewController.delegate = self;
+
 }
+
+
+
 
 - (void)viewDidLoad
 {
@@ -50,6 +55,16 @@
 
 - (void)updateAndRelayoutView
 {
+    
+   // NSLog(@"Frame height %f", self.eventContactTextView.frame.size.height);
+    self.eventTitleLabel.font = kDetailEventTitleFont_iPad;
+    self.eventTimeLabel.font = kDetailEventFont_iPad;
+    self.eventAddressLabel.font = kDetailEventFont_iPad;
+    self.eventDescriptionLabel.font = kDetailEventFont_iPad;
+    self.eventDateLabel.font = kDetailEventFont_iPad;
+    self.openInSafariLabel.font = kDetailOpenInSafariFont;
+    self.eventContactTextView.font = kDetailEventFont_iPad;
+    
     if (_event == nil) {
         self.topRowView.hidden = YES;
         self.eventContactView.hidden = YES;
@@ -98,7 +113,6 @@
         self.eventTimeView.hidden = YES;
         self.eventTimeLabel.hidden = YES;
     }
-    
     
     
     
@@ -170,28 +184,35 @@
         
         [self positionLabelViewOnScreen:self.eventDetailView withLabel:self.eventDescriptionLabel bufferToNextView:10];
         
-        [self positionLabelViewOnScreen:self.eventAddressView withLabel:self.eventAddressLabel bufferToNextView:10];
-        
         [self positionLabelViewOnScreen:self.eventContactView withLabel:(UILabel*)self.eventContactTextView bufferToNextView:10];
         
+        if (self.eventContactView.hidden == NO) {
+            self.eventAddressView.frame = CGRectMake(29 + self.eventContactView.frame.size.width + 10, self.eventAddressView.frame.origin.y, self.eventAddressView.frame.size.width, self.eventAddressView.frame.size.height);
+                self.eventAddressView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin);
+            currentLayoutHeight = currentLayoutHeight - self.eventContactView.frame.size.height - 10;
+            
+        }
+        else{
+            self.eventAddressView.frame = CGRectMake(29, self.eventAddressView.frame.origin.y, self.eventAddressView.frame.size.width, self.eventAddressView.frame.size.height);
+            self.eventAddressView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin);
+
+            
+        }
+        [self positionLabelViewOnScreen:self.eventAddressView withLabel:self.eventAddressLabel bufferToNextView:10];
+        
+        if (self.eventAddressView.frame.size.height != self.eventContactView.frame.size.height) {
+            if (self.eventAddressView.frame.size.height >= self.eventContactView.frame.size.height) {
+                self.eventContactView.frame = CGRectMake(self.eventContactView.frame.origin.x, self.eventContactView.frame.origin.y, self.eventContactView.frame.size.width, self.eventAddressView.frame.size.height);
+                self.eventContactTextView.frame = CGRectMake(10, 10, self.eventContactView.frame.size.width-20, self.eventContactTextView.frame.size.height-20);
+
+            }
+            else if (self.eventAddressView.frame.size.height < self.eventContactView.frame.size.height) {
+                self.eventAddressView.frame = CGRectMake(self.eventAddressView.frame.origin.x, self.eventAddressView.frame.origin.y, self.eventAddressView.frame.size.width, self.eventContactView.frame.size.height);
+                self.eventAddressLabel.frame = CGRectMake(10, 10, self.eventAddressView.frame.size.width-20, self.eventAddressView.frame.size.height-20);
+
+            }
+        }
     }
-    else {
-        [self positionLabelOnScreen:self.eventTitleLabel withFont:kDetailEventTitleFont_iPad sizeForMinumumLabel:21.0 bufferToNextLabel:10];
-        
-        self.topRowView.hidden = YES;
-        self.eventContactView.hidden = YES;
-        self.eventAddressView.hidden = YES;
-        [self positionLabelViewOnScreen:self.eventDetailView withLabel:self.eventDescriptionLabel bufferToNextView:10];
-        
-        self.onlineOnlyOpenInSafariView.hidden = NO;
-        self.onlineOnlyOpenInSafariView.frame = CGRectMake(self.onlineOnlyOpenInSafariView.frame.origin.x, currentLayoutHeight, self.onlineOnlyOpenInSafariView.frame.size.width, self.onlineOnlyOpenInSafariView.frame.size.height);
-        
-        currentLayoutHeight = currentLayoutHeight + self.onlineOnlyOpenInSafariView.frame.size.height + 10;
-        
-        
-    }
-    
-    
     
     
     self.eventDateView.layer.cornerRadius = kDetailCornerRadius;
@@ -285,14 +306,14 @@
         
         CGFloat height = MAX(size.height, 20);
         
+        
+        height = height;
+        
+        currentView.frame = CGRectMake(currentView.frame.origin.x, currentLayoutHeight, currentView.frame.size.width, height+20);
+        
         currentLabel.frame = CGRectMake(10, 10, currentView.frame.size.width-20, height);
-        
-        height = height + 20;
-        
-        currentView.frame = CGRectMake(currentView.frame.origin.x, currentLayoutHeight, currentView.frame.size.width, height);
-        
-        
-        currentLayoutHeight = height + currentLayoutHeight + bufferToNextView;
+
+        currentLayoutHeight = height+20 + currentLayoutHeight + bufferToNextView;
         
         
         
@@ -419,13 +440,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     
-    self.eventTitleLabel.font = kDetailEventTitleFont_iPad;
-    self.eventTimeLabel.font = kDetailEventFont_iPad;
-    self.eventAddressLabel.font = kDetailEventFont_iPad;
-    self.eventDescriptionLabel.font = kDetailEventFont_iPad;
-    self.eventDateLabel.font = kDetailEventFont_iPad;
-    self.openInSafariLabel.font = kDetailOpenInSafariFont;
-    self.eventContactTextView.font = kDetailEventFont_iPad;
+
     [self.navigationController.navigationBar configureFlatNavigationBarWithColor:kGlobalNavBarColour];
     
     

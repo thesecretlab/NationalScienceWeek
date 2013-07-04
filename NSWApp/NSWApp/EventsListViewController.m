@@ -636,7 +636,6 @@
     
     for (UIView *subView in searchBar.subviews){
         if([subView isKindOfClass:[UIButton class]]){
-            NSLog(@"this is button type");
             
             [(UIButton *)subView setBackgroundImage:normalBackgroundImage forState:UIControlStateNormal];
             [(UIButton *)subView setBackgroundImage:highlightedBackgroundImage forState:UIControlStateHighlighted];
