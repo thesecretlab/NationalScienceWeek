@@ -332,7 +332,20 @@
         
         totalHeight = totalHeight + height;
         
-        text = [[searchResults objectAtIndex:indexPath.row] objectForKey:@"Location"];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"dd/MM/yyyy"];
+        NSDate *titleDate = [dateFormatter dateFromString:[[searchResults objectAtIndex:indexPath.row] objectForKey:@"StartDate"]];
+        [dateFormatter setDateFormat:@"EEEE, MMMM d"];
+        
+        NSString *prefixDateString = [dateFormatter stringFromDate:titleDate];
+        [dateFormatter setDateFormat:@"d"];
+        int date_day = [[dateFormatter stringFromDate:titleDate] intValue];
+        NSString *suffix_string = @"|st|nd|rd|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|st|nd|rd|th|th|th|th|th|th|th|st";
+        NSArray *suffixes = [suffix_string componentsSeparatedByString: @"|"];
+        NSString *suffix = [suffixes objectAtIndex:date_day];
+        NSString *date = [prefixDateString stringByAppendingString:suffix];
+        
+        text = [NSString stringWithFormat:@"%@\n%@",[[searchResults objectAtIndex:indexPath.row] objectForKey:@"Location"],date];
         
         constraint = CGSizeMake(320 - 70, 20000.0f);
         
@@ -403,8 +416,25 @@
     
     if (tableView == self.searchDisplayController.searchResultsTableView)
     {
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"dd/MM/yyyy"];
+        NSDate *titleDate = [dateFormatter dateFromString:[[searchResults objectAtIndex:indexPath.row] objectForKey:@"Date"]];
+        [dateFormatter setDateFormat:@"EEEE, MMMM d"];
+        
+        NSString *prefixDateString = [dateFormatter stringFromDate:titleDate];
+        [dateFormatter setDateFormat:@"d"];
+        int date_day = [[dateFormatter stringFromDate:titleDate] intValue];
+        NSString *suffix_string = @"|st|nd|rd|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|th|st|nd|rd|th|th|th|th|th|th|th|st";
+        NSArray *suffixes = [suffix_string componentsSeparatedByString: @"|"];
+        NSString *suffix = [suffixes objectAtIndex:date_day];
+        NSString *date = [prefixDateString stringByAppendingString:suffix];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@\n%@",[[searchResults objectAtIndex:indexPath.row] objectForKey:@"Location"],date];
+
+        
         cell.textLabel.text = [[searchResults objectAtIndex:indexPath.row] objectForKey:@"Title"];
-        cell.detailTextLabel.text = [[searchResults objectAtIndex:indexPath.row] objectForKey:@"Location"];
+        
+        //[[searchResults objectAtIndex:indexPath.row] objectForKey:@"Location"];
         cell.customBackgroundColor = [UIColor whiteColor];
         cell.textLabel.backgroundColor = [UIColor whiteColor];
         cell.detailTextLabel.backgroundColor = [UIColor whiteColor];
