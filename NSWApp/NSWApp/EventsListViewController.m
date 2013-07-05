@@ -270,7 +270,9 @@
     {
         cell.textLabel.text = [[searchResults objectAtIndex:indexPath.row] objectForKey:@"Title"];
         cell.detailTextLabel.text = [[searchResults objectAtIndex:indexPath.row] objectForKey:@"Location"];
-        cell.backgroundColor = [UIColor whiteColor];
+        cell.customBackgroundColor = [UIColor whiteColor];
+        cell.textLabel.backgroundColor = [UIColor whiteColor];
+        cell.detailTextLabel.backgroundColor = [UIColor whiteColor];
         cell.position = PrettyTableViewCellPositionAlone; //Sets it to be alone. FOREVERALONE
     }
     else
@@ -608,6 +610,7 @@
     [self setLocationSelectHeaderView:nil];
     [self setLocationSelectTitleLabel:nil];
     [self setSearchBar:nil];
+    [self setTableViewBackgroundImage:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -645,6 +648,15 @@
             
         }
     }
+    
+    self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor clearColor];
+    self.searchDisplayController.searchResultsTableView.separatorColor = [UIColor clearColor];
+    
+    UIImageView *duplicateBackground = [[UIImageView alloc] initWithImage:self.tableViewBackgroundImage.image];
+    duplicateBackground.frame = self.tableViewBackgroundImage.frame;
+    duplicateBackground.contentMode = UIViewContentModeScaleAspectFill;
+    self.searchDisplayController.searchResultsTableView.backgroundView = duplicateBackground;
+
 }
 
 
@@ -696,6 +708,7 @@
                                     searchText, searchText];
     
     searchResults = [[[NSWEventData sharedData] eventsForLocation] filteredArrayUsingPredicate:resultPredicate];
+    
 }
 
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller
@@ -703,6 +716,17 @@ shouldReloadTableForSearchString:(NSString *)searchString
 {
     [self filterContentForSearchText:searchString
                                scope:nil];
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.001);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        for (UIView* v in self.searchDisplayController.searchResultsTableView.subviews) {
+            if ([v isKindOfClass: [UILabel class]] &&
+                [[(UILabel*)v text] isEqualToString:@"No Results"]) {
+                [(UILabel*)v setFont:kGlobalNavBarFont];
+                [(UILabel*)v setTextColor:[UIColor whiteColor]];
+                break;
+            }
+        }
+    });
     
     return YES;
 }

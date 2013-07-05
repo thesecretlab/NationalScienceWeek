@@ -21,6 +21,7 @@
     NSArray *searchResults;
 
 }
+@property (weak, nonatomic) IBOutlet UIImageView *tableViewBackgroundImage;
 @property (weak, nonatomic) IBOutlet UITableView *eventListTableView;
 @property (nonatomic, strong) NSArray* uniqueSingleDates;
 @property (weak, nonatomic) IBOutlet FUISegmentedControl *segmentedLocationControl;

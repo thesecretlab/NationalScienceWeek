@@ -37,8 +37,6 @@
 - (void)viewDidLoad
 {
     trayOut = NO;
-    //self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor midnightBlueColor];
-    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onKeyboardHide:) name:UIKeyboardWillHideNotification object:nil];
 
     
@@ -139,11 +137,10 @@
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
+
     // only show the status bar’s cancel button while in edit mode sbar (UISearchBar)
     searchBar.showsCancelButton = YES;
     searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
-    UIColor *desiredColor = [UIColor colorWithRed:212.0/255.0 green:237.0/255.0 blue:187.0/255.0 alpha:1.0];
-
     UIImage *normalBackgroundImage = [UIImage buttonImageWithColor:kGlobalNavBarItemColour
                                                       cornerRadius:kDetailCornerRadius
                                                        shadowColor:[UIColor grayColor]
@@ -164,6 +161,16 @@
 
         }
     }
+    
+    self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor clearColor];
+    self.searchDisplayController.searchResultsTableView.separatorColor = [UIColor clearColor];
+
+    UIImageView *duplicateBackground = [[UIImageView alloc] initWithImage:self.tableViewBackgroundImage.image];
+    duplicateBackground.frame = self.tableViewBackgroundImage.frame;
+    duplicateBackground.contentMode = UIViewContentModeScaleAspectFill;
+    self.searchDisplayController.searchResultsTableView.backgroundView = duplicateBackground;
+
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -398,7 +405,9 @@
     {
         cell.textLabel.text = [[searchResults objectAtIndex:indexPath.row] objectForKey:@"Title"];
         cell.detailTextLabel.text = [[searchResults objectAtIndex:indexPath.row] objectForKey:@"Location"];
-        cell.backgroundColor = [UIColor whiteColor];
+        cell.customBackgroundColor = [UIColor whiteColor];
+        cell.textLabel.backgroundColor = [UIColor whiteColor];
+        cell.detailTextLabel.backgroundColor = [UIColor whiteColor];
         cell.position = PrettyTableViewCellPositionAlone; //Sets it to be alone. FOREVERALONE
     }
     else
@@ -645,9 +654,22 @@
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller
 shouldReloadTableForSearchString:(NSString *)searchString
 {
+    
     [self filterContentForSearchText:searchString
                                scope:nil];
     
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.001);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        for (UIView* v in self.searchDisplayController.searchResultsTableView.subviews) {
+            if ([v isKindOfClass: [UILabel class]] &&
+                [[(UILabel*)v text] isEqualToString:@"No Results"]) {
+                [(UILabel*)v setFont:kGlobalNavBarFont];
+                [(UILabel*)v setTextColor:[UIColor whiteColor]];
+                break;
+            }
+        }
+    });
+
     return YES;
 }
 
@@ -671,6 +693,8 @@ shouldReloadTableForSearchString:(NSString *)searchString
     [self updateTableViewAndBackgroundFrames];
     
 }
+
+
 
 - (void)viewDidUnload {
     [self setLocationSelectView:nil];

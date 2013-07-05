@@ -311,6 +311,7 @@
                         <outlet property="searchBar" destination="n0B-FL-Ugu" id="ofX-jH-jWX"/>
                         <outlet property="searchDisplayController" destination="hGm-sG-EOO" id="uQR-UQ-r54"/>
                         <outlet property="segmentedLocationControl" destination="8FK-iC-LeZ" id="Ju4-dE-VQh"/>
+                        <outlet property="tableViewBackgroundImage" destination="gK1-2H-GSC" id="UuN-mW-nCT"/>
                         <outlet property="todayButton" destination="yJO-71-yRQ" id="94J-fN-sSX"/>
                         <segue destination="GGA-Tb-P3v" kind="push" identifier="PushFromSearch" id="gqZ-lx-aJH"/>
                     </connections>
@@ -959,6 +960,7 @@
                 <relationship kind="action" name="nextLocationPressed:"/>
                 <relationship kind="action" name="previousLocationPressed:"/>
                 <relationship kind="action" name="scrollToTodaysDate"/>
+                <relationship kind="action" name="valueChanged:"/>
                 <relationship kind="outlet" name="currentLocationButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="currentLocationLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="doubleTap" candidateClass="UITapGestureRecognizer"/>

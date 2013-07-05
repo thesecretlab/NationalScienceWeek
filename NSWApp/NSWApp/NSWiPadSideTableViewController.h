@@ -15,7 +15,7 @@ enum DisplayListPickerValue {
     ListFavourites = 1
     };
 
-@interface NSWiPadSideTableViewController : UIViewController <NSWEventDataDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface NSWiPadSideTableViewController : UIViewController <NSWEventDataDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 {
     enum DisplayListPickerValue displayData;
     float lastEventListOffset;
