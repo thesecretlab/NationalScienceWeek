@@ -226,16 +226,36 @@
     
     if (![[_event objectForKey:@"Longitude"] isEqualToString:@""]&& ![[_event objectForKey:@"Latitude"] isEqualToString:@""]) {
         
+        float width = self.topRowView.frame.size.width;
+        
+        float topRowBuffer = 21.0;
+        
+        width = (width - 2*topRowBuffer)/3; //Minus buffer x2
+        
+        self.eventDateView.frame = CGRectMake(self.eventDateView.frame.origin.x, self.eventDateView.frame.origin.y, width, self.eventDateView.frame.size.height);
+        
+        self.eventTimeView.frame = CGRectMake(width + topRowBuffer, self.eventTimeView.frame.origin.y, width, self.eventTimeView.frame.size.height);
+        
+        self.eventMapHolderView.frame = CGRectMake(2*width + 2*topRowBuffer, self.eventMapHolderView.frame.origin.y, width, self.eventMapHolderView.frame.size.height);
         
         self.eventMapView.layer.cornerRadius = kDetailCornerRadius;
         
-        //MKCoordinateRegion worldRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(-28.471555, 133.491902), MKCoordinateSpanMake(60.335858, 100.414989));
-        //self.eventMapView.region = worldRegion;
         
         [self plotEvent];
         [self zoomToAnnotationsBounds];
     }
     else {
+        
+        float width = self.topRowView.frame.size.width;
+        
+        float topRowBuffer = 10.0;
+        
+        width = (width - topRowBuffer)/2; //Minus buffer x2
+        
+        self.eventDateView.frame = CGRectMake(self.eventDateView.frame.origin.x, self.eventDateView.frame.origin.y, width, self.eventDateView.frame.size.height);
+        
+        self.eventTimeView.frame = CGRectMake(width + topRowBuffer, self.eventTimeView.frame.origin.y, width, self.eventTimeView.frame.size.height);
+        
         self.eventMapHolderView.hidden = YES;
         self.eventMapView.hidden = YES;
         self.openInMapsButton.hidden = YES;
@@ -337,6 +357,11 @@
     //self.masterPopoverController = pc;
 }
 
+-(void)splitViewController:(UISplitViewController*)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem{
+    barButtonItem.title = @"Events";
+    [self.navigationItem setLeftBarButtonItem:nil animated:YES];
+
+}
 
 
 - (void)plotEvent{

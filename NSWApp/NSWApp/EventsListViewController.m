@@ -580,12 +580,20 @@
     
     NSArray *locationButtons = [NSArray arrayWithObjects:_locationACTButton, _locationNSWButton, _locationNTButton, _locationQLDButton, _locationSAButton, _locationTASButton, _locationVICButton, _locationWAButton, nil];
     
+    UIImage *highlightedBackgroundImage = [UIImage buttonImageWithColor:kGlobalNavBarItemColourHighlighted
+                                                           cornerRadius:kDetailCornerRadius
+                                                            shadowColor:[UIColor clearColor]
+                                                           shadowInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+
+    
     for (FUIButton* locationButton in locationButtons) {
         [locationButton.titleLabel setFont:kGlobalNavBarItemFont];
         locationButton.buttonColor = kGlobalNavBarItemColour;
         locationButton.titleLabel.textColor = [UIColor whiteColor];
         locationButton.shadowColor = [UIColor grayColor];
         locationButton.cornerRadius = 3;
+        [locationButton setBackgroundImage:highlightedBackgroundImage forState:UIControlStateHighlighted];
+
     }
     
     _locationSelectTitleLabel.font = kGlobalNavBarFont;

@@ -277,6 +277,7 @@
         [self positionLabelOnScreen:self.eventTitleLabel withFont:kDetailEventTitleFont sizeForMinumumLabel:21.0 bufferToNextLabel:10];
         
         self.topRowView.frame = CGRectMake(self.topRowView.frame.origin.x, currentLayoutHeight, self.topRowView.frame.size.width, self.topRowView.frame.size.height);
+        
         currentLayoutHeight = currentLayoutHeight + self.topRowView.frame.size.height + 10;
         
         [self positionLabelViewOnScreen:self.eventDetailView withLabel:self.eventDescriptionLabel bufferToNextView:10];
@@ -316,13 +317,36 @@
     
     if (![[event objectForKey:@"Longitude"] isEqualToString:@""]&& ![[event objectForKey:@"Latitude"] isEqualToString:@""]) {
         
-                
+       float width = self.topRowView.frame.size.width;
+        
+        float topRowBuffer = 21.0;
+        
+        width = (width - 2*topRowBuffer)/3; //Minus buffer x2
+        
+        self.eventDateView.frame = CGRectMake(self.eventDateView.frame.origin.x, self.eventDateView.frame.origin.y, width, self.eventDateView.frame.size.height);
+        
+        self.eventTimeView.frame = CGRectMake(width + topRowBuffer, self.eventTimeView.frame.origin.y, width, self.eventTimeView.frame.size.height);
+        
+        self.eventMapHolderView.frame = CGRectMake(2*width + 2*topRowBuffer, self.eventMapHolderView.frame.origin.y, width, self.eventMapHolderView.frame.size.height);
+        
+        
         self.eventMapView.layer.cornerRadius = kDetailCornerRadius;
         
         [self plotEvent];
         [self zoomToAnnotationsBounds];
     }
     else {
+        
+        float width = self.topRowView.frame.size.width;
+        
+        float topRowBuffer = 10.0;
+        
+        width = (width - topRowBuffer)/2; //Minus buffer x2
+        
+        self.eventDateView.frame = CGRectMake(self.eventDateView.frame.origin.x, self.eventDateView.frame.origin.y, width, self.eventDateView.frame.size.height);
+        
+        self.eventTimeView.frame = CGRectMake(width + topRowBuffer, self.eventTimeView.frame.origin.y, width, self.eventTimeView.frame.size.height);
+
         self.eventMapHolderView.hidden = YES;
         self.eventMapView.hidden = YES;
         self.openInMapsButton.hidden = YES;
