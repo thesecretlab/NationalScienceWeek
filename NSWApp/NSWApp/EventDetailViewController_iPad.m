@@ -172,7 +172,7 @@
     }
     
     
-    currentLayoutHeight = 10.0;
+    currentLayoutHeight = 10.0; //Starting height from top label.
     
     if (![[_event objectForKey:@"Location"] isEqualToString:@"Online"])
     {
@@ -187,13 +187,16 @@
         [self positionLabelViewOnScreen:self.eventContactView withLabel:(UILabel*)self.eventContactTextView bufferToNextView:10];
         
         if (self.eventContactView.hidden == NO) {
-            self.eventAddressView.frame = CGRectMake(29 + self.eventContactView.frame.size.width + 10, self.eventAddressView.frame.origin.y, self.eventAddressView.frame.size.width, self.eventAddressView.frame.size.height);
+            self.eventContactView.frame = CGRectMake(self.eventContactView.frame.origin.x, self.eventContactView.frame.origin.y, (self.eventDetailView.frame.size.width -10)/2, self.eventContactView.frame.size.height);
+            
+            
+            self.eventAddressView.frame = CGRectMake(29 + self.eventContactView.frame.size.width + 10, self.eventAddressView.frame.origin.y, self.eventContactView.frame.size.width, self.eventAddressView.frame.size.height);
                 self.eventAddressView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin);
             currentLayoutHeight = currentLayoutHeight - self.eventContactView.frame.size.height - 10;
             
         }
         else{
-            self.eventAddressView.frame = CGRectMake(29, self.eventAddressView.frame.origin.y, self.eventAddressView.frame.size.width, self.eventAddressView.frame.size.height);
+            self.eventAddressView.frame = CGRectMake(29, self.eventAddressView.frame.origin.y, (self.eventAddressView.frame.size.width -10)/2, self.eventAddressView.frame.size.height);
             self.eventAddressView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin);
 
             
@@ -228,7 +231,7 @@
         
         float width = self.topRowView.frame.size.width;
         
-        float topRowBuffer = 21.0;
+        float topRowBuffer = 10.0;
         
         width = (width - 2*topRowBuffer)/3; //Minus buffer x2
         
@@ -240,21 +243,25 @@
         
         self.eventMapView.layer.cornerRadius = kDetailCornerRadius;
         
+        //self.eventAddressDisclosureIndicator.hidden = NO;
         
         [self plotEvent];
         [self zoomToAnnotationsBounds];
     }
     else {
-        
+         /*
         float width = self.topRowView.frame.size.width;
         
         float topRowBuffer = 10.0;
         
         width = (width - topRowBuffer)/2; //Minus buffer x2
-        
+       
         self.eventDateView.frame = CGRectMake(self.eventDateView.frame.origin.x, self.eventDateView.frame.origin.y, width, self.eventDateView.frame.size.height);
         
         self.eventTimeView.frame = CGRectMake(width + topRowBuffer, self.eventTimeView.frame.origin.y, width, self.eventTimeView.frame.size.height);
+        */
+        //self.eventAddressDisclosureIndicator.hidden = YES;
+
         
         self.eventMapHolderView.hidden = YES;
         self.eventMapView.hidden = YES;
@@ -515,6 +522,21 @@
         
         [app openURL:[NSURL URLWithString:url]];
     }
+    else{
+        
+        if (sender == self.eventAddressSearchButton) {
+
+            NSString *url = [NSString stringWithFormat: @"http://maps.apple.com/maps?q=%@,%@&t=m",[[_event objectForKey:@"Location"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], [[_event objectForKey:@"Address"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+            NSLog(@"String %@", url);
+            UIApplication *app = [UIApplication sharedApplication];
+            
+            [app openURL:[NSURL URLWithString:url]];
+            
+
+        }
+        
+        
+    }
     
 }
 
@@ -606,16 +628,26 @@
     }
 }
 
+-(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+        [self updateAndRelayoutView];
+
+}
+
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     self.labelScrollView.frame = self.view.frame;
     
     [self resizeScrollViewContentSize];
+    
+
 }
 
 
 - (void)viewDidUnload {
     [self setNoEventImageView:nil];
+    [self setEventAddressDisclosureIndicator:nil];
+    [self setEventAddressSearchButton:nil];
     [super viewDidUnload];
 }
 @end

@@ -22,6 +22,7 @@ typedef enum  {
 {
     float currentLayoutHeight;
 }
+@property (weak, nonatomic) IBOutlet UIButton *eventAddressDisclosureIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *eventTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventLocationLabel;
@@ -31,6 +32,7 @@ typedef enum  {
 @property (weak, nonatomic) IBOutlet UILabel *eventDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *openInSafariLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *eventAddressSearchButton;
 @property (weak, nonatomic) IBOutlet UILabel *eventDateLabel;
 @property (strong, nonatomic) NSDictionary *event;
 @property (weak, nonatomic) IBOutlet UILabel *eventWebsiteLabel;

@@ -612,7 +612,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="eventAddressDisclosureIndicator" destination="Pga-zg-0Al" id="thQ-WY-oCb"/>
                         <outlet property="eventAddressLabel" destination="E8H-0V-vxi" id="N2T-aD-93A"/>
+                        <outlet property="eventAddressSearchButton" destination="h2j-5t-O4n" id="PPD-n4-XG3"/>
                         <outlet property="eventAddressView" destination="lUD-zn-CGx" id="dV9-bc-7Im"/>
                         <outlet property="eventContactTextView" destination="5DD-aI-ouG" id="kcC-iE-4lD"/>
                         <outlet property="eventContactView" destination="kHg-ij-XSw" id="RuB-mD-n9B"/>
@@ -924,6 +926,7 @@
                 <relationship kind="action" name="favouriteEvent:"/>
                 <relationship kind="action" name="openInMaps:"/>
                 <relationship kind="action" name="openInSafari:"/>
+                <relationship kind="outlet" name="eventAddressDisclosureIndicator" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="eventAddressLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="eventAddressView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="eventContactLabel" candidateClass="UILabel"/>

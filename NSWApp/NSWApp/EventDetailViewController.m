@@ -63,6 +63,22 @@
         
         [app openURL:[NSURL URLWithString:url]]; 
     }
+    else{
+        
+        if (sender == self.eventAddressSearchButton) {
+            
+            NSString *url = [NSString stringWithFormat: @"http://maps.apple.com/maps?q=%@,%@&t=m",[[event objectForKey:@"Location"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], [[event objectForKey:@"Address"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+            NSLog(@"String %@", url);
+            UIApplication *app = [UIApplication sharedApplication];
+            
+            [app openURL:[NSURL URLWithString:url]];
+            
+            
+        }
+        
+        
+    }
+
     
 }
 
@@ -329,6 +345,8 @@
         
         self.eventMapHolderView.frame = CGRectMake(2*width + 2*topRowBuffer, self.eventMapHolderView.frame.origin.y, width, self.eventMapHolderView.frame.size.height);
         
+       // self.eventAddressDisclosureIndicator.hidden = NO;
+
         
         self.eventMapView.layer.cornerRadius = kDetailCornerRadius;
         
@@ -346,6 +364,8 @@
         self.eventDateView.frame = CGRectMake(self.eventDateView.frame.origin.x, self.eventDateView.frame.origin.y, width, self.eventDateView.frame.size.height);
         
         self.eventTimeView.frame = CGRectMake(width + topRowBuffer, self.eventTimeView.frame.origin.y, width, self.eventTimeView.frame.size.height);
+
+        //self.eventAddressDisclosureIndicator.hidden = YES;
 
         self.eventMapHolderView.hidden = YES;
         self.eventMapView.hidden = YES;
@@ -601,6 +621,8 @@
     [self setOnlineOnlyOpenInSafariView:nil];
     [self setFavouriteButton:nil];
     [self setOpenInSafariLabel:nil];
+    [self setEventAddressDisclosureIndicator:nil];
+    [self setEventAddressSearchButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *eventDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *openInSafariLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *eventAddressSearchButton;
 @property (weak, nonatomic) IBOutlet UILabel *eventDateLabel;
 @property (strong, nonatomic) NSDictionary *event;
 @property (weak, nonatomic) IBOutlet MKMapView *eventMapView;
@@ -36,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *favouriteButton;
 @property (weak, nonatomic) IBOutlet UIView *eventContactView;
 @property (weak, nonatomic) IBOutlet UIImageView *noEventImageView;
+@property (weak, nonatomic) IBOutlet UIButton *eventAddressDisclosureIndicator;
 
 - (IBAction)favouriteEvent:(id)sender;
 

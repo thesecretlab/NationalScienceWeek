@@ -272,7 +272,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="eventAddressDisclosureIndicator" destination="FJe-8H-sGM" id="K9M-H3-SwS"/>
                         <outlet property="eventAddressLabel" destination="ah7-vN-lWj" id="iZt-ym-T8I"/>
+                        <outlet property="eventAddressSearchButton" destination="6tt-Gy-pf7" id="Gbb-cW-TZn"/>
                         <outlet property="eventAddressView" destination="Ewp-Dx-cZC" id="mdT-vl-rAw"/>
                         <outlet property="eventContactTextView" destination="6qD-w7-7RN" id="ctD-FS-8Sc"/>
                         <outlet property="eventContactView" destination="W0L-du-4U9" id="Twh-GO-Xa1"/>
@@ -681,7 +683,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0L-j9-baL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1340" y="-1092"/>
+            <point key="canvasLocation" x="1468" y="-1908"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xJK-Id-520">
@@ -756,7 +758,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yU7-2a-eKt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="464" y="-1097"/>
+            <point key="canvasLocation" x="424" y="-2097"/>
         </scene>
     </scenes>
     <resources>
@@ -775,6 +777,7 @@
                 <relationship kind="action" name="favouriteEvent:"/>
                 <relationship kind="action" name="openInMaps:"/>
                 <relationship kind="action" name="openInSafari:"/>
+                <relationship kind="outlet" name="eventAddressDisclosureIndicator" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="eventAddressLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="eventAddressView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="eventContactTextView" candidateClass="UITextView"/>
