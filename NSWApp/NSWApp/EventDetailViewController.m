@@ -207,6 +207,7 @@
 
 - (void)updateAndRelayoutView
 {
+    
     self.eventTitleLabel.text = [event objectForKey:@"Title"];
     
     if (![[event objectForKey:@"Start Time"] isEqualToString:@""] && ![[event objectForKey:@"End Time"] isEqualToString:@""]) 
@@ -332,20 +333,9 @@
     self.onlineOnlyOpenInSafariView.layer.cornerRadius = kDetailCornerRadius;
     
     if (![[event objectForKey:@"Longitude"] isEqualToString:@""]&& ![[event objectForKey:@"Latitude"] isEqualToString:@""]) {
-        
-       float width = self.topRowView.frame.size.width;
-        
-        float topRowBuffer = 21.0;
-        
-        width = (width - 2*topRowBuffer)/3; //Minus buffer x2
-        
-        self.eventDateView.frame = CGRectMake(self.eventDateView.frame.origin.x, self.eventDateView.frame.origin.y, width, self.eventDateView.frame.size.height);
-        
-        self.eventTimeView.frame = CGRectMake(width + topRowBuffer, self.eventTimeView.frame.origin.y, width, self.eventTimeView.frame.size.height);
-        
-        self.eventMapHolderView.frame = CGRectMake(2*width + 2*topRowBuffer, self.eventMapHolderView.frame.origin.y, width, self.eventMapHolderView.frame.size.height);
-        
-       // self.eventAddressDisclosureIndicator.hidden = NO;
+       
+        self.openInMapsButton.backgroundColor = [UIColor clearColor];
+        [self.openInMapsButton setTitle:@"" forState:UIControlStateNormal];
 
         
         self.eventMapView.layer.cornerRadius = kDetailCornerRadius;
@@ -355,21 +345,18 @@
     }
     else {
         
-        float width = self.topRowView.frame.size.width;
+        self.openInMapsButton.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.8];
+        [self.openInMapsButton setTitle:@"No Map" forState:UIControlStateNormal];
+        [self.openInMapsButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        self.openInMapsButton.titleLabel.font = [UIFont flatFontOfSize:16.0];
+        self.openInMapsButton.titleLabel.numberOfLines = 2;
+        MKCoordinateRegion worldRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(-28.471555, 133.491902), MKCoordinateSpanMake(50, 50)); //Center on australia
+        self.eventMapView.region = worldRegion;
         
-        float topRowBuffer = 10.0;
-        
-        width = (width - topRowBuffer)/2; //Minus buffer x2
-        
-        self.eventDateView.frame = CGRectMake(self.eventDateView.frame.origin.x, self.eventDateView.frame.origin.y, width, self.eventDateView.frame.size.height);
-        
-        self.eventTimeView.frame = CGRectMake(width + topRowBuffer, self.eventTimeView.frame.origin.y, width, self.eventTimeView.frame.size.height);
+        for (id<MKAnnotation> annotation in self.eventMapView.annotations) {
+            [self.eventMapView removeAnnotation:annotation];
+        }
 
-        //self.eventAddressDisclosureIndicator.hidden = YES;
-
-        self.eventMapHolderView.hidden = YES;
-        self.eventMapView.hidden = YES;
-        self.openInMapsButton.hidden = YES;
     }
     
     self.labelScrollView.contentSize = CGSizeMake(320, currentLayoutHeight);

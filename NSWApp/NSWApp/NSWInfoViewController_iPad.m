@@ -31,7 +31,7 @@
     //WILL CURRENTLY LOAD EVERY TIME ITS TAPPED.
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.scienceweek.secretlab.com.au/scienceweekinfo.html"]]];
     [self.internetDownMessage setHidden:YES];
-    
+    NSLog(@"%f, %f", self.webView.frame.size.width, self.webView.frame.size.height);
     if (self.error) {
         [self.spinner startAnimating];
     }

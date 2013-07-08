@@ -38,11 +38,26 @@
 }
 
 
-
+-(void)selectFirstView
+{
+    if ([[NSWEventData sharedData] eventsForLocation] && [[[NSWEventData sharedData] eventsForLocation] count]>0) {
+        _event = [[[NSWEventData sharedData] eventsForLocation] objectAtIndex:0];
+        [self updateAndRelayoutView];
+    }
+    
+}
 
 - (void)viewDidLoad
 {
-    
+    /*
+    UILabel *tapToStartLabel = [[UILabel alloc] init];
+    [tapToStartLabel setText:@"Tap an event from the event list to get started."];
+    [tapToStartLabel setFrame:CGRectMake(150, 150, 500, 50)];
+    [tapToStartLabel setFont:[UIFont boldFlatFontOfSize:30]];
+    tapToStartLabel.backgroundColor = [UIColor clearColor];
+    tapToStartLabel.textColor = [UIColor whiteColor];
+    [self.noEventImageView addSubview:tapToStartLabel];
+    */
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -75,7 +90,8 @@
         self.eventMapView.hidden = YES;
         self.openInMapsButton.hidden = YES;
         self.favouriteButton.enabled = NO;
-        self.noEventImageView.hidden = NO;
+        //self.noEventImageView.hidden = NO;
+        [self selectFirstView];
         return;
     }
     else{
@@ -88,7 +104,7 @@
         self.eventMapView.hidden = NO;
         self.openInMapsButton.hidden = NO;
         self.favouriteButton.enabled = YES;
-        self.noEventImageView.hidden = YES;
+        //self.noEventImageView.hidden = YES;
 
     }
     
@@ -227,45 +243,46 @@
     self.eventAddressView.layer.cornerRadius = kDetailCornerRadius;
     self.onlineOnlyOpenInSafariView.layer.cornerRadius = kDetailCornerRadius;
     
+    float width = self.topRowView.frame.size.width;
+    
+    float topRowBuffer = 10.0;
+    
+    width = (width - 2*topRowBuffer)/3; //Minus buffer x2
+    
+    self.eventDateView.frame = CGRectMake(self.eventDateView.frame.origin.x, self.eventDateView.frame.origin.y, width, self.eventDateView.frame.size.height);
+    
+    self.eventTimeView.frame = CGRectMake(width + topRowBuffer, self.eventTimeView.frame.origin.y, width, self.eventTimeView.frame.size.height);
+    
+    self.eventMapHolderView.frame = CGRectMake(2*width + 2*topRowBuffer, self.eventMapHolderView.frame.origin.y, width, self.eventMapHolderView.frame.size.height);
+
     if (![[_event objectForKey:@"Longitude"] isEqualToString:@""]&& ![[_event objectForKey:@"Latitude"] isEqualToString:@""]) {
         
-        float width = self.topRowView.frame.size.width;
-        
-        float topRowBuffer = 10.0;
-        
-        width = (width - 2*topRowBuffer)/3; //Minus buffer x2
-        
-        self.eventDateView.frame = CGRectMake(self.eventDateView.frame.origin.x, self.eventDateView.frame.origin.y, width, self.eventDateView.frame.size.height);
-        
-        self.eventTimeView.frame = CGRectMake(width + topRowBuffer, self.eventTimeView.frame.origin.y, width, self.eventTimeView.frame.size.height);
-        
-        self.eventMapHolderView.frame = CGRectMake(2*width + 2*topRowBuffer, self.eventMapHolderView.frame.origin.y, width, self.eventMapHolderView.frame.size.height);
+        self.openInMapsButton.backgroundColor = [UIColor clearColor];
+        [self.openInMapsButton setTitle:@"" forState:UIControlStateNormal];
         
         self.eventMapView.layer.cornerRadius = kDetailCornerRadius;
         
-        //self.eventAddressDisclosureIndicator.hidden = NO;
         
         [self plotEvent];
         [self zoomToAnnotationsBounds];
     }
     else {
-         /*
-        float width = self.topRowView.frame.size.width;
         
-        float topRowBuffer = 10.0;
+        self.openInMapsButton.backgroundColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:0.8];
+        [self.openInMapsButton setTitle:@"No Map Available" forState:UIControlStateNormal];
+        [self.openInMapsButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        self.openInMapsButton.titleLabel.font = [UIFont flatFontOfSize:20.0];
         
-        width = (width - topRowBuffer)/2; //Minus buffer x2
-       
-        self.eventDateView.frame = CGRectMake(self.eventDateView.frame.origin.x, self.eventDateView.frame.origin.y, width, self.eventDateView.frame.size.height);
+        MKCoordinateRegion worldRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(-28.471555, 133.491902), MKCoordinateSpanMake(40, 60)); //Center on australia
+        self.eventMapView.region = worldRegion;
         
-        self.eventTimeView.frame = CGRectMake(width + topRowBuffer, self.eventTimeView.frame.origin.y, width, self.eventTimeView.frame.size.height);
-        */
-        //self.eventAddressDisclosureIndicator.hidden = YES;
-
+        for (id<MKAnnotation> annotation in self.eventMapView.annotations) {
+            [self.eventMapView removeAnnotation:annotation];
+        }
         
-        self.eventMapHolderView.hidden = YES;
-        self.eventMapView.hidden = YES;
-        self.openInMapsButton.hidden = YES;
+        //self.eventMapHolderView.hidden = YES;
+        //self.eventMapView.hidden = YES;
+        //self.openInMapsButton.hidden = YES;
     }
     
     currentLayoutHeight = currentLayoutHeight +29; //Top Label buffer

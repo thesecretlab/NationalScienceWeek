@@ -68,6 +68,7 @@
 		7C60903315B66314005A8833 /* CHCSVWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C60903215B66305005A8833 /* CHCSVWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7C65001015B52BBB00C32802 /* EventsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C65000F15B52BBB00C32802 /* EventsListViewController.m */; };
 		7C65001315B52C3300C32802 /* EventsMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C65001215B52C3300C32802 /* EventsMapViewController.m */; };
+		7C65C298178B23BF00870C20 /* NSString+stripHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C65C297178B23BF00870C20 /* NSString+stripHTML.m */; };
 		7C69874815B6A7F90039CC28 /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C69874715B6A7F90039CC28 /* EventDetailViewController.m */; };
 		7C79595615BE1CAE005A5A3E /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C79595315BE1CA2005A5A3E /* EventKit.framework */; };
 		7C79595915BE1EB6005A5A3E /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C79595715BE1EAC005A5A3E /* EventKitUI.framework */; };
@@ -81,6 +82,7 @@
 		7C79596E15BE4E68005A5A3E /* favouritesiconbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C79596D15BE4E67005A5A3E /* favouritesiconbutton@2x.png */; };
 		7C7D01941762D688006D9F4A /* tablviewcell-header.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C7D01931762D688006D9F4A /* tablviewcell-header.png */; };
 		7C82D89815BD306B00AAA9F5 /* locationarrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C82D89715BD306B00AAA9F5 /* locationarrow@2x.png */; };
+		7C9235C4178A562F00D2FAB7 /* science-week-_2013_dev.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C9235C3178A562F00D2FAB7 /* science-week-_2013_dev.png */; };
 		7C9534A5176ECD7500A7C05B /* NSWInfoViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9534A4176ECD7500A7C05B /* NSWInfoViewController_iPad.m */; };
 		7C987EF315B8EAD200302F71 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C987EF015B8EACA00302F71 /* CoreLocation.framework */; };
 		7CA5D21617853B9800BA9018 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA5D21417853B9800BA9018 /* libTestFlight.a */; };
@@ -234,6 +236,8 @@
 		7C65000F15B52BBB00C32802 /* EventsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsListViewController.m; sourceTree = "<group>"; };
 		7C65001115B52C3300C32802 /* EventsMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsMapViewController.h; sourceTree = "<group>"; };
 		7C65001215B52C3300C32802 /* EventsMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsMapViewController.m; sourceTree = "<group>"; };
+		7C65C296178B23BF00870C20 /* NSString+stripHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+stripHTML.h"; sourceTree = "<group>"; };
+		7C65C297178B23BF00870C20 /* NSString+stripHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+stripHTML.m"; sourceTree = "<group>"; };
 		7C69874615B6A7F90039CC28 /* EventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDetailViewController.h; sourceTree = "<group>"; };
 		7C69874715B6A7F90039CC28 /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventDetailViewController.m; sourceTree = "<group>"; };
 		7C79595315BE1CA2005A5A3E /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
@@ -249,6 +253,7 @@
 		7C79596D15BE4E67005A5A3E /* favouritesiconbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favouritesiconbutton@2x.png"; sourceTree = "<group>"; };
 		7C7D01931762D688006D9F4A /* tablviewcell-header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tablviewcell-header.png"; sourceTree = "<group>"; };
 		7C82D89715BD306B00AAA9F5 /* locationarrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "locationarrow@2x.png"; sourceTree = "<group>"; };
+		7C9235C3178A562F00D2FAB7 /* science-week-_2013_dev.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "science-week-_2013_dev.png"; sourceTree = "<group>"; };
 		7C9534A3176ECD7500A7C05B /* NSWInfoViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWInfoViewController_iPad.h; sourceTree = "<group>"; };
 		7C9534A4176ECD7500A7C05B /* NSWInfoViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWInfoViewController_iPad.m; sourceTree = "<group>"; };
 		7C987EF015B8EACA00302F71 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -518,6 +523,7 @@
 		7C9D951715BEC44300B212CE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7C9235C3178A562F00D2FAB7 /* science-week-_2013_dev.png */,
 				7C7D01931762D688006D9F4A /* tablviewcell-header.png */,
 				7C55863E15B51DC200068067 /* first.png */,
 				7C55864015B51DC200068067 /* first@2x.png */,
@@ -693,6 +699,8 @@
 				7C9534A4176ECD7500A7C05B /* NSWInfoViewController_iPad.m */,
 				7C04A6BD1779DF28005B0C87 /* NSWEventsMapViewController_iPad.h */,
 				7C04A6BE1779DF28005B0C87 /* NSWEventsMapViewController_iPad.m */,
+				7C65C296178B23BF00870C20 /* NSString+stripHTML.h */,
+				7C65C297178B23BF00870C20 /* NSString+stripHTML.m */,
 			);
 			name = iPad;
 			sourceTree = "<group>";
@@ -860,6 +868,7 @@
 				6CF5C952178525F8005A94A6 /* Icon@2x.png in Resources */,
 				6CF5C953178525F8005A94A6 /* iTunesArtwork.png in Resources */,
 				6CF5C954178525F8005A94A6 /* iTunesArtwork@2x.png in Resources */,
+				7C9235C4178A562F00D2FAB7 /* science-week-_2013_dev.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -954,6 +963,7 @@
 				7CAE0A91177B41C200258D93 /* CTidy.m in Sources */,
 				7C412B291784A77F00FBAFEF /* CustomSearchBar.m in Sources */,
 				7CA5D2191785DA9100BA9018 /* MKMapView+ZoomLevel.m in Sources */,
+				7C65C298178B23BF00870C20 /* NSString+stripHTML.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

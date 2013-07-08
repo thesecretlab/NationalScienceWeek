@@ -9,6 +9,7 @@
 #import "NSWEventData.h"
 #import "CHCSV.h"
 #import "TouchXML.h"
+#import "NSString+stripHTML.h"
 static NSWEventData* _sharedData = nil;
 
 @implementation NSWEventData
@@ -152,123 +153,125 @@ static NSWEventData* _sharedData = nil;
         __block NSMutableArray *fields = [NSMutableArray array];
        __block NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         
+        NSOperationQueue* backgroundQueue = [[NSOperationQueue alloc] init];
         
-        [rootXML iterate:@"Event" usingBlock: ^(RXMLElement *event) {
-            NSMutableDictionary *eventDict = [NSMutableDictionary dictionary];
-            
-            [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventID"].text] forKey:@"Event ID"];
-            [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventName"].text] forKey:@"Title"];
-            
-            [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss"];
-
-            NSDate *startDate = [dateFormatter dateFromString:[event child:@"EventStart"].text];
-             NSDate *endDate = [dateFormatter dateFromString:[event child:@"EventEnd"].text];
-            //NSLog(@"Date: %@, %@", startDate, endDate);
-
-            [dateFormatter setDateFormat:@"dd/MM/yyyy"];
-            
-            [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:startDate]]  forKey:@"Date"];
-            [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:endDate]]  forKey:@"End Date"];
-
-            if ([endDate timeIntervalSinceDate:startDate]<60*60*24) //<-Seconds in a day
-            {
-                [eventDict setObject:[NSString stringWithFormat:@""] forKey:@"End Date"];
-            }
-            
-            [dateFormatter setDateFormat:@"hh:mm a"];
-
-            [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:startDate]]  forKey:@"Start Time"];
-            [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:endDate]]  forKey:@"End Time"];
-            
-            if ([event child:@"EventDescription"].text) {
-                [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventDescription"].text] forKey:@"Description"];
-            }
-            if ([event child:@"EventTargetAudience"].text) {
-                [eventDict setObject:[NSString stringWithFormat:@"%@\n\nFor: %@", [eventDict objectForKey:@"Description"],[event child:@"EventTargetAudience"].text]  forKey:@"Description"];
-            }
-            
-            if ([[event child:@"EventIsFree"].text isEqualToString:@"true"])
-            {
-                [eventDict setObject:[NSString stringWithFormat:@"%@\n\nEvent Price: %@", [eventDict objectForKey:@"Description"], @"Free"]  forKey:@"Description"];
-            }
-            else
-            {
-                [eventDict setObject:[NSString stringWithFormat:@"%@\n\nEvent Price: %@", [eventDict objectForKey:@"Description"],[event child:@"EventPayment"].text]  forKey:@"Description"];
-            }
-
-
-            
-            //[eventDict setObject:[NSString stringWithFormat:@"%@\n\nFor: %@ \n\nEvent Price: %@",[event child:@"EventDescription"].text,[event child:@"EventTargetAudience"].text,[event child:@"EventPayment"].text] forKey:@"Description"];
-            
-            [eventDict setObject:@"" forKey:@"Latitude"];
-            [eventDict setObject:@"" forKey:@"Longitude"];
-            [eventDict setObject:@"" forKey:@"Address"];
-
-            RXMLElement *venue = [event child:@"Venue"];
-            //NSLog(@"Venue: %@", venue);
-            if (venue != nil)
-            {
-                [eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"VenueName"].text] forKey:@"Location"];
+        [backgroundQueue addOperationWithBlock:^{
+            [rootXML iterate:@"Event" usingBlock: ^(RXMLElement *event) {
+                NSMutableDictionary *eventDict = [NSMutableDictionary dictionary];
                 
-                if ([venue child:@"VenueStreetName"].text) {                    
-                    if ([[venue child:@"VenueStreetName"].text length] > 2) {
-                        [eventDict setObject:[NSString stringWithFormat:@"%@",[venue child:@"VenueStreetName"].text] forKey:@"Address"];
-                    }
+                [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventID"].text] forKey:@"Event ID"];
+                [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventName"].text] forKey:@"Title"];
+                
+                [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss"];
+                
+                NSDate *startDate = [dateFormatter dateFromString:[event child:@"EventStart"].text];
+                NSDate *endDate = [dateFormatter dateFromString:[event child:@"EventEnd"].text];
+                //NSLog(@"Date: %@, %@", startDate, endDate);
+                
+                [dateFormatter setDateFormat:@"dd/MM/yyyy"];
+                
+                [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:startDate]]  forKey:@"Date"];
+                [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:endDate]]  forKey:@"End Date"];
+                
+                if ([endDate timeIntervalSinceDate:startDate]<60*60*24) //<-Seconds in a day
+                {
+                    [eventDict setObject:[NSString stringWithFormat:@""] forKey:@"End Date"];
                 }
-                if ([venue child:@"VenueSuburb"].text) {
-                    if ([[venue child:@"VenueSuburb"].text length] > 2) {
-                        
-                        if ([[eventDict objectForKey:@"Address"] isEqualToString:@""])
-                        {
-                            [eventDict setObject:[NSString stringWithFormat:@"%@",[venue child:@"VenueSuburb"].text]  forKey:@"Address"];
-                        }
-                        else
-                        {
-                            [eventDict setObject:[NSString stringWithFormat:@"%@, %@", [eventDict objectForKey:@"Address"],[venue child:@"VenueSuburb"].text]  forKey:@"Address"];
-                        }
-                    }
+                
+                [dateFormatter setDateFormat:@"hh:mm a"];
+                
+                [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:startDate]]  forKey:@"Start Time"];
+                [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:endDate]]  forKey:@"End Time"];
+                
+                if ([event child:@"EventDescription"].text) {
+                    [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventDescription"].text] forKey:@"Description"];
                 }
+                if ([event child:@"EventTargetAudience"].text) {
+                    [eventDict setObject:[NSString stringWithFormat:@"%@\n\nFor: %@", [eventDict objectForKey:@"Description"],[event child:@"EventTargetAudience"].text]  forKey:@"Description"];
+                }
+                
+                if ([[event child:@"EventIsFree"].text isEqualToString:@"true"])
+                {
+                    [eventDict setObject:[NSString stringWithFormat:@"%@\n\nEvent Price: %@", [eventDict objectForKey:@"Description"], @"Free"]  forKey:@"Description"];
+                }
+                else
+                {
+                    [eventDict setObject:[NSString stringWithFormat:@"%@\n\nEvent Price: %@", [eventDict objectForKey:@"Description"],[[event child:@"EventPayment"].text stringByStrippingHTML]]  forKey:@"Description"];
+                }
+                
+                
+                
+                //[eventDict setObject:[NSString stringWithFormat:@"%@\n\nFor: %@ \n\nEvent Price: %@",[event child:@"EventDescription"].text,[event child:@"EventTargetAudience"].text,[event child:@"EventPayment"].text] forKey:@"Description"];
+                
+                [eventDict setObject:@"" forKey:@"Latitude"];
+                [eventDict setObject:@"" forKey:@"Longitude"];
+                [eventDict setObject:@"" forKey:@"Address"];
+                
+                RXMLElement *venue = [event child:@"Venue"];
+                //NSLog(@"Venue: %@", venue);
+                if (venue != nil)
+                {
+                    [eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"VenueName"].text] forKey:@"Location"];
                     
-                if ([venue child:@"VenuePostcode"].text) {
-                    if ([[venue child:@"VenuePostcode"].text length] > 2) {
-                        
-                        if ([[eventDict objectForKey:@"Address"] isEqualToString:@""])
-                        {
-                            [eventDict setObject:[NSString stringWithFormat:@"%@",[venue child:@"VenuePostcode"].text]  forKey:@"Address"];
+                    if ([venue child:@"VenueStreetName"].text) {
+                        if ([[venue child:@"VenueStreetName"].text length] > 2) {
+                            [eventDict setObject:[NSString stringWithFormat:@"%@",[venue child:@"VenueStreetName"].text] forKey:@"Address"];
                         }
-                        else
-                        {
-                            [eventDict setObject:[NSString stringWithFormat:@"%@, %@", [eventDict objectForKey:@"Address"],[venue child:@"VenuePostcode"].text]  forKey:@"Address"];
+                    }
+                    if ([venue child:@"VenueSuburb"].text) {
+                        if ([[venue child:@"VenueSuburb"].text length] > 2) {
+                            
+                            if ([[eventDict objectForKey:@"Address"] isEqualToString:@""])
+                            {
+                                [eventDict setObject:[NSString stringWithFormat:@"%@",[venue child:@"VenueSuburb"].text]  forKey:@"Address"];
+                            }
+                            else
+                            {
+                                [eventDict setObject:[NSString stringWithFormat:@"%@, %@", [eventDict objectForKey:@"Address"],[venue child:@"VenueSuburb"].text]  forKey:@"Address"];
+                            }
                         }
                     }
                     
-                }
-                
-                if ([venue child:@"VenueLatitude"].text)
-                {
-                    if (![[venue child:@"VenueLatitude"].text isEqualToString:@"0"]) {
-                        [eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"VenueLatitude"].text] forKey:@"Latitude"];
+                    if ([venue child:@"VenuePostcode"].text) {
+                        if ([[venue child:@"VenuePostcode"].text length] > 2) {
+                            
+                            if ([[eventDict objectForKey:@"Address"] isEqualToString:@""])
+                            {
+                                [eventDict setObject:[NSString stringWithFormat:@"%@",[venue child:@"VenuePostcode"].text]  forKey:@"Address"];
+                            }
+                            else
+                            {
+                                [eventDict setObject:[NSString stringWithFormat:@"%@, %@", [eventDict objectForKey:@"Address"],[venue child:@"VenuePostcode"].text]  forKey:@"Address"];
+                            }
+                        }
+                        
                     }
-
-                }
-                if ([venue child:@"VenueLongitude"].text)
-                {
-                    if (![[venue child:@"VenueLongitude"].text isEqualToString:@"0"]) 
+                    
+                    if ([venue child:@"VenueLatitude"].text)
+                    {
+                        if (![[venue child:@"VenueLatitude"].text isEqualToString:@"0"]) {
+                            [eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"VenueLatitude"].text] forKey:@"Latitude"];
+                        }
+                        
+                    }
+                    if ([venue child:@"VenueLongitude"].text)
+                    {
+                        if (![[venue child:@"VenueLongitude"].text isEqualToString:@"0"])
                         {
                             [eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"VenueLongitude"].text] forKey:@"Longitude"];
                         }
+                    }
+                    
+                    
+                    //NSString *addressString = [NSString stringWithFormat:@"%@, %@, %@", [venue child:@"VenueStreetName"].text, [venue child:@"VenueSuburb"].text, [venue child:@"VenuePostcode"].text];
+                    //[eventDict setObject:addressString forKey:@"Address"];
                 }
-
-
-                //NSString *addressString = [NSString stringWithFormat:@"%@, %@, %@", [venue child:@"VenueStreetName"].text, [venue child:@"VenueSuburb"].text, [venue child:@"VenuePostcode"].text];
-                //[eventDict setObject:addressString forKey:@"Address"];
-            }
-            else
-            {
-                [eventDict setObject:@"" forKey:@"Location"];
-                [eventDict setObject:@"" forKey:@"Address"];
-            }
-            
+                else
+                {
+                    [eventDict setObject:@"" forKey:@"Location"];
+                    [eventDict setObject:@"" forKey:@"Address"];
+                }
+                
                 if ([event child:@"EventContactName"].text) {
                     [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventContactName"].text] forKey:@"Contact"];
                 }
@@ -284,38 +287,45 @@ static NSWEventData* _sharedData = nil;
                 if ([event child:@"EventWebsite"].text) {
                     [eventDict setObject:[NSString stringWithFormat:@"%@\n%@", [eventDict objectForKey:@"Contact"],[event child:@"EventWebsite"].text]  forKey:@"Contact"];
                 }
+                
+                [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventWebsite"].text] forKey:@"Website"];
+                
+                
+                // [eventDict setObject:[NSString stringWithFormat:@"%@\n%@\n\n%@\n\n%@",[event child:@"EventContactName"].text, [event child:@"EventContactOrganisation"].text, [event child:@"EventContactTelephone"].text, [event child:@"EventContactEmail"].text] forKey:@"Contact"];
+                
+                //[eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"EventWebsite"].text] forKey:@"Website"];
+                
+                
+                
+                [eventDict setObject:[NSString stringWithFormat:@"%@", [event child:@"EventState"].text] forKey:@"Region"];  //EXPLICIT STATE REGION DATA NEEDS TO BE INCLUDED IN THE DATA
+                [fields addObject:eventDict];
+                //NSLog(@"Event: %@", [event child:@"EventName"]);
+            }];
             
-            [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventWebsite"].text] forKey:@"Website"];
-            
-            
-           // [eventDict setObject:[NSString stringWithFormat:@"%@\n%@\n\n%@\n\n%@",[event child:@"EventContactName"].text, [event child:@"EventContactOrganisation"].text, [event child:@"EventContactTelephone"].text, [event child:@"EventContactEmail"].text] forKey:@"Contact"];
-            
-            //[eventDict setObject:[NSString stringWithFormat:@"%@", [venue child:@"EventWebsite"].text] forKey:@"Website"];
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                if (fields) {
+                    
+                    self.latestVersionNumber = newVersionNumber;
+                    [self processNewEventsArray:fields];
+                    [self revalidateFavourites];
+                    [self saveToFile];
+                    if (self.delegate) {
+                        [self.delegate newDataWasDownloaded];
+                    }
+                    if (self.mapsDelegate) {
+                        [self.mapsDelegate newDataWasDownloaded];
+                    }
+                }
+            }];
 
-
-
-            [eventDict setObject:[NSString stringWithFormat:@"%@", [event child:@"EventState"].text] forKey:@"Region"];  //EXPLICIT STATE REGION DATA NEEDS TO BE INCLUDED IN THE DATA
-            [fields addObject:eventDict];
-            //NSLog(@"Event: %@", [event child:@"EventName"]);
         }];
+        
         
         //NSArray * fields = nil; //PARSE XML HERE
         
         //[NSArray arrayWithContentsOfCSVFile:filePath usedEncoding:&encoding error:&error];
         
-        if (fields) {
-            
-            self.latestVersionNumber = newVersionNumber;
-            [self processNewEventsArray:fields];
-            [self revalidateFavourites];
-            [self saveToFile];
-            if (self.delegate) {
-                [self.delegate newDataWasDownloaded];
-            }
-            if (self.mapsDelegate) {
-                [self.mapsDelegate newDataWasDownloaded];
-            }
-        }
+        
     }
     else
     {

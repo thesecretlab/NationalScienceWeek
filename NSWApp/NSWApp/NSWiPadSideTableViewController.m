@@ -194,7 +194,7 @@
     
     if (displayData == ListEvents)
     {
-        self.noEventsLabel.text = @"There are no events in this list";
+        self.noEventsLabel.text = @"Sorry, there was a problem loading events";
     }
     else if (displayData == ListFavourites)
     {

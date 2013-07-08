@@ -18,7 +18,7 @@
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="R0Z-TW-t6Z">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Filter events" id="n0B-FL-Ugu">
@@ -928,6 +928,7 @@
                 <relationship kind="action" name="openInSafari:"/>
                 <relationship kind="outlet" name="eventAddressDisclosureIndicator" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="eventAddressLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventAddressSearchButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="eventAddressView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="eventContactLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="eventContactTextView" candidateClass="UITextView"/>
@@ -963,6 +964,7 @@
                 <relationship kind="action" name="nextLocationPressed:"/>
                 <relationship kind="action" name="previousLocationPressed:"/>
                 <relationship kind="action" name="scrollToTodaysDate"/>
+                <relationship kind="action" name="valueChanged:"/>
                 <relationship kind="outlet" name="currentLocationButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="currentLocationLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="doubleTap" candidateClass="UITapGestureRecognizer"/>
