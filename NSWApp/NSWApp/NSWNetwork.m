@@ -10,7 +10,7 @@
 #import "NSWEventData.h"
 static NSWNetwork* _sharedNetwork = nil;
 
-#define NETWORK_TESTING
+//#define NETWORK_TESTING
 
 #ifdef NETWORK_TESTING
 #define BASE_URL @"http://dev.secretlab.com.au"
