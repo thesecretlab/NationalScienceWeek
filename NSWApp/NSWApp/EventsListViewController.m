@@ -554,13 +554,18 @@
     
 }
 
-- (void)viewDidLoad
+-(void)viewDidAppear:(BOOL)animated
 {
-    
     listDefaultFrame = CGRectMake(0, 0, self.eventListTableView.frame.size.width, self.eventListTableView.frame.size.height);
     listDownFrame = CGRectMake(0, self.locationSelectView.frame.size.height, self.eventListTableView.frame.size.width, self.eventListTableView.frame.size.height);
     locationSelectDefaultFrame = CGRectMake(0, -self.locationSelectView.frame.size.height, self.eventListTableView.frame.size.width, self.locationSelectView.frame.size.height);
     locationSelectDownFrame = CGRectMake(0, 0, self.eventListTableView.frame.size.width, self.locationSelectView.frame.size.height);
+}
+
+- (void)viewDidLoad
+{
+    
+
 
     _locationSelectView.backgroundColor = [UIColor clearColor];
     _locationSelectHeaderView.backgroundColor = [UIColor clearColor];
