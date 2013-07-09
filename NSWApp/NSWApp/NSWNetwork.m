@@ -10,6 +10,17 @@
 #import "NSWEventData.h"
 static NSWNetwork* _sharedNetwork = nil;
 
+//#define NETWORK_TESTING
+
+#if NETWORK_TESTING
+#define BASE_URL @"http://dev.secretlab.com.au"
+#define EVENT_DATA_PATH @"/scienceweek/scienceweek-events.xml"
+#define REVERT_FILE_URL @"http://dev.secretlab.com.au/scienceweek/revert.txt"
+#else
+#define BASE_URL @"http://www.scienceweek.net.au"
+#define EVENT_DATA_PATH @"/event-transfer/scienceweek-events.xml"
+#define REVERT_FILE_URL @"https://dl.dropboxusercontent.com/u/1101046/revert.txt"
+#endif
 
 @implementation NSWNetwork
 
@@ -17,7 +28,7 @@ static NSWNetwork* _sharedNetwork = nil;
     if (_sharedNetwork == nil) 
     {  
         NSString *baseURLString;
-        baseURLString = @"http://www.scienceweek.net.au";
+        baseURLString = BASE_URL;
         _sharedNetwork.shouldCheckForNewContent = YES;
         _sharedNetwork = [[NSWNetwork alloc] initWithBaseURL:[NSURL URLWithString:baseURLString]];
         
@@ -57,7 +68,7 @@ static NSWNetwork* _sharedNetwork = nil;
 */
 - (void) downloadEventDataWithVersionNumber:(NSNumber*)newVersionNumber completionHandler:(void (^)(void))completionHandler errorHandler:(void (^)(NSError *error))errorHandler;
 {
-    [self getPath:@"/event-transfer/scienceweek-events.xml" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self getPath:EVENT_DATA_PATH parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *stringData = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSLog(@"New data has been downloaded");
         [[NSWEventData sharedData] updateEventDataFromDownload:stringData withVersionNumber:newVersionNumber];
@@ -88,7 +99,7 @@ static NSWNetwork* _sharedNetwork = nil;
 {
     NSLog(@"Checking version...");
     
-    [self enqueueHTTPRequestOperation:[self HTTPRequestOperationWithRequest:[self requestWithMethod:@"HEAD" path:@"/event-transfer/scienceweek-events.xml" parameters:nil] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self enqueueHTTPRequestOperation:[self HTTPRequestOperationWithRequest:[self requestWithMethod:@"HEAD" path:EVENT_DATA_PATH parameters:nil] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"EEE',' dd MMM yyyy HH':'mm':'ss 'GMT'"];
         NSLog(@"UNIX TIME %f", [[dateFormatter dateFromString:[[[operation response] allHeaderFields] objectForKey:@"Last-Modified"]] timeIntervalSince1970]);
@@ -110,26 +121,27 @@ static NSWNetwork* _sharedNetwork = nil;
         }
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@", error);
+        NSLog(@"Error when checking version %@", error);
         errorHandler(error);
 
     }]];
-    NSLog(@"Done checking version");
+    
 }
 
 - (void) checkShouldRevertToPreBakeFailsafe:(void (^)(void))completionHandler errorHandler:(void (^)(NSError *error))errorHandler
 {
-    [self enqueueHTTPRequestOperation:[self HTTPRequestOperationWithRequest:[self requestWithMethod:@"GET" path:@"https://dl.dropboxusercontent.com/u/1101046/revert.txt" parameters:nil] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self enqueueHTTPRequestOperation:[self HTTPRequestOperationWithRequest:[self requestWithMethod:@"GET" path:REVERT_FILE_URL parameters:nil] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *stringData = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        NSLog(@"Should revert to baked in data %@", stringData);
+        NSLog(@"Should revert to baked in data %@?", stringData);
         
         if ([stringData isEqualToString:@"REVERT"]) //key for SHOULD revert
         {
+            NSLog(@"Yes. Reverting to built-in data.");
             [[NSWEventData sharedData] revertDataAndStopDownload];
         }
         else //key for SHOULD NOT revert (i.e. keep downloading current data)
         {
-
+            NSLog(@"No. Continuing download.");
             [[NSWEventData sharedData] resumeNormalUpdates];
             [self checkLatestHeader:^{} errorHandler:^(NSError *error) {}];
 
