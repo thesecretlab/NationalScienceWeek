@@ -57,12 +57,18 @@ static NSWNetwork* _sharedNetwork = nil;
 */
 - (void) downloadEventDataWithVersionNumber:(NSNumber*)newVersionNumber completionHandler:(void (^)(void))completionHandler errorHandler:(void (^)(NSError *error))errorHandler;
 {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+
     [self getPath:@"/event-transfer/scienceweek-events.xml" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *stringData = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSLog(@"New data has been downloaded");
         [[NSWEventData sharedData] updateEventDataFromDownload:stringData withVersionNumber:newVersionNumber];
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
         completionHandler();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
          errorHandler(error);
     }];
     
@@ -87,7 +93,7 @@ static NSWNetwork* _sharedNetwork = nil;
 - (void) checkLatestHeader:(void (^)(void))completionHandler errorHandler:(void (^)(NSError *error))errorHandler
 {
     NSLog(@"Checking version...");
-    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     [self enqueueHTTPRequestOperation:[self HTTPRequestOperationWithRequest:[self requestWithMethod:@"HEAD" path:@"/event-transfer/scienceweek-events.xml" parameters:nil] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"EEE',' dd MMM yyyy HH':'mm':'ss 'GMT'"];
@@ -101,15 +107,17 @@ static NSWNetwork* _sharedNetwork = nil;
             } errorHandler:^(NSError *error) {
                 NSLog(@"New data download failed.");
             }];
-            
+
             completionHandler();
         }
         else
         {
             NSLog(@"Current Data is the latest! No need to update file.");
         }
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         NSLog(@"%@", error);
         errorHandler(error);
 
@@ -119,6 +127,8 @@ static NSWNetwork* _sharedNetwork = nil;
 
 - (void) checkShouldRevertToPreBakeFailsafe:(void (^)(void))completionHandler errorHandler:(void (^)(NSError *error))errorHandler
 {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+
     [self enqueueHTTPRequestOperation:[self HTTPRequestOperationWithRequest:[self requestWithMethod:@"GET" path:@"https://dl.dropboxusercontent.com/u/1101046/revert.txt" parameters:nil] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *stringData = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSLog(@"Should revert to baked in data %@", stringData);
@@ -134,6 +144,7 @@ static NSWNetwork* _sharedNetwork = nil;
             [self checkLatestHeader:^{} errorHandler:^(NSError *error) {}];
 
         }
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 
         
         
@@ -142,6 +153,8 @@ static NSWNetwork* _sharedNetwork = nil;
         errorHandler(error);
         
         //Failsafe for failsafe. (This is here incase the file dissappears so the app can continue downloading.)
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
         [self checkLatestHeader:^{} errorHandler:^(NSError *error) {}];
     }]];
 }
