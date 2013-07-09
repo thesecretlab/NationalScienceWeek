@@ -24,7 +24,7 @@
     
      [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
     
-    [TestFlight takeOff:@"ca26bc23-eddf-40b9-aed1-efeba65c61ed"];
+    [TestFlight takeOff:@"377eb2df-f7d9-442a-b52f-b0e1fef9dec5"];
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
     {
         [[NSWNetwork sharedNetwork] setReachabilityStatusChangeBlock:^(BOOL isNetworkReachable) {
