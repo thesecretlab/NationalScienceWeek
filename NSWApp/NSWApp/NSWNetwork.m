@@ -10,9 +10,9 @@
 #import "NSWEventData.h"
 static NSWNetwork* _sharedNetwork = nil;
 
-//#define NETWORK_TESTING
+#define NETWORK_TESTING
 
-#if NETWORK_TESTING
+#ifdef NETWORK_TESTING
 #define BASE_URL @"http://dev.secretlab.com.au"
 #define EVENT_DATA_PATH @"/scienceweek/scienceweek-events.xml"
 #define REVERT_FILE_URL @"http://dev.secretlab.com.au/scienceweek/revert.txt"
@@ -68,12 +68,17 @@ static NSWNetwork* _sharedNetwork = nil;
 */
 - (void) downloadEventDataWithVersionNumber:(NSNumber*)newVersionNumber completionHandler:(void (^)(void))completionHandler errorHandler:(void (^)(NSError *error))errorHandler;
 {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     [self getPath:EVENT_DATA_PATH parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *stringData = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSLog(@"New data has been downloaded");
         [[NSWEventData sharedData] updateEventDataFromDownload:stringData withVersionNumber:newVersionNumber];
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
         completionHandler();
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
          errorHandler(error);
     }];
     
@@ -99,7 +104,11 @@ static NSWNetwork* _sharedNetwork = nil;
 {
     NSLog(@"Checking version...");
     
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+
+    
     [self enqueueHTTPRequestOperation:[self HTTPRequestOperationWithRequest:[self requestWithMethod:@"HEAD" path:EVENT_DATA_PATH parameters:nil] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"EEE',' dd MMM yyyy HH':'mm':'ss 'GMT'"];
         NSLog(@"UNIX TIME %f", [[dateFormatter dateFromString:[[[operation response] allHeaderFields] objectForKey:@"Last-Modified"]] timeIntervalSince1970]);
@@ -112,16 +121,18 @@ static NSWNetwork* _sharedNetwork = nil;
             } errorHandler:^(NSError *error) {
                 NSLog(@"New data download failed.");
             }];
-            
+
             completionHandler();
         }
         else
         {
             NSLog(@"Current Data is the latest! No need to update file.");
         }
+        
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error when checking version %@", error);
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         errorHandler(error);
 
     }]];
@@ -131,6 +142,7 @@ static NSWNetwork* _sharedNetwork = nil;
 - (void) checkShouldRevertToPreBakeFailsafe:(void (^)(void))completionHandler errorHandler:(void (^)(NSError *error))errorHandler
 {
     [self enqueueHTTPRequestOperation:[self HTTPRequestOperationWithRequest:[self requestWithMethod:@"GET" path:REVERT_FILE_URL parameters:nil] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
         NSString *stringData = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSLog(@"Should revert to baked in data %@?", stringData);
         
@@ -146,6 +158,7 @@ static NSWNetwork* _sharedNetwork = nil;
             [self checkLatestHeader:^{} errorHandler:^(NSError *error) {}];
 
         }
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 
         
         
@@ -154,6 +167,8 @@ static NSWNetwork* _sharedNetwork = nil;
         errorHandler(error);
         
         //Failsafe for failsafe. (This is here incase the file dissappears so the app can continue downloading.)
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
         [self checkLatestHeader:^{} errorHandler:^(NSError *error) {}];
     }]];
 }
