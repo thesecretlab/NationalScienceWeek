@@ -286,8 +286,8 @@
         
         cell.textLabel.text = [[searchResults objectAtIndex:indexPath.row] objectForKey:@"Title"];
         cell.customBackgroundColor = [UIColor whiteColor];
-        cell.textLabel.backgroundColor = [UIColor whiteColor];
-        cell.detailTextLabel.backgroundColor = [UIColor whiteColor];
+        cell.textLabel.backgroundColor = [UIColor clearColor];
+        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
         cell.position = PrettyTableViewCellPositionAlone; //Sets it to be alone. FOREVERALONE
     }
     else

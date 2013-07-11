@@ -79,7 +79,8 @@
     self.eventDateLabel.font = kDetailEventFont_iPad;
     self.openInSafariLabel.font = kDetailOpenInSafariFont;
     self.eventContactTextView.font = kDetailEventFont_iPad;
-    
+    self.eventWebsiteLabel.font = kDetailEventFont_iPad;
+
     if (_event == nil) {
         self.topRowView.hidden = YES;
         self.eventContactView.hidden = YES;
@@ -89,6 +90,7 @@
         self.eventMapHolderView.hidden = YES;
         self.eventMapView.hidden = YES;
         self.openInMapsButton.hidden = YES;
+        self.eventWebsiteView.hidden = YES;
         self.favouriteButton.enabled = NO;
         //self.noEventImageView.hidden = NO;
         [self selectFirstView];
@@ -103,6 +105,7 @@
         self.eventMapHolderView.hidden = NO;
         self.eventMapView.hidden = NO;
         self.openInMapsButton.hidden = NO;
+        self.eventWebsiteView.hidden = NO;
         self.favouriteButton.enabled = YES;
         //self.noEventImageView.hidden = YES;
 
@@ -152,6 +155,22 @@
     {
         self.eventContactTextView.text = [NSString stringWithFormat:@"%@", [_event objectForKey:@"Contact"]];
     }
+    else
+    {
+        self.eventContactTextView.text = @"";
+        
+    }
+    
+    
+    if (![[_event objectForKey:@"Website"] isEqualToString:@""])
+    {
+        self.eventWebsiteLabel.text = [NSString stringWithFormat:@"%@", [_event objectForKey:@"Website"]];
+    }
+    else
+    {
+        self.eventWebsiteLabel.text = @"";
+        
+    }
     
     self.eventContactTextView.contentInset = UIEdgeInsetsMake(-8,-8,0,0);
     
@@ -198,7 +217,7 @@
         self.topRowView.frame = CGRectMake(self.topRowView.frame.origin.x, currentLayoutHeight, self.topRowView.frame.size.width, self.topRowView.frame.size.height);
         currentLayoutHeight = currentLayoutHeight + self.topRowView.frame.size.height + 10;
         
-        [self positionLabelViewOnScreen:self.eventDetailView withLabel:self.eventDescriptionLabel bufferToNextView:10];
+        [self positionLabelViewOnScreen:self.eventDetailView withLabel:(UILabel*)self.eventDescriptionLabel bufferToNextView:10];
         
         [self positionLabelViewOnScreen:self.eventContactView withLabel:(UILabel*)self.eventContactTextView bufferToNextView:10];
         
@@ -222,15 +241,25 @@
         if (self.eventAddressView.frame.size.height != self.eventContactView.frame.size.height) {
             if (self.eventAddressView.frame.size.height >= self.eventContactView.frame.size.height) {
                 self.eventContactView.frame = CGRectMake(self.eventContactView.frame.origin.x, self.eventContactView.frame.origin.y, self.eventContactView.frame.size.width, self.eventAddressView.frame.size.height);
-                self.eventContactTextView.frame = CGRectMake(10, 10, self.eventContactView.frame.size.width-20, self.eventContactTextView.frame.size.height-20);
+                self.eventContactTextView.frame = CGRectMake(12, 10, self.eventContactView.frame.size.width-24, self.eventContactTextView.frame.size.height-20);
 
             }
             else if (self.eventAddressView.frame.size.height < self.eventContactView.frame.size.height) {
+                currentLayoutHeight = currentLayoutHeight - self.eventAddressView.frame.size.height - 10;
+                currentLayoutHeight = currentLayoutHeight + self.eventContactView.frame.size.height + 10;
+
                 self.eventAddressView.frame = CGRectMake(self.eventAddressView.frame.origin.x, self.eventAddressView.frame.origin.y, self.eventAddressView.frame.size.width, self.eventContactView.frame.size.height);
-                self.eventAddressLabel.frame = CGRectMake(10, 10, self.eventAddressView.frame.size.width-20, self.eventAddressView.frame.size.height-20);
+                self.eventAddressLabel.frame = CGRectMake(12, 10, self.eventAddressView.frame.size.width-34, self.eventAddressView.frame.size.height-20);
+
 
             }
         }
+        
+        self.eventWebsiteView.frame = CGRectMake(self.eventWebsiteView.frame.origin.x, self.eventWebsiteView.frame.origin.y, self.eventDetailView.frame.size.width, self.eventWebsiteView.frame.size.height);
+        
+        
+        [self positionLabelViewOnScreen:self.eventWebsiteView withLabel:(UILabel*)self.eventWebsiteLabel bufferToNextView:10];
+
     }
     
     
@@ -241,6 +270,7 @@
     self.eventDetailView.layer.cornerRadius = kDetailCornerRadius;
     self.eventContactView.layer.cornerRadius = kDetailCornerRadius;
     self.eventAddressView.layer.cornerRadius = kDetailCornerRadius;
+    self.eventWebsiteView.layer.cornerRadius = kDetailCornerRadius;
     self.onlineOnlyOpenInSafariView.layer.cornerRadius = kDetailCornerRadius;
     
     float width = self.topRowView.frame.size.width;
@@ -375,7 +405,7 @@
     }
     else {
         currentView.hidden = YES;
-        currentLabel.hidden = YES;
+        //currentLabel.hidden = YES;
     }
     
     
@@ -635,7 +665,7 @@
 }
 - (IBAction)openInSafari:(id)sender
 {
-    NSURL *websiteToOpen = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@",[_event objectForKey:@"Website"]]];
+    NSURL *websiteToOpen = [NSURL URLWithString:[NSString stringWithFormat:@"%@",[_event objectForKey:@"Website"]]];
     NSLog(@" WEBSITE? %@", websiteToOpen);
     [[UIApplication sharedApplication] openURL:websiteToOpen];
     
@@ -673,6 +703,8 @@
     [self setNoEventImageView:nil];
     [self setEventAddressDisclosureIndicator:nil];
     [self setEventAddressSearchButton:nil];
+    [self setEventWebsiteView:nil];
+    [self setEventWebsiteLabel:nil];
     [super viewDidUnload];
 }
 @end
