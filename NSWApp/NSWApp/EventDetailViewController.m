@@ -150,7 +150,7 @@
 
 - (IBAction)openInSafari:(id)sender 
 {
-    NSURL *websiteToOpen = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@",[event objectForKey:@"Website"]]];
+    NSURL *websiteToOpen = [NSURL URLWithString:[NSString stringWithFormat:@"%@",[event objectForKey:@"Website"]]];
     NSLog(@" WEBSITE? %@", websiteToOpen);
     [[UIApplication sharedApplication] openURL:websiteToOpen];
     
@@ -208,6 +208,35 @@
 - (void)updateAndRelayoutView
 {
     
+    if (event == nil) {
+        self.topRowView.hidden = YES;
+        self.eventContactView.hidden = YES;
+        self.eventAddressView.hidden = YES;
+        self.eventDetailView.hidden = YES;
+        self.eventTitleLabel.hidden = YES;
+        self.eventMapHolderView.hidden = YES;
+        self.eventMapView.hidden = YES;
+        self.openInMapsButton.hidden = YES;
+        self.eventWebsiteView.hidden =  YES;
+
+        self.favouriteButton.enabled = NO;
+        return;
+    }
+    else{
+        self.topRowView.hidden = NO;
+        self.eventContactView.hidden = NO;
+        self.eventAddressView.hidden = NO;
+        self.eventDetailView.hidden = NO;
+        self.eventTitleLabel.hidden = NO;
+        self.eventMapHolderView.hidden = NO;
+        self.eventMapView.hidden = NO;
+        self.openInMapsButton.hidden = NO;
+        self.favouriteButton.enabled = YES;
+        self.eventWebsiteView.hidden =  NO;
+        
+    }
+    
+    
     self.eventTitleLabel.text = [event objectForKey:@"Title"];
     
     if (![[event objectForKey:@"Start Time"] isEqualToString:@""] && ![[event objectForKey:@"End Time"] isEqualToString:@""]) 
@@ -244,11 +273,30 @@
     {
         self.eventAddressLabel.text = [NSString stringWithFormat:@"%@", [event objectForKey:@"Address"]];
     }
+    else
+    {
+        self.eventAddressLabel.text = @"";
+    }
+    
 
     
     if (![[event objectForKey:@"Contact"] isEqualToString:@""])
     {
         self.eventContactTextView.text = [NSString stringWithFormat:@"%@", [event objectForKey:@"Contact"]];
+    }
+    else
+    {
+        self.eventContactTextView.text = @"";
+    }
+    
+    if (![[event objectForKey:@"Website"] isEqualToString:@""])
+    {
+        self.eventWebsiteLabel.text = [NSString stringWithFormat:@"%@", [event objectForKey:@"Website"]];
+    }
+    else
+    {
+        self.eventWebsiteLabel.text = @"";
+
     }
     
     self.eventContactTextView.contentInset = UIEdgeInsetsMake(-8,-8,0,0);
@@ -297,11 +345,14 @@
         
         currentLayoutHeight = currentLayoutHeight + self.topRowView.frame.size.height + 10;
         
-        [self positionLabelViewOnScreen:self.eventDetailView withLabel:self.eventDescriptionLabel bufferToNextView:10];
+        [self positionLabelViewOnScreen:self.eventDetailView withLabel:(UILabel*)self.eventDescriptionLabel bufferToNextView:10];
         
         [self positionLabelViewOnScreen:self.eventAddressView withLabel:self.eventAddressLabel bufferToNextView:10];
         
-        [self positionLabelViewOnScreen:self.eventContactView withLabel:(UILabel*)self.eventContactTextView bufferToNextView:10];    
+        [self positionLabelViewOnScreen:self.eventContactView withLabel:(UILabel*)self.eventContactTextView bufferToNextView:10];
+        
+        [self positionLabelViewOnScreen:self.eventWebsiteView withLabel:(UILabel*)self.eventWebsiteLabel bufferToNextView:10];
+
         
     }
     else {
@@ -310,7 +361,7 @@
         self.topRowView.hidden = YES;
         self.eventContactView.hidden = YES;
         self.eventAddressView.hidden = YES;
-        [self positionLabelViewOnScreen:self.eventDetailView withLabel:self.eventDescriptionLabel bufferToNextView:10];
+        [self positionLabelViewOnScreen:self.eventDetailView withLabel:(UILabel*)self.eventDescriptionLabel bufferToNextView:10];
         
         self.onlineOnlyOpenInSafariView.hidden = NO;
         self.onlineOnlyOpenInSafariView.frame = CGRectMake(self.onlineOnlyOpenInSafariView.frame.origin.x, currentLayoutHeight, self.onlineOnlyOpenInSafariView.frame.size.width, self.onlineOnlyOpenInSafariView.frame.size.height);
@@ -330,6 +381,7 @@
     self.eventDetailView.layer.cornerRadius = kDetailCornerRadius;
     self.eventContactView.layer.cornerRadius = kDetailCornerRadius;
     self.eventAddressView.layer.cornerRadius = kDetailCornerRadius;
+    self.eventWebsiteView.layer.cornerRadius = kDetailCornerRadius;
     self.onlineOnlyOpenInSafariView.layer.cornerRadius = kDetailCornerRadius;
     
     if (![[event objectForKey:@"Longitude"] isEqualToString:@""]&& ![[event objectForKey:@"Latitude"] isEqualToString:@""]) {
@@ -420,7 +472,7 @@
     if (![currentLabel.text isEqualToString:@""]) {
             
         
-        CGSize constraint = CGSizeMake(currentView.frame.size.width-34, 20000.0f);
+        CGSize constraint = CGSizeMake(currentView.frame.size.width-40, 20000.0f);
         
         CGSize size = [currentLabel.text sizeWithFont:currentLabel.font constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
         
@@ -448,7 +500,7 @@
     }
     else {
         currentView.hidden = YES;
-        currentLabel.hidden = YES;
+        //currentLabel.hidden = YES;
     }
     
 
@@ -618,6 +670,7 @@
     [self setOpenInSafariLabel:nil];
     [self setEventAddressDisclosureIndicator:nil];
     [self setEventAddressSearchButton:nil];
+    [self setEventWebsiteView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

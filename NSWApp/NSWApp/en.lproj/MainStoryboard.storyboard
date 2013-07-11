@@ -481,12 +481,7 @@
                                         <rect key="frame" x="12" y="142" width="296" height="165"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <view hidden="YES" contentMode="scaleToFill" id="9DJ-di-dIY" customClass="UACellBackgroundView">
-                                                <rect key="frame" x="0.0" y="0.0" width="296" height="165"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                            </view>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" minimumFontSize="10" id="jwB-A2-Lfd">
+                                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" minimumFontSize="10" id="jwB-A2-Lfd">
                                                 <rect key="frame" x="0.0" y="0.0" width="296" height="165"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -494,6 +489,15 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <textView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" id="Cem-sY-D63">
+                                                <rect key="frame" x="0.0" y="0.0" width="296" height="165"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <inset key="contentInset" minX="-8" minY="-8" maxX="0.0" maxY="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                                            </textView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
@@ -598,6 +602,45 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" id="ulf-gJ-ZnL">
+                                        <rect key="frame" x="12" y="315" width="296" height="41"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" id="VkV-Er-rML">
+                                                <rect key="frame" x="0.0" y="0.0" width="296" height="41"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <inset key="contentInset" minX="-8" minY="-8" maxX="0.0" maxY="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                                            </textView>
+                                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="C1C-ve-7ng">
+                                                <rect key="frame" x="0.0" y="0.0" width="296" height="41"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="A6z-4x-bVz">
+                                                <rect key="frame" x="0.0" y="0.0" width="296" height="41"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal">
+                                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="openInSafari:" destination="GGA-Tb-P3v" eventType="touchUpInside" id="khi-xA-u3I"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </scrollView>
@@ -620,7 +663,7 @@
                         <outlet property="eventContactView" destination="kHg-ij-XSw" id="RuB-mD-n9B"/>
                         <outlet property="eventDateLabel" destination="HLW-Am-Jjp" id="THt-EE-dtc"/>
                         <outlet property="eventDateView" destination="S8q-BL-Djq" id="x2L-OI-Gh3"/>
-                        <outlet property="eventDescriptionLabel" destination="jwB-A2-Lfd" id="o33-2a-DrV"/>
+                        <outlet property="eventDescriptionLabel" destination="Cem-sY-D63" id="7k1-BE-xLD"/>
                         <outlet property="eventDetailView" destination="aDv-u2-NrR" id="srl-YQ-SYZ"/>
                         <outlet property="eventLocationLabel" destination="9QW-Vf-vBq" id="ZnF-wD-JrT"/>
                         <outlet property="eventMapHolderView" destination="wft-HC-B7c" id="gaz-DA-QeV"/>
@@ -628,7 +671,8 @@
                         <outlet property="eventTimeLabel" destination="4il-ZF-NTQ" id="s51-lv-dLc"/>
                         <outlet property="eventTimeView" destination="suH-s1-Wsl" id="bBV-6M-I5t"/>
                         <outlet property="eventTitleLabel" destination="cCM-EO-3tE" id="BTz-cG-ad7"/>
-                        <outlet property="eventWebsiteLabel" destination="CkW-O9-cuK" id="kBB-yz-EZ7"/>
+                        <outlet property="eventWebsiteLabel" destination="VkV-Er-rML" id="69o-sE-SkS"/>
+                        <outlet property="eventWebsiteView" destination="ulf-gJ-ZnL" id="wtB-q1-ck1"/>
                         <outlet property="favouriteButton" destination="TKR-iO-V5K" id="Mm7-bo-qCr"/>
                         <outlet property="labelScrollView" destination="wcm-xd-Zpf" id="n55-ES-86e"/>
                         <outlet property="onlineOnlyOpenInSafariView" destination="QyX-8G-TW7" id="DGi-Sc-xB7"/>
@@ -935,7 +979,7 @@
                 <relationship kind="outlet" name="eventContactView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="eventDateLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="eventDateView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="eventDetailView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="eventLocationLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="eventMapHolderView" candidateClass="UIView"/>
@@ -943,7 +987,8 @@
                 <relationship kind="outlet" name="eventTimeLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="eventTimeView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="eventTitleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="eventWebsiteLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="eventWebsiteLabel" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="eventWebsiteView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="favouriteButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="labelScrollView" candidateClass="UIScrollView"/>
                 <relationship kind="outlet" name="onlineOnlyOpenInSafariView" candidateClass="UIView"/>

@@ -29,13 +29,15 @@ typedef enum  {
 @property (weak, nonatomic) IBOutlet UILabel *eventAddressLabel;
 @property (weak, nonatomic) IBOutlet UITextView *eventContactTextView;
 @property (weak, nonatomic) IBOutlet UILabel *eventContactLabel;
-@property (weak, nonatomic) IBOutlet UILabel *eventDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UITextView *eventDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *openInSafariLabel;
 
 @property (weak, nonatomic) IBOutlet UIButton *eventAddressSearchButton;
 @property (weak, nonatomic) IBOutlet UILabel *eventDateLabel;
 @property (strong, nonatomic) NSDictionary *event;
-@property (weak, nonatomic) IBOutlet UILabel *eventWebsiteLabel;
+
+@property (weak, nonatomic) IBOutlet UIView *eventWebsiteView;
+@property (weak, nonatomic) IBOutlet UITextView *eventWebsiteLabel;
 @property (weak, nonatomic) IBOutlet MKMapView *eventMapView;
 @property (weak, nonatomic) IBOutlet UIButton *openInMapsButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *labelScrollView;

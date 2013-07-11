@@ -193,13 +193,29 @@ static NSWEventData* _sharedData = nil;
                     [eventDict setObject:[NSString stringWithFormat:@"%@\n\nFor: %@", [eventDict objectForKey:@"Description"],[event child:@"EventTargetAudience"].text]  forKey:@"Description"];
                 }
                 
+                [eventDict setObject:[NSString stringWithFormat:@"%@\n\nEvent Price: ", [eventDict objectForKey:@"Description"]]  forKey:@"Description"];
+                
                 if ([[event child:@"EventIsFree"].text isEqualToString:@"true"])
                 {
-                    [eventDict setObject:[NSString stringWithFormat:@"%@\n\nEvent Price: %@", [eventDict objectForKey:@"Description"], @"Free"]  forKey:@"Description"];
+                    [eventDict setObject:[NSString stringWithFormat:@"%@%@", [eventDict objectForKey:@"Description"], @"Free"]  forKey:@"Description"];
                 }
-                else
+                if ([event child:@"EventPayment"].text)
                 {
-                    [eventDict setObject:[NSString stringWithFormat:@"%@\n\nEvent Price: %@", [eventDict objectForKey:@"Description"],[[event child:@"EventPayment"].text stringByStrippingHTML]]  forKey:@"Description"];
+                    NSDataDetector *linkDetector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink error:nil];
+                    NSArray *matches = [linkDetector matchesInString:[event child:@"EventPayment"].text options:0 range:NSMakeRange(0, [[event child:@"EventPayment"].text length])];
+
+                    
+                    [eventDict setObject:[NSString stringWithFormat:@"%@\n%@", [eventDict objectForKey:@"Description"],[[event child:@"EventPayment"].text stringByStrippingHTML]]  forKey:@"Description"];
+                    
+                    for (NSTextCheckingResult *match in matches) {
+                        if ([match resultType] == NSTextCheckingTypeLink) {
+                            NSURL *url = [match URL];
+                            NSString *extractedLink = [[url absoluteString] stringByReplacingOccurrencesOfString:@"mailto:" withString:@""];
+                            
+                            [eventDict setObject:[NSString stringWithFormat:@"%@\n%@", [eventDict objectForKey:@"Description"],extractedLink] forKey:@"Description"];
+                            //NSLog(@"found URL: %@", [url absoluteString]);
+                        }
+                    }
                 }
                 
                 
@@ -285,12 +301,13 @@ static NSWEventData* _sharedData = nil;
                 if ([event child:@"EventContactTelephone"].text) {
                     [eventDict setObject:[NSString stringWithFormat:@"%@\n%@", [eventDict objectForKey:@"Contact"],[event child:@"EventContactTelephone"].text]  forKey:@"Contact"];
                 }
-                if ([event child:@"EventContactEmail"].text) {
+                if ([event child:@"EventContactEmail"].text && ![[event child:@"EventContactEmail"].text isEqualToString:@""]) {
                     [eventDict setObject:[NSString stringWithFormat:@"%@\n%@", [eventDict objectForKey:@"Contact"],[event child:@"EventContactEmail"].text]  forKey:@"Contact"];
                 }
-                if ([event child:@"EventWebsite"].text) {
-                    [eventDict setObject:[NSString stringWithFormat:@"%@\n%@", [eventDict objectForKey:@"Contact"],[event child:@"EventWebsite"].text]  forKey:@"Contact"];
-                }
+                /*
+                if ([event child:@"EventWebsite"].text && ![[event child:@"EventWebsite"].text isEqualToString:@""]) {
+                    [eventDict setObject:[NSString stringWithFormat:@"%@\n\n%@", [eventDict objectForKey:@"Contact"],[event child:@"EventWebsite"].text]  forKey:@"Contact"];
+                }*/
                 
                 [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventWebsite"].text] forKey:@"Website"];
                 
