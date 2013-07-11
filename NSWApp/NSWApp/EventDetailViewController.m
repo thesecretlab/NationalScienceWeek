@@ -426,9 +426,17 @@
         
         CGFloat height = MAX(size.height, 20);
 
-        currentLabel.frame = CGRectMake(10, 10, currentView.frame.size.width-20, height);
+        if (currentLabel == self.eventAddressLabel)
+        {
+            currentLabel.frame = CGRectMake(12, 10, currentView.frame.size.width-34, height);
+        }
+        else
+        {
+            currentLabel.frame = CGRectMake(12, 10, currentView.frame.size.width-24, height);
+        }
         
         height = height + 20;
+        
         
         currentView.frame = CGRectMake(currentView.frame.origin.x, currentLayoutHeight, currentView.frame.size.width, height);
         

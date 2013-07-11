@@ -55,7 +55,10 @@
     [self.internetDownMessage setHidden:YES];
     
     [self.spinner stopAnimating];
-    [self.backgroundColourView setHidden:YES];
+    [UIView animateWithDuration:0.5 animations:^{
+        self.backgroundColourView.alpha = 0.0;
+        
+    }];
     hasContent = YES;
 }
 

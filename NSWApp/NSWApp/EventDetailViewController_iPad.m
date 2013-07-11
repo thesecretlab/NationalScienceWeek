@@ -347,7 +347,7 @@
     if (![currentLabel.text isEqualToString:@""]) {
         
         
-        CGSize constraint = CGSizeMake(currentView.frame.size.width-24, 20000.0f);
+        CGSize constraint = CGSizeMake(currentView.frame.size.width-34, 20000.0f);
         
         CGSize size = [currentLabel.text sizeWithFont:currentLabel.font constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
         
@@ -358,8 +358,16 @@
         
         currentView.frame = CGRectMake(currentView.frame.origin.x, currentLayoutHeight, currentView.frame.size.width, height+20);
         
-        currentLabel.frame = CGRectMake(10, 10, currentView.frame.size.width-20, height);
-
+        if (currentLabel == self.eventAddressLabel)
+        {
+            currentLabel.frame = CGRectMake(12, 10, currentView.frame.size.width-34, height);
+        }
+        else
+        {
+            currentLabel.frame = CGRectMake(12, 10, currentView.frame.size.width-24, height);
+        }
+        
+        
         currentLayoutHeight = height+20 + currentLayoutHeight + bufferToNextView;
         
         

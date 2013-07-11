@@ -47,6 +47,7 @@
     [self.internetDownMessage setHidden:NO];
     [self.spinner stopAnimating];
     [self.backgroundColourView setHidden:NO];
+    self.backgroundColourView.alpha = 1.0;
     self.error = newError;
     NSLog(@"Error %@", newError);
     }
@@ -58,7 +59,10 @@
     [self.internetDownMessage setHidden:YES];
 
     [self.spinner stopAnimating];
-    [self.backgroundColourView setHidden:YES];
+    [UIView animateWithDuration:0.5 animations:^{
+        self.backgroundColourView.alpha = 0.0;
+
+    }];
     hasContent = YES;
 }
 

@@ -216,7 +216,8 @@ static NSWEventData* _sharedData = nil;
                     
                     if ([venue child:@"VenueStreetName"].text) {
                         if ([[venue child:@"VenueStreetName"].text length] > 2) {
-                            [eventDict setObject:[NSString stringWithFormat:@"%@",[venue child:@"VenueStreetName"].text] forKey:@"Address"];
+                            [eventDict setObject:[[NSString stringWithFormat:@"%@",[venue child:@"VenueStreetName"].text]stringByTrimmingCharactersInSet:
+                             [NSCharacterSet whitespaceCharacterSet]]  forKey:@"Address"];
                         }
                     }
                     if ([venue child:@"VenueSuburb"].text) {
