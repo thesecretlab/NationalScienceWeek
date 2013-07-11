@@ -680,8 +680,8 @@
 - (void)reloadView
 {
     
-    //TODO: Update the display of which location is selected 
     
+    [self.currentLocationButton setTitle:[NSString stringWithFormat:@"%@ | ▼", [[NSWEventData sharedData] currentLocationAcronym]]];
     self.currentLocationLabel.text = [[NSWEventData sharedData] location];
     [self.eventListTableView reloadData];
 }
