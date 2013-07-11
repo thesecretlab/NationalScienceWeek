@@ -35,7 +35,7 @@
                 }
             });
         }];
-           
+        [(UITabBarController*)[self.window rootViewController] setSelectedIndex: 1]; //Defaulting to having this selected for now, looks silly with launch image otherwise.
     }
     [[NSWEventData sharedData] checkUsersLocation];
 
