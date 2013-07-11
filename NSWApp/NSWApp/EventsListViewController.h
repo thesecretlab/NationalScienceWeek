@@ -9,9 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "NSWEventData.h"
 #import "FUISegmentedControl.h"
-#import "PopoverView.h"
 #import "FUIButton.h"
-@interface EventsListViewController : UIViewController <NSWEventDataDelegate, PopoverViewDelegate>
+@interface EventsListViewController : UIViewController <NSWEventDataDelegate>
 {
     CGRect listDownFrame;
     CGRect listDefaultFrame;

@@ -19,7 +19,7 @@
 
 //- (void) downloadEventDataWithVersionNumber:(NSNumber*)newVersionNumber completionHandler:(void (^)(void))completionHandler errorHandler:(void (^)(NSError *error))errorHandler;
 
--(void) downloadEventXMLWithCompletionHandler:(void (^)(void))completionHandler errorHandler:(void (^)(NSError *error))errorHandler;
+//-(void) downloadEventXMLWithCompletionHandler:(void (^)(void))completionHandler errorHandler:(void (^)(NSError *error))errorHandler;
 - (void) checkLatestHeader:(void (^)(void))completionHandler errorHandler:(void (^)(NSError *error))errorHandler;
 - (void) checkShouldRevertToPreBakeFailsafe:(void (^)(void))completionHandler errorHandler:(void (^)(NSError *error))errorHandler;
 

@@ -964,7 +964,6 @@
                 <relationship kind="action" name="nextLocationPressed:"/>
                 <relationship kind="action" name="previousLocationPressed:"/>
                 <relationship kind="action" name="scrollToTodaysDate"/>
-                <relationship kind="action" name="valueChanged:"/>
                 <relationship kind="outlet" name="currentLocationButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="currentLocationLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="doubleTap" candidateClass="UITapGestureRecognizer"/>

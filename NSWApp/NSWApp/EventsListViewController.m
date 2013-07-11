@@ -15,7 +15,6 @@
 #import "UIBarButtonItem+FlatUI.h"
 #import "FUISegmentedControl.h"
 #import "UIFont+FlatUI.h"
-#import "PopoverView.h"
 #import "NSWAppAppearanceConfig.h"
 #import "PrettyTableViewCell.h"
 #import <QuartzCore/QuartzCore.h>
@@ -441,7 +440,6 @@
 - (IBAction)chooseLocation:(UIBarButtonItem*)sender
 {
     
-    //[PopoverView showPopoverAtPoint:CGPointMake(sender.width, 0) inView:self.view withTitle:@"Choose Location" withStringArray:[NSArray arrayWithObjects:@"TAS", @"QLD", @"NT", @"SA", @"WA", @"ACT", @"VIC", @"NSW", nil] delegate:self];
     if (eventListTableView.frame.origin.y >0) {
         
         [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
@@ -510,21 +508,6 @@
     [self chooseLocation:nil];
     [self scrollToTodaysDate];
 }
-
-- (void)popoverView:(PopoverView *)popoverView didSelectItemAtIndex:(NSInteger)index
-{
-    
-    NSArray *states = [NSArray arrayWithObjects:@"TAS", @"QLD", @"NT", @"SA", @"WA", @"ACT", @"VIC", @"NSW", nil];
-    [[NSWEventData sharedData] changeLocation:[states objectAtIndex:index]];
-    [popoverView dismiss];
-
-}
-
-- (void)popoverViewDidDismiss:(PopoverView *)popoverView
-{
-    
-}
-
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -657,7 +640,6 @@
     // only show the status bar’s cancel button while in edit mode sbar (UISearchBar)
     searchBar.showsCancelButton = YES;
     searchBar.autocorrectionType = UITextAutocorrectionTypeNo;
-    UIColor *desiredColor = [UIColor colorWithRed:212.0/255.0 green:237.0/255.0 blue:187.0/255.0 alpha:1.0];
     
     UIImage *normalBackgroundImage = [UIImage buttonImageWithColor:kGlobalNavBarItemColour
                                                       cornerRadius:kDetailCornerRadius

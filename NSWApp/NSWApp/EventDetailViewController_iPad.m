@@ -398,7 +398,7 @@
     NSNumber * latitude = [NSNumber numberWithDouble:[[_event objectForKey:@"Latitude"] doubleValue]];
     NSNumber * longitude = [NSNumber numberWithDouble:[[_event objectForKey:@"Longitude"] doubleValue]];
     
-    NSString * purchaseDescription = [NSString stringWithFormat:[_event objectForKey:@"Title"]];
+    NSString * purchaseDescription = [NSString stringWithFormat:@"%@",[_event objectForKey:@"Title"]];
     NSString * purchaseLocation = [_event objectForKey:@"Location"];
     
     CLLocationCoordinate2D coordinate;

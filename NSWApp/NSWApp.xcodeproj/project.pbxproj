@@ -30,6 +30,8 @@
 		6E2DB3A415B87B7C00270481 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2DB3A315B87B7C00270481 /* Icon.png */; };
 		7C04A6BF1779DF28005B0C87 /* NSWEventsMapViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C04A6BE1779DF28005B0C87 /* NSWEventsMapViewController_iPad.m */; };
 		7C0A35AB15BE9CB200A25D3B /* FavouriteEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0A35AA15BE9CB200A25D3B /* FavouriteEventsViewController.m */; };
+		7C1840D0178E8A0100C4FCF1 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1840CF178E8A0100C4FCF1 /* Default-Portrait@2x~ipad.png */; };
+		7C1840D2178E8A1D00C4FCF1 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1840D1178E8A1D00C4FCF1 /* Default-Landscape@2x~ipad.png */; };
 		7C2A7395175E3297008CD94B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C2A7394175E3297008CD94B /* libz.dylib */; };
 		7C2A7399175E33E6008CD94B /* RXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2A7398175E33E6008CD94B /* RXMLElement.m */; };
 		7C2A739B175E3421008CD94B /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C2A739A175E3421008CD94B /* libxml2.dylib */; };
@@ -139,7 +141,6 @@
 		7CF7633D1755AEA900F9088E /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7CF763331755AEA900F9088E /* Lato-Light.ttf */; };
 		7CF7633E1755AEA900F9088E /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7CF763341755AEA900F9088E /* Lato-LightItalic.ttf */; };
 		7CF7633F1755AEA900F9088E /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7CF763351755AEA900F9088E /* Lato-Regular.ttf */; };
-		7CF763441755B57400F9088E /* PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF763421755B57400F9088E /* PopoverView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -169,6 +170,8 @@
 		7C04A6BE1779DF28005B0C87 /* NSWEventsMapViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWEventsMapViewController_iPad.m; sourceTree = "<group>"; };
 		7C0A35A915BE9CB200A25D3B /* FavouriteEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouriteEventsViewController.h; sourceTree = "<group>"; };
 		7C0A35AA15BE9CB200A25D3B /* FavouriteEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouriteEventsViewController.m; sourceTree = "<group>"; };
+		7C1840CF178E8A0100C4FCF1 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		7C1840D1178E8A1D00C4FCF1 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		7C2A7394175E3297008CD94B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		7C2A7397175E33E6008CD94B /* RXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXMLElement.h; sourceTree = "<group>"; };
 		7C2A7398175E33E6008CD94B /* RXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXMLElement.m; sourceTree = "<group>"; };
@@ -351,9 +354,6 @@
 		7CF763331755AEA900F9088E /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		7CF763341755AEA900F9088E /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
 		7CF763351755AEA900F9088E /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
-		7CF763411755B57400F9088E /* PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView.h; sourceTree = "<group>"; };
-		7CF763421755B57400F9088E /* PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverView.m; sourceTree = "<group>"; };
-		7CF763431755B57400F9088E /* PopoverView_Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverView_Configuration.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -420,6 +420,8 @@
 		7C55861715B51DC100068067 = {
 			isa = PBXGroup;
 			children = (
+				7C1840D1178E8A1D00C4FCF1 /* Default-Landscape@2x~ipad.png */,
+				7C1840CF178E8A0100C4FCF1 /* Default-Portrait@2x~ipad.png */,
 				6CF5C93F178525F8005A94A6 /* Icon-72.png */,
 				6CF5C940178525F8005A94A6 /* Icon-72@2x.png */,
 				6CF5C941178525F8005A94A6 /* Icon-Cropped-Large.png */,
@@ -482,7 +484,6 @@
 				7CA5D21317853B8400BA9018 /* TestFlight SDK */,
 				7C55862D15B51DC200068067 /* Supporting Files */,
 				7C3B18C515B83C8200A94F12 /* AFNetworking */,
-				7CF763401755B57400F9088E /* PopoverView */,
 				7CC027B51757A15B00B97C3C /* PrettyKit */,
 				7CF763011755A5B500F9088E /* FlatUI */,
 				7C60902315B65DA6005A8833 /* CSV Parser */,
@@ -756,16 +757,6 @@
 			name = "Lato-Font";
 			sourceTree = "<group>";
 		};
-		7CF763401755B57400F9088E /* PopoverView */ = {
-			isa = PBXGroup;
-			children = (
-				7CF763411755B57400F9088E /* PopoverView.h */,
-				7CF763421755B57400F9088E /* PopoverView.m */,
-				7CF763431755B57400F9088E /* PopoverView_Configuration.h */,
-			);
-			path = PopoverView;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -869,6 +860,8 @@
 				6CF5C953178525F8005A94A6 /* iTunesArtwork.png in Resources */,
 				6CF5C954178525F8005A94A6 /* iTunesArtwork@2x.png in Resources */,
 				7C9235C4178A562F00D2FAB7 /* science-week-_2013_dev.png in Resources */,
+				7C1840D0178E8A0100C4FCF1 /* Default-Portrait@2x~ipad.png in Resources */,
+				7C1840D2178E8A1D00C4FCF1 /* Default-Landscape@2x~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -935,7 +928,6 @@
 				7C49807015BCD441004A1AEF /* UACellBackgroundView.m in Sources */,
 				7C79596615BE346C005A5A3E /* NSWInfoViewController.m in Sources */,
 				7C0A35AB15BE9CB200A25D3B /* FavouriteEventsViewController.m in Sources */,
-				7CF763441755B57400F9088E /* PopoverView.m in Sources */,
 				7CC027CA1757A15B00B97C3C /* PrettyCustomViewTableViewCell.m in Sources */,
 				7CC027CB1757A15B00B97C3C /* PrettyGridTableViewCell.m in Sources */,
 				7CC027CC1757A15B00B97C3C /* PrettySegmentedControlTableViewCell.m in Sources */,

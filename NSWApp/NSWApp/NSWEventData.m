@@ -106,10 +106,10 @@ static NSWEventData* _sharedData = nil;
     _shouldRevertToBakedInData = NO;
 }
 
-/*
+
 -(void)loadCSVEventsFromCSVFile
 {
-    
+    /*
     NSString * file = [[NSBundle bundleForClass:[self class]] pathForResource:@"NSWkAPPSpreadsheet" ofType:@"csv"];
 	
 	NSStringEncoding encoding = 0;
@@ -121,8 +121,9 @@ static NSWEventData* _sharedData = nil;
     [self processNewEventsArray:fields];
     
     [self saveToFile];
-}
  */
+}
+ 
 
 -(void)updateEventDataFromDownload:(NSString*)newCSVData withVersionNumber:(NSNumber*)newVersionNumber
 {

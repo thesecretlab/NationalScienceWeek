@@ -37,9 +37,9 @@ static NSWNetwork* _sharedNetwork = nil;
 }
 
 /*
+
 - (void) checkForNewFileVersionWithCompletionHandler:(void (^)(NSNumber *newVersionNumber))completionHandler errorHandler:(void (^)(NSError *error))errorHandler
 {
-    
     [self getPath:@"/nswdataversion.txt" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *stringData = [[NSString alloc] initWithData:responseObject encoding:0];
         NSLog(@"VERSION %@", stringData);
@@ -64,8 +64,8 @@ static NSWNetwork* _sharedNetwork = nil;
     }];
     
 }
- 
-*/
+ */
+
 - (void) downloadEventDataWithVersionNumber:(NSNumber*)newVersionNumber completionHandler:(void (^)(void))completionHandler errorHandler:(void (^)(NSError *error))errorHandler;
 {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
