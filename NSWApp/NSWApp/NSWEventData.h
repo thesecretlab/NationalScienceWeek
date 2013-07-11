@@ -26,17 +26,20 @@
     NSMutableArray *prePrepared2DEventArray;
     int currentLocationCounter;
     BOOL datesNeedUpdating;
-}
+    }
 + (NSWEventData*)sharedData;
 @property (nonatomic, strong) NSMutableArray *eventData;
 @property (nonatomic, strong) NSMutableArray *locationMeasurements;
 @property (nonatomic, strong) NSMutableArray *eventsForLocation;
 @property (nonatomic, strong) NSMutableArray *favouriteEvents;
 
+
+
 @property (nonatomic, strong) NSString *location;
 @property (nonatomic, strong) NSArray* locationValues;
 @property (nonatomic, strong) NSArray* uniqueDatesForLocation;
 @property BOOL shouldRevertToBakedInData;
+@property BOOL preemptInfiniteRecursion;
 @property (nonatomic, strong) NSNumber* latestVersionNumber;
 @property (nonatomic, strong) id<NSWEventDataDelegate> delegate;
 @property (nonatomic, strong) id<NSWEventDataDelegate> favouritesDelegate;

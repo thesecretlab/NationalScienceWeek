@@ -25,6 +25,7 @@ static NSWEventData* _sharedData = nil;
         _sharedData.locationMeasurements = [NSMutableArray array];
         _sharedData.favouriteEvents = [NSMutableArray array];
         _sharedData.shouldRevertToBakedInData = NO;
+        _sharedData.preemptInfiniteRecursion = NO;
         [_sharedData loadFromFile];
 
     }
@@ -142,6 +143,7 @@ static NSWEventData* _sharedData = nil;
     //NSLog(@"ERROR: %@",error);
     
     if (error == nil) {
+        self.preemptInfiniteRecursion = NO;
         RXMLElement *rootXML = [RXMLElement elementFromXMLString:newCSVData encoding:NSUTF8StringEncoding];
 
         NSError *error;
@@ -339,8 +341,12 @@ static NSWEventData* _sharedData = nil;
         
         NSString *xmlRecover = [NSString stringWithContentsOfFile:filePath encoding:NSASCIIStringEncoding error:&error];
         NSLog(@"Attempting a recovery");
-        if (error == nil) {
+        if (error == nil && self.preemptInfiniteRecursion == NO) {
+            self.preemptInfiniteRecursion = YES;
             [self updateEventDataFromDownload:xmlRecover withVersionNumber:[NSNumber numberWithInt:-1]];
+        }
+        else{
+            NSLog(@"Backup data corrupt, stopping");
         }
     }
 
