@@ -131,6 +131,12 @@
         {
             NSNumber * latitude = [NSNumber numberWithDouble:[[event objectForKey:@"Latitude"] doubleValue]];
             NSNumber * longitude = [NSNumber numberWithDouble:[[event objectForKey:@"Longitude"] doubleValue]]; 
+            //Nudges map points by 0.0001 around the main point
+            float nudgeValueLatitude = ((float)arc4random() / 0x100000000) * (-0.0001-0.0001) + 0.0001;
+            float nudgeValueLongitude = ((float)arc4random() / 0x100000000) * (-0.0001-0.0001) + 0.0001;
+            
+            latitude = [NSNumber numberWithFloat:([latitude floatValue]+nudgeValueLatitude)];
+            longitude = [NSNumber numberWithFloat:([longitude floatValue]+nudgeValueLongitude)];
             
             NSString * purchaseDescription = [NSString stringWithFormat:@"%@",[event objectForKey:@"Title"]];
             NSString * purchaseLocation = [event objectForKey:@"Location"]; 
