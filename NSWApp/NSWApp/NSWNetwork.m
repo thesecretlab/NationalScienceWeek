@@ -19,7 +19,7 @@ static NSWNetwork* _sharedNetwork = nil;
 #else
 #define BASE_URL @"http://www.scienceweek.net.au"
 #define EVENT_DATA_PATH @"/event-transfer/scienceweek-events.xml"
-#define REVERT_FILE_URL @"https://dl.dropboxusercontent.com/u/1101046/revert.txt"
+#define REVERT_FILE_URL @"http://dev.secretlab.com.au/scienceweek/revert.txt"
 #endif
 
 @implementation NSWNetwork
