@@ -40,6 +40,10 @@
     [[NSWEventData sharedData] checkUsersLocation];
 
     [self keepUpAppearances];
+    
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSString stringWithFormat:@"%@", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]] forKey:@"version"];
+    [defaults synchronize];
 
     return YES;
 }
