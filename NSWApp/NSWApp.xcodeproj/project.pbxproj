@@ -34,6 +34,7 @@
 		7C1840D2178E8A1D00C4FCF1 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1840D1178E8A1D00C4FCF1 /* Default-Landscape@2x~ipad.png */; };
 		7C1840D4178E929100C4FCF1 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1840D3178E929100C4FCF1 /* Default-Landscape~ipad.png */; };
 		7C1840D6178E92A500C4FCF1 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1840D5178E92A400C4FCF1 /* Default-Portrait~ipad.png */; };
+		7C279F47178FD47600BA8408 /* scienceweek-events.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7C279F46178FD47600BA8408 /* scienceweek-events.xml */; };
 		7C2A7395175E3297008CD94B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C2A7394175E3297008CD94B /* libz.dylib */; };
 		7C2A7399175E33E6008CD94B /* RXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C2A7398175E33E6008CD94B /* RXMLElement.m */; };
 		7C2A739B175E3421008CD94B /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C2A739A175E3421008CD94B /* libxml2.dylib */; };
@@ -91,7 +92,6 @@
 		7C987EF315B8EAD200302F71 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C987EF015B8EACA00302F71 /* CoreLocation.framework */; };
 		7CA5D21617853B9800BA9018 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA5D21417853B9800BA9018 /* libTestFlight.a */; };
 		7CA5D2191785DA9100BA9018 /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA5D2181785DA9100BA9018 /* MKMapView+ZoomLevel.m */; };
-		7CAE0A6C177B322E00258D93 /* scienceweek-events.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7CAE0A6B177B322E00258D93 /* scienceweek-events.xml */; };
 		7CAE0A87177B41C200258D93 /* CXMLDocument_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CAE0A70177B41C200258D93 /* CXMLDocument_CreationExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7CAE0A88177B41C200258D93 /* CXMLNode_CreationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CAE0A72177B41C200258D93 /* CXMLNode_CreationExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7CAE0A89177B41C200258D93 /* CXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CAE0A74177B41C200258D93 /* CXMLDocument.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -176,6 +176,7 @@
 		7C1840D1178E8A1D00C4FCF1 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		7C1840D3178E929100C4FCF1 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		7C1840D5178E92A400C4FCF1 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		7C279F46178FD47600BA8408 /* scienceweek-events.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "scienceweek-events.xml"; sourceTree = "<group>"; };
 		7C2A7394175E3297008CD94B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		7C2A7397175E33E6008CD94B /* RXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXMLElement.h; sourceTree = "<group>"; };
 		7C2A7398175E33E6008CD94B /* RXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXMLElement.m; sourceTree = "<group>"; };
@@ -268,7 +269,6 @@
 		7CA5D21517853B9800BA9018 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		7CA5D2171785DA9000BA9018 /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
 		7CA5D2181785DA9100BA9018 /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
-		7CAE0A6B177B322E00258D93 /* scienceweek-events.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "scienceweek-events.xml"; sourceTree = "<group>"; };
 		7CAE0A6F177B41C200258D93 /* CXMLDocument_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument_CreationExtensions.h; sourceTree = "<group>"; };
 		7CAE0A70177B41C200258D93 /* CXMLDocument_CreationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLDocument_CreationExtensions.m; sourceTree = "<group>"; };
 		7CAE0A71177B41C200258D93 /* CXMLNode_CreationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode_CreationExtensions.h; sourceTree = "<group>"; };
@@ -500,7 +500,7 @@
 		7C55862D15B51DC200068067 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7CAE0A6B177B322E00258D93 /* scienceweek-events.xml */,
+				7C279F46178FD47600BA8408 /* scienceweek-events.xml */,
 				7C55862E15B51DC200068067 /* NSWApp-Info.plist */,
 				7C55862F15B51DC200068067 /* InfoPlist.strings */,
 				7C55863215B51DC200068067 /* main.m */,
@@ -853,7 +853,6 @@
 				7CC027D41757C82000B97C3C /* Default-568h@2x.png in Resources */,
 				7C7D01941762D688006D9F4A /* tablviewcell-header.png in Resources */,
 				7CCE1E4F1769A84D000AE659 /* MainStoryboard_iPad.storyboard in Resources */,
-				7CAE0A6C177B322E00258D93 /* scienceweek-events.xml in Resources */,
 				6CF5C94A178525F8005A94A6 /* Icon-72.png in Resources */,
 				6CF5C94B178525F8005A94A6 /* Icon-72@2x.png in Resources */,
 				6CF5C94C178525F8005A94A6 /* Icon-Cropped-Large.png in Resources */,
@@ -870,6 +869,7 @@
 				7C1840D2178E8A1D00C4FCF1 /* Default-Landscape@2x~ipad.png in Resources */,
 				7C1840D4178E929100C4FCF1 /* Default-Landscape~ipad.png in Resources */,
 				7C1840D6178E92A500C4FCF1 /* Default-Portrait~ipad.png in Resources */,
+				7C279F47178FD47600BA8408 /* scienceweek-events.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

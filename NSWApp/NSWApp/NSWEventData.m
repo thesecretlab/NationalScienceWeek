@@ -187,7 +187,10 @@ static NSWEventData* _sharedData = nil;
                 [eventDict setObject:[NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:endDate]]  forKey:@"End Time"];
                 
                 if ([event child:@"EventDescription"].text) {
-                    [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventDescription"].text] forKey:@"Description"];
+                    
+                    NSString *descriptionAmpReplaced = [[event child:@"EventDescription"].text stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
+                    
+                    [eventDict setObject:[NSString stringWithFormat:@"%@",descriptionAmpReplaced] forKey:@"Description"];
                 }
                 if ([event child:@"EventTargetAudience"].text) {
                     [eventDict setObject:[NSString stringWithFormat:@"%@\n\nFor: %@", [eventDict objectForKey:@"Description"],[event child:@"EventTargetAudience"].text]  forKey:@"Description"];
