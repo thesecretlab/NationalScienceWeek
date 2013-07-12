@@ -172,7 +172,7 @@
         
         CGSize constraint = CGSizeMake(320 - 70, 20000.0f);
         
-        CGSize size = [text sizeWithFont:kEventListCellTitleFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+        CGSize size = [text sizeWithFont:kEventListCellTitleFont constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
         
         CGFloat height = MAX(size.height, 21.0f);
         
@@ -183,7 +183,7 @@
         
         constraint = CGSizeMake(320 - 70, 20000.0f);
         
-        size = [text sizeWithFont:kEventListCellDetailFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+        size = [text sizeWithFont:kEventListCellDetailFont constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
         
         height = MAX(size.height, 18.0f);
         
@@ -203,7 +203,7 @@
 
             CGSize constraint = CGSizeMake(320 - 70, 20000.0f);
             
-            CGSize size = [text sizeWithFont:kEventListCellTitleFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+            CGSize size = [text sizeWithFont:kEventListCellTitleFont constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
             
             CGFloat height = MAX(size.height, 21.0f);
             
@@ -213,7 +213,7 @@
             
              constraint = CGSizeMake(320 - 70, 20000.0f);
             
-             size = [text sizeWithFont:kEventListCellDetailFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+             size = [text sizeWithFont:kEventListCellDetailFont constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
             
              height = MAX(size.height, 18.0f);
             
@@ -227,7 +227,7 @@
             
             CGSize constraint = CGSizeMake(320 -70, 20000.0f);
             
-            CGSize size = [text sizeWithFont:kEventListCellTitleFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+            CGSize size = [text sizeWithFont:kEventListCellTitleFont constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
             
             CGFloat height = MAX(size.height, 21.0f);
             
@@ -237,7 +237,7 @@
             
             constraint = CGSizeMake(320 -70, 20000.0f);
             
-            size = [text sizeWithFont:kEventListCellDetailFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+            size = [text sizeWithFont:kEventListCellDetailFont constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
             
             height = MAX(size.height, 18.0f);
             
@@ -262,6 +262,14 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.numberOfLines = 0;
         cell.detailTextLabel.numberOfLines = 0;
+        cell.textLabel.font = kEventListCellTitleFont;
+        cell.detailTextLabel.font = kEventListCellDetailFont;
+        cell.borderColor = kEventCellBorderColor;
+        cell.cornerRadius = kEventCellCornerRadius;
+        cell.dropsShadow = NO;
+        cell.selectionGradientStartColor = [UIColor colorWithRed:0 green:30/255.0 blue:150/255.0 alpha:1];
+        cell.selectionGradientEndColor = [UIColor colorWithRed:0 green:30/255.0 blue:150/255.0 alpha:1];
+
     }
     
     [cell prepareForTableView:self.eventListTableView indexPath:indexPath];
@@ -310,13 +318,7 @@
         
         }
     }
-    cell.textLabel.font = kEventListCellTitleFont;
-    cell.detailTextLabel.font = kEventListCellDetailFont;
-    cell.borderColor = kEventCellBorderColor;
-    cell.cornerRadius = kEventCellCornerRadius;
-    cell.selectionGradientStartColor = [UIColor colorWithRed:0 green:30/255.0 blue:150/255.0 alpha:1];
-    cell.selectionGradientEndColor = [UIColor colorWithRed:0 green:30/255.0 blue:150/255.0 alpha:1];
-
+    
 
     return cell;
 }
@@ -377,13 +379,18 @@
 
 -(void)scrollToTodaysDate
 {
+    if (self.uniqueSingleDates == nil || [self.uniqueSingleDates count]==0)
+    {
+        return;
+    }
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd/MM/yyyy"];
     
     NSString *dateToScrollTo;
     BOOL foundExactMatch = NO;
-    for (NSString *dateString in self.uniqueSingleDates) 
+
+    for (NSString *dateString in self.uniqueSingleDates)
     {
 
         NSDate *eventDate = [dateFormatter dateFromString:dateString];
@@ -421,6 +428,7 @@
         }
 
     }
+    
     
 }
 
@@ -717,7 +725,7 @@
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
     NSPredicate *resultPredicate = [NSPredicate
-                                    predicateWithFormat:@"(Title contains[cd] %@ OR Description contains[cd] %@)",
+                                    predicateWithFormat:@"(Title contains[cd] %@ OR Location contains[cd] %@)",
                                     searchText, searchText];
     
     searchResults = [[[NSWEventData sharedData] eventsForLocation] filteredArrayUsingPredicate:resultPredicate];
@@ -744,5 +752,14 @@ shouldReloadTableForSearchString:(NSString *)searchString
     return YES;
 }
 
+/*
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return self.uniqueSingleDates;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
+    return [self.uniqueSingleDates indexOfObject:title];
+}
+*/
 
 @end

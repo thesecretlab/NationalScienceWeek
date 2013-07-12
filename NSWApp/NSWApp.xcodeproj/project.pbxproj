@@ -1021,7 +1021,7 @@
 				GCC_PREFIX_HEADER = "NSWApp/NSWApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SDK_DIR)\"/usr/include/libxml2";
 				INFOPLIST_FILE = "NSWApp/NSWApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/NSWApp\"",
@@ -1095,7 +1095,7 @@
 				GCC_PREFIX_HEADER = "NSWApp/NSWApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SDK_DIR)\"/usr/include/libxml2";
 				INFOPLIST_FILE = "NSWApp/NSWApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/NSWApp\"",
@@ -1115,7 +1115,7 @@
 				GCC_PREFIX_HEADER = "NSWApp/NSWApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SDK_DIR)\"/usr/include/libxml2";
 				INFOPLIST_FILE = "NSWApp/NSWApp-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/NSWApp\"",

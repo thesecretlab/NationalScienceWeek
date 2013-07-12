@@ -71,7 +71,7 @@
 - (void)updateAndRelayoutView
 {
     
-   // NSLog(@"Frame height %f", self.eventContactTextView.frame.size.height);
+    //NSLog(@"Frame height %@", _event);
     self.eventTitleLabel.font = kDetailEventTitleFont_iPad;
     self.eventTimeLabel.font = kDetailEventFont_iPad;
     self.eventAddressLabel.font = kDetailEventFont_iPad;
@@ -356,7 +356,7 @@
     {
         CGSize constraint = CGSizeMake(currentLabel.frame.size.width, 20000.0f);
         
-        CGSize size = [currentLabel.text sizeWithFont:fontForLabel constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+        CGSize size = [currentLabel.text sizeWithFont:fontForLabel constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
         
         CGFloat height = MAX(size.height, sizeForMinumumLabel);
         
@@ -379,7 +379,7 @@
         
         CGSize constraint = CGSizeMake(currentView.frame.size.width-34, 20000.0f);
         
-        CGSize size = [currentLabel.text sizeWithFont:currentLabel.font constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+        CGSize size = [currentLabel.text sizeWithFont:currentLabel.font constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
         
         CGFloat height = MAX(size.height, 20);
         

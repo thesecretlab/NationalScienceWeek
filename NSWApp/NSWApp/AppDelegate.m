@@ -101,7 +101,6 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     NSLog(@"HOW MANY? ");
-    [[NSWEventData sharedData] loadFromFile];
     [[NSWNetwork sharedNetwork] checkShouldRevertToPreBakeFailsafe:^{} errorHandler:^(NSError *error) {}];
     //THIS CURRENTLY CHECKS THE REVERT FILE FIRST THEN CHAINS TO REAL DATA
     //[[NSWNetwork sharedNetwork] checkLatestHeader:^{} errorHandler:^(NSError *error) {}];

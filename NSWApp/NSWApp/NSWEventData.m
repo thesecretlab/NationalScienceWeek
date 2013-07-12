@@ -523,10 +523,11 @@ static NSWEventData* _sharedData = nil;
     }*/
     
     
-    for (NSString* uniqueDate in self.uniqueDatesForLocation)
+    //for (NSString* uniqueDate in self.uniqueDatesForLocation)
+    for (int i=0; i<[self.uniqueDatesForLocation count]; i++)
     {
-        if ([uniqueDate isEqualToString:date]) {
-            return [prePrepared2DEventArray objectAtIndex:[self.uniqueDatesForLocation indexOfObject:uniqueDate]];
+        if ([[self.uniqueDatesForLocation objectAtIndex:i] isEqualToString:date]) {
+            return [prePrepared2DEventArray objectAtIndex:i];
             }
         
     }
@@ -714,6 +715,7 @@ static NSWEventData* _sharedData = nil;
     if (self.delegate) {
         [delegate reloadView];
     }
+
 }
 
 -(void)previousLocation

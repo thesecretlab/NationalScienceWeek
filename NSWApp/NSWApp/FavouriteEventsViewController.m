@@ -122,7 +122,7 @@
             
             CGSize constraint = CGSizeMake(320 - 70, 20000.0f);
             
-            CGSize size = [text sizeWithFont:kEventListCellTitleFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+            CGSize size = [text sizeWithFont:kEventListCellTitleFont constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
             
             CGFloat height = MAX(size.height, 21.0f);
             
@@ -132,7 +132,7 @@
             
             constraint = CGSizeMake(320 - 70, 20000.0f);
             
-            size = [text sizeWithFont:kEventListCellDetailFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+            size = [text sizeWithFont:kEventListCellDetailFont constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
             
             height = MAX(size.height, 18.0f);
             
@@ -264,7 +264,7 @@
     label.backgroundColor = [UIColor clearColor];
     label.font = kGlobalNavBarFont;
 
-    label.textAlignment = UITextAlignmentCenter;
+    label.textAlignment = NSTextAlignmentCenter;
     label.textColor = [UIColor whiteColor];
     label.text = self.navigationItem.title;
     // emboss in the same way as the native title
