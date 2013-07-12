@@ -25,6 +25,34 @@
      [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
     
     [TestFlight takeOff:@"377eb2df-f7d9-442a-b52f-b0e1fef9dec5"];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if ( ![userDefaults valueForKey:@"version"] )
+    {
+        
+        [self savePreParsedDataForFirstRun];
+        // Adding version number to NSUserDefaults for first version:
+        [userDefaults setFloat:[[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] floatValue] forKey:@"version"];
+    }
+    
+    
+    if ([[NSUserDefaults standardUserDefaults] floatForKey:@"version"] == [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] floatValue] )
+    {
+        /// Same Version so dont run the function
+    }
+    else
+    {
+        // Call Your Function;
+        
+        // Update version number to NSUserDefaults for other versions:
+        [userDefaults setFloat:[[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] floatValue] forKey:@"version"];
+    }
+    
+    [userDefaults synchronize];
+
+    
+    
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
     {
         [[NSWNetwork sharedNetwork] setReachabilityStatusChangeBlock:^(BOOL isNetworkReachable) {
@@ -37,17 +65,30 @@
         }];
         [(UITabBarController*)[self.window rootViewController] setSelectedIndex: 1]; //Defaulting to having this selected for now, looks silly with launch image otherwise.
     }
+    
+
     [[NSWEventData sharedData] checkUsersLocation];
 
     [self keepUpAppearances];
     
-    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[NSString stringWithFormat:@"%@", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]] forKey:@"version"];
-    [defaults synchronize];
+
 
     return YES;
 }
 
+
+-(void)savePreParsedDataForFirstRun
+{
+    NSString * file = [[NSBundle bundleForClass:[self class]] pathForResource:@"NSWEventDataForFirstRun" ofType:@"plist"];
+    
+    NSDictionary *saveDict = [NSDictionary dictionaryWithContentsOfFile:file];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *filePath = [documentsDirectory stringByAppendingString:@"/NSWEventData.sav"];
+    
+    [saveDict writeToFile:filePath atomically:YES];
+
+}
 
 -(void)keepUpAppearances
 {
