@@ -900,7 +900,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n#\ngit=`sh /etc/profile; which git`\nversion_number=\"1.0\"\ncount=`git rev-parse --short HEAD`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version_number.$count\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\necho \"Set version number to $version_number.$count\"";
+			shellScript = "#!/bin/sh\n#\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\necho \"Building for release; leaving version number as-is.\"\nelse\ngit=`sh /etc/profile; which git`\nversion_number=\"1.0\"\ncount=`git rev-parse --short HEAD`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $version_number.$count\" \"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\necho \"Set version number to $version_number.$count\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1084,7 +1084,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1093,7 +1093,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1123,6 +1122,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NSWApp/NSWApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SDK_DIR)\"/usr/include/libxml2";
@@ -1134,6 +1134,7 @@
 				);
 				PRODUCT_NAME = ScienceWeek;
 				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
