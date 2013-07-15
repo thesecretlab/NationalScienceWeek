@@ -51,15 +51,27 @@
 {
     [[NSWEventData sharedData] setMapsDelegate:self];
 
+    
     if ([[[NSWEventData sharedData] eventData] count] > 0) {
         
-        if ([self.eventMap.annotations count] == 0) {
+        int customAnnotationCounter = 0;
+        for (id <MKAnnotation> annotation in [self.eventMap annotations])
+        {
+            if (![annotation isKindOfClass:[MKUserLocation class]] )
+            {
+                customAnnotationCounter = customAnnotationCounter + 1;
+                
+            }
+        }
+
+        if (customAnnotationCounter == 0) {
             [self plotEvents];
             [self zoomToCurrentRegionAnnotationBounds];
             self.lastLocationShown = [[NSWEventData sharedData] location];
         }
         else if(![self.lastLocationShown isEqualToString:[[NSWEventData sharedData] location]])
         {
+
             [self plotEvents];
             [self zoomToCurrentRegionAnnotationBounds];
             self.lastLocationShown = [[NSWEventData sharedData] location];
@@ -312,6 +324,18 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)didReceiveMemoryWarning
+{
+    
+    //  App will now ignore memory warning hanlding for map pin annotations
+    /*
+     for (id<MKAnnotation> annotation in self.eventMap.annotations) {
+     [self.eventMap removeAnnotation:annotation];
+     }
+    */
+    [super didReceiveMemoryWarning];
 }
 
 @end
