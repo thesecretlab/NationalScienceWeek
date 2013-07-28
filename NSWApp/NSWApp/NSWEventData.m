@@ -219,10 +219,29 @@ static NSWEventData* _sharedData = nil;
                             //NSLog(@"found URL: %@", [url absoluteString]);
                         }
                     }
+                   
                 }
-                
-                
-                
+                if ([event child:@"EventMoreInfo"].text && [[event child:@"EventMoreInfo"].text length]>2)
+                {
+                    NSDataDetector *linkDetector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink error:nil];
+                    NSArray *matches = [linkDetector matchesInString:[event child:@"EventMoreInfo"].text options:0 range:NSMakeRange(0, [[event child:@"EventMoreInfo"].text length])];
+                    
+                    
+                    [eventDict setObject:[NSString stringWithFormat:@"%@\nMore Info:\n%@", [eventDict objectForKey:@"Description"],[[event child:@"EventMoreInfo"].text stringByStrippingHTML]]  forKey:@"Description"];
+                    
+                    for (NSTextCheckingResult *match in matches) {
+                        if ([match resultType] == NSTextCheckingTypeLink) {
+                            NSURL *url = [match URL];
+                            NSString *extractedLink = [[url absoluteString] stringByReplacingOccurrencesOfString:@"mailto:" withString:@""];
+                            
+                            [eventDict setObject:[NSString stringWithFormat:@"%@\n%@", [eventDict objectForKey:@"Description"],extractedLink] forKey:@"Description"];
+                            NSLog(@"found URL: %@", [url absoluteString]);
+                        }
+                    }
+
+                }
+             
+             
                 //[eventDict setObject:[NSString stringWithFormat:@"%@\n\nFor: %@ \n\nEvent Price: %@",[event child:@"EventDescription"].text,[event child:@"EventTargetAudience"].text,[event child:@"EventPayment"].text] forKey:@"Description"];
                 
                 [eventDict setObject:@"" forKey:@"Latitude"];
