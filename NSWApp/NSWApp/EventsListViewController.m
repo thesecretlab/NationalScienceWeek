@@ -422,9 +422,12 @@
         if (foundExactMatch) {
             [self.eventListTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:[self.uniqueSingleDates indexOfObject:dateToScrollTo]]atScrollPosition:UITableViewScrollPositionTop animated:YES];
         }
-        else
+        else if([self.uniqueSingleDates indexOfObject:dateToScrollTo]+1 < [self.uniqueSingleDates count])
         {
             [self.eventListTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:[self.uniqueSingleDates indexOfObject:dateToScrollTo]+1]atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        }
+        else{
+            [self.eventListTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:[self.uniqueSingleDates count]-1]atScrollPosition:UITableViewScrollPositionTop animated:YES];
         }
 
     }

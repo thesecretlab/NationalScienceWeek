@@ -610,36 +610,36 @@ static NSWEventData* _sharedData = nil;
     {
         mappedStateChoice = @"ACT";
     }
-    if ([stateInfo isEqualToString:@"New South Wales"])
+    else if ([stateInfo isEqualToString:@"New South Wales"])
     {
         mappedStateChoice = @"NSW";
     }
-    if ([stateInfo isEqualToString:@"Northern Territory"])
+    else if ([stateInfo isEqualToString:@"Northern Territory"])
     {
         mappedStateChoice = @"NT";
     }
-    if ([stateInfo isEqualToString:@"Queensland"])
+    else if ([stateInfo isEqualToString:@"Queensland"])
     {
         mappedStateChoice = @"QLD";
     }
-    if ([stateInfo isEqualToString:@"South Australia"])
+    else if ([stateInfo isEqualToString:@"South Australia"])
     {
         mappedStateChoice = @"SA";
     }
-    if ([stateInfo isEqualToString:@"Tasmania"])
+    else if ([stateInfo isEqualToString:@"Tasmania"])
     {
         mappedStateChoice = @"TAS";
     }
-    if ([stateInfo isEqualToString:@"Victoria"])
+    else if ([stateInfo isEqualToString:@"Victoria"])
     {
         mappedStateChoice = @"VIC";
     }
-    if ([stateInfo isEqualToString:@"Western Australia"])
+    else if ([stateInfo isEqualToString:@"Western Australia"])
     {
         mappedStateChoice = @"WA";
     }
-    
-    if (stateInfo == nil) {
+    else
+    {
         mappedStateChoice = @"TAS";
     }
     
