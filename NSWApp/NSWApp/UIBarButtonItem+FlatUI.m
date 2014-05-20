@@ -77,8 +77,14 @@
                                   forState:UIControlStateHighlighted
                                 barMetrics:UIBarMetricsLandscapePhone];
   
-  [appearance setBackButtonTitlePositionAdjustment:UIOffsetMake(1.0f, -1.5f) forBarMetrics:UIBarMetricsDefault];
-  [appearance setBackButtonTitlePositionAdjustment:UIOffsetMake(1.0f, -1.5f) forBarMetrics:UIBarMetricsLandscapePhone];
+    if (IsIOS7OrGreater()) {
+        [appearance setBackButtonTitlePositionAdjustment:UIOffsetMake(-3.0f, -1.5f) forBarMetrics:UIBarMetricsDefault];
+        [appearance setBackButtonTitlePositionAdjustment:UIOffsetMake(-3.0f, -1.5f) forBarMetrics:UIBarMetricsLandscapePhone];
+
+    } else {
+        [appearance setBackButtonTitlePositionAdjustment:UIOffsetMake(1.0f, -1.5f) forBarMetrics:UIBarMetricsDefault];
+        [appearance setBackButtonTitlePositionAdjustment:UIOffsetMake(1.0f, -1.5f) forBarMetrics:UIBarMetricsLandscapePhone];
+    }
   
   UIImage *buttonImageNormal       = [UIImage imageWithColor:color cornerRadius:cornerRadius];
   UIImage *buttonImageHightlighted = [UIImage imageWithColor:highlightedColor cornerRadius:cornerRadius];

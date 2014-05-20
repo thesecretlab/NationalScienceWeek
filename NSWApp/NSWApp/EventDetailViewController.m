@@ -301,6 +301,14 @@
     
     self.eventContactTextView.contentInset = UIEdgeInsetsMake(-8,-8,0,0);
     
+    // On iOS6, text needs to be inset
+    if (IsIOS7OrGreater()) {
+        self.eventDescriptionLabel.textContainerInset = UIEdgeInsetsMake(8, 4, 0, 0);
+        self.eventContactTextView.textContainerInset = UIEdgeInsetsMake(8, 4, 0, 0);
+    }
+    
+    self.eventDescriptionLabel.layer.borderColor = [UIColor redColor].CGColor;
+    
     self.eventDescriptionLabel.text = [event objectForKey:@"Description"];
     
     

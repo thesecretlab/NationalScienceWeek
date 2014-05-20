@@ -267,8 +267,12 @@
         cell.borderColor = kEventCellBorderColor;
         cell.cornerRadius = kEventCellCornerRadius;
         cell.dropsShadow = NO;
-        cell.selectionGradientStartColor = [UIColor colorWithRed:0 green:30/255.0 blue:150/255.0 alpha:1];
-        cell.selectionGradientEndColor = [UIColor colorWithRed:0 green:30/255.0 blue:150/255.0 alpha:1];
+        cell.backgroundColor = [UIColor clearColor];
+        cell.customBackgroundColor = [UIColor whiteColor];
+        cell.customSeparatorStyle = UITableViewCellSeparatorStyleNone;
+        cell.customSeparatorColor = [UIColor clearColor];
+        cell.selectionGradientStartColor = kGlobalNavBarItemColour;
+        cell.selectionGradientEndColor = kGlobalNavBarColour;
 
     }
     
@@ -603,8 +607,14 @@
     [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6],UITextAttributeTextShadowColor,[NSValue valueWithUIOffset:UIOffsetMake(0, -1)],UITextAttributeTextShadowOffset, kGlobalNavBarItemFont, UITextAttributeFont, nil] forState:UIControlStateNormal];
     
     self.searchBar.backgroundColor = kGlobalNavBarColour;
-    [[[self.searchBar subviews] objectAtIndex:0] setAlpha:0.0];
-    self.searchBar.tintColor = kGlobalNavBarItemColour;
+    //[[[self.searchBar subviews] objectAtIndex:0] setAlpha:0.0];
+    if (IsIOS7OrGreater()) {
+        self.searchBar.barTintColor = kGlobalNavBarColour;
+        self.searchBar.tintColor = kGlobalNavBarItemColour;
+    } else {
+        self.searchBar.tintColor = kGlobalNavBarColour;
+    }
+    
     
     
     self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Events" image:nil tag:0];

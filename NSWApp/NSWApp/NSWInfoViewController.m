@@ -7,6 +7,8 @@
 //
 
 #import "NSWInfoViewController.h"
+#import "UINavigationBar+FlatUI.h"
+#import "NSWAppAppearanceConfig.h"
 
 @interface NSWInfoViewController ()
 
@@ -31,6 +33,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     
+    [self.navigationController.navigationBar configureFlatNavigationBarWithColor:kGlobalNavBarColour];
+
     //WILL CURRENTLY LOAD EVERY TIME ITS TAPPED.
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.scienceweek.secretlab.com.au/scienceweekinfo.html"]]];
     [self.internetDownMessage setHidden:YES];

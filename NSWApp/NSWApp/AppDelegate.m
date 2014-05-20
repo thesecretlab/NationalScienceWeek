@@ -119,6 +119,19 @@
                                   highlightedColor:kGlobalNavBarItemColourHighlighted
                                       cornerRadius:kNavBarButtonCornerRadius];
 
+    if ([[UIBarButtonItem appearance] respondsToSelector:@selector(setTintColor:)]) {
+        [[UIBarButtonItem appearance] setTintColor:kGlobalNavBarTextColor];
+    }
+    
+    if (IsIOS7OrGreater()) {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        
+    }
+    
+    
+    
+    //[[UISearchBar appearance] setTintColor:[UIColor redColor]];
+    
     
     //[[UIBarButtonItem appearance] setTitlePositionAdjustment:UIOffsetMake(0.0f, 5.0f) forBarMetrics:UIBarMetricsDefault];
 

@@ -20,6 +20,7 @@
     }
     [titleTextAttributes setValue:[UIColor clearColor] forKey:UITextAttributeTextShadowColor];
     [titleTextAttributes setValue:[NSValue valueWithUIOffset:UIOffsetMake(0, 0)] forKey:UITextAttributeTextShadowOffset];
+    
     [self setTitleTextAttributes:titleTextAttributes];
     if([self respondsToSelector:@selector(setShadowImage:)])
     {

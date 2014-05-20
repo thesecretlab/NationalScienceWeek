@@ -7,6 +7,7 @@
 
 #import "UIFont+FlatUI.h"
 #import "UIColor+FlatUI.h"
+#import "PrettyDrawing.h"
 
 #pragma mark Constants - Configure look/feel
 
@@ -24,9 +25,9 @@
 
 //Nav Bar Settings
 
-#define kGlobalNavBarColour [UIColor tangerineColor]
+#define kGlobalNavBarColour [UIColor colorWithHex:0x358ee1]
 
-#define kGlobalNavBarItemColour [UIColor colorWithRed:255.0/255.0 green:102.0/255.0 blue: 0.0/255.0 alpha:1]
+#define kGlobalNavBarItemColour [UIColor colorWithHex:0x57cdfd]
 
 //[UIColor pomegranateColor]
 
@@ -34,7 +35,7 @@
 
 //[UIColor belizeHoleColor]
 
-#define kGlobalNavBarItemColourHighlighted [UIColor pomegranateColor]
+#define kGlobalNavBarItemColourHighlighted [UIColor colorWithHex:0x0256a4]
 
 #define kGlobalNavBarItemFont [UIFont boldFlatFontOfSize:14.0]
 

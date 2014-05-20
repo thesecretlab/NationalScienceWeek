@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="k8s-vj-aNm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="k8s-vj-aNm">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Event Detail View Controller i Pad-->
@@ -9,19 +10,19 @@
             <objects>
                 <viewController storyboardIdentifier="EventDetail_iPad" id="qUv-YJ-6of" customClass="EventDetailViewController_iPad" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XLM-en-E7m">
-                        <rect key="frame" x="0.0" y="64" width="768" height="911"/>
+                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" image="science-week-_2013_dev.png" id="se4-ff-YUl">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="911"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="backgroundgradient.png" id="51C-xe-DbD">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="911"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ELa-47-iUe">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="930"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="979"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Event Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="10" id="y2Z-b8-Mid">
@@ -229,7 +230,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
                                     <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" id="OkD-Sk-peR">
-                                        <rect key="frame" x="236" y="769" width="296" height="45"/>
+                                        <rect key="frame" x="236" y="818" width="296" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <subviews>
                                             <view hidden="YES" contentMode="scaleToFill" id="bBM-hw-crl" customClass="UACellBackgroundView">
@@ -327,15 +328,15 @@
             <objects>
                 <viewController id="PdL-yl-Q5E" customClass="NSWiPadSideTableViewController" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="niL-ng-gJz">
-                        <rect key="frame" x="0.0" y="44" width="320" height="759"/>
+                        <rect key="frame" x="0.0" y="44" width="320" height="808"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="backgroundgradient.png" id="tME-TI-E7e">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="759"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Cgd-UO-8im">
-                                <rect key="frame" x="0.0" y="44" width="320" height="715"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Cgd-UO-8im">
+                                <rect key="frame" x="0.0" y="44" width="320" height="764"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="Filter Events" id="n2U-K7-Iam">
@@ -373,14 +374,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eeK-jN-tHj" customClass="FUIButton">
                                         <rect key="frame" x="5" y="199" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="South Australia">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="PdL-yl-Q5E" eventType="touchUpInside" id="rGv-Vx-Ogh"/>
@@ -389,14 +386,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="H1J-ZM-krZ" customClass="FUIButton">
                                         <rect key="frame" x="5" y="239" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Tasmania">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="PdL-yl-Q5E" eventType="touchUpInside" id="DdG-Ok-aCE"/>
@@ -405,14 +398,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="V3w-pE-fit" customClass="FUIButton">
                                         <rect key="frame" x="5" y="279" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Victoria">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="PdL-yl-Q5E" eventType="touchUpInside" id="jwb-pc-9za"/>
@@ -421,14 +410,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="67s-vm-9ww" customClass="FUIButton">
                                         <rect key="frame" x="5" y="319" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Western Australia">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="PdL-yl-Q5E" eventType="touchUpInside" id="vuF-h2-Aew"/>
@@ -437,14 +422,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="BJ2-3G-542" customClass="FUIButton">
                                         <rect key="frame" x="5" y="39" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Australian Capital Territory">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="PdL-yl-Q5E" eventType="touchUpInside" id="8ox-44-w1Y"/>
@@ -453,14 +434,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9u1-Iw-jrz" customClass="FUIButton">
                                         <rect key="frame" x="5" y="79" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="New South Wales">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="PdL-yl-Q5E" eventType="touchUpInside" id="Wqe-wI-uRa"/>
@@ -469,14 +446,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Taz-Nv-1As" customClass="FUIButton">
                                         <rect key="frame" x="5" y="119" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Northern Territory">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="PdL-yl-Q5E" eventType="touchUpInside" id="Njf-G4-TNF"/>
@@ -485,14 +458,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mwL-Sx-LqR" customClass="FUIButton">
                                         <rect key="frame" x="5" y="159" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Queensland">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="PdL-yl-Q5E" eventType="touchUpInside" id="Qpp-dd-eP3"/>
@@ -537,9 +506,6 @@
                             <state key="normal" title="TAS | ▼">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
-                            </state>
-                            <state key="highlighted">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="chooseLocation:" destination="PdL-yl-Q5E" eventType="touchUpInside" id="w3V-wK-xZf"/>
@@ -590,7 +556,7 @@
             <objects>
                 <navigationController id="yWC-0r-E99" sceneMemberID="viewController">
                     <nil key="simulatedStatusBarMetrics"/>
-                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="XHh-F2-j9T">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translucent="NO" id="XHh-F2-j9T">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -621,11 +587,11 @@
             <objects>
                 <viewController id="cfr-Vp-WrZ" customClass="NSWEventsMapViewController_iPad" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jVT-uH-tQP">
-                        <rect key="frame" x="0.0" y="64" width="768" height="911"/>
+                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="13A-Mh-nAL">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="911"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="cfr-Vp-WrZ" id="JAc-KP-Nzq"/>
@@ -657,13 +623,13 @@
         <!--Info View Controller i Pad-->
         <scene sceneID="K2m-gh-Bir">
             <objects>
-                <viewController storyboardIdentifier="" id="cms-xb-Vth" customClass="NSWInfoViewController_iPad" sceneMemberID="viewController">
+                <viewController id="cms-xb-Vth" customClass="NSWInfoViewController_iPad" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JJu-gY-Ajq">
-                        <rect key="frame" x="0.0" y="64" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="436"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <webView contentMode="scaleToFill" id="IRH-OR-II9">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.031372550870000002" green="0.082352943720000002" blue="0.27450981740000002" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
@@ -671,7 +637,7 @@
                                 </connections>
                             </webView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="backgroundgradient.png" id="G6d-o1-chN">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="d1y-K9-HET">
@@ -696,6 +662,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="500"/>
                     <connections>
                         <outlet property="backgroundColourView" destination="G6d-o1-chN" id="eji-Y6-xSe"/>
                         <outlet property="internetDownMessage" destination="jgx-Vo-WBU" id="QUF-Bo-5eb"/>
@@ -732,7 +699,7 @@
             <objects>
                 <navigationController id="aeK-68-ko7" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eph-oY-fAv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="eph-oY-fAv">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -751,7 +718,7 @@
                 <navigationController id="d1X-ai-pPS" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Map" image="mapicon.png" id="3fm-d5-VJY"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="75V-Iq-zZN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="75V-Iq-zZN">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -770,7 +737,7 @@
                 <navigationController storyboardIdentifier="infoPanel" id="0G6-ih-oLZ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item 2" id="0ES-NQ-4TO"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="euP-KK-ccH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="euP-KK-ccH">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -786,7 +753,7 @@
     </scenes>
     <resources>
         <image name="arrow_right.png" width="10" height="13"/>
-        <image name="backgroundgradient.png" width="640" height="1040"/>
+        <image name="backgroundgradient.png" width="320" height="520"/>
         <image name="calendaricon.png" width="23" height="25"/>
         <image name="favouritesiconbutton.png" width="16" height="16"/>
         <image name="locationarrow.png" width="14" height="14"/>
@@ -794,7 +761,7 @@
         <image name="science-week-_2013_dev.png" width="513" height="87"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
+        <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>

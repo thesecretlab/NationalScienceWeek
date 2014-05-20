@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Events List View Controller - First-->
@@ -16,7 +17,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="R0Z-TW-t6Z">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="R0Z-TW-t6Z">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -31,14 +32,14 @@
                                 </searchBar>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="EventCell" textLabel="vM1-7K-bdB" detailTextLabel="0xf-xo-YyJ" style="IBUITableViewCellStyleSubtitle" id="WC7-rd-vMD" customClass="PrettyTableViewCell">
-                                        <rect key="frame" x="0.0" y="80" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="99" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WC7-rd-vMD" id="QYo-ek-hct">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vM1-7K-bdB">
-                                                    <rect key="frame" x="10" y="2" width="38" height="22"/>
+                                                    <rect key="frame" x="15" y="3" width="36" height="22"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
@@ -46,15 +47,14 @@
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0xf-xo-YyJ">
-                                                    <rect key="frame" x="10" y="24" width="47" height="18"/>
+                                                    <rect key="frame" x="15" y="25" width="50" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                         <connections>
                                             <segue destination="GGA-Tb-P3v" kind="push" identifier="PushToDetail" id="Abs-pU-pJB"/>
                                         </connections>
@@ -73,13 +73,8 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QGJ-yC-aOt">
                                         <rect key="frame" x="248" y="1" width="72" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="-->">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="nextLocationPressed:" destination="2" eventType="touchUpInside" id="Pbf-tE-k9U"/>
@@ -88,13 +83,8 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GER-Zc-7iC">
                                         <rect key="frame" x="0.0" y="1" width="72" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="&lt;--">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="previousLocationPressed:" destination="2" eventType="touchUpInside" id="yKi-gx-JSK"/>
@@ -131,14 +121,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rQU-KH-2Bn" customClass="FUIButton">
                                         <rect key="frame" x="5" y="202" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="South Australia">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="2" eventType="touchUpInside" id="BnX-aN-3ZU"/>
@@ -147,14 +133,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JD7-uI-ac2" customClass="FUIButton">
                                         <rect key="frame" x="5" y="242" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Tasmania">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="2" eventType="touchUpInside" id="gO9-5y-Oh6"/>
@@ -163,14 +145,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Cll-eF-f4Y" customClass="FUIButton">
                                         <rect key="frame" x="5" y="282" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Victoria">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="2" eventType="touchUpInside" id="BLa-in-KjH"/>
@@ -179,14 +157,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jGH-o4-EQj" customClass="FUIButton">
                                         <rect key="frame" x="5" y="322" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Western Australia">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="2" eventType="touchUpInside" id="G9h-NH-Car"/>
@@ -195,14 +169,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="guZ-P0-b8d" customClass="FUIButton">
                                         <rect key="frame" x="5" y="42" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Australian Capital Territory">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="2" eventType="touchUpInside" id="BtZ-wz-tHT"/>
@@ -211,14 +181,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ISq-yR-S1J" customClass="FUIButton">
                                         <rect key="frame" x="5" y="82" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="New South Wales">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="2" eventType="touchUpInside" id="05c-S5-xLi"/>
@@ -227,14 +193,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="76c-28-Zp4" customClass="FUIButton">
                                         <rect key="frame" x="5" y="122" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Northern Territory">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="2" eventType="touchUpInside" id="aZ6-Ua-mx5"/>
@@ -243,14 +205,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ams-5P-hdO" customClass="FUIButton">
                                         <rect key="frame" x="5" y="162" width="310" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Queensland">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="2" eventType="touchUpInside" id="lfh-vL-hUD"/>
@@ -477,7 +435,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" id="aDv-u2-NrR">
+                                    <view contentMode="scaleToFill" id="aDv-u2-NrR">
                                         <rect key="frame" x="12" y="142" width="296" height="165"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
@@ -489,7 +447,7 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" id="Cem-sY-D63">
+                                            <textView contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" id="Cem-sY-D63">
                                                 <rect key="frame" x="0.0" y="0.0" width="296" height="165"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -727,9 +685,9 @@
         <scene sceneID="15">
             <objects>
                 <tabBarController storyboardIdentifier="TabBarController" id="4" sceneMemberID="viewController">
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="5">
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="5">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -752,7 +710,7 @@
                 <navigationController id="Qfb-WW-3pi" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Events" image="calendaricon.png" id="7"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="WfI-8R-cG3">
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translucent="NO" id="WfI-8R-cG3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -785,21 +743,21 @@
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="vDv-ve-1gN">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="vDv-ve-1gN">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="EventCell" textLabel="Ehf-8Y-5KN" detailTextLabel="KiL-AB-j2t" style="IBUITableViewCellStyleSubtitle" id="JvR-6a-YZE" customClass="EventListCell">
-                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="55" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JvR-6a-YZE" id="2E3-ma-z9J">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" id="Ehf-8Y-5KN">
-                                                    <rect key="frame" x="10" y="2" width="35" height="21"/>
+                                                    <rect key="frame" x="15" y="3" width="34" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -807,7 +765,7 @@
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" id="KiL-AB-j2t">
-                                                    <rect key="frame" x="10" y="23" width="47" height="18"/>
+                                                    <rect key="frame" x="15" y="24" width="50" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -815,8 +773,7 @@
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        </tableViewCellContentView>
                                         <connections>
                                             <segue destination="GGA-Tb-P3v" kind="push" identifier="PushToDetail" id="4Ru-Qe-S30"/>
                                         </connections>
@@ -853,11 +810,11 @@
             <objects>
                 <viewController id="2zt-fe-yH0" customClass="NSWInfoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fXW-NN-6LZ">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <webView contentMode="scaleToFill" id="4ks-JR-dMX">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.031372550874948502" green="0.08235294371843338" blue="0.27450981736183167" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
@@ -865,7 +822,7 @@
                                 </connections>
                             </webView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="backgroundgradient.png" id="dxn-WS-jPQ">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="yhw-bo-BHe">
@@ -900,7 +857,7 @@
                 <navigationController id="oSn-TQ-vRH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Map" image="mapicon.png" id="6"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="94E-GP-mIq">
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translucent="NO" id="94E-GP-mIq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -919,7 +876,7 @@
                 <navigationController id="cfw-DQ-U2b" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Favourites" image="favouritesicon.png" id="oS1-83-3pC"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="FdX-id-laf">
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translucent="NO" id="FdX-id-laf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -935,10 +892,10 @@
         <!--Navigation Controller - Info-->
         <scene sceneID="br3-F0-k6j">
             <objects>
-                <navigationController navigationBarHidden="YES" id="T3F-5L-Yhi" sceneMemberID="viewController">
+                <navigationController id="T3F-5L-Yhi" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Info" image="scienceicon.png" id="fGp-92-BEr"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Veh-Qd-uJS">
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translucent="NO" id="Veh-Qd-uJS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -954,7 +911,7 @@
     </scenes>
     <resources>
         <image name="arrow_right.png" width="10" height="13"/>
-        <image name="backgroundgradient.png" width="640" height="1040"/>
+        <image name="backgroundgradient.png" width="320" height="520"/>
         <image name="calendaricon.png" width="23" height="25"/>
         <image name="favouritesicon.png" width="26" height="26"/>
         <image name="favouritesiconbutton.png" width="16" height="16"/>
@@ -962,115 +919,8 @@
         <image name="mapicon.png" width="26" height="21"/>
         <image name="scienceicon.png" width="20" height="24"/>
     </resources>
-    <classes>
-        <class className="EventDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="createEvent:"/>
-                <relationship kind="action" name="favouriteEvent:"/>
-                <relationship kind="action" name="openInMaps:"/>
-                <relationship kind="action" name="openInSafari:"/>
-                <relationship kind="outlet" name="eventAddressDisclosureIndicator" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="eventAddressLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="eventAddressSearchButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="eventAddressView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="eventContactLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="eventContactTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="eventContactView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="eventDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="eventDateView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="eventDescriptionLabel" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="eventDetailView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="eventLocationLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="eventMapHolderView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="eventMapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="eventTimeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="eventTimeView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="eventTitleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="eventWebsiteLabel" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="eventWebsiteView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="favouriteButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="labelScrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="onlineOnlyOpenInSafariView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="openInMapsButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="openInSafariLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="topRowView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="EventListCell" superclassName="PrettyTableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventListCell.h"/>
-        </class>
-        <class className="EventsListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventsListViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cellDoubleTapped:"/>
-                <relationship kind="action" name="chooseLocation:"/>
-                <relationship kind="action" name="newLocationButtonPressed:" candidateClass="UIButton"/>
-                <relationship kind="action" name="nextLocationPressed:"/>
-                <relationship kind="action" name="previousLocationPressed:"/>
-                <relationship kind="action" name="scrollToTodaysDate"/>
-                <relationship kind="outlet" name="currentLocationButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="currentLocationLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="doubleTap" candidateClass="UITapGestureRecognizer"/>
-                <relationship kind="outlet" name="eventListTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="locationACTButton" candidateClass="FUIButton"/>
-                <relationship kind="outlet" name="locationNSWButton" candidateClass="FUIButton"/>
-                <relationship kind="outlet" name="locationNTButton" candidateClass="FUIButton"/>
-                <relationship kind="outlet" name="locationQLDButton" candidateClass="FUIButton"/>
-                <relationship kind="outlet" name="locationSAButton" candidateClass="FUIButton"/>
-                <relationship kind="outlet" name="locationSelectHeaderView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="locationSelectTitleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="locationSelectView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="locationTASButton" candidateClass="FUIButton"/>
-                <relationship kind="outlet" name="locationVICButton" candidateClass="FUIButton"/>
-                <relationship kind="outlet" name="locationWAButton" candidateClass="FUIButton"/>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-                <relationship kind="outlet" name="segmentedLocationControl" candidateClass="FUISegmentedControl"/>
-                <relationship kind="outlet" name="tableViewBackgroundImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="todayButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="EventsMapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventsMapViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="centerOnUser:"/>
-                <relationship kind="action" name="findClosestEvent:"/>
-                <relationship kind="outlet" name="eventMap" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="FUIButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FUIButton.h"/>
-        </class>
-        <class className="FUISegmentedControl" superclassName="UISegmentedControl">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FUISegmentedControl.h"/>
-        </class>
-        <class className="FavouriteEventsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavouriteEventsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cellDoubleTapped:" candidateClass="UITapGestureRecognizer"/>
-                <relationship kind="outlet" name="doubleTapRecogniser" candidateClass="UITapGestureRecognizer"/>
-                <relationship kind="outlet" name="favouriteEventsTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="noFavouritedEventsLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="NSWInfoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSWInfoViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="backgroundColourView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="internetDownMessage" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="PrettyTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PrettyTableViewCell.h"/>
-        </class>
-        <class className="UACellBackgroundView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UACellBackgroundView.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
+        <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>

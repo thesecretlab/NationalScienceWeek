@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68287A93192AF6AB001704A5 /* backgroundgradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 68287A92192AF6AB001704A5 /* backgroundgradient@2x.png */; };
 		682FF8DD15C0BC1E00353608 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 682FF8DC15C0BC1E00353608 /* Default.png */; };
 		682FF8E015C0BC2200353608 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 682FF8DF15C0BC2100353608 /* Default@2x.png */; };
 		682FF8E415C0BCB100353608 /* calendaricon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 682FF8E315C0BCB100353608 /* calendaricon@2x.png */; };
@@ -147,6 +148,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		68287A92192AF6AB001704A5 /* backgroundgradient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "backgroundgradient@2x.png"; path = "../Images/backgroundgradient@2x.png"; sourceTree = "<group>"; };
 		682FF8DC15C0BC1E00353608 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		682FF8DF15C0BC2100353608 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		682FF8E315C0BCB100353608 /* calendaricon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calendaricon@2x.png"; path = "../Images/calendaricon@2x.png"; sourceTree = "<group>"; };
@@ -560,6 +562,7 @@
 				7C79595C15BE28E0005A5A3E /* arrow_right.png */,
 				7C79595D15BE28E0005A5A3E /* arrow_right@2x.png */,
 				7C79596015BE2C99005A5A3E /* backgroundgradient.png */,
+				68287A92192AF6AB001704A5 /* backgroundgradient@2x.png */,
 				7C79596215BE343C005A5A3E /* scienceicon.png */,
 				682FF8E515C0BCC800353608 /* scienceicon@2x.png */,
 				7C79596715BE4D1F005A5A3E /* favouritesicon.png */,
@@ -841,6 +844,7 @@
 				7C79596115BE2C99005A5A3E /* backgroundgradient.png in Resources */,
 				7C79596315BE343C005A5A3E /* scienceicon.png in Resources */,
 				7C79596815BE4D1F005A5A3E /* favouritesicon.png in Resources */,
+				68287A93192AF6AB001704A5 /* backgroundgradient@2x.png in Resources */,
 				7C79596B15BE4DD5005A5A3E /* favouritesiconbutton.png in Resources */,
 				7C79596E15BE4E68005A5A3E /* favouritesiconbutton@2x.png in Resources */,
 				682FF8DD15C0BC1E00353608 /* Default.png in Resources */,
