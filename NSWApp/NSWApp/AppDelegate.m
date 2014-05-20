@@ -110,7 +110,7 @@
     //[[UITabBar appearance] setTintColor:[UIColor whiteColor]];
 
     
-    NSDictionary *barButtonAppearanceDict = @{UITextAttributeFont : kGlobalNavBarItemFont};
+    NSDictionary *barButtonAppearanceDict = @{UITextAttributeFont : kGlobalNavBarItemFont, UITextAttributeTextColor: kGlobalNavBarTextColor};
     [[UIBarButtonItem appearance] setTitleTextAttributes:barButtonAppearanceDict forState:UIControlStateNormal];
     NSDictionary *barAppearanceDict = @{UITextAttributeFont : kGlobalNavBarFont,UITextAttributeTextShadowColor : [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8], UITextAttributeTextColor : [UIColor whiteColor], UITextAttributeTextShadowOffset : [NSValue valueWithUIOffset:UIOffsetMake(0, -1)]};
     

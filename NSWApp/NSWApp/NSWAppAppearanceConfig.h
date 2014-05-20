@@ -38,6 +38,8 @@
 
 #define kGlobalNavBarItemFont [UIFont boldFlatFontOfSize:14.0]
 
+#define kGlobalNavBarTextColor [UIColor whiteColor]
+
 #define kGlobalNavBarFont [UIFont boldFlatFontOfSize:18.0]
 
 #define kNavBarButtonCornerRadius 3
