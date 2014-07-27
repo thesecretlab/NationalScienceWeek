@@ -68,7 +68,7 @@
 
 #define kDetailCornerRadius 3
 
-#define kDetailFavouriteSelected [UIColor wisteriaColor]
+#define kDetailFavouriteSelected [UIColor colorWithHex:0xffdd00]
 
 
 //Favourites Screen

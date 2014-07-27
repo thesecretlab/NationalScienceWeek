@@ -56,8 +56,8 @@
         self.selectionGradientEndColor = tmp;
         [tmp release];
         
-        self.textLabel.shadowColor = [UIColor blackColor];
-        self.textLabel.shadowOffset = CGSizeMake(0, 1);
+        //self.textLabel.shadowColor = [UIColor blackColor];
+        //self.textLabel.shadowOffset = CGSizeMake(0, 1);
 
         self.shadowOnlyOnSelected = YES;
         

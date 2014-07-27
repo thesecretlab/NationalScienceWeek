@@ -31,10 +31,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import "PrettyDrawing.h"
 
-#define shadow_margin           4
+#define shadow_margin           2
 #define default_shadow_opacity  0.7
 
-#define contentView_margin      2
+#define contentView_margin      0
 
 #define default_radius          10
 
@@ -500,6 +500,7 @@ typedef enum {
                                      originalFrame.origin.y+diffY,
                                      originalFrame.size.width - shadowMargin*2,
                                      originalFrame.size.height- contentView_margin*2 - [PrettyTableViewCell neededHeightForPosition:self.position tableStyle:_tableViewStyle]);
+            
             contentView.frame = rect;
         }
     }

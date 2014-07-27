@@ -307,7 +307,6 @@
         self.eventContactTextView.textContainerInset = UIEdgeInsetsMake(8, 4, 0, 0);
     }
     
-    self.eventDescriptionLabel.layer.borderColor = [UIColor redColor].CGColor;
     
     self.eventDescriptionLabel.text = [event objectForKey:@"Description"];
     

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
@@ -66,6 +66,13 @@
                                     <outletCollection property="gestureRecognizers" destination="bl6-Fs-rVf" appends="YES" id="psu-E2-ZJk"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Events Found" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1lb-om-NDG">
+                                <rect key="frame" x="53" y="173" width="213" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view hidden="YES" contentMode="scaleToFill" id="zzg-mZ-Q9k" userLabel="Location Picker">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -124,7 +131,7 @@
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="South Australia">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="2" eventType="touchUpInside" id="BnX-aN-3ZU"/>
@@ -136,7 +143,7 @@
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Tasmania">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="2" eventType="touchUpInside" id="gO9-5y-Oh6"/>
@@ -148,7 +155,7 @@
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Victoria">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="2" eventType="touchUpInside" id="BLa-in-KjH"/>
@@ -160,7 +167,7 @@
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Western Australia">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="2" eventType="touchUpInside" id="G9h-NH-Car"/>
@@ -172,7 +179,7 @@
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Australian Capital Territory">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="2" eventType="touchUpInside" id="BtZ-wz-tHT"/>
@@ -184,7 +191,7 @@
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="New South Wales">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="2" eventType="touchUpInside" id="05c-S5-xLi"/>
@@ -196,7 +203,7 @@
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Northern Territory">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="2" eventType="touchUpInside" id="aZ6-Ua-mx5"/>
@@ -208,7 +215,7 @@
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Queensland">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="0.70999999999999996" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="2" eventType="touchUpInside" id="lfh-vL-hUD"/>
@@ -266,6 +273,7 @@
                         <outlet property="locationTASButton" destination="JD7-uI-ac2" id="0JQ-bo-7SS"/>
                         <outlet property="locationVICButton" destination="Cll-eF-f4Y" id="Pex-Ta-arc"/>
                         <outlet property="locationWAButton" destination="jGH-o4-EQj" id="qWB-6H-S04"/>
+                        <outlet property="noEventsLabel" destination="1lb-om-NDG" id="1PE-mp-Qpr"/>
                         <outlet property="searchBar" destination="n0B-FL-Ugu" id="ofX-jH-jWX"/>
                         <outlet property="searchDisplayController" destination="hGm-sG-EOO" id="uQR-UQ-r54"/>
                         <outlet property="segmentedLocationControl" destination="8FK-iC-LeZ" id="Ju4-dE-VQh"/>

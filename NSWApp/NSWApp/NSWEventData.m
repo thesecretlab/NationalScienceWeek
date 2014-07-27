@@ -550,7 +550,7 @@ static NSWEventData* _sharedData = nil;
     {
         if ([[self.uniqueDatesForLocation objectAtIndex:i] isEqualToString:date]) {
             return [prePrepared2DEventArray objectAtIndex:i];
-            }
+        }
         
     }
     

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="k8s-vj-aNm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="k8s-vj-aNm">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
@@ -22,7 +22,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ELa-47-iUe">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="979"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1028.5"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Event Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="10" id="y2Z-b8-Mid">
@@ -154,7 +154,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="712" height="348"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <inset key="contentInset" minX="-8" minY="-8" maxX="0.0" maxY="0.0"/>
+                                                <inset key="contentInset" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
@@ -230,7 +230,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
                                     <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" id="OkD-Sk-peR">
-                                        <rect key="frame" x="236" y="818" width="296" height="45"/>
+                                        <rect key="frame" x="236" y="867.5" width="296" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <subviews>
                                             <view hidden="YES" contentMode="scaleToFill" id="bBM-hw-crl" customClass="UACellBackgroundView">
@@ -292,6 +292,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="eventAddressDisclosureIndicator" destination="FJe-8H-sGM" id="K9M-H3-SwS"/>
                         <outlet property="eventAddressLabel" destination="ah7-vN-lWj" id="iZt-ym-T8I"/>
@@ -328,7 +329,7 @@
             <objects>
                 <viewController id="PdL-yl-Q5E" customClass="NSWiPadSideTableViewController" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="niL-ng-gJz">
-                        <rect key="frame" x="0.0" y="44" width="320" height="808"/>
+                        <rect key="frame" x="0.0" y="44" width="320" height="759"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="backgroundgradient.png" id="tME-TI-E7e">
@@ -336,7 +337,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Cgd-UO-8im">
-                                <rect key="frame" x="0.0" y="44" width="320" height="764"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="715"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="Filter Events" id="n2U-K7-Iam">
@@ -353,7 +354,7 @@
                                     <outlet property="delegate" destination="PdL-yl-Q5E" id="VJ9-k3-lSz"/>
                                 </connections>
                             </tableView>
-                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="There are no events in this list." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bVw-Av-5wk">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="No Events Found" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bVw-Av-5wk">
                                 <rect key="frame" x="37" y="240" width="247" height="177"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
@@ -377,7 +378,7 @@
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="South Australia">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="PdL-yl-Q5E" eventType="touchUpInside" id="rGv-Vx-Ogh"/>
@@ -389,7 +390,7 @@
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Tasmania">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="PdL-yl-Q5E" eventType="touchUpInside" id="DdG-Ok-aCE"/>
@@ -401,7 +402,7 @@
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Victoria">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="PdL-yl-Q5E" eventType="touchUpInside" id="jwb-pc-9za"/>
@@ -413,7 +414,7 @@
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Western Australia">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="PdL-yl-Q5E" eventType="touchUpInside" id="vuF-h2-Aew"/>
@@ -425,7 +426,7 @@
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Australian Capital Territory">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="PdL-yl-Q5E" eventType="touchUpInside" id="8ox-44-w1Y"/>
@@ -437,7 +438,7 @@
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="New South Wales">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="PdL-yl-Q5E" eventType="touchUpInside" id="Wqe-wI-uRa"/>
@@ -449,7 +450,7 @@
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Northern Territory">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="PdL-yl-Q5E" eventType="touchUpInside" id="Njf-G4-TNF"/>
@@ -461,7 +462,7 @@
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Queensland">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="newLocationButtonPressed:" destination="PdL-yl-Q5E" eventType="touchUpInside" id="Qpp-dd-eP3"/>
@@ -491,6 +492,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="xV2-Ou-5oj">
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="About" id="GN8-Kd-AKf">
@@ -505,7 +507,7 @@
                             <size key="titleShadowOffset" width="0.0" height="-1"/>
                             <state key="normal" title="TAS | ▼">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="chooseLocation:" destination="PdL-yl-Q5E" eventType="touchUpInside" id="w3V-wK-xZf"/>

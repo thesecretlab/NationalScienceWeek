@@ -581,7 +581,6 @@
         [locationButton.titleLabel setFont:kGlobalNavBarItemFont];
         locationButton.buttonColor = kGlobalNavBarItemColour;
         locationButton.titleLabel.textColor = [UIColor whiteColor];
-        locationButton.shadowColor = [UIColor grayColor];
         locationButton.cornerRadius = 3;
         [locationButton setBackgroundImage:highlightedBackgroundImage forState:UIControlStateHighlighted];
 
@@ -617,8 +616,9 @@
     
     
     
-    self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Events" image:nil tag:0];
-    [[self tabBarItem] setFinishedSelectedImage:[UIImage imageNamed:@"calendaricon.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"calendaricon.png"]];
+    self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Events" image:[UIImage imageNamed:@"calendaricon.png"] tag:0];
+  //  self.
+//    [[self tabBarItem] setFinishedSelectedImage: withFinishedUnselectedImage:[UIImage imageNamed:@"calendaricon.png"]];
     [self reloadView];
     [self scrollToTodaysDate];
     [super viewDidLoad];
@@ -701,6 +701,11 @@
 - (void)reloadView
 {
     
+    if ([NSWEventData sharedData].eventsForLocation.count == 0) {
+        self.noEventsLabel.hidden = NO;
+    } else {
+        self.noEventsLabel.hidden = YES;
+    }
     
     [self.currentLocationButton setTitle:[NSString stringWithFormat:@"%@ | ▼", [[NSWEventData sharedData] currentLocationAcronym]]];
     self.currentLocationLabel.text = [[NSWEventData sharedData] location];

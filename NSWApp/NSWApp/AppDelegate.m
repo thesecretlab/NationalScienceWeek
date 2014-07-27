@@ -112,7 +112,7 @@
     
     NSDictionary *barButtonAppearanceDict = @{UITextAttributeFont : kGlobalNavBarItemFont, UITextAttributeTextColor: kGlobalNavBarTextColor};
     [[UIBarButtonItem appearance] setTitleTextAttributes:barButtonAppearanceDict forState:UIControlStateNormal];
-    NSDictionary *barAppearanceDict = @{UITextAttributeFont : kGlobalNavBarFont,UITextAttributeTextShadowColor : [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8], UITextAttributeTextColor : [UIColor whiteColor], UITextAttributeTextShadowOffset : [NSValue valueWithUIOffset:UIOffsetMake(0, -1)]};
+    NSDictionary *barAppearanceDict = @{UITextAttributeFont : kGlobalNavBarFont, UITextAttributeTextColor : [UIColor whiteColor]};
     
     [[UINavigationBar appearance] setTitleTextAttributes:barAppearanceDict];
     [UIBarButtonItem configureFlatButtonsWithColor:kGlobalNavBarItemColour

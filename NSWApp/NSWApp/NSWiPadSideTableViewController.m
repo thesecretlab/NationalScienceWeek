@@ -66,7 +66,6 @@
         locationButton.buttonColor = kGlobalNavBarItemColour;
         
         locationButton.titleLabel.textColor = [UIColor whiteColor];
-        locationButton.shadowColor = [UIColor grayColor];
         locationButton.cornerRadius = 3;
         [locationButton setBackgroundImage:highlightedBackgroundImage forState:UIControlStateHighlighted];
 
@@ -409,15 +408,16 @@
         cell.detailTextLabel.font = kEventListCellDetailFont;
         cell.borderColor = kEventCellBorderColor;
         cell.cornerRadius = kEventCellCornerRadius;
+
+        cell.dropsShadow = NO;
+        
         cell.backgroundColor = [UIColor clearColor];
         cell.customBackgroundColor = [UIColor whiteColor];
         cell.customSeparatorStyle = UITableViewCellSeparatorStyleNone;
         cell.customSeparatorColor = [UIColor clearColor];
         cell.selectionGradientStartColor = kGlobalNavBarItemColour;
         cell.selectionGradientEndColor = kGlobalNavBarColour;
-        cell.dropsShadow = NO;
-        cell.selectionGradientStartColor = [UIColor colorWithRed:0 green:30/255.0 blue:150/255.0 alpha:1];
-        cell.selectionGradientEndColor = [UIColor colorWithRed:0 green:30/255.0 blue:150/255.0 alpha:1];
+
         
     }
     

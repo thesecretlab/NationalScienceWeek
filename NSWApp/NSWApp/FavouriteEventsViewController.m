@@ -158,6 +158,13 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.numberOfLines = 0;
         cell.detailTextLabel.numberOfLines = 0;
+        cell.backgroundColor = [UIColor clearColor];
+        cell.customBackgroundColor = [UIColor whiteColor];
+        cell.customSeparatorStyle = UITableViewCellSeparatorStyleNone;
+        cell.customSeparatorColor = [UIColor clearColor];
+        cell.selectionGradientStartColor = kGlobalNavBarItemColour;
+        cell.selectionGradientEndColor = kGlobalNavBarColour;
+        
     }
     
     [cell prepareForTableView:tableView indexPath:indexPath];

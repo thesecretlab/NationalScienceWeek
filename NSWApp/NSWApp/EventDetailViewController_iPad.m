@@ -172,7 +172,7 @@
         
     }
     
-    self.eventContactTextView.contentInset = UIEdgeInsetsMake(-8,-8,0,0);
+    self.eventContactTextView.contentInset = UIEdgeInsetsMake(-8,0,0,0);
     
     self.eventDescriptionLabel.text = [_event objectForKey:@"Description"];
     
@@ -217,6 +217,8 @@
         self.topRowView.frame = CGRectMake(self.topRowView.frame.origin.x, currentLayoutHeight, self.topRowView.frame.size.width, self.topRowView.frame.size.height);
         currentLayoutHeight = currentLayoutHeight + self.topRowView.frame.size.height + 10;
         
+        
+        
         [self positionLabelViewOnScreen:self.eventDetailView withLabel:(UILabel*)self.eventDescriptionLabel bufferToNextView:10];
         
         [self positionLabelViewOnScreen:self.eventContactView withLabel:(UILabel*)self.eventContactTextView bufferToNextView:10];
@@ -242,6 +244,7 @@
             if (self.eventAddressView.frame.size.height >= self.eventContactView.frame.size.height) {
                 self.eventContactView.frame = CGRectMake(self.eventContactView.frame.origin.x, self.eventContactView.frame.origin.y, self.eventContactView.frame.size.width, self.eventAddressView.frame.size.height);
                 self.eventContactTextView.frame = CGRectMake(12, 10, self.eventContactView.frame.size.width-24, self.eventContactTextView.frame.size.height-20);
+                
 
             }
             else if (self.eventAddressView.frame.size.height < self.eventContactView.frame.size.height) {
@@ -380,6 +383,7 @@
         CGSize constraint = CGSizeMake(currentView.frame.size.width-34, 20000.0f);
         
         CGSize size = [currentLabel.text sizeWithFont:currentLabel.font constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
+        size.height += 8;
         
         CGFloat height = MAX(size.height, 20);
         
@@ -539,10 +543,11 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     
-    self.labelScrollView.frame = self.view.frame;
+    self.labelScrollView.frame = self.view.bounds;
 
     [self.navigationController.navigationBar configureFlatNavigationBarWithColor:kGlobalNavBarColour];
     
+
     
     NSLog(@"Event %@", self.event);
     [self updateAndRelayoutView];
@@ -691,7 +696,7 @@
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-    self.labelScrollView.frame = self.view.frame;
+    self.labelScrollView.frame = self.view.bounds;
     
     [self resizeScrollViewContentSize];
     

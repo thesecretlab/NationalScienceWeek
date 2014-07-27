@@ -41,6 +41,8 @@
 @property (weak, nonatomic) IBOutlet FUIButton *locationQLDButton;
 @property (weak, nonatomic) IBOutlet UILabel *locationSelectTitleLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *noEventsLabel;
+
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 - (IBAction)nextLocationPressed:(id)sender;

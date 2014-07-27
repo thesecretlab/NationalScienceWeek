@@ -217,6 +217,9 @@
     
     for(MyLocation *annotation in annotations)
     {
+        if ([annotation isKindOfClass:[MyLocation class]] == NO)
+            continue;
+        
         if ([[annotation.event objectForKey:@"Region"] isEqualToString:[[NSWEventData sharedData] location]]) {
             [annotationsForCurrentRegion addObject:annotation];
         }
