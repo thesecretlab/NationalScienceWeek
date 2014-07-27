@@ -8,33 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		68287A93192AF6AB001704A5 /* backgroundgradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 68287A92192AF6AB001704A5 /* backgroundgradient@2x.png */; };
-		682FF8DD15C0BC1E00353608 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 682FF8DC15C0BC1E00353608 /* Default.png */; };
-		682FF8E015C0BC2200353608 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 682FF8DF15C0BC2100353608 /* Default@2x.png */; };
 		682FF8E415C0BCB100353608 /* calendaricon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 682FF8E315C0BCB100353608 /* calendaricon@2x.png */; };
 		682FF8E615C0BCC800353608 /* scienceicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 682FF8E515C0BCC800353608 /* scienceicon@2x.png */; };
 		682FF8E815C0BD0600353608 /* favouritesicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 682FF8E715C0BD0600353608 /* favouritesicon@2x.png */; };
 		682FF8EA15C0BD5000353608 /* mapicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 682FF8E915C0BD5000353608 /* mapicon@2x.png */; };
-		682FF8EE15C0C38000353608 /* Icon-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 682FF8EB15C0C37F00353608 /* Icon-iPad.png */; };
-		682FF8EF15C0C38000353608 /* Icon-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 682FF8EC15C0C38000353608 /* Icon-iPad@2x.png */; };
 		6841DC1415CE60DE004BEAB0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6841DC1315CE60DE004BEAB0 /* SystemConfiguration.framework */; };
-		6CF5C94A178525F8005A94A6 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CF5C93F178525F8005A94A6 /* Icon-72.png */; };
-		6CF5C94B178525F8005A94A6 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CF5C940178525F8005A94A6 /* Icon-72@2x.png */; };
-		6CF5C94C178525F8005A94A6 /* Icon-Cropped-Large.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CF5C941178525F8005A94A6 /* Icon-Cropped-Large.png */; };
-		6CF5C94D178525F8005A94A6 /* Icon-Large.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CF5C942178525F8005A94A6 /* Icon-Large.png */; };
-		6CF5C94E178525F8005A94A6 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CF5C943178525F8005A94A6 /* Icon-Small-50.png */; };
-		6CF5C94F178525F8005A94A6 /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CF5C944178525F8005A94A6 /* Icon-Small-50@2x.png */; };
-		6CF5C950178525F8005A94A6 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CF5C945178525F8005A94A6 /* Icon-Small.png */; };
-		6CF5C951178525F8005A94A6 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CF5C946178525F8005A94A6 /* Icon-Small@2x.png */; };
-		6CF5C952178525F8005A94A6 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CF5C947178525F8005A94A6 /* Icon@2x.png */; };
-		6CF5C953178525F8005A94A6 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CF5C948178525F8005A94A6 /* iTunesArtwork.png */; };
-		6CF5C954178525F8005A94A6 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CF5C949178525F8005A94A6 /* iTunesArtwork@2x.png */; };
-		6E2DB3A415B87B7C00270481 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2DB3A315B87B7C00270481 /* Icon.png */; };
+		68FB2AF01985A4F600CC40D2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68FB2AEF1985A4F600CC40D2 /* Images.xcassets */; };
 		7C04A6BF1779DF28005B0C87 /* NSWEventsMapViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C04A6BE1779DF28005B0C87 /* NSWEventsMapViewController_iPad.m */; };
 		7C0A35AB15BE9CB200A25D3B /* FavouriteEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0A35AA15BE9CB200A25D3B /* FavouriteEventsViewController.m */; };
-		7C1840D0178E8A0100C4FCF1 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1840CF178E8A0100C4FCF1 /* Default-Portrait@2x~ipad.png */; };
-		7C1840D2178E8A1D00C4FCF1 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1840D1178E8A1D00C4FCF1 /* Default-Landscape@2x~ipad.png */; };
-		7C1840D4178E929100C4FCF1 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1840D3178E929100C4FCF1 /* Default-Landscape~ipad.png */; };
-		7C1840D6178E92A500C4FCF1 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C1840D5178E92A400C4FCF1 /* Default-Portrait~ipad.png */; };
 		7C279F47178FD47600BA8408 /* scienceweek-events.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7C279F46178FD47600BA8408 /* scienceweek-events.xml */; };
 		7C279F49178FE07700BA8408 /* NSWEventDataForFirstRun.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C279F48178FE07700BA8408 /* NSWEventDataForFirstRun.plist */; };
 		7C2A7395175E3297008CD94B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C2A7394175E3297008CD94B /* libz.dylib */; };
@@ -114,7 +95,6 @@
 		7CC027D01757A15B00B97C3C /* PrettyShadowPlainTableview.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC027C51757A15B00B97C3C /* PrettyShadowPlainTableview.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7CC027D11757A15B00B97C3C /* PrettyTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC027C71757A15B00B97C3C /* PrettyTabBar.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7CC027D21757A15B00B97C3C /* PrettyToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC027C91757A15B00B97C3C /* PrettyToolbar.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		7CC027D41757C82000B97C3C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC027D31757C82000B97C3C /* Default-568h@2x.png */; };
 		7CC3224315BBC478002F37E0 /* calendaricon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC3224215BBC478002F37E0 /* calendaricon.png */; };
 		7CC3224615BBC49D002F37E0 /* mapicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC3224515BBC49D002F37E0 /* mapicon.png */; };
 		7CC3224915BBF021002F37E0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CC3224715BBF017002F37E0 /* QuartzCore.framework */; };
@@ -149,36 +129,16 @@
 
 /* Begin PBXFileReference section */
 		68287A92192AF6AB001704A5 /* backgroundgradient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "backgroundgradient@2x.png"; path = "../Images/backgroundgradient@2x.png"; sourceTree = "<group>"; };
-		682FF8DC15C0BC1E00353608 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		682FF8DF15C0BC2100353608 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		682FF8E315C0BCB100353608 /* calendaricon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calendaricon@2x.png"; path = "../Images/calendaricon@2x.png"; sourceTree = "<group>"; };
 		682FF8E515C0BCC800353608 /* scienceicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "scienceicon@2x.png"; path = "../Images/scienceicon@2x.png"; sourceTree = "<group>"; };
 		682FF8E715C0BD0600353608 /* favouritesicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "favouritesicon@2x.png"; path = "../Images/favouritesicon@2x.png"; sourceTree = "<group>"; };
 		682FF8E915C0BD5000353608 /* mapicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mapicon@2x.png"; path = "../Images/mapicon@2x.png"; sourceTree = "<group>"; };
-		682FF8EB15C0C37F00353608 /* Icon-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-iPad.png"; path = "../Images/Icon-iPad.png"; sourceTree = "<group>"; };
-		682FF8EC15C0C38000353608 /* Icon-iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-iPad@2x.png"; path = "../Images/Icon-iPad@2x.png"; sourceTree = "<group>"; };
-		682FF8ED15C0C38000353608 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Images/Icon@2x.png"; sourceTree = "<group>"; };
 		6841DC1315CE60DE004BEAB0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		6CF5C93F178525F8005A94A6 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
-		6CF5C940178525F8005A94A6 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
-		6CF5C941178525F8005A94A6 /* Icon-Cropped-Large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Cropped-Large.png"; sourceTree = "<group>"; };
-		6CF5C942178525F8005A94A6 /* Icon-Large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Large.png"; sourceTree = "<group>"; };
-		6CF5C943178525F8005A94A6 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
-		6CF5C944178525F8005A94A6 /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50@2x.png"; sourceTree = "<group>"; };
-		6CF5C945178525F8005A94A6 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
-		6CF5C946178525F8005A94A6 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
-		6CF5C947178525F8005A94A6 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		6CF5C948178525F8005A94A6 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
-		6CF5C949178525F8005A94A6 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
-		6E2DB3A315B87B7C00270481 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
+		68FB2AEF1985A4F600CC40D2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = SOURCE_ROOT; };
 		7C04A6BD1779DF28005B0C87 /* NSWEventsMapViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWEventsMapViewController_iPad.h; sourceTree = "<group>"; };
 		7C04A6BE1779DF28005B0C87 /* NSWEventsMapViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWEventsMapViewController_iPad.m; sourceTree = "<group>"; };
 		7C0A35A915BE9CB200A25D3B /* FavouriteEventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouriteEventsViewController.h; sourceTree = "<group>"; };
 		7C0A35AA15BE9CB200A25D3B /* FavouriteEventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouriteEventsViewController.m; sourceTree = "<group>"; };
-		7C1840CF178E8A0100C4FCF1 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
-		7C1840D1178E8A1D00C4FCF1 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
-		7C1840D3178E929100C4FCF1 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
-		7C1840D5178E92A400C4FCF1 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		7C279F46178FD47600BA8408 /* scienceweek-events.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "scienceweek-events.xml"; sourceTree = "<group>"; };
 		7C279F48178FE07700BA8408 /* NSWEventDataForFirstRun.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NSWEventDataForFirstRun.plist; sourceTree = "<group>"; };
 		7C2A7394175E3297008CD94B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -316,7 +276,6 @@
 		7CC027C71757A15B00B97C3C /* PrettyTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrettyTabBar.m; sourceTree = "<group>"; };
 		7CC027C81757A15B00B97C3C /* PrettyToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyToolbar.h; sourceTree = "<group>"; };
 		7CC027C91757A15B00B97C3C /* PrettyToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrettyToolbar.m; sourceTree = "<group>"; };
-		7CC027D31757C82000B97C3C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		7CC3224215BBC478002F37E0 /* calendaricon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calendaricon.png; path = ../Images/calendaricon.png; sourceTree = "<group>"; };
 		7CC3224515BBC49D002F37E0 /* mapicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mapicon.png; path = ../Images/mapicon.png; sourceTree = "<group>"; };
 		7CC3224715BBF017002F37E0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -391,24 +350,6 @@
 		68E8F56017902634000CE049 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				7C1840D5178E92A400C4FCF1 /* Default-Portrait~ipad.png */,
-				7C1840D3178E929100C4FCF1 /* Default-Landscape~ipad.png */,
-				7C1840D1178E8A1D00C4FCF1 /* Default-Landscape@2x~ipad.png */,
-				7C1840CF178E8A0100C4FCF1 /* Default-Portrait@2x~ipad.png */,
-				6CF5C93F178525F8005A94A6 /* Icon-72.png */,
-				6CF5C940178525F8005A94A6 /* Icon-72@2x.png */,
-				6CF5C941178525F8005A94A6 /* Icon-Cropped-Large.png */,
-				6CF5C942178525F8005A94A6 /* Icon-Large.png */,
-				6CF5C943178525F8005A94A6 /* Icon-Small-50.png */,
-				6CF5C944178525F8005A94A6 /* Icon-Small-50@2x.png */,
-				6CF5C945178525F8005A94A6 /* Icon-Small.png */,
-				6CF5C946178525F8005A94A6 /* Icon-Small@2x.png */,
-				6CF5C947178525F8005A94A6 /* Icon@2x.png */,
-				6CF5C948178525F8005A94A6 /* iTunesArtwork.png */,
-				6CF5C949178525F8005A94A6 /* iTunesArtwork@2x.png */,
-				7CC027D31757C82000B97C3C /* Default-568h@2x.png */,
-				682FF8DF15C0BC2100353608 /* Default@2x.png */,
-				682FF8DC15C0BC1E00353608 /* Default.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -505,6 +446,7 @@
 				7CC027B51757A15B00B97C3C /* PrettyKit */,
 				7CF763011755A5B500F9088E /* FlatUI */,
 				7C60902315B65DA6005A8833 /* CSV Parser */,
+				68FB2AEF1985A4F600CC40D2 /* Images.xcassets */,
 			);
 			path = NSWApp;
 			sourceTree = "<group>";
@@ -553,10 +495,6 @@
 				682FF8E915C0BD5000353608 /* mapicon@2x.png */,
 				7CC3224215BBC478002F37E0 /* calendaricon.png */,
 				682FF8E315C0BCB100353608 /* calendaricon@2x.png */,
-				6E2DB3A315B87B7C00270481 /* Icon.png */,
-				682FF8EB15C0C37F00353608 /* Icon-iPad.png */,
-				682FF8EC15C0C38000353608 /* Icon-iPad@2x.png */,
-				682FF8ED15C0C38000353608 /* Icon@2x.png */,
 				7C49806B15BCD066004A1AEF /* locationarrow.png */,
 				7C82D89715BD306B00AAA9F5 /* locationarrow@2x.png */,
 				7C79595C15BE28E0005A5A3E /* arrow_right.png */,
@@ -834,10 +772,10 @@
 				7C55864115B51DC200068067 /* first@2x.png in Resources */,
 				7C55864615B51DC200068067 /* second.png in Resources */,
 				7C55864815B51DC200068067 /* second@2x.png in Resources */,
-				6E2DB3A415B87B7C00270481 /* Icon.png in Resources */,
 				7CC3224315BBC478002F37E0 /* calendaricon.png in Resources */,
 				7CC3224615BBC49D002F37E0 /* mapicon.png in Resources */,
 				7C49806C15BCD066004A1AEF /* locationarrow.png in Resources */,
+				68FB2AF01985A4F600CC40D2 /* Images.xcassets in Resources */,
 				7C82D89815BD306B00AAA9F5 /* locationarrow@2x.png in Resources */,
 				7C79595E15BE28E1005A5A3E /* arrow_right.png in Resources */,
 				7C79595F15BE28E1005A5A3E /* arrow_right@2x.png in Resources */,
@@ -847,14 +785,10 @@
 				68287A93192AF6AB001704A5 /* backgroundgradient@2x.png in Resources */,
 				7C79596B15BE4DD5005A5A3E /* favouritesiconbutton.png in Resources */,
 				7C79596E15BE4E68005A5A3E /* favouritesiconbutton@2x.png in Resources */,
-				682FF8DD15C0BC1E00353608 /* Default.png in Resources */,
-				682FF8E015C0BC2200353608 /* Default@2x.png in Resources */,
 				682FF8E415C0BCB100353608 /* calendaricon@2x.png in Resources */,
 				682FF8E615C0BCC800353608 /* scienceicon@2x.png in Resources */,
 				682FF8E815C0BD0600353608 /* favouritesicon@2x.png in Resources */,
 				682FF8EA15C0BD5000353608 /* mapicon@2x.png in Resources */,
-				682FF8EE15C0C38000353608 /* Icon-iPad.png in Resources */,
-				682FF8EF15C0C38000353608 /* Icon-iPad@2x.png in Resources */,
 				7CF763361755AEA900F9088E /* Lato-Black.ttf in Resources */,
 				7CF763371755AEA900F9088E /* Lato-BlackItalic.ttf in Resources */,
 				7CF763381755AEA900F9088E /* Lato-Bold.ttf in Resources */,
@@ -865,25 +799,9 @@
 				7CF7633D1755AEA900F9088E /* Lato-Light.ttf in Resources */,
 				7CF7633E1755AEA900F9088E /* Lato-LightItalic.ttf in Resources */,
 				7CF7633F1755AEA900F9088E /* Lato-Regular.ttf in Resources */,
-				7CC027D41757C82000B97C3C /* Default-568h@2x.png in Resources */,
 				7C7D01941762D688006D9F4A /* tablviewcell-header.png in Resources */,
 				7CCE1E4F1769A84D000AE659 /* MainStoryboard_iPad.storyboard in Resources */,
-				6CF5C94A178525F8005A94A6 /* Icon-72.png in Resources */,
-				6CF5C94B178525F8005A94A6 /* Icon-72@2x.png in Resources */,
-				6CF5C94C178525F8005A94A6 /* Icon-Cropped-Large.png in Resources */,
-				6CF5C94D178525F8005A94A6 /* Icon-Large.png in Resources */,
-				6CF5C94E178525F8005A94A6 /* Icon-Small-50.png in Resources */,
-				6CF5C94F178525F8005A94A6 /* Icon-Small-50@2x.png in Resources */,
-				6CF5C950178525F8005A94A6 /* Icon-Small.png in Resources */,
-				6CF5C951178525F8005A94A6 /* Icon-Small@2x.png in Resources */,
-				6CF5C952178525F8005A94A6 /* Icon@2x.png in Resources */,
-				6CF5C953178525F8005A94A6 /* iTunesArtwork.png in Resources */,
-				6CF5C954178525F8005A94A6 /* iTunesArtwork@2x.png in Resources */,
 				7C9235C4178A562F00D2FAB7 /* science-week-_2013_dev.png in Resources */,
-				7C1840D0178E8A0100C4FCF1 /* Default-Portrait@2x~ipad.png in Resources */,
-				7C1840D2178E8A1D00C4FCF1 /* Default-Landscape@2x~ipad.png in Resources */,
-				7C1840D4178E929100C4FCF1 /* Default-Landscape~ipad.png in Resources */,
-				7C1840D6178E92A500C4FCF1 /* Default-Portrait~ipad.png in Resources */,
 				7C279F47178FD47600BA8408 /* scienceweek-events.xml in Resources */,
 				7C279F49178FE07700BA8408 /* NSWEventDataForFirstRun.plist in Resources */,
 			);
@@ -1032,6 +950,8 @@
 		683AD3C41785079B00219C26 /* Daedalus */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NSWApp/NSWApp-Prefix.pch";
@@ -1105,6 +1025,8 @@
 		7C55864C15B51DC200068067 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NSWApp/NSWApp-Prefix.pch";
@@ -1125,6 +1047,8 @@
 		7C55864D15B51DC200068067 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
