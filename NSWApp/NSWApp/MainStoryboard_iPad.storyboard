@@ -280,6 +280,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
+                                <inset key="contentInset" minX="0.0" minY="0.0" maxX="0.0" maxY="64"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -329,7 +330,7 @@
             <objects>
                 <viewController id="PdL-yl-Q5E" customClass="NSWiPadSideTableViewController" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="niL-ng-gJz">
-                        <rect key="frame" x="0.0" y="44" width="320" height="759"/>
+                        <rect key="frame" x="0.0" y="44" width="320" height="808"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="backgroundgradient.png" id="tME-TI-E7e">
@@ -337,9 +338,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Cgd-UO-8im">
-                                <rect key="frame" x="0.0" y="44" width="320" height="715"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="764"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <inset key="contentInset" minX="0.0" minY="0.0" maxX="0.0" maxY="64"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="Filter Events" id="n2U-K7-Iam">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -492,7 +494,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" id="xV2-Ou-5oj">
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="About" id="GN8-Kd-AKf">

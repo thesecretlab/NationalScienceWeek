@@ -482,6 +482,7 @@
         CGSize constraint = CGSizeMake(currentView.frame.size.width-40, 20000.0f);
         
         CGSize size = [currentLabel.text sizeWithFont:currentLabel.font constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
+        size.height += 20;
         
         CGFloat height = MAX(size.height, 20);
 
