@@ -492,7 +492,7 @@ typedef enum {
             default:
                 break;
         }
-        float diffY = y - originalFrame.origin.y;
+        /*float diffY = y - originalFrame.origin.y;
         
         if (diffY != 0)
         {
@@ -502,7 +502,7 @@ typedef enum {
                                      originalFrame.size.height- contentView_margin*2 - [PrettyTableViewCell neededHeightForPosition:self.position tableStyle:_tableViewStyle]);
             
             contentView.frame = rect;
-        }
+        }*/
     }
 }
 

@@ -13,6 +13,7 @@
 		682FF8E815C0BD0600353608 /* favouritesicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 682FF8E715C0BD0600353608 /* favouritesicon@2x.png */; };
 		682FF8EA15C0BD5000353608 /* mapicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 682FF8E915C0BD5000353608 /* mapicon@2x.png */; };
 		6841DC1415CE60DE004BEAB0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6841DC1315CE60DE004BEAB0 /* SystemConfiguration.framework */; };
+		68C040A719883B4000E2F1F7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C040A619883B4000E2F1F7 /* MessageUI.framework */; };
 		68FB2AF01985A4F600CC40D2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68FB2AEF1985A4F600CC40D2 /* Images.xcassets */; };
 		7C04A6BF1779DF28005B0C87 /* NSWEventsMapViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C04A6BE1779DF28005B0C87 /* NSWEventsMapViewController_iPad.m */; };
 		7C0A35AB15BE9CB200A25D3B /* FavouriteEventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0A35AA15BE9CB200A25D3B /* FavouriteEventsViewController.m */; };
@@ -134,6 +135,7 @@
 		682FF8E715C0BD0600353608 /* favouritesicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "favouritesicon@2x.png"; path = "../Images/favouritesicon@2x.png"; sourceTree = "<group>"; };
 		682FF8E915C0BD5000353608 /* mapicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mapicon@2x.png"; path = "../Images/mapicon@2x.png"; sourceTree = "<group>"; };
 		6841DC1315CE60DE004BEAB0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		68C040A619883B4000E2F1F7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		68FB2AEF1985A4F600CC40D2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = SOURCE_ROOT; };
 		7C04A6BD1779DF28005B0C87 /* NSWEventsMapViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSWEventsMapViewController_iPad.h; sourceTree = "<group>"; };
 		7C04A6BE1779DF28005B0C87 /* NSWEventsMapViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSWEventsMapViewController_iPad.m; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68C040A719883B4000E2F1F7 /* MessageUI.framework in Frameworks */,
 				7C2A7395175E3297008CD94B /* libz.dylib in Frameworks */,
 				7C2A739B175E3421008CD94B /* libxml2.dylib in Frameworks */,
 				7CF7632A1755A75700F9088E /* CoreText.framework in Frameworks */,
@@ -412,6 +415,7 @@
 		7C55862515B51DC200068067 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				68C040A619883B4000E2F1F7 /* MessageUI.framework */,
 				7C2A739A175E3421008CD94B /* libxml2.dylib */,
 				7C2A7394175E3297008CD94B /* libz.dylib */,
 				7CF763291755A75700F9088E /* CoreText.framework */,

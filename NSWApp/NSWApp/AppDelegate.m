@@ -15,6 +15,8 @@
 #import "UIFont+FlatUI.h"
 #import "NSWAppAppearanceConfig.h"
 #import "UITabBar+FlatUI.h"
+#import <MessageUI/MessageUI.h>
+
 @implementation AppDelegate
 
 @synthesize window = _window;
@@ -118,7 +120,8 @@
     [UIBarButtonItem configureFlatButtonsWithColor:kGlobalNavBarItemColour
                                   highlightedColor:kGlobalNavBarItemColourHighlighted
                                       cornerRadius:kNavBarButtonCornerRadius];
-
+    
+    
     if ([[UIBarButtonItem appearance] respondsToSelector:@selector(setTintColor:)]) {
         [[UIBarButtonItem appearance] setTintColor:kGlobalNavBarTextColor];
     }

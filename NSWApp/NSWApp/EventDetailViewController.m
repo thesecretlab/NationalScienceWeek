@@ -100,7 +100,14 @@
         accessGranted = YES;
     }
     
-    
+    if (accessGranted == NO) {
+        UIAlertView* alertView = [[UIAlertView alloc] init];
+        alertView.title = @"This app does not have access to your calendars.";
+        alertView.message = @"You can enable access in Privacy Settings.";
+        [alertView addButtonWithTitle:@"Close"];
+        [alertView show];
+        return;
+    }
     
     EKEvent *newEvent  = [EKEvent eventWithEventStore:eventStore];
     newEvent.title     = [event objectForKey:@"Title"];
@@ -138,13 +145,13 @@
     controller.editViewDelegate = self;
     controller.event = newEvent;
     
-    NSDictionary *barAppearanceDict = @{UITextAttributeFont : kGlobalNavBarFont,UITextAttributeTextShadowColor : [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8], UITextAttributeTextColor : [UIColor whiteColor], UITextAttributeTextShadowOffset : [NSValue valueWithUIOffset:UIOffsetMake(0, -1)]};
+    
+    
+    NSDictionary *barAppearanceDict = @{NSFontAttributeName : kGlobalNavBarFont, NSForegroundColorAttributeName : [UIColor whiteColor]};
     
     [controller.navigationBar setTitleTextAttributes:barAppearanceDict];
-    
-    
     [controller.navigationBar configureFlatNavigationBarWithColor:kGlobalNavBarColour];
-    [self presentModalViewController: controller animated:YES];
+    [self presentViewController:controller animated:YES completion:nil];
     
 }
 
@@ -307,8 +314,7 @@
         self.eventContactTextView.textContainerInset = UIEdgeInsetsMake(8, 4, 0, 0);
     }
     
-    
-    self.eventDescriptionLabel.text = [event objectForKey:@"Description"];
+    self.eventDescriptionLabel.text = [event objectForKey:@"Description"];;
     
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
