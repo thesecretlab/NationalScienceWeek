@@ -563,7 +563,7 @@
 - (void)viewDidLoad
 {
     
-
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 
     _locationSelectView.backgroundColor = [UIColor clearColor];
     _locationSelectHeaderView.backgroundColor = [UIColor clearColor];
@@ -603,7 +603,7 @@
         }
     }
     
-    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6],UITextAttributeTextShadowColor,[NSValue valueWithUIOffset:UIOffsetMake(0, -1)],UITextAttributeTextShadowOffset, kGlobalNavBarItemFont, UITextAttributeFont, nil] forState:UIControlStateNormal];
+    //[[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6],UITextAttributeTextShadowColor,[NSValue valueWithUIOffset:UIOffsetMake(0, -1)],UITextAttributeTextShadowOffset, kGlobalNavBarItemFont, UITextAttributeFont, nil] forState:UIControlStateNormal];
     
     self.searchBar.backgroundColor = kGlobalNavBarColour;
     //[[[self.searchBar subviews] objectAtIndex:0] setAlpha:0.0];
@@ -614,6 +614,13 @@
         self.searchBar.tintColor = kGlobalNavBarColour;
     }
     
+    
+    CGRect frame = self.eventListTableView.bounds;
+    frame.size.height *= 3.0;
+    frame.origin.y = -frame.size.height;
+    UIView* grayView = [[UIView alloc] initWithFrame:frame];
+    grayView.backgroundColor = [UIColor colorWithHex:0x103360];
+    [self.eventListTableView addSubview:grayView];
     
     
     self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Events" image:[UIImage imageNamed:@"calendaricon.png"] tag:0];

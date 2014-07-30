@@ -36,6 +36,9 @@
 
 - (void)viewDidLoad
 {
+    
+    //self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     trayOut = NO;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onKeyboardHide:) name:UIKeyboardWillHideNotification object:nil];
 
@@ -82,7 +85,7 @@
         }
     }
     
-    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6],UITextAttributeTextShadowColor,[NSValue valueWithUIOffset:UIOffsetMake(0, -1)],UITextAttributeTextShadowOffset, kGlobalNavBarItemFont, UITextAttributeFont, nil] forState:UIControlStateNormal];
+    //[[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],UITextAttributeTextColor,[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6],UITextAttributeTextShadowColor,[NSValue valueWithUIOffset:UIOffsetMake(0, -1)],UITextAttributeTextShadowOffset, kGlobalNavBarItemFont, UITextAttributeFont, nil] forState:UIControlStateNormal];
     
     self.searchBar.backgroundColor = kGlobalNavBarColour;
     //[[[self.searchBar subviews] objectAtIndex:0] setAlpha:0.0];
@@ -107,6 +110,12 @@
     [self.currentLocationButton setBackgroundImage:normalBackgroundImage forState:UIControlStateNormal];
     [self.currentLocationButton setBackgroundImage:highlightedBackgroundImage forState:UIControlStateHighlighted];
     
+    CGRect frame = self.eventListView.bounds;
+    frame.size.height *= 3.0;
+    frame.origin.y = -frame.size.height;
+    UIView* grayView = [[UIView alloc] initWithFrame:frame];
+    grayView.backgroundColor = [UIColor colorWithHex:0x103360];
+    [self.eventListView addSubview:grayView];
     
     lastFavouritesListOffset = 0.0;
     lastEventListOffset = 0.0;

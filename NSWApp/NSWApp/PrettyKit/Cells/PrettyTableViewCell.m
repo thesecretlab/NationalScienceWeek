@@ -34,7 +34,7 @@
 #define shadow_margin           2
 #define default_shadow_opacity  0.7
 
-#define contentView_margin      -5
+#define contentView_margin      -4
 
 #define default_radius          10
 
