@@ -87,7 +87,7 @@ static NSWEventData* _sharedData = nil;
 	//NSLog(@"%@", file);
     NSError * error = nil;
 
-    NSString *fileAsString = [NSString stringWithContentsOfFile:file encoding:NSASCIIStringEncoding error:&error];
+    NSString *fileAsString = [NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:&error];
     //NSLog(@"%@", error);
 
     self.latestVersionNumber = [NSNumber numberWithInt:-1];
@@ -378,7 +378,7 @@ static NSWEventData* _sharedData = nil;
         NSString *documentsDirectory = [paths objectAtIndex:0];
         NSString *filePath = [documentsDirectory stringByAppendingString:@"/LastKnownGoodXML.xml"];
         
-        NSString *xmlRecover = [NSString stringWithContentsOfFile:filePath encoding:NSASCIIStringEncoding error:&error];
+        NSString *xmlRecover = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:&error];
         NSLog(@"Attempting a recovery");
         if (error == nil && self.preemptInfiniteRecursion == NO) {
             self.preemptInfiniteRecursion = YES;
