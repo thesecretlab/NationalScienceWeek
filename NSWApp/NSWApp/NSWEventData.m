@@ -578,7 +578,7 @@ static NSWEventData* _sharedData = nil;
 -(void)checkUsersLocation
 {
     locationManager = [[CLLocationManager alloc] init];
-    locationManager.purpose = @"We'll show you events close to where you are.";
+    [locationManager requestWhenInUseAuthorization];
     locationManager.delegate = self;
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;

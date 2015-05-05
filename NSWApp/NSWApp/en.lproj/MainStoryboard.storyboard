@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
-        <!--Events List View Controller - First-->
+        <!--First-->
         <scene sceneID="11">
             <objects>
                 <viewController title="First" id="2" customClass="EventsListViewController" sceneMemberID="viewController">
@@ -19,7 +19,7 @@
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="R0Z-TW-t6Z">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
-                                <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Filter events" id="n0B-FL-Ugu">
@@ -32,7 +32,7 @@
                                 </searchBar>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="EventCell" textLabel="vM1-7K-bdB" detailTextLabel="0xf-xo-YyJ" style="IBUITableViewCellStyleSubtitle" id="WC7-rd-vMD" customClass="PrettyTableViewCell">
-                                        <rect key="frame" x="0.0" y="99" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="94" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WC7-rd-vMD" id="QYo-ek-hct">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
@@ -80,7 +80,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QGJ-yC-aOt">
                                         <rect key="frame" x="248" y="1" width="72" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="-->">
+                                        <state key="normal" title="--&gt;">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -113,11 +113,11 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" id="pY3-U4-ZLn">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Select a location:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lXr-Dr-Rze">
                                                 <rect key="frame" x="0.0" y="10" width="320" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
@@ -127,7 +127,7 @@
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rQU-KH-2Bn" customClass="FUIButton">
                                         <rect key="frame" x="5" y="202" width="310" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="South Australia">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -139,7 +139,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JD7-uI-ac2" customClass="FUIButton">
                                         <rect key="frame" x="5" y="242" width="310" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Tasmania">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -151,7 +151,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Cll-eF-f4Y" customClass="FUIButton">
                                         <rect key="frame" x="5" y="282" width="310" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Victoria">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -163,7 +163,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jGH-o4-EQj" customClass="FUIButton">
                                         <rect key="frame" x="5" y="322" width="310" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Western Australia">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -175,7 +175,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="guZ-P0-b8d" customClass="FUIButton">
                                         <rect key="frame" x="5" y="42" width="310" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Australian Capital Territory">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -187,7 +187,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ISq-yR-S1J" customClass="FUIButton">
                                         <rect key="frame" x="5" y="82" width="310" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="New South Wales">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -199,7 +199,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="76c-28-Zp4" customClass="FUIButton">
                                         <rect key="frame" x="5" y="122" width="310" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Northern Territory">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -211,7 +211,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ams-5P-hdO" customClass="FUIButton">
                                         <rect key="frame" x="5" y="162" width="310" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" title="Queensland">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -300,7 +300,7 @@
             </objects>
             <point key="canvasLocation" x="1059" y="-147"/>
         </scene>
-        <!--Event Detail View Controller - Event-->
+        <!--Event-->
         <scene sceneID="Ts9-vZ-uLf">
             <objects>
                 <viewController storyboardIdentifier="EventDetail" id="GGA-Tb-P3v" customClass="EventDetailViewController" sceneMemberID="viewController">
@@ -318,7 +318,7 @@
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Event Title" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="10" id="cCM-EO-3tE">
                                         <rect key="frame" x="15" y="0.0" width="290" height="51"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -339,11 +339,11 @@
                                     </label>
                                     <view contentMode="scaleToFill" id="EU4-Sa-HGL">
                                         <rect key="frame" x="12" y="49" width="296" height="85"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" id="wft-HC-B7c">
                                                 <rect key="frame" x="212" y="0.0" width="85" height="85"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" showsUserLocation="YES" id="tCc-YZ-n1q">
                                                         <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
@@ -372,7 +372,7 @@
                                             </view>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" id="suH-s1-Wsl">
                                                 <rect key="frame" x="106" y="0.0" width="85" height="85"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <view hidden="YES" contentMode="scaleToFill" id="FWl-ct-c8i" customClass="UACellBackgroundView">
                                                         <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
@@ -445,7 +445,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" id="aDv-u2-NrR">
                                         <rect key="frame" x="12" y="142" width="296" height="165"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" minimumFontSize="10" id="jwB-A2-Lfd">
                                                 <rect key="frame" x="0.0" y="0.0" width="296" height="165"/>
@@ -469,7 +469,7 @@
                                     </view>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" id="lUD-zn-CGx">
                                         <rect key="frame" x="12" y="315" width="296" height="41"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <view hidden="YES" contentMode="scaleToFill" id="jZr-LT-k8r" customClass="UACellBackgroundView">
                                                 <rect key="frame" x="0.0" y="0.0" width="296" height="41"/>
@@ -516,7 +516,7 @@
                                     </view>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" id="kHg-ij-XSw">
                                         <rect key="frame" x="12" y="315" width="296" height="41"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <view hidden="YES" contentMode="scaleToFill" id="Ekf-n7-LR2" customClass="UACellBackgroundView">
                                                 <rect key="frame" x="0.0" y="0.0" width="296" height="41"/>
@@ -536,7 +536,7 @@
                                     </view>
                                     <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" id="QyX-8G-TW7">
                                         <rect key="frame" x="12" y="315" width="296" height="41"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <view hidden="YES" contentMode="scaleToFill" id="6V4-Gv-R6m" customClass="UACellBackgroundView">
                                                 <rect key="frame" x="0.0" y="0.0" width="296" height="41"/>
@@ -570,7 +570,7 @@
                                     </view>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" id="ulf-gJ-ZnL">
                                         <rect key="frame" x="12" y="315" width="296" height="41"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" id="VkV-Er-rML">
                                                 <rect key="frame" x="0.0" y="0.0" width="296" height="41"/>
@@ -651,7 +651,7 @@
             </objects>
             <point key="canvasLocation" x="1697" y="526"/>
         </scene>
-        <!--Events Map View Controller - Second-->
+        <!--Second-->
         <scene sceneID="13">
             <objects>
                 <viewController title="Second" id="3" customClass="EventsMapViewController" sceneMemberID="viewController">
@@ -712,7 +712,7 @@
             </objects>
             <point key="canvasLocation" x="-124" y="740"/>
         </scene>
-        <!--Navigation Controller - Events-->
+        <!--Events-->
         <scene sceneID="A54-lu-1gG">
             <objects>
                 <navigationController id="Qfb-WW-3pi" sceneMemberID="viewController">
@@ -731,7 +731,7 @@
             </objects>
             <point key="canvasLocation" x="653" y="-138"/>
         </scene>
-        <!--Favourite Events View Controller - Favourite Events-->
+        <!--Favourite Events-->
         <scene sceneID="etD-sH-NRN">
             <objects>
                 <viewController id="bvd-aF-Mmy" customClass="FavouriteEventsViewController" sceneMemberID="viewController">
@@ -745,7 +745,7 @@
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="No favourited events." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="CXU-AK-r8Z">
                                 <rect key="frame" x="0.0" y="146" width="320" height="75"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -758,7 +758,7 @@
                                 <gestureRecognizers/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="EventCell" textLabel="Ehf-8Y-5KN" detailTextLabel="KiL-AB-j2t" style="IBUITableViewCellStyleSubtitle" id="JvR-6a-YZE" customClass="EventListCell">
-                                        <rect key="frame" x="0.0" y="55" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="50" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JvR-6a-YZE" id="2E3-ma-z9J">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
@@ -813,7 +813,7 @@
             </objects>
             <point key="canvasLocation" x="1059" y="1106"/>
         </scene>
-        <!--Info View Controller - Science Week-->
+        <!--Science Week-->
         <scene sceneID="iNe-9u-a0k">
             <objects>
                 <viewController id="2zt-fe-yH0" customClass="NSWInfoViewController" sceneMemberID="viewController">
@@ -835,7 +835,7 @@
                             </imageView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="yhw-bo-BHe">
                                 <rect key="frame" x="142" y="187" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Internet appears to be down. Please check your connection and try again." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" id="jDw-r1-wzy">
                                 <rect key="frame" x="0.0" y="135" width="320" height="98"/>
@@ -859,7 +859,7 @@
             </objects>
             <point key="canvasLocation" x="1059" y="1690"/>
         </scene>
-        <!--Navigation Controller - Map-->
+        <!--Map-->
         <scene sceneID="NVv-vV-Spz">
             <objects>
                 <navigationController id="oSn-TQ-vRH" sceneMemberID="viewController">
@@ -878,7 +878,7 @@
             </objects>
             <point key="canvasLocation" x="653" y="481"/>
         </scene>
-        <!--Navigation Controller - Favourites-->
+        <!--Favourites-->
         <scene sceneID="1m2-tw-CaO">
             <objects>
                 <navigationController id="cfw-DQ-U2b" sceneMemberID="viewController">
@@ -897,7 +897,7 @@
             </objects>
             <point key="canvasLocation" x="653" y="1090"/>
         </scene>
-        <!--Navigation Controller - Info-->
+        <!--Info-->
         <scene sceneID="br3-F0-k6j">
             <objects>
                 <navigationController id="T3F-5L-Yhi" sceneMemberID="viewController">

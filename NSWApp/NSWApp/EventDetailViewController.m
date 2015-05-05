@@ -424,7 +424,7 @@
 
     }
     
-    self.labelScrollView.contentSize = CGSizeMake(320, currentLayoutHeight);
+    self.labelScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, currentLayoutHeight);
     
     [self checkFavouriteButton];
     
@@ -462,7 +462,7 @@
 {
     if (![currentLabel.text isEqualToString:@""]) 
     {
-        CGSize constraint = CGSizeMake(320 - (15 * 2), 20000.0f);
+        CGSize constraint = CGSizeMake(self.view.bounds.size.width - (15 * 2), 20000.0f);
     
         CGSize size = [currentLabel.text sizeWithFont:fontForLabel constrainedToSize:constraint lineBreakMode:NSLineBreakByWordWrapping];
     
