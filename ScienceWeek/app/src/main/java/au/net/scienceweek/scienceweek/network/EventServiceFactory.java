@@ -23,12 +23,12 @@ public class EventServiceFactory {
         return restAdapter.create(EventService.class);
     }
 
-    public static void loadEvents(final Callback<Void> cb) {
+    public static void loadEvents(final Callback<List<Event>> cb) {
         createService().getEvents(new Callback<Events>() {
             @Override
             public void success(Events events, Response response) {
                 EventServiceFactory.events = events.events;
-                cb.success(null, response);
+                cb.success(events.events, response);
             }
 
             @Override
