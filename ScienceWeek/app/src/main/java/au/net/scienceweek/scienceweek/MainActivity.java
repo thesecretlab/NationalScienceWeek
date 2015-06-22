@@ -1,10 +1,13 @@
 package au.net.scienceweek.scienceweek;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -17,7 +20,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements ActionBar.OnNavigationListener {
 
     private String[] getStateNames() {
         String[] states = getResources().getStringArray(R.array.state_list);
@@ -44,8 +47,19 @@ public class MainActivity extends ActionBarActivity {
 
                 eventArrayAdapter = new ArrayAdapter<Event>(MainActivity.this, android.R.layout.simple_list_item_1, events);
                 eventArrayAdapter.setNotifyOnChange(true);
-                listView.setAdapter(eventArrayAdapter);
 
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        Event e = (Event) adapterView.getItemAtPosition(i);
+
+                        Intent intent = new Intent(getApplicationContext(), EventDetailActivity.class);
+                        intent.putExtra(EventDetailActivity.EXTRA_EVENT_ID, e.EventID);
+                        startActivity(intent);
+                    }
+                });
+
+                listView.setAdapter(eventArrayAdapter);
             }
 
             @Override
@@ -62,7 +76,7 @@ public class MainActivity extends ActionBarActivity {
                         android.R.layout.simple_list_item_1,
                         android.R.id.text1,
                         getStateNames()),
-                null);
+                this);
 
     }
 
@@ -89,4 +103,8 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
+    @Override
+    public boolean onNavigationItemSelected(int itemPosition, long itemId) {
+        return false;
+    }
 }

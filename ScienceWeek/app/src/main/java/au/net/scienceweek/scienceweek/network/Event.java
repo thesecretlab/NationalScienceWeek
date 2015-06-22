@@ -17,7 +17,7 @@ public class Event {
 	public String EventID;
 
     @Element(required = false)
-	String EventName;
+	public String EventName;
 
     @Element(required = false)
 	String EventType;
@@ -32,7 +32,7 @@ public class Event {
 	String EventEnd;
 
     @Element(required = false)
-	String EventDescription;
+	public String EventDescription;
 
     @Element(required = false)
 	String EventTargetAudience;

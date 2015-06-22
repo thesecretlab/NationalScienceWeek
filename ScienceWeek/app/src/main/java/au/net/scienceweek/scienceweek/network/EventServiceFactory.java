@@ -11,6 +11,16 @@ import retrofit.converter.SimpleXMLConverter;
 public class EventServiceFactory {
     private static List<Event> events;
 
+    public static Event findEvent(String eventID) {
+        for (int i = 0; i < events.size(); i++) {
+            Event e = events.get(i);
+            if (e.EventID.equals(eventID)) {
+                return e;
+            }
+        }
+        return null;
+    }
+
     public static List<Event> getEvents() {
         return events;
     }
