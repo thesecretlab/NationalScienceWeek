@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import au.net.scienceweek.scienceweek.network.Event;
@@ -45,8 +46,13 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
             public void success(List<Event> events, Response response) {
                 ListView listView = (ListView) findViewById(R.id.eventListView);
 
+
+
                 eventArrayAdapter = new ArrayAdapter<Event>(MainActivity.this, android.R.layout.simple_list_item_1, events);
                 eventArrayAdapter.setNotifyOnChange(true);
+
+                String selectedState = getStateNames()[getSupportActionBar().getSelectedNavigationIndex()];
+                showEvents(selectedState);
 
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -105,6 +111,26 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
 
     @Override
     public boolean onNavigationItemSelected(int itemPosition, long itemId) {
+        String[] stateNames = getStateNames();
+
+        String selectedState = stateNames[itemPosition];
+
+        return showEvents(selectedState);
+
+    }
+
+    private boolean showEvents(String selectedState) {
+        List<Event> events = EventServiceFactory.getEvents(selectedState);
+
+        if (eventArrayAdapter != null) {
+            eventArrayAdapter.clear();
+
+            if (events.size() > 0) {
+                eventArrayAdapter.addAll(events);
+            }
+
+            return true;
+        }
         return false;
     }
 }

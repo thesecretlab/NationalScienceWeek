@@ -35,13 +35,13 @@ public class Event {
 	public String EventDescription;
 
     @Element(required = false)
-	String EventTargetAudience;
+	public String EventTargetAudience;
 
     @Element(required = false)
-	String EventPayment;
+	public String EventPayment;
 
     @Element(required = false)
-	boolean EventIsFree;
+	public boolean EventIsFree;
 
     @Element(required = false)
 	String EventContactName;

@@ -2,8 +2,10 @@ package au.net.scienceweek.scienceweek;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import au.net.scienceweek.scienceweek.network.Event;
@@ -23,14 +25,31 @@ public class EventDetailActivity extends ActionBarActivity {
         Event e = EventServiceFactory.findEvent(getIntent().getStringExtra(EXTRA_EVENT_ID));
 
         if (e != null) {
-            TextView desc = (TextView) findViewById(R.id.eventDescriptionLabel);
-            desc.setText(e.EventDescription);
+
+            setTextOrHide(R.id.eventDescriptionLabel, e.EventDescription);
+            setTextOrHide(R.id.eventAudienceTextLabel, e.EventTargetAudience);
+
+            if (e.EventIsFree == true) {
+                setTextOrHide(R.id.eventPriceTextLabel, "Free");
+            } else {
+                setTextOrHide(R.id.eventPriceTextLabel, e.EventPayment);
+            }
+
 
             getSupportActionBar().setTitle(e.EventName);
         }
 
 
+    }
 
+    private void setTextOrHide(int id, String label) {
+        TextView t = (TextView) findViewById(id);
+
+        if (TextUtils.isEmpty(label)) {
+            t.setVisibility(View.GONE);
+        } else {
+            t.setText(label);
+        }
     }
 
     @Override

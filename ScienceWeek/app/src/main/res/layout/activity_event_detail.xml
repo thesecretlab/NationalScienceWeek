@@ -37,4 +37,87 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="@dimen/activity_vertical_margin" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Audience: "
+        android:id="@+id/eventAudienceTextLabel"
+        android:layout_below="@+id/eventDescriptionLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Event Audience"
+        android:id="@+id/eventAudienceLabel"
+        android:layout_alignTop="@+id/eventAudienceTextLabel"
+        android:layout_toRightOf="@+id/eventAudienceTextLabel"
+        android:layout_toEndOf="@+id/eventAudienceTextLabel" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Price: "
+        android:id="@+id/eventPriceTextLabel"
+        android:layout_below="@+id/eventAudienceTextLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Contact Name"
+        android:id="@+id/eventContactNameLabel"
+        android:layout_below="@+id/eventPriceTextLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Contact Organisation"
+        android:id="@+id/eventContactOrganisationLabel"
+        android:layout_below="@+id/eventContactNameLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Contact Phone Number"
+        android:id="@+id/contactPhoneNumberLabel"
+        android:layout_below="@+id/eventContactOrganisationLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Contact Email Address"
+        android:id="@+id/contactEmailAddressLabel"
+        android:layout_below="@+id/contactPhoneNumberLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Event Price"
+        android:id="@+id/textView"
+        android:layout_alignTop="@+id/eventPriceTextLabel"
+        android:layout_toRightOf="@+id/eventPriceTextLabel"
+        android:layout_toEndOf="@+id/eventPriceTextLabel" />
+
+
 </RelativeLayout>

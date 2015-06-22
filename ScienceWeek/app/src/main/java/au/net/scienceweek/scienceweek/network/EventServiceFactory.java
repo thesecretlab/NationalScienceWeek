@@ -1,5 +1,6 @@
 package au.net.scienceweek.scienceweek.network;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit.Callback;
@@ -25,6 +26,22 @@ public class EventServiceFactory {
         return events;
     }
 
+    public static List<Event> getEvents(String state) {
+        if (events == null)
+            return null;
+
+        ArrayList<Event> eventsInState = new ArrayList<Event>();
+
+        for (int i = 0; i < events.size(); i++) {
+            Event e = events.get(i);
+            if (e.EventState.equals(state)) {
+                eventsInState.add(e);
+            }
+        }
+
+        return eventsInState;
+    }
+
     public static EventService createService() {
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint("http://www.scienceweek.net.au")
@@ -38,7 +55,7 @@ public class EventServiceFactory {
             @Override
             public void success(Events events, Response response) {
                 EventServiceFactory.events = events.events;
-                cb.success(events.events, response);
+                cb.success(new ArrayList<Event>(events.events), response);
             }
 
             @Override
