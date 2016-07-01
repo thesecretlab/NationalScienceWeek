@@ -30,7 +30,7 @@
 @interface CHCSVParser : NSObject {
 
 	@private
-	__weak id<CHCSVParserDelegate> parserDelegate;
+	__unsafe_unretained id<CHCSVParserDelegate> parserDelegate;
     NSInputStream *csvReadStream;
 	BOOL endOfStreamReached;
 	NSStringEncoding fileEncoding;
