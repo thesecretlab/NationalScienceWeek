@@ -747,6 +747,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0630;
+				TargetAttributes = {
+					7C55862115B51DC200068067 = {
+						DevelopmentTeam = 5V2A4389PA;
+					};
+				};
 			};
 			buildConfigurationList = 7C55861C15B51DC100068067 /* Build configuration list for PBXProject "NSWApp" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -964,6 +969,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 100;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NSWApp/NSWApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SDK_DIR)\"/usr/include/libxml2";
@@ -974,8 +980,9 @@
 					"\"$(SRCROOT)/NSWApp\"",
 				);
 				PRODUCT_NAME = ScienceWeek;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "$(sigh_tools.fastlane.app_development)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Daedalus;
@@ -1054,6 +1061,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 100;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NSWApp/NSWApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SDK_DIR)\"/usr/include/libxml2";
@@ -1064,8 +1072,9 @@
 					"\"$(SRCROOT)/NSWApp\"",
 				);
 				PRODUCT_NAME = ScienceWeek;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "$(sigh_tools.fastlane.app_development)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1075,8 +1084,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: SECRET LAB PTY. LTD.";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Secret Lab Pty. Ltd. (5V2A4389PA)";
+				CURRENT_PROJECT_VERSION = 100;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NSWApp/NSWApp-Prefix.pch";
 				HEADER_SEARCH_PATHS = "\"$(SDK_DIR)\"/usr/include/libxml2";
@@ -1087,9 +1097,9 @@
 					"\"$(SRCROOT)/NSWApp\"",
 				);
 				PRODUCT_NAME = ScienceWeek;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A60A85C7-AD4A-4842-BD77-41A75E05FE62";
+				PROVISIONING_PROFILE = "$(sigh_tools.fastlane.app_development)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
