@@ -4,6 +4,10 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
 
 @Root(strict = false)
 public class Event {
@@ -26,10 +30,39 @@ public class Event {
     List<String> EventCategory;*/
 
     @Element(required = false)
-    String EventStart;
+    public String EventStart;
+
+    final static String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
+    final static SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat(DATE_FORMAT);
+
+    public Date getStartDate() {
+        try {
+            return DATE_FORMATTER.parse(EventStart);
+        } catch (ParseException e) {
+            return null;
+        }
+    }
+
+    public String getStartToFinishString() {
+        try {
+            Date startDate = DATE_FORMATTER.parse(EventStart);
+            Date endDate = DATE_FORMATTER.parse(EventEnd);
+
+            String startString = new SimpleDateFormat("dd LLL h:mm a").format(startDate);
+            String endString = new SimpleDateFormat("h:mm a").format(endDate);
+
+
+            String result = startString + " - " + endString;
+
+            return result;
+
+        } catch (ParseException e) {
+            return null;
+        }
+    }
 
     @Element(required = false)
-	String EventEnd;
+    public String EventEnd;
 
     @Element(required = false)
 	public String EventDescription;
@@ -44,31 +77,31 @@ public class Event {
 	public boolean EventIsFree;
 
     @Element(required = false)
-	String EventContactName;
+	public String EventContactName;
 
     @Element(required = false)
-	String EventContactOrganisation;
+    public String EventContactOrganisation;
 
     @Element(required = false)
-	String EventContactTelephone;
+    public String EventContactTelephone;
 
     @Element(required = false)
-	String EventContactEmail;
+    public String EventContactEmail;
 
     @Element(required = false)
-	URL EventWebsite;
+    public URL EventWebsite;
 
     @Element(required = false)
 	String EventState;
 
     @Element(required = false)
-	String EventMoreInfo;
+    public String EventMoreInfo;
 
     @Element(required = false)
     URL EventOfficialImageUrl;
 
     @Element(required=false)
-    Venue Venue;
+    public Venue Venue;
   
 }
 
