@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">ScienceWeek</string>
+    <string name="app_name">Science Week</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_about">About National Science Week</string>
 
     <string-array name="state_list">
         <item>ACT</item>
@@ -14,5 +14,20 @@
         <item>VIC</item>
         <item>WA</item>
     </string-array>
+
+    <string-array name="pretty_state_list">
+        <item>ACT</item>
+        <item>NSW</item>
+        <item>NT</item>
+        <item>QLD</item>
+        <item>SA</item>
+        <item>TAS</item>
+        <item>VIC</item>
+        <item>WA</item>
+    </string-array>
     <string name="title_activity_event_detail">Event</string>
+    <string name="title_activity_favourites_list">Favourites</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_about">About</string>
 </resources>
