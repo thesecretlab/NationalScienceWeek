@@ -165,6 +165,19 @@ static NSWEventData* _sharedData = nil;
                 [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventID"].text] forKey:@"Event ID"];
                 [eventDict setObject:[NSString stringWithFormat:@"%@",[event child:@"EventName"].text] forKey:@"Title"];
                 
+                NSArray* bookingKeys = @[@"EventBookingPhone", @"EventBookingEmail", @"EventBookingUrl"];
+                
+                for (NSString* key in bookingKeys) {
+                    if ([event child:key].text) {
+                        NSString *bookingInfo = [[event child:key].text stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
+                        
+                        [eventDict setObject:[NSString stringWithFormat:@"%@",bookingInfo] forKey:key];
+                    }
+                    
+                }
+                
+                
+                
                 [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss"];
                 
                 NSDate *startDate = [dateFormatter dateFromString:[event child:@"EventStart"].text];

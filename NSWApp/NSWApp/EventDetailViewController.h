@@ -54,6 +54,12 @@ typedef enum  {
 - (IBAction)createEvent:(id)sender;
 - (IBAction)openInSafari:(id)sender;
 - (IBAction)favouriteEvent:(id)sender;
+@property (weak, nonatomic) IBOutlet UIView *eventBookingEmailView;
+@property (weak, nonatomic) IBOutlet UIView *eventBookingURLView;
+@property (weak, nonatomic) IBOutlet UIView *eventBookingPhoneView;
+@property (weak, nonatomic) IBOutlet UITextView *eventBookingEmailLabel;
+@property (weak, nonatomic) IBOutlet UITextView *eventBookingURLLabel;
+@property (weak, nonatomic) IBOutlet UITextView *eventBookingPhoneLabel;
 
 -(void)refreshDetailedEventData;
 - (void)positionLabelOnScreen:(UILabel *)currentLabel withFont:(UIFont *)fontForLabel sizeForMinumumLabel:(float)sizeForMinumumLabel bufferToNextLabel:(float)bufferToNextLabel;  
