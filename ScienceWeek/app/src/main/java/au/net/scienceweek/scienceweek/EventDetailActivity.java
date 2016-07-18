@@ -8,10 +8,7 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-
-import java.text.SimpleDateFormat;
 
 import au.net.scienceweek.scienceweek.network.Event;
 import au.net.scienceweek.scienceweek.network.EventServiceFactory;
@@ -67,6 +64,11 @@ public class EventDetailActivity extends ActionBarActivity {
 
             setTextOrHide(R.id.eventVenueMoreInfo, e.EventMoreInfo);
 
+            // Booking info
+            setTextOrHide(R.id.bookingEmail, e.EventBookingEmail, "Book via email: ");
+            setTextOrHide(R.id.bookingPhone, e.EventBookingPhone, "Book via phone: ");
+            setTextOrHide(R.id.bookingURL, e.EventBookingUrl, "Book online: ");
+
             if (e.EventWebsite != null) {
                 findViewById(R.id.eventMoreInfoButton).setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -101,12 +103,16 @@ public class EventDetailActivity extends ActionBarActivity {
     }
 
     private void setTextOrHide(int id, String label) {
+        setTextOrHide(id, label, "");
+    }
+
+    private void setTextOrHide(int id, String label, String prefix) {
         TextView t = (TextView) findViewById(id);
 
-        if (TextUtils.isEmpty(label)) {
+        if (TextUtils.isEmpty(label) || label == null) {
             t.setVisibility(View.GONE);
         } else {
-            t.setText(label);
+            t.setText(prefix + label);
         }
     }
 

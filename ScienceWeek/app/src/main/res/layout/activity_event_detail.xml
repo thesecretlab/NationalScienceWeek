@@ -178,11 +178,52 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/eventVenue"
+        android:id="@+id/eventBooking" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Booking URL"
+            android:id="@+id/bookingURL"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:autoLink="web" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Booking Phone"
+            android:id="@+id/bookingPhone"
+            android:layout_below="@+id/bookingURL"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:autoLink="phone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Booking Email"
+            android:id="@+id/bookingEmail"
+            android:layout_below="@+id/bookingPhone"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:autoLink="email" />
+
+    </RelativeLayout>
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/eventVenue">
+        android:layout_below="@+id/eventBooking">
 
         <Button
             android:layout_width="0.0dip"

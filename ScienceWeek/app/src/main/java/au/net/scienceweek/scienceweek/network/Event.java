@@ -89,6 +89,15 @@ public class Event {
     public String EventContactEmail;
 
     @Element(required = false)
+    public String EventBookingEmail;
+
+    @Element(required = false)
+    public String EventBookingUrl;
+
+    @Element(required = false)
+    public String EventBookingPhone;
+
+    @Element(required = false)
     public URL EventWebsite;
 
     @Element(required = false)
