@@ -346,10 +346,28 @@
         self.eventDateLabel.text = [NSString stringWithFormat:@"%@ \n ~ \n %@", self.eventDateLabel.text, dateString];
     }    
     
+    if ([[event objectForKey:@"EventBookingEmail"] length] > 0) {
+        self.eventBookingEmailLabel.text = [NSString stringWithFormat:@"Book via email: %@",[event objectForKey:@"EventBookingEmail"]];
+    } else {
+        self.eventBookingEmailView.hidden = true;
+    }
+    
+    if ([[event objectForKey:@"EventBookingUrl"] length] > 0) {
+        self.eventBookingURLLabel.text = [NSString stringWithFormat:@"Book online: %@",[event objectForKey:@"EventBookingUrl"]];
+    } else {
+        self.eventBookingURLView.hidden = true;
+    }
+    
+    if ([[event objectForKey:@"EventBookingPhone"] length] > 0) {
+        self.eventBookingPhoneLabel.text = [NSString stringWithFormat:@"Book via phone: %@",[event objectForKey:@"EventBookingPhone"]];
+    } else {
+        self.eventBookingPhoneView.hidden = true;
+    }
     
     currentLayoutHeight = 10.0;
     
-    if (![[event objectForKey:@"Location"] isEqualToString:@"Online"])
+    // Show fields for events with a physical location
+    if ([[event objectForKey:@"Location"] isEqualToString:@"Online"] == NO)
     {
         
         [self positionLabelOnScreen:self.eventTitleLabel withFont:kDetailEventTitleFont sizeForMinumumLabel:21.0 bufferToNextLabel:10];
@@ -362,6 +380,18 @@
         
         [self positionLabelViewOnScreen:self.eventAddressView withLabel:self.eventAddressLabel bufferToNextView:10];
         
+        if ([[event objectForKey:@"EventBookingEmail"] length] > 0) {
+            [self positionLabelViewOnScreen:self.eventBookingEmailView withLabel:(UILabel*)self.eventBookingEmailLabel bufferToNextView:10];
+        }
+        
+        if ([[event objectForKey:@"EventBookingUrl"] length] > 0) {
+            [self positionLabelViewOnScreen:self.eventBookingURLView withLabel:(UILabel*)self.eventBookingURLLabel bufferToNextView:10];
+        }
+        
+        if ([[event objectForKey:@"EventBookingPhone"] length] > 0) {
+            [self positionLabelViewOnScreen:self.eventBookingPhoneView withLabel:(UILabel*)self.eventBookingPhoneLabel bufferToNextView:10];
+        }
+        
         [self positionLabelViewOnScreen:self.eventContactView withLabel:(UILabel*)self.eventContactTextView bufferToNextView:10];
         
         [self positionLabelViewOnScreen:self.eventWebsiteView withLabel:(UILabel*)self.eventWebsiteLabel bufferToNextView:10];
@@ -369,6 +399,7 @@
         
     }
     else {
+        // Show fields for online-only
         [self positionLabelOnScreen:self.eventTitleLabel withFont:kDetailEventTitleFont sizeForMinumumLabel:21.0 bufferToNextLabel:10];
         
         self.topRowView.hidden = YES;

@@ -174,7 +174,23 @@
     
     self.eventContactTextView.contentInset = UIEdgeInsetsMake(-8,0,0,0);
     
-    self.eventDescriptionLabel.text = [_event objectForKey:@"Description"];
+    NSMutableString* descriptionText = [[_event objectForKey:@"Description"] mutableCopy];
+    
+    if ([[_event objectForKey:@"EventBookingEmail"] length] > 0) {
+        [descriptionText appendFormat:@"\nBook via email: %@", [_event objectForKey:@"EventBookingEmail"]];
+    }
+    
+    if ([[_event objectForKey:@"EventBookingPhone"] length] > 0) {
+        [descriptionText appendFormat:@"\nBook via phone: %@", [_event objectForKey:@"EventBookingPhone"]];
+    }
+    
+    
+    if ([[_event objectForKey:@"EventBookingUrl"] length] > 0) {
+        [descriptionText appendFormat:@"\nBook online: %@", [_event objectForKey:@"EventBookingUrl"]];
+    }
+    
+    
+    self.eventDescriptionLabel.text = descriptionText;
     
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

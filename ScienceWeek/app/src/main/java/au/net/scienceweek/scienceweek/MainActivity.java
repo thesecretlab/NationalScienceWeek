@@ -1,6 +1,8 @@
 package au.net.scienceweek.scienceweek;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -10,8 +12,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import au.net.scienceweek.scienceweek.network.Event;
@@ -28,7 +31,13 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         return states;
     }
 
+    private String[] getStateDisplayNames() {
+        String[] states = getResources().getStringArray(R.array.pretty_state_list);
+        return states;
+    }
+
     ArrayAdapter<Event> eventArrayAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +50,15 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
 
         setContentView(R.layout.activity_main);
 
-        EventServiceFactory.loadEvents(new Callback<List<Event>>() {
+
+        findViewById(R.id.eventListProgressBar).setVisibility(View.VISIBLE);
+
+        EventServiceFactory.loadEvents(this, new Callback<List<Event>>() {
             @Override
             public void success(List<Event> events, Response response) {
                 ListView listView = (ListView) findViewById(R.id.eventListView);
 
-
-
-                eventArrayAdapter = new ArrayAdapter<Event>(MainActivity.this, android.R.layout.simple_list_item_1, events);
+                eventArrayAdapter = new EventListAdapter(MainActivity.this, events);
                 eventArrayAdapter.setNotifyOnChange(true);
 
                 String selectedState = getStateNames()[getSupportActionBar().getSelectedNavigationIndex()];
@@ -66,13 +76,23 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
                 });
 
                 listView.setAdapter(eventArrayAdapter);
+
+                findViewById(R.id.eventListProgressBar).setVisibility(View.GONE);
+
+
+                supportInvalidateOptionsMenu();
             }
 
             @Override
             public void failure(RetrofitError error) {
-
+                findViewById(R.id.eventListProgressBar).setVisibility(View.GONE);
+                Toast.makeText(getApplicationContext(), "Error loading events!", Toast.LENGTH_SHORT).show();
             }
+
+
         });
+
+
 
         // Set up the dropdown list navigation in the action bar.
         actionBar.setListNavigationCallbacks(
@@ -81,7 +101,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
                         actionBar.getThemedContext(),
                         android.R.layout.simple_list_item_1,
                         android.R.id.text1,
-                        getStateNames()),
+                        getStateDisplayNames()),
                 this);
 
     }
@@ -90,6 +110,15 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        boolean eventActionsVisible = EventServiceFactory.getEvents() != null &&
+                EventServiceFactory.getEvents().size() > 0;
+
+        // Hide items if we have no events
+        menu.findItem(R.id.action_show_favourites).setVisible(eventActionsVisible);
+        menu.findItem(R.id.action_show_map).setVisible(eventActionsVisible);
+        menu.findItem(R.id.action_show_today).setVisible(eventActionsVisible);
+
         return true;
     }
 
@@ -101,8 +130,56 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_about) {
+
+            Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
+
+            startActivity(intent);
+
+
+
             return true;
+        }
+
+        if (id == R.id.action_show_favourites) {
+
+            Intent intent = new Intent(getApplicationContext(), FavouritesListActivity.class);
+            startActivity(intent);
+
+        }
+
+        if (id == R.id.action_show_map) {
+
+            Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+            startActivity(intent);
+
+        }
+
+        if (id == R.id.action_show_today) {
+
+            // Find the next event
+
+
+
+            Date now = new Date();
+
+            if (eventArrayAdapter != null && eventArrayAdapter.getCount() > 0) {
+                for (int i=0; i < eventArrayAdapter.getCount(); i++) {
+                    Event e = eventArrayAdapter.getItem(i);
+
+                    if (e.getStartDate().compareTo(now) > 0) {
+
+                        ListView listView = (ListView) findViewById(R.id.eventListView);
+
+                        listView.smoothScrollToPosition(i);
+
+                        break;
+                    }
+
+
+                }
+            }
+
         }
 
         return super.onOptionsItemSelected(item);
