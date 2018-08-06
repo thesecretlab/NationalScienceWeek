@@ -10,6 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import au.net.scienceweek.scienceweek.network.Event;
 import au.net.scienceweek.scienceweek.network.EventServiceFactory;
 
@@ -88,10 +91,25 @@ public class EventDetailActivity extends ActionBarActivity {
                 findViewById(R.id.eventShowMapButton).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        String geoUri = "geo:"+e.Venue.VenueLatitude+","+e.Venue.VenueLatitude;
+
+                        //String url = "https://www.google.com/maps/search/?api=1&query="+e.Venue.VenueLatitude+",";
+
+                        String geoUri = "geo:0,0?q="+e.Venue.VenueLatitude+","+e.Venue.VenueLongitude;
+
+                        String label = "";
+
+                        try {
+                            label = URLEncoder.encode(e.EventName, "utf-8");
+                        } catch (UnsupportedEncodingException e1) {
+                            e1.printStackTrace();
+                        }
+
+                        geoUri += "("+label+")";
+
                         Uri uri = Uri.parse(geoUri);
                         Intent i = new Intent(Intent.ACTION_VIEW);
                         i.setData(uri);
+                        i.setPackage("com.google.android.apps.maps");
 
                         startActivity(i);
                     }
