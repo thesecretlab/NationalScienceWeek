@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <drawable name="actionBarBackground">#358ee1</drawable>
+    <drawable name="actionBarBackground">#18655C</drawable>
 
+    <color name="primary_material_dark">#18655c</color>
 </resources>

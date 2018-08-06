@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.appcompat.*;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
