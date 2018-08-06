@@ -52,7 +52,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
         setContentView(R.layout.activity_main);
 
 
-        findViewById(R.id.eventListProgressBar).setVisibility(View.VISIBLE);
+        findViewById(R.id.loadingDisplay).setVisibility(View.VISIBLE);
 
         EventServiceFactory.loadEvents(this, new Callback<List<Event>>() {
             @Override
@@ -78,7 +78,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.OnNavig
 
                 listView.setAdapter(eventArrayAdapter);
 
-                findViewById(R.id.eventListProgressBar).setVisibility(View.GONE);
+                findViewById(R.id.loadingDisplay).setVisibility(View.GONE);
 
 
                 supportInvalidateOptionsMenu();

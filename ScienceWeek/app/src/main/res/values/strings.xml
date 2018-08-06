@@ -5,6 +5,7 @@
     <string name="action_about">About National Science Week</string>
 
     <string-array name="state_list">
+        <item>*</item>
         <item>ACT</item>
         <item>NSW</item>
         <item>NT</item>
@@ -16,6 +17,7 @@
     </string-array>
 
     <string-array name="pretty_state_list">
+        <item>All States</item>
         <item>ACT</item>
         <item>NSW</item>
         <item>NT</item>
