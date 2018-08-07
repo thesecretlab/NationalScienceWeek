@@ -55,6 +55,11 @@ public class EventServiceFactory {
         if (events == null)
             return null;
 
+        // Return all events if the state is the special case "*" (all)
+        if (state.compareTo("*") == 0)  {
+            return events;
+        }
+
         ArrayList<Event> eventsInState = new ArrayList<Event>();
 
         for (int i = 0; i < events.size(); i++) {
