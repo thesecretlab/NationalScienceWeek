@@ -14,55 +14,76 @@ public struct EventList: Decodable {
 }
 
 /// Objects that holds details for a single Event on a single Date.
-public struct Event: Decodable {
+public struct Event: Decodable, Equatable {
     var id: String?
     var name: String?
     var start: Date?
     var end: Date?
     var description: String?
+    var imageUrl: URL?
     var targetAudience: TargetAudience?
     var payment: String?
     var isFree: Bool?
-    var categories: [String]
+    var additionalInfo: String?
+    
+    var contactName: String?
+    var contactOrganisation: String?
+    var contactPhone: String?
+    var contactEmail: String?
+    
+    var bookingPhone: String?
+    var bookingEmail: String?
+    var bookingUrl: URL?
+    
+    var websiteUrl: URL?
+    var facebookUrl: URL?
+    var twitterUrl: URL?
     var state: State?
-    var additionalInformation: String?
-    var imageUrl: URL?
-    var contactDetails: ContactDetails?
-    var bookingDetails: BookingDetails?
-    var socialDetails: SocialDetails?
-    var venueDetails: VenueDetails?
+    var venue: Venue?
+    
+    public static func == (lhs: Event, rhs: Event) -> Bool {
+        return (lhs.id == rhs.id) &&
+            (lhs.name == rhs.name) &&
+            (lhs.start == rhs.start) &&
+            (lhs.description == rhs.description) &&
+            (lhs.isFree == rhs.isFree) &&
+            (lhs.state == rhs.state) &&
+            (lhs.venue == rhs.venue)
+    }
 }
 
-/// Object that holds ContactDetails for a single Event on a single Date.
-public struct ContactDetails: Decodable {
-    var name: String?
-    var organisation: String?
-    var telephone: String?
-    var email: String?
-}
-
-/// Object that holds BookingDetails for a single Event on a single Date.
-public struct BookingDetails: Decodable {
-    var email: String?
-    var url: URL?
-    var phone: String?
-}
-
-/// Object that holds SocialDetails for a single Event on a single Date.
-public struct SocialDetails: Decodable {
-    var website: URL?
-    var facebook: URL?
-    var twitter: URL?
-}
-
-/// Object that holds VenueDetails for a single Event on a single Date.
-public struct VenueDetails: Decodable {
+/// Object that holds Venue details for a single Event on a single Date.
+public struct Venue: Decodable, Equatable {
     var name: String?
     var address: String?
     var suburb: String?
     var postcode: String?
-    var location: (lat: Float, long: Float)?
-    var hasDisabledAccess: Bool
+    var latitude: Float?
+    var longitude: Float?
+    var hasDisabledAccess: Bool?
+    
+    var location: (lat: Float, long: Float)? {
+        if let lat = self.latitude, let long = self.longitude {
+            return (lat, long)
+        }
+        
+        return nil
+    }
+    
+    var isEmpty: Bool {
+        return (self.name == nil) &&
+            (self.address == nil) &&
+            (self.suburb == nil) &&
+            (self.postcode == nil) &&
+            (self.location == nil)
+    }
+    
+    public static func == (lhs: Venue, rhs: Venue) -> Bool {
+        return (lhs.name == rhs.name) &&
+            (lhs.address == rhs.address) &&
+            (lhs.suburb == rhs.suburb) &&
+            (lhs.postcode == rhs.postcode)
+    }
 }
 
 /// Enumeration of valid values in EventTargetAudience field.

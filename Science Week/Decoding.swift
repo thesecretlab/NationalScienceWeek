@@ -6,33 +6,38 @@
 //  Copyright © 2019 Mars Geldard. All rights reserved.
 //
 
+import Foundation
+
 extension KeyedDecodingContainer {
-    public func decodeIfPresent<T: Decodable>(key: KeyedDecodingContainer.Key, default defaultValue: T? = nil) -> T? {
+    public func decodeIfPresent<T: Decodable>(key: KeyedDecodingContainer.Key) -> T? {
         let value = try? decodeIfPresent(T.self, forKey: key)
-        return value ?? defaultValue
+        return value
     }
     
-    public func decodeIfPresent<T: Decodable>(key: KeyedDecodingContainer.Key, default defaultValue: T) -> T {
+    public func decodeIfPresentIgnoringEmpty<T: Decodable>(key: KeyedDecodingContainer.Key) -> T? where T: Collection {
         let value = try? decodeIfPresent(T.self, forKey: key)
-        return value ?? defaultValue
+        return (value?.isEmpty ?? true) ? nil : value
     }
     
-    public func decodeIfPresentIgnoringEmpty<T: Decodable>(key: KeyedDecodingContainer.Key, default defaultValue: T? = nil) -> T? where T: Collection {
-        let value = try? decodeIfPresent(T.self, forKey: key)
-        return (value?.isEmpty ?? true) ? defaultValue : value
-    }
-    
-    public func decodeIfPresentIgnoringEmpty<T: Decodable>(key: KeyedDecodingContainer.Key, default defaultValue: T) -> T where T: Collection {
-        let value = try? decodeIfPresent(T.self, forKey: key)
-        if let value = value {
-            return value.isEmpty ? defaultValue : value
+    public func decodeIfPresentIgnoringEmpty(key: KeyedDecodingContainer.Key) -> URL? {
+        if let urlString: String = decodeIfPresentIgnoringEmpty(key: key) {
+            return URL(string: urlString)
         }
-        return defaultValue
+        
+        return nil
+    }
+    
+    public func decodeIfPresentIgnoringEmpty(key: KeyedDecodingContainer.Key, format: String) -> Date? {
+        if let dateString: String = decodeIfPresentIgnoringEmpty(key: key) {
+            return AppSettings.dateFormatter.date(from: dateString)
+        }
+        
+        return nil
     }
 }
 
-extension VenueDetails {
-    private enum CodingKeys: String, CodingKey {
+extension Venue {
+    enum CodingKeys: String, CodingKey {
         case name = "VenueName"
         case address = "VenueStreetName"
         case suburb = "VenueSuburb"
@@ -45,61 +50,42 @@ extension VenueDetails {
     public init(from decoder: Decoder) throws {
         do {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            
-            //self.name = container.decodeIfPresentIgnoringEmpty(key: .name)
-            //self.address =
-            //self.suburb =
-            //self.postcode =
-            //self.latitude =
-            //self.longitude =
-            
-            // get VenueLatitude and VenueLongitude as Float values, if they exist
-            let latitude: Float? = container.decodeIfPresent(key: .latitude, default: nil)
-            let longitude: Float? = container.decodeIfPresent(key: .longitude, default: nil)
-            
-            // if both existed and are valid
-            if let lat = latitude, let long = longitude {
-                
-                // check they're in Australia?
-                
-                self.location = (lat, long)
-            }
-            
-            // get VenueHasDisabledAcess as Boolean value, else default to false
-            self.hasDisabledAccess  = container.decodeIfPresent(key: .hasDisabledAccess, default: false)
+            self.name = container.decodeIfPresentIgnoringEmpty(key: .name)
+            self.address = container.decodeIfPresentIgnoringEmpty(key: .address)
+            self.suburb = container.decodeIfPresentIgnoringEmpty(key: .suburb)
+            self.postcode = container.decodeIfPresentIgnoringEmpty(key: .postcode)
+            self.latitude  = container.decodeIfPresent(key: .latitude)
+            self.longitude = container.decodeIfPresent(key: .longitude)
+            self.hasDisabledAccess  = container.decodeIfPresent(key: .hasDisabledAccess)
         } catch {
-            
-            // log invalid XML object for diagnosis
-            
             throw error
         }
     }
 }
 
 extension Event {
-    private enum CodingKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case id = "EventID"
         case name = "EventName"
         case start = "EventStart"
         case end = "EventEnd"
         case description = "EventDescription"
+        case imageUrl = "EventOfficialImageUrl"
         case targetAudience = "EventTargetAudience"
         case payment = "EventPayment"
         case isFree = "EventIsFree"
-        case category = "EventCategory"
+        case additionalInfo = "EventMoreInfo"
         case contactName = "EventContactName"
         case contactOrganisation = "EventContactOrganisation"
-        case contactTelephone =  "EventContactTelephone"
+        case contactPhone =  "EventContactTelephone"
         case contactEmail = "EventContactEmail"
+        case bookingPhone = "EventBookingPhone"
         case bookingEmail = "EventBookingEmail"
         case bookingUrl = "EventBookingUrl"
         case facebook = "EventSocialFacebook"
         case twitter = "EventSocialTwitter"
-        case bookingPhone = "EventBookingPhone"
         case website = "EventWebsite"
         case state = "EventState"
-        case moreInfo = "EventMoreInfo"
-        case imageUrl = "EventOfficialImageUrl"
         case venue = "Venue"
     }
     
@@ -107,32 +93,33 @@ extension Event {
         do {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             
-            //self.id = container.decodeIfPresentIgnoringEmpty(key: .id)
-            //self.name =
+            self.id = container.decodeIfPresentIgnoringEmpty(key: .id)
+            self.name = container.decodeIfPresentIgnoringEmpty(key: .name)
             //self.start =
             //self.end =
-            //self.description =
+            self.description = container.decodeIfPresentIgnoringEmpty(key: .description)
+            self.imageUrl = container.decodeIfPresentIgnoringEmpty(key: .imageUrl)
             
-            //self.targetAudience = container.decodeIfPresent(key: .targetAudience, default: TargetAudience.allAges)
+            self.targetAudience = container.decodeIfPresent(key: .targetAudience)
+            self.payment = container.decodeIfPresentIgnoringEmpty(key: .payment)
+            self.isFree = container.decodeIfPresent(key: .isFree)
+            self.additionalInfo = container.decodeIfPresent(key: .additionalInfo)
             
-            self.payment = container.decodeIfPresent(key: .payment, default: nil)
-            self.isFree = container.decodeIfPresent(key: .isFree, default: false)
+            self.contactName = container.decodeIfPresent(key: .contactName)
+            self.contactOrganisation = container.decodeIfPresent(key: .contactOrganisation)
+            self.contactPhone = container.decodeIfPresent(key: .contactPhone)
+            self.contactEmail = container.decodeIfPresent(key: .contactEmail)
             
-            //self.categories =
-            //self.state =
-            //self.additionalInformation =
-            //self.imageUrl =
-            //self.contactDetails =
-            //self.bookingDetails =
-            //self.socialDetails =
-            //self.venueDetails =
+            self.bookingPhone = container.decodeIfPresentIgnoringEmpty(key: .bookingPhone)
+            self.bookingEmail = container.decodeIfPresentIgnoringEmpty(key: .bookingEmail)
+            self.bookingUrl = container.decodeIfPresentIgnoringEmpty(key: .bookingUrl)
             
-            // remove from categories "Science & Technology ~ " prefix
-            // UTF-8 encoding
-            // urls
-            // if self.state == nil
-            // -> look at venue address
+            self.websiteUrl = container.decodeIfPresentIgnoringEmpty(key: .website)
+            self.facebookUrl = container.decodeIfPresentIgnoringEmpty(key: .facebook)
+            self.twitterUrl = container.decodeIfPresentIgnoringEmpty(key: .twitter)
             
+            self.state = container.decodeIfPresent(key: .state)
+            //self.venue =
         } catch {
             
             // log invalid XML object for diagnosis
