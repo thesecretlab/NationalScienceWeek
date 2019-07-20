@@ -7,22 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4138BDC522AF78E700674B28 /* Decoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4138BDC422AF78E700674B28 /* Decoding.swift */; };
 		4138BDC722AF83AC00674B28 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4138BDC622AF83AC00674B28 /* AppSettings.swift */; };
-		4165023F2259745400B3F3BB /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4165023E2259745400B3F3BB /* TableViewController.swift */; };
+		4178025422E0E7EA00C3B899 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4178025322E0E7EA00C3B899 /* Utils.swift */; };
+		4178025622E1227A00C3B899 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4178025522E1227A00C3B899 /* Events.swift */; };
 		41AACDF6224CD2E900F46460 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AACDF5224CD2E900F46460 /* AppDelegate.swift */; };
 		41AACDF8224CD2E900F46460 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AACDF7224CD2E900F46460 /* MasterViewController.swift */; };
 		41AACDFB224CD2E900F46460 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41AACDF9224CD2E900F46460 /* Main.storyboard */; };
 		41AACDFD224CD2EC00F46460 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41AACDFC224CD2EC00F46460 /* Assets.xcassets */; };
 		41AACE00224CD2EC00F46460 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41AACDFE224CD2EC00F46460 /* LaunchScreen.storyboard */; };
-		41AACE0A224DE1AE00F46460 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AACE09224DE1AE00F46460 /* Theme.swift */; };
-		41F2E7A322AE2AEE00CF6B8E /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F2E7A222AE2AEE00CF6B8E /* Events.swift */; };
+		41B081BF22DFC95900AF53B5 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B081BE22DFC95900AF53B5 /* AboutViewController.swift */; };
+		41B081C122DFCD0000AF53B5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B081C022DFCD0000AF53B5 /* MapViewController.swift */; };
+		41B081C322DFE19500AF53B5 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B081C222DFE19500AF53B5 /* EventsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4138BDC422AF78E700674B28 /* Decoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoding.swift; sourceTree = "<group>"; };
 		4138BDC622AF83AC00674B28 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
-		4165023E2259745400B3F3BB /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		4178025322E0E7EA00C3B899 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		4178025522E1227A00C3B899 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		41AACDF2224CD2E900F46460 /* Science Week.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Science Week.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		41AACDF5224CD2E900F46460 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41AACDF7224CD2E900F46460 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -30,8 +31,9 @@
 		41AACDFC224CD2EC00F46460 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41AACDFF224CD2EC00F46460 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		41AACE01224CD2EC00F46460 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		41AACE09224DE1AE00F46460 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		41F2E7A222AE2AEE00CF6B8E /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
+		41B081BE22DFC95900AF53B5 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		41B081C022DFCD0000AF53B5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		41B081C222DFE19500AF53B5 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +47,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4178025722E12A3E00C3B899 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				41AACDF7224CD2E900F46460 /* MasterViewController.swift */,
+				41B081C222DFE19500AF53B5 /* EventsViewController.swift */,
+				41B081C022DFCD0000AF53B5 /* MapViewController.swift */,
+				41B081BE22DFC95900AF53B5 /* AboutViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4178025822E12A5400C3B899 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				4178025522E1227A00C3B899 /* Events.swift */,
+				4178025322E0E7EA00C3B899 /* Utils.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
 		41AACDE9224CD2E900F46460 = {
 			isa = PBXGroup;
 			children = (
@@ -65,16 +87,13 @@
 			isa = PBXGroup;
 			children = (
 				41AACDF5224CD2E900F46460 /* AppDelegate.swift */,
-				41AACDF7224CD2E900F46460 /* MasterViewController.swift */,
-				4165023E2259745400B3F3BB /* TableViewController.swift */,
+				4138BDC622AF83AC00674B28 /* AppSettings.swift */,
+				4178025722E12A3E00C3B899 /* ViewControllers */,
+				4178025822E12A5400C3B899 /* Content */,
 				41AACDF9224CD2E900F46460 /* Main.storyboard */,
 				41AACDFC224CD2EC00F46460 /* Assets.xcassets */,
 				41AACDFE224CD2EC00F46460 /* LaunchScreen.storyboard */,
-				41AACE09224DE1AE00F46460 /* Theme.swift */,
 				41AACE01224CD2EC00F46460 /* Info.plist */,
-				41F2E7A222AE2AEE00CF6B8E /* Events.swift */,
-				4138BDC422AF78E700674B28 /* Decoding.swift */,
-				4138BDC622AF83AC00674B28 /* AppSettings.swift */,
 			);
 			path = "Science Week";
 			sourceTree = "<group>";
@@ -150,13 +169,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41AACE0A224DE1AE00F46460 /* Theme.swift in Sources */,
+				41B081C122DFCD0000AF53B5 /* MapViewController.swift in Sources */,
 				41AACDF8224CD2E900F46460 /* MasterViewController.swift in Sources */,
 				4138BDC722AF83AC00674B28 /* AppSettings.swift in Sources */,
+				41B081C322DFE19500AF53B5 /* EventsViewController.swift in Sources */,
+				41B081BF22DFC95900AF53B5 /* AboutViewController.swift in Sources */,
+				4178025622E1227A00C3B899 /* Events.swift in Sources */,
 				41AACDF6224CD2E900F46460 /* AppDelegate.swift in Sources */,
-				4165023F2259745400B3F3BB /* TableViewController.swift in Sources */,
-				4138BDC522AF78E700674B28 /* Decoding.swift in Sources */,
-				41F2E7A322AE2AEE00CF6B8E /* Events.swift in Sources */,
+				4178025422E0E7EA00C3B899 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
