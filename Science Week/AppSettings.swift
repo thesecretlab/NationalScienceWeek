@@ -49,6 +49,7 @@ public final class Theme {
 extension URL {
     // the URL the 'About' tab points to
     static let scienceWeekURL = URL(string: "https://www.scienceweek.net.au/")!
+    static let rssFeedURL = URL(string: "https://www.scienceweek.net.au/event-transfer/scienceweek-events.xml")!
 }
 
 public final class AppSettings {
