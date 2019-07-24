@@ -90,7 +90,13 @@ extension MasterViewController: XMLParserDelegate {
             //case "EventBookingEmail": currentEvent.bookingEmail = data
             //case "EventSocialFacebook": currentEvent.facebook = data
             //case "EventSocialTwitter": currentEvent.twitter = data
-            //case "Venue":
+            case "VenueName": currentEvent.venue?.name = data
+            case "VenueStreetName": currentEvent.venue?.streetName = data
+            //case "VenueSuburb":
+            //case "VenuePostcode":
+            case "VenueLatitude": currentEvent.venue?.latitude = Double(data)
+            case "VenueLongitude": currentEvent.venue?.longitude = Double(data)
+            //case "VenueHasDisabledAccess":
             case "Attractions": currentEvent.attractions.append(data)
             //case "EventOfficialImageUrl":
             default: break
