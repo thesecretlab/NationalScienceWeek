@@ -141,7 +141,13 @@
                             <navigationBar contentMode="scaleToFill" barStyle="black" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lui-jz-o6o">
                                 <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                                 <items>
-                                    <navigationItem title="About" id="i08-5L-geO"/>
+                                    <navigationItem title="About" id="i08-5L-geO">
+                                        <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.clockwise" catalog="system" id="vlA-RZ-SbQ">
+                                            <connections>
+                                                <action selector="refreshButtonPressed:" destination="skO-7b-d0G" id="qsl-Mz-Knj"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <wkWebView contentMode="scaleToFill" allowsLinkPreview="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZx-QJ-JHw">
@@ -175,6 +181,7 @@
                         <outlet property="activityIndicator" destination="ntx-vE-QSv" id="SOD-Vl-NGL"/>
                         <outlet property="navigationBar" destination="lui-jz-o6o" id="pa5-SX-93d"/>
                         <outlet property="parentView" destination="Hqo-4t-BQQ" id="tD3-WO-DZQ"/>
+                        <outlet property="refreshButton" destination="vlA-RZ-SbQ" id="Kls-9e-CEC"/>
                         <outlet property="webView" destination="zZx-QJ-JHw" id="7pi-sx-obf"/>
                     </connections>
                 </viewController>
@@ -262,6 +269,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.clockwise" catalog="system" width="56" height="64"/>
         <image name="heart" catalog="system" width="64" height="56"/>
         <image name="info.circle" catalog="system" width="64" height="62"/>
         <image name="location" catalog="system" width="64" height="60"/>

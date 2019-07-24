@@ -13,11 +13,21 @@ class AboutViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
     
     @IBOutlet var parentView: UIView!
     @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBAction func refreshButtonPressed(_ sender: Any) {
+        loadWebpage()
+    }
+    
     // URL request for the National Science Week website
     private let request = URLRequest(url: URL.scienceWeekURL)
+    private var attemptedCache = false
+    private var timer: Timer? = nil
+    private var cachedWebData: String? {
+        return UserDefaults.standard.string(forKey: "WebpageCache")
+    }
     
     // called when the view's components have completed loading
     // but before they have necessarily appeared
@@ -29,7 +39,7 @@ class AboutViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
         webView.navigationDelegate = self
         
         // load the website request
-        if webView.isBlank {
+        if webView.isBlank() {
             loadWebpage()
         }
     }
@@ -37,7 +47,30 @@ class AboutViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
     private func loadWebpage() {
         activityIndicator.startAnimating()
         Logger.log("Attempting load of web page.")
+        
         webView.load(request)
+        
+        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.cancelLoadWebpage), userInfo: nil, repeats: false)
+    }
+    
+    @objc private func cancelLoadWebpage() {
+        webView.stopLoading()
+        loadCachedWebpage()
+    }
+    
+    private func loadCachedWebpage() {
+        if attemptedCache { return }
+        attemptedCache = true
+        Logger.log("Attempting load of cached web page.")
+        
+        if let cachedHTML = cachedWebData {
+            webView.loadHTMLString(cachedHTML, baseURL: URL.scienceWeekURL)
+            Logger.log("Completed load of cached web page.")
+        } else {
+            summonAlertView(message: "Something has gone wrong! Make sure you're connected to the internet, then refresh.")
+        }
+    
+        activityIndicator.stopAnimating()
     }
     
     private func setTheme() {
@@ -59,16 +92,33 @@ extension AboutViewController {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         Logger.log("Completed load of web page.")
         activityIndicator.stopAnimating()
+        timer?.invalidate()
+        
+        if !attemptedCache {
+            DispatchQueue.main.async {
+                self.webView.getContent() { content in
+                    if let content = content {
+                        UserDefaults.standard.set(content, forKey: "WebpageCache")
+                    }
+                    
+                    Logger.log("Cached copy of webpage.")
+                }
+            }
+        }
+        
+        attemptedCache = false
     }
     
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        Logger.log("Failed load of web page.")
+        
+        loadCachedWebpage()
+    }
     
     func webView(webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: NSError) {
         Logger.log("Failed load of web page.")
-        activityIndicator.stopAnimating()
         
-        if error.code == NSURLErrorNotConnectedToInternet {
-            webView.loadHTMLString("<b>Oops, something went wrong.</b>",baseURL:  nil)
-        }
+        loadCachedWebpage()
     }
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {

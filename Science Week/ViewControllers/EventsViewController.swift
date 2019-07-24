@@ -33,13 +33,10 @@ class EventsViewController: UIViewController {
     
     private func toggleFavouritesOnly() {
         showFavouritesOnly = !showFavouritesOnly
-        
-        
-        //favouritesButton.image = showFavouritesOnly ?
-        // TODO
-        
-        showToast(message: "Filtering by Favourites")
-        Logger.log("Filter by favourites: \(showFavouritesOnly)")
+
+        let statusMessage = showFavouritesOnly ? "Filtering by Favourites" : "Showing all"
+        showToast(message: statusMessage)
+        Logger.log(statusMessage)
     }
     
     private func setTheme() {

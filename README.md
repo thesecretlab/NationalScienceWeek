@@ -5,26 +5,24 @@
 * table view polish
 * detail view
 * context detector
+* handle size classes
 
 ## Map
 
 * cluster points when zoomed out
-* zoom in on sleect cluster pin
+* zoom in on select cluster pin
 * show event info view on select single pin
 * skin mapview?
 
 ## About
 
-* handle non-connection
-* cache copy of webpage
+* doesn't cache .png files correctly
+* nice fallback image
+* spinner not showing
+* better cache spot
 
 ## Content
 
 * request xml stream
 * parse xml stream
 * cache xml stream
-
-## Misc
-
-* handle size classes/orientations/partial windows
-

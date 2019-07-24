@@ -33,13 +33,24 @@ extension UITabBar {
 }
 
 extension UIViewController {
-    func showToast(message: String, image: UIImage? = nil, seconds: Double = 0.8) {
+    func showToast(message: String, image: UIImage? = nil, seconds: Double = 0.3) {
         let alert = UIAlertController(message: message)
         
         self.present(alert, animated: true)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
             alert.dismiss(animated: true)
         }
+    }
+    
+    func summonAlertView(message: String? = nil) {
+        let alertController = UIAlertController(
+            title: "Error",
+            message: message ?? "Action could not be completed.",
+            preferredStyle: .alert
+        )
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alertController, animated: true)
     }
 }
 
@@ -110,12 +121,18 @@ extension UIColour {
     }
 }
 
+extension Timer {
+    convenience init(seconds: Double, block: @escaping (Timer?) -> Void) {
+        self.init(timeInterval: TimeInterval(seconds), repeats: false, block: block)
+    }
+}
+
 // MARK: WebKit utilities
 
 extension WKWebView {
     
     // check if webview is blank by seeing if the body HTML is empty
-    var isBlank: Bool {
+    func isBlank() -> Bool {
         var body: Any?
         var error: Error?
         
@@ -125,5 +142,16 @@ extension WKWebView {
         }
         
         return (error != nil || body == nil)
+    }
+    
+    // get content of webpage
+    func getContent(completion: @escaping (String?) -> Void) {
+        self.evaluateJavaScript("document.documentElement.outerHTML.toString()") { (html, error) in
+            if let html = html as? String, error == nil {
+                completion(html)
+            } else {
+                completion(nil)
+            }
+        }
     }
 }
