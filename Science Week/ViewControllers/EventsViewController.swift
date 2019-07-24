@@ -33,15 +33,18 @@ class EventsViewController: UIViewController {
     
     private func toggleFavouritesOnly() {
         showFavouritesOnly = !showFavouritesOnly
-
+    
         let statusMessage = showFavouritesOnly ? "Filtering by Favourites" : "Showing all"
         showToast(message: statusMessage)
         Logger.log(statusMessage)
+        
+        favouritesButton.tintColor = showFavouritesOnly ? Theme.primaryAccentColour : Theme.inactiveColour
     }
     
     private func setTheme() {
         navigationBar.titleTextAttributes = [.foregroundColor: Theme.primaryTextColour]
         navigationBar.tintColor = Theme.primaryAccentColour
+        favouritesButton.tintColor = showFavouritesOnly ? Theme.primaryAccentColour : Theme.inactiveColour
         navigationBar.barStyle = Theme.lightTheme ? .default : .black
         parentView.backgroundColor = Theme.primaryBackgroundColour
     }

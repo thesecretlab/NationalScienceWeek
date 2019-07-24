@@ -31,4 +31,3 @@ class MasterViewController: UITabBarController {
         return Theme.lightTheme ? UIStatusBarStyle.default : .lightContent
     }
 }
-

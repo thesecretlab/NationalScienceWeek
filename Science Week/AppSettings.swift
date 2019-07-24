@@ -15,20 +15,33 @@ typealias UIColour = UIColor
 
 public final class Theme {
     
+    
+    //=====================================
+    // vvv EDIT HERE TO CHANGE THEME vvv
+    //=====================================
+    
+    
     // 2019 colours
     static let lightTheme = false
-    static var primaryBackgroundColour   = UIColor.black
-    static let primaryAccentColour = UIColor(r: 255, g: 000, b: 164)
-    static let secondaryAccentColour = UIColor(r: 182, g: 032, b: 224)
-    static let tertiaryAccentColour = UIColor(r: 109, g: 212, b: 000)
+    static var primaryBackgroundColour  = UIColor.black
+    static let primaryAccentColour      = UIColor(r: 255, g: 000, b: 164)
+    static let secondaryAccentColour    = UIColor(r: 182, g: 032, b: 224)
+    static let tertiaryAccentColour     = UIColor(r: 109, g: 212, b: 000)
+    static let inactiveColour           = UIColor.darkGray
     
     // 2018 colours
 //    static let lightTheme = true
-//    static var mainBackgroundColour         = UIColor(hex: "#18655C")
-//    static var secondaryBackgroundColour    = UIColor(hex: "#000000")
-//    static let primaryAccentColour          = UIColor(hex: "#FFFFFF")
-//    static let secondaryAccentColour        = UIColor(hex: "#fbaf59")
-//    static let tertiaryAccentColour         = UIColor(hex: "#f26659")
+//    static var primaryBackgroundColour  = UIColor(hex: "#18655C")
+//    static let primaryAccentColour      = UIColor(hex: "#FFFFFF")
+//    static let secondaryAccentColour    = UIColor(hex: "#fbaf59")
+//    static let tertiaryAccentColour     = UIColor(hex: "#f26659")
+//    static let inactiveColour           = UIColor.gray
+    
+    
+    //=====================================
+    // ^^^ EDIT HERE TO CHANGE THEME ^^^
+    //=====================================
+    
     
     // unchanging values
     static let primaryTextColour = Theme.lightTheme ? UIColor.black : .white
@@ -48,7 +61,8 @@ public final class Theme {
 
 extension URL {
     // the URL the 'About' tab points to
-    static let scienceWeekURL = URL(string: "https://www.scienceweek.net.au/")!
+    static var scienceWeekURL = URL(string: "https://www.scienceweek.net.au/")!
+    static var scienceWeekMenuURL = URL(string: "https://www.scienceweek.net.au/#")!
     static let rssFeedURL = URL(string: "https://www.scienceweek.net.au/event-transfer/scienceweek-events.xml")!
 }
 

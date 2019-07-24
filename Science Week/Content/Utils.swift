@@ -146,7 +146,7 @@ extension WKWebView {
     
     // get content of webpage
     func getContent(completion: @escaping (String?) -> Void) {
-        self.evaluateJavaScript("document.documentElement.outerHTML.toString()") { (html, error) in
+        self.evaluateJavaScript("document.documentElement.outerHTML.toString()") { html, error in
             if let html = html as? String, error == nil {
                 completion(html)
             } else {

@@ -5,6 +5,7 @@
 * table view polish
 * detail view
 * context detector
+* filter by state
 * handle size classes
 
 ## Map
@@ -23,6 +24,11 @@
 
 ## Content
 
+* header request check
 * request xml stream
 * parse xml stream
 * cache xml stream
+
+## General
+
+* detaches from simulator on relaunch?

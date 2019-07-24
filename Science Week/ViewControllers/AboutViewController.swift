@@ -125,7 +125,7 @@ extension AboutViewController {
         guard let url = navigationAction.request.url else { return }
         
         // open links in Safari
-        if url != URL.scienceWeekURL {
+        if url != URL.scienceWeekURL && url != URL.scienceWeekMenuURL {
             Logger.log("Loading web page: \(url)")
             decisionHandler(.cancel)
             UIApplication.shared.open(url)
