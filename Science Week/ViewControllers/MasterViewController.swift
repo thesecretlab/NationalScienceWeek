@@ -9,8 +9,8 @@
 import UIKit
 import MapKit
 
-enum TabContent {
-    case events, detail, map, about
+protocol EventDisplayingViewController {
+    func refresh()
 }
 
 class MasterViewController: UITabBarController {
@@ -54,6 +54,12 @@ extension MasterViewController: XMLParserDelegate {
             EventsList.addEvent(event: currentEvent)
             print(currentEvent)
             currentEvent = Event()
+        } else if elementName == "Events" {
+            DispatchQueue.main.async {
+                if let displayingViewController = self.selectedViewController as? EventDisplayingViewController {
+                    displayingViewController.refresh()
+                }
+            }
         }
     }
     
@@ -77,7 +83,7 @@ extension MasterViewController: XMLParserDelegate {
             //case "EventContactTelephone":
             //case "EventContactEmail":
             case "EventWebsite": currentEvent.website = data
-            //case "EventState":
+            case "EventState": currentEvent.state = State(rawValue: data.lowercased())
             case "EventMoreInfo": currentEvent.moreInfo = data
             //case "EventBookingPhone":
             //case "EventBookingUrl": currentEvent.bookingUrl = data

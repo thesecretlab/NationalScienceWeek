@@ -47,6 +47,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         annotateMap()
     }
     
+    func refresh() {
+        let userLocation = mapView.userLocation
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.addAnnotation(userLocation)
+        
+        annotateMap()
+    }
+    
     // move and zoom the mapView to the place we want
     private func updateMapViewRegion(to region: MKCoordinateRegion) {
         mapView.setRegion(region, animated: true)

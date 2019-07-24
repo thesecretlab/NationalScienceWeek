@@ -8,11 +8,7 @@
 
 import UIKit
 
-extension UIImage {
-    //static let filledHeartIcon = UIImage(named: <#T##String#>)
-}
-
-class EventsViewController: UIViewController {
+class EventsViewController: UIViewController, EventDisplayingViewController {
     
     @IBOutlet var parentView: UIView!
     @IBOutlet weak var containerView: UIView!
@@ -29,6 +25,12 @@ class EventsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTheme()
+    }
+    
+    func refresh() {
+        if let tableViewController = children.last as? EventsTableViewController {
+            tableViewController.filterEvents(state: stateFilter, favouritesOnly: showFavouritesOnly)
+        }
     }
     
     private func toggleFavouritesOnly() {
@@ -73,8 +75,19 @@ class EventsTableViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.backgroundColor = Theme.primaryBackgroundColour
     }
     
-    internal func filterEvents(state: State, favouritesOnly: Bool) {
-        displayedEvents = EventsList.events.filter { event in event.isFavourite }
+    internal func filterEvents(state: State?, favouritesOnly: Bool) {
+        var events = EventsList.events
+        
+        if let stateCode = state {
+            events = events.filter { event in event.state == stateCode || event.state == nil }
+        }
+        
+        if favouritesOnly {
+            events = events.filter { event in event.isFavourite }
+        }
+        
+        displayedEvents = events
+        tableView.reloadData()
     }
 }
 
@@ -88,7 +101,7 @@ extension EventsTableViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let event = displayedEvents[indexPath.item]
         let primary = event.name
-        let secondary = event.venue?.name  ?? "Event Venue"
+        let secondary = "\(event.venue?.name  ?? "Event Venue"), \(event.state?.code ?? "Nationwide")"
         
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "EventTableViewCell")
         cell.backgroundColor = .clear

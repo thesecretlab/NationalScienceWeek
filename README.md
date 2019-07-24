@@ -2,6 +2,7 @@
 
 ## Events
 
+* show spinner when no events
 * table view polish
 * detail view
 * context detector
@@ -13,6 +14,7 @@
 * cluster points when zoomed out
 * zoom in on select cluster pin
 * show event info view on select single pin
+* close event info view on refresh or outside tap
 * skin mapview?
 
 ## About

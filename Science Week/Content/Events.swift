@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum State: String {
+enum State: String, CaseIterable {
     case act, nsw, nt, qld, sa, tas, vic, wa
     
     var code: String { return self.rawValue.uppercased() }
