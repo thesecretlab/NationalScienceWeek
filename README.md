@@ -24,10 +24,9 @@
 
 ## Content
 
-* header request check
-* request xml stream
 * parse xml stream
 * cache xml stream
+* EventsList.swift: save to file
 
 ## General
 

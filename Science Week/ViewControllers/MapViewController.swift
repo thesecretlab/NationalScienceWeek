@@ -62,11 +62,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         for event in EventsList.events {
             let venue = event.venue
             
-            if let coords = venue.coords {
+            if let coords = venue?.coords {
                 let annotation = MKPointAnnotation()
                 let centerCoordinate = CLLocationCoordinate2D(latitude: coords.latitude, longitude: coords.longitude)
                 annotation.coordinate = centerCoordinate
-                annotation.title = venue.name ?? "Event Venue"
+                annotation.title = venue?.name ?? "Event Venue"
                 mapView.addAnnotation(annotation)
             }
         }

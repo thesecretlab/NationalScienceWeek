@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		411E968D22E825FA001A8A23 /* EventsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411E968C22E825FA001A8A23 /* EventsList.swift */; };
+		411E969022E83207001A8A23 /* Feed.xml in Resources */ = {isa = PBXBuildFile; fileRef = 411E968F22E83207001A8A23 /* Feed.xml */; };
 		4138BDC722AF83AC00674B28 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4138BDC622AF83AC00674B28 /* AppSettings.swift */; };
 		4178025422E0E7EA00C3B899 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4178025322E0E7EA00C3B899 /* Utils.swift */; };
 		4178025622E1227A00C3B899 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4178025522E1227A00C3B899 /* Events.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		411E968C22E825FA001A8A23 /* EventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsList.swift; sourceTree = "<group>"; };
+		411E968F22E83207001A8A23 /* Feed.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Feed.xml; sourceTree = "<group>"; };
 		4138BDC622AF83AC00674B28 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		4178025322E0E7EA00C3B899 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		4178025522E1227A00C3B899 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
@@ -50,6 +54,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		411E968E22E831F1001A8A23 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				411E968F22E83207001A8A23 /* Feed.xml */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		4178025722E12A3E00C3B899 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +79,7 @@
 				4178025522E1227A00C3B899 /* Events.swift */,
 				4178025322E0E7EA00C3B899 /* Utils.swift */,
 				4178025A22E3867600C3B899 /* Feed.swift */,
+				411E968C22E825FA001A8A23 /* EventsList.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -99,6 +112,7 @@
 				41AACDFC224CD2EC00F46460 /* Assets.xcassets */,
 				41AACDFE224CD2EC00F46460 /* LaunchScreen.storyboard */,
 				41AACE01224CD2EC00F46460 /* Info.plist */,
+				411E968E22E831F1001A8A23 /* Resources */,
 			);
 			path = "Science Week";
 			sourceTree = "<group>";
@@ -164,6 +178,7 @@
 				41AACE00224CD2EC00F46460 /* LaunchScreen.storyboard in Resources */,
 				41AACDFD224CD2EC00F46460 /* Assets.xcassets in Resources */,
 				41AACDFB224CD2E900F46460 /* Main.storyboard in Resources */,
+				411E969022E83207001A8A23 /* Feed.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +189,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				411E968D22E825FA001A8A23 /* EventsList.swift in Sources */,
 				41B081C122DFCD0000AF53B5 /* MapViewController.swift in Sources */,
 				4178025B22E3867600C3B899 /* Feed.swift in Sources */,
 				41AACDF8224CD2E900F46460 /* MasterViewController.swift in Sources */,

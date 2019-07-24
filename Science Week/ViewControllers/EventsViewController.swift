@@ -87,8 +87,8 @@ extension EventsTableViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let event = displayedEvents[indexPath.item]
-        let primary = event.name ?? "Event Name"
-        let secondary = event.venue.name  ?? "Event Venue"
+        let primary = event.name
+        let secondary = event.venue?.name  ?? "Event Venue"
         
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "EventTableViewCell")
         cell.backgroundColor = .clear
@@ -104,6 +104,6 @@ extension EventsTableViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let event = displayedEvents[indexPath.item]
-        showToast(message: "Event selected: \(event.name ?? "Event Name")")
+        showToast(message: "Event selected: \(event.name)")
     }
 }

@@ -13,6 +13,12 @@ typealias DataHandlerCompletion = ((Data?) -> Void)
 final class FeedHandler {
     
     private static let shared = FeedHandler()
+    private lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        // example: Tue, 23 Jul 2019 20:00:13 GMT
+        formatter.dateFormat = AppSettings.headerDateFormat
+        return formatter
+    }()
     private var lastModifiedDate: Date? = nil
 
     private init() {}
@@ -45,9 +51,6 @@ final class FeedHandler {
             if let data = data, error == nil, // if data exists AND there was no error
                 let httpResponse = response as? HTTPURLResponse, // AND the HTTP response code was valid
                 200..<300 ~= httpResponse.statusCode { // AND it indicated success
-                
-                // parse data
-                
                 completion(data)
             } else {
                 completion(nil)
@@ -68,18 +71,9 @@ final class FeedHandler {
                 let lastModified = httpResponse.allHeaderFields["Last-Modified"], // AND it had the field
                 let lastModifiedDate = lastModified as? String { // and it contained data
                 
-                
-                let date = Date()
-                print("\n\n\n\n" + lastModifiedDate + "\n\n\n\n")
-                completion(date)
-
-                
-                
-                // parse date
-                
-                
-                
-                
+                completion(self.dateFormatter.date(from: lastModifiedDate))
+                print(lastModifiedDate)
+                print(String(describing: self.dateFormatter.date(from: lastModifiedDate) as Any))
             } else {
                 completion(nil)
             }

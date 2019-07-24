@@ -18,6 +18,8 @@ class Logger {
     }
 }
 
+// MARK: UI Element utilities
+
 extension UITabBar {
     
     func setBackgroundColor(colour: UIColour) {
@@ -101,11 +103,11 @@ extension UIColour {
     }
     
     func lightened(by percentage: CGFloat = 30.0) -> UIColour {
-        return self.adjust(by: abs(percentage)) ?? UIColor.white
+        return self.adjust(by: abs(percentage)) ?? UIColour.white
     }
     
     func darkened(by percentage: CGFloat = 30.0) -> UIColour {
-        return self.adjust(by: -1 * abs(percentage)) ?? UIColor.black
+        return self.adjust(by: -1 * abs(percentage)) ?? UIColour.black
     }
     
     func adjust(by percentage: CGFloat = 30.0) -> UIColour? {
@@ -121,9 +123,17 @@ extension UIColour {
     }
 }
 
-extension Timer {
-    convenience init(seconds: Double, block: @escaping (Timer?) -> Void) {
-        self.init(timeInterval: TimeInterval(seconds), repeats: false, block: block)
+// MARK: XML Parsing utilities
+
+extension XMLParserDelegate {
+    
+    func parseUpdates() {
+        if let path = Bundle.main.url(forResource: "Feed", withExtension: "xml") {
+            if let parser = XMLParser(contentsOf: path) {
+                parser.delegate = self
+                parser.parse()
+            }
+        }
     }
 }
 
@@ -153,5 +163,11 @@ extension WKWebView {
                 completion(nil)
             }
         }
+    }
+}
+
+extension Timer {
+    convenience init(seconds: Double, block: @escaping (Timer?) -> Void) {
+        self.init(timeInterval: TimeInterval(seconds), repeats: false, block: block)
     }
 }

@@ -23,19 +23,19 @@ public final class Theme {
     
     // 2019 colours
     static let lightTheme = false
-    static var primaryBackgroundColour  = UIColor.black
-    static let primaryAccentColour      = UIColor(r: 255, g: 000, b: 164)
-    static let secondaryAccentColour    = UIColor(r: 182, g: 032, b: 224)
-    static let tertiaryAccentColour     = UIColor(r: 109, g: 212, b: 000)
-    static let inactiveColour           = UIColor.darkGray
+    static var primaryBackgroundColour  = UIColour.black
+    static let primaryAccentColour      = UIColour(r: 255, g: 000, b: 164)
+    static let secondaryAccentColour    = UIColour(r: 182, g: 032, b: 224)
+    static let tertiaryAccentColour     = UIColour(r: 109, g: 212, b: 000)
+    static let inactiveColour           = UIColour.darkGray
     
     // 2018 colours
 //    static let lightTheme = true
-//    static var primaryBackgroundColour  = UIColor(hex: "#18655C")
-//    static let primaryAccentColour      = UIColor(hex: "#FFFFFF")
-//    static let secondaryAccentColour    = UIColor(hex: "#fbaf59")
-//    static let tertiaryAccentColour     = UIColor(hex: "#f26659")
-//    static let inactiveColour           = UIColor.gray
+//    static var primaryBackgroundColour  = UIColour(hex: "#18655C")
+//    static let primaryAccentColour      = UIColour(hex: "#FFFFFF")
+//    static let secondaryAccentColour    = UIColour(hex: "#fbaf59")
+//    static let tertiaryAccentColour     = UIColour(hex: "#f26659")
+//    static let inactiveColour           = UIColour.gray
     
     
     //=====================================
@@ -44,15 +44,15 @@ public final class Theme {
     
     
     // unchanging values
-    static let primaryTextColour = Theme.lightTheme ? UIColor.black : .white
-    static var secondaryBackgroundColour: UIColor {
+    static let primaryTextColour = Theme.lightTheme ? UIColour.black : .white
+    static var secondaryBackgroundColour: UIColour {
         if Theme.lightTheme {
             return primaryBackgroundColour.darkened(by: 30)
         }
         
         return primaryBackgroundColour.lightened(by: 30)
     }
-    static var secondaryTextColour =  UIColor.gray
+    static var secondaryTextColour =  UIColour.gray
     
     private init() {}
 }
@@ -72,28 +72,8 @@ public final class AppSettings {
     static let year: Int = 2019
     
     // dictates how dates are ingested from XML feed
-    static let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        return formatter
-    }()
+    static let headerDateFormat = "E, d MMM yyyy HH:mm:ss zzz"
+    static let feedDateFormat = "yyyy-MM-dd'T'HH:mm:ss"
     
     private init() {}
 }
-
-//: !!!
-//: TODO: (Events.swift) Group Duplicate Events
-//: !!!
-
-//if self.state == nil, let venue = self.venue {
-    // attempt to infer state by looking at venue address?
-//}
-
-
-// remove from categories "Science & Technology ~ " prefix
-
-// UTF-8 encoding
-
-// urls
-
-// check if venue lat/long in Australia?
