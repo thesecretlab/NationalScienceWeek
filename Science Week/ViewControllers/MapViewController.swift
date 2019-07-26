@@ -93,6 +93,27 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
 }
 
+// MARK: MKMapViewDelegate functions
+
+extension MapViewController {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView {
+        let view = MKMarkerAnnotationView()
+        view.markerTintColor = Theme.mapAnnotationColour
+        
+        if let cluster = annotation as? MKClusterAnnotation {
+            view.displayPriority = .defaultHigh
+            view.glyphText = "\(cluster.memberAnnotations.count)"
+            view.canShowCallout = false
+        } else {
+            view.displayPriority = .defaultLow
+            view.clusteringIdentifier = "event"
+            view.collisionMode = .circle
+        }
+        
+        return view
+    }
+}
+
 // MARK: CLLocationManagerDelegate functions
 
 extension MapViewController {

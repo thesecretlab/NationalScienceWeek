@@ -51,7 +51,7 @@ extension MasterViewController: XMLParserDelegate {
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == "Event" {
             currentEvent.validate()
-            EventsList.addEvent(event: currentEvent)
+            EventsList.addEvent(currentEvent)
             
             
             print(currentEvent)
@@ -79,30 +79,30 @@ extension MasterViewController: XMLParserDelegate {
             case "EventStart": currentEvent.start = dateFormatter.date(from: data)
             case "EventEnd": currentEvent.end = dateFormatter.date(from: data)
             case "EventDescription": currentEvent.description = data
-            //case "EventTargetAudience":
+            case "EventTargetAudience": currentEvent.targetAudience = TargetAudience(rawValue: data) ?? .allAges
             case "EventPayment": currentEvent.payment = data
-            //case EventIsFree":
+            case "EventIsFree": currentEvent.isFree = Bool(data) ?? false
             case "EventContactName": currentEvent.contact?.name = data
-            //case "EventContactOrganisation":
-            //case "EventContactTelephone":
-            //case "EventContactEmail":
+            case "EventContactOrganisation": currentEvent.contact?.organisation = data
+            case "EventContactTelephone": currentEvent.contact?.phone = data
+            case "EventContactEmail": currentEvent.contact?.email = data
             case "EventWebsite": currentEvent.website = data
             case "EventState": currentEvent.state = State(rawValue: data.lowercased())
             case "EventMoreInfo": currentEvent.moreInfo = data
-            //case "EventBookingPhone":
-            //case "EventBookingUrl": currentEvent.bookingUrl = data
-            //case "EventBookingEmail": currentEvent.bookingEmail = data
-            //case "EventSocialFacebook": currentEvent.facebook = data
-            //case "EventSocialTwitter": currentEvent.twitter = data
+            case "EventBookingPhone": currentEvent.bookingPhone = data
+            case "EventBookingUrl": currentEvent.bookingUrl = data
+            case "EventBookingEmail": currentEvent.bookingEmail = data
+            case "EventSocialFacebook": currentEvent.facebook = data
+            case "EventSocialTwitter": currentEvent.twitter = data
             case "VenueName": currentEvent.venue?.name = data
             case "VenueStreetName": currentEvent.venue?.streetName = data
-            //case "VenueSuburb":
-            //case "VenuePostcode":
+            case "VenueSuburb": currentEvent.venue?.suburb = data
+            case "VenuePostcode": currentEvent.venue?.postcode = Int(data)
             case "VenueLatitude": currentEvent.venue?.latitude = Double(data)
             case "VenueLongitude": currentEvent.venue?.longitude = Double(data)
-            //case "VenueHasDisabledAccess":
+            case "VenueHasDisabledAccess": currentEvent.venue?.hasDisabledAccess = Bool(data) ?? false
             case "Attractions": currentEvent.attractions.append(data)
-            //case "EventOfficialImageUrl":
+            case "EventOfficialImageUrl": currentEvent.officialImageUrl = data
             default: break
         }
     }

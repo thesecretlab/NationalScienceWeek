@@ -142,7 +142,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                                 <items>
                                     <navigationItem title="About" id="i08-5L-geO">
-                                        <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.clockwise" catalog="system" id="vlA-RZ-SbQ">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="vlA-RZ-SbQ">
                                             <connections>
                                                 <action selector="refreshButtonPressed:" destination="skO-7b-d0G" id="qsl-Mz-Knj"/>
                                             </connections>
@@ -269,7 +269,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.clockwise" catalog="system" width="56" height="64"/>
         <image name="heart" catalog="system" width="64" height="56"/>
         <image name="info.circle" catalog="system" width="64" height="62"/>
         <image name="location" catalog="system" width="64" height="60"/>

@@ -37,6 +37,7 @@ public final class Theme {
 //    static let tertiaryAccentColour     = UIColour(hex: "#f26659")
 //    static let inactiveColour           = UIColour.gray
     
+    static var mapAnnotationColour = Theme.primaryAccentColour
     
     //=====================================
     // ^^^ EDIT HERE TO CHANGE THEME ^^^
@@ -45,6 +46,7 @@ public final class Theme {
     
     // unchanging values
     static let primaryTextColour = Theme.lightTheme ? UIColour.black : .white
+    static var secondaryTextColour = UIColour.gray
     static var secondaryBackgroundColour: UIColour {
         if Theme.lightTheme {
             return primaryBackgroundColour.darkened(by: 30)
@@ -52,7 +54,6 @@ public final class Theme {
         
         return primaryBackgroundColour.lightened(by: 30)
     }
-    static var secondaryTextColour =  UIColour.gray
     
     private init() {}
 }
@@ -63,7 +64,9 @@ extension URL {
     static var scienceWeekURL = URL(string: "https://www.scienceweek.net.au/")!
     static var scienceWeekMenuURL = URL(string: "https://www.scienceweek.net.au/#")!
     static let rssFeedURL = URL(string: "https://www.scienceweek.net.au/event-transfer/scienceweek-events.xml")!
-    static let cachePath = Bundle.main.url(forResource: "Feed", withExtension: "xml")!
+    static let cacheURL = try! FileManager
+        .default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+        .appendingPathComponent("Feed.xml")
 }
 
 public final class AppSettings {

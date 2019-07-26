@@ -11,7 +11,8 @@ import Foundation
 extension XMLParserDelegate {
     
     func parseUpdates() {
-        if let parser = XMLParser(contentsOf: URL.cachePath) {
+//        if let parser = XMLParser(contentsOf: URL.cacheURL) {
+        if let parser = XMLParser(contentsOf: Bundle.main.url(forResource: "Feed", withExtension: "xml")!) {
             parser.delegate = self
             parser.parse()
         }
@@ -23,6 +24,7 @@ final class EventsList {
     
     private var sharedEvents: [Event] = []
     private var sharedDelegate: XMLParserDelegate? = nil
+    private var sharedFavouriteEventIDs: [String] = []
     
     static var delegate: XMLParserDelegate? {
         get { return EventsList.shared.sharedDelegate }
@@ -34,18 +36,28 @@ final class EventsList {
         set { EventsList.shared.sharedEvents = newValue }
     }
     
+    static var favouriteEventIDs: [String] {
+        get { return EventsList.shared.sharedFavouriteEventIDs }
+        set { EventsList.shared.sharedFavouriteEventIDs = newValue }
+    }
+    
     private init() {
         EventsList.refresh()
     }
     
-    static func addEvent(event: Event) {
+    static func addEvent(_ event: Event) {
+        var event = event
+        
+        if favouriteEventIDs.contains(event.id) && !event.isFavourite {
+            event.toggleFavourite()
+        }
+        
         self.events.append(event)
     }
     
     static func refresh() {
         FeedHandler.requestContent { data in
             if let data = data {
-                
                 
                 print(data)
                 

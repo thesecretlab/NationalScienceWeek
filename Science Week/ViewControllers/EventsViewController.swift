@@ -101,7 +101,7 @@ extension EventsTableViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let event = displayedEvents[indexPath.item]
-        let primary = "\(event.id ?? "NO-ID") \(event.name)"
+        let primary = "\(event.name)"
         let secondary = "\(event.venue?.name  ?? "Event Venue"), \(event.state?.code ?? "Nationwide")"
         
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "EventTableViewCell")

@@ -6,7 +6,7 @@
 //  Copyright © 2019 Mars Geldard. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum State: String, CaseIterable {
     case act, nsw, nt, qld, sa, tas, vic, wa
@@ -21,7 +21,7 @@ enum TargetAudience: String {
 }
 
 struct Venue {
-    var name: String = "Venue Name"
+    var name: String? = nil
     var streetName: String? = nil
     var suburb: String? = nil
     var postcode: Int? = nil
@@ -38,6 +38,17 @@ struct Venue {
         }
         
         return nil
+    }
+    
+    var description: String? {
+        var string = ""
+        
+        if let name = name { string += "\(name)\n" }
+        if let streetName = streetName { string += "\(streetName)\n" }
+        if let suburb = suburb { string += "\(suburb) " }
+        if let postcode = postcode { string += "\(postcode)" }
+        
+        return string.isEmpty ? nil : string
     }
     
     init() {}
@@ -80,6 +91,17 @@ struct Event {
     var venue: Venue? = Venue()
     var isFavourite: Bool = false
     
+    var image: UIImage? {
+        if let imageUrlString = officialImageUrl,
+            let imageUrl = URL(string: imageUrlString),
+            let data = try? Data(contentsOf: imageUrl),
+            let image = UIImage(data: data) {
+            return image
+        }
+        
+        return nil
+    }
+    
     mutating func toggleFavourite() {
         isFavourite = !isFavourite
     }
@@ -96,9 +118,3 @@ struct Event {
         }
     }
 }
-
-//    private var exampleEvents: [Event] {
-//        let venue = Venue(name: "Hadley's Orient Hotel", streetName: "34 Murray Street", suburb: "Hobart", postcode: 7000, latitude: -42.8838192, longitude: 147.3279715, hasDisabledAccess: false)
-//        let event = Event(id: "SW69117", name: "Painting a changing world: how art and science can speak together in a time of environmental change. A special Hadley’s Art Prize event", type: "Other", start: "2019-08-11T14:00:00", end: "2019-08-11T15:00:00", description: "Why do palaeoecologists look at art? What is the role of art in conservation? And how might art and science come together to help us respond to environmental change? Come and hear scientists, artists and curators reflect at a special Hadley's Art Prize afternoon tea (tea, coffee &amp;amp; scones provided). ", targetAudience: "All ages", payment: "", isFree: true, category: "Science &amp; Technology ~ Archaeology and Antiquity", contactName: "Penny Jones", contactOrganisation: "Menzies Institute for Medical Research, University of Tasmania", contactPhone: "0490 389 415", contactEmail: "Penelope.Jones@utas.edu.au", bookingEmail: "", bookingUrl: "https://www.eventbrite.com.au/e/painting-a-changing-world-tickets-62895498128?aff=ebdssbdestsearch", bookingPhone: "", facebook: "https://www.facebook.com/pg/hadleysartprize/posts/", twitter: "", website: "https://www.hadleysartprize.com.au/", state: "TAS", moreInfo: "", officialImageUrl: "https://www.scienceweek.net.au/wp-content/uploads/2019/06/megan-walch-land-of-fire-and-flood2.jpg", attractions: nil, venue: venue, isFavourite: false)
-//        return [event]
-//    }
