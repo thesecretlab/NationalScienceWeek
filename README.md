@@ -2,23 +2,23 @@
 
 ## Events
 
-* add/show spinner when no events
-* table view visual polish
-* event info/detail view
 * filter by state
+* event info/detail view
+* add/show spinner activityview when no events
 * handle size classes
+* table view visual polish
 * check text encoding and context detectors
 
 ## Map
 
 * show event info/detail view on select single pin
-* handle non-connection
+* on non-connection/unable to get map data => disable location button
 
 ## About
 
 * doesn't cache .png files correctly
+* spinner activityview not showing at the right points
 * nice fallback image
-* spinner not showing at the right points
 
 ## Content
 
