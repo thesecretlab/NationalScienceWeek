@@ -11,8 +11,7 @@ import Foundation
 extension XMLParserDelegate {
     
     func parseUpdates() {
-//        if let parser = XMLParser(contentsOf: URL.cacheURL) {
-        if let parser = XMLParser(contentsOf: Bundle.main.url(forResource: "Feed", withExtension: "xml")!) {
+        if let parser = XMLParser(contentsOf: URL.feedCacheURL) {
             parser.delegate = self
             parser.parse()
         }
@@ -59,14 +58,13 @@ final class EventsList {
         FeedHandler.requestContent { data in
             if let data = data {
                 
-                print(data)
-                
                 // save it to disk
-        
-                
-                // when complete, update mainviewcontroller
-                EventsList.events = []
-                EventsList.delegate?.parseUpdates()
+                if let _ = try? data.write(to: URL.feedCacheURL) {
+                    EventsList.events = []
+                    
+                    // when complete, update mainviewcontroller
+                    EventsList.delegate?.parseUpdates()
+                }
             }
         }
     }

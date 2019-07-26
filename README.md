@@ -4,11 +4,10 @@
 
 * add/show spinner when no events
 * table view visual polish
-* detail view
-* context detector
+* event info/detail view
 * filter by state
 * handle size classes
-* text encoding
+* check text encoding and context detectors
 
 ## Map
 
@@ -24,6 +23,6 @@
 
 ## Content
 
-* cache xml stream -> save to file in cache location
-* fetch cached xml from cache location
 * caching needs to handle decoding HTML entities
+* check refresh working even in non-active tabs
+* where to put XML file to ship with if it needs to go in ~/Library/cache
