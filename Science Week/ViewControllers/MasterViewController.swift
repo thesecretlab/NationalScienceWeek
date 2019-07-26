@@ -60,7 +60,8 @@ extension MasterViewController: XMLParserDelegate {
             currentEvent = Event()
         } else if elementName == "Events" {
             DispatchQueue.main.async {
-                if let displayingViewController = self.selectedViewController as? EventDisplayingViewController {
+                if let selectedNavigationController = self.selectedViewController as? UINavigationController,
+                let displayingViewController = selectedNavigationController.topViewController as? EventDisplayingViewController {
                     displayingViewController.refresh()
                 }
             }

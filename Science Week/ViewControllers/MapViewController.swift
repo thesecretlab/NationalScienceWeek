@@ -14,7 +14,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     // outlets that are attached to the view elements in the
     // Interface Builder Main.storyboard
     @IBOutlet var parentView: UIView!
-    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var locationButton: UIBarButtonItem!
     
@@ -82,10 +81,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     // sets app view colours to those declared in Theme settings
     private func setTheme() {
-        navigationBar.titleTextAttributes = [.foregroundColor: Theme.primaryTextColour]
-        navigationBar.tintColor = Theme.primaryAccentColour
-        navigationBar.barStyle = Theme.lightTheme ? .default : .black
-        parentView.backgroundColor = Theme.primaryBackgroundColour
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Theme.primaryTextColour]
+        self.navigationController?.navigationBar.tintColor = Theme.primaryAccentColour
+        self.navigationController?.navigationBar.barStyle = Theme.lightTheme ? .default : .black
+        parentView?.backgroundColor = Theme.primaryBackgroundColour
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
