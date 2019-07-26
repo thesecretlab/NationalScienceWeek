@@ -11,7 +11,7 @@ import Foundation
 extension XMLParserDelegate {
     
     func parseUpdates() {
-        if let parser = XMLParser(contentsOf: AppSettings.cachePath) {
+        if let parser = XMLParser(contentsOf: URL.cachePath) {
             parser.delegate = self
             parser.parse()
         }
