@@ -66,7 +66,7 @@
                                 <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="otz-Bs-iXP" firstAttribute="centerY" secondItem="mEy-P9-LBu" secondAttribute="centerY" id="6Yl-hY-Aev"/>
                             <constraint firstItem="D6h-Xn-dYN" firstAttribute="leading" secondItem="jTC-gu-uuY" secondAttribute="leading" id="BBc-Ig-8oK"/>
@@ -123,7 +123,7 @@
                                 <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                             </mapView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="u1j-Q7-BVs" firstAttribute="leading" secondItem="y3w-if-WMI" secondAttribute="leading" id="Hd7-te-o6j"/>
                             <constraint firstItem="u1j-Q7-BVs" firstAttribute="top" secondItem="y3w-if-WMI" secondAttribute="top" id="Z0X-qE-Yjf"/>
@@ -163,7 +163,7 @@
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6qC-bX-bx9" firstAttribute="bottom" secondItem="ehf-Me-PQo" secondAttribute="bottom" id="4cU-ug-tkX"/>
                             <constraint firstItem="ehf-Me-PQo" firstAttribute="top" secondItem="6qC-bX-bx9" secondAttribute="top" id="Lwl-E8-IVc"/>
