@@ -12,7 +12,8 @@
 
 ## Map
 
-* show event info view on select single pin
+* show event info/detail view on select single pin
+* handle non-connection
 
 ## About
 
@@ -23,12 +24,6 @@
 
 ## Content
 
-* parse xml stream
 * cache xml stream -> save to file in cache location
+* fetch cached xml from cache location
 * caching needs to handle decoding HTML entities
-
-## General
-
-* detaches from simulator on relaunch?
-* launch screen
-* app icons

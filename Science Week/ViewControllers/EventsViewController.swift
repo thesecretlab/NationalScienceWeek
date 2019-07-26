@@ -117,6 +117,7 @@ extension EventsTableViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.isSelected = false
         let event = displayedEvents[indexPath.item]
         showToast(message: "Event selected: \(event.name)")
     }

@@ -108,6 +108,7 @@ extension MapViewController {
             view.displayPriority = .defaultLow
             view.clusteringIdentifier = "event"
             view.collisionMode = .circle
+            view.canShowCallout = true
         }
         
         return view
