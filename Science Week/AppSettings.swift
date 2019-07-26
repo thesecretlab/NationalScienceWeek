@@ -64,8 +64,8 @@ extension URL {
     static var scienceWeekURL = URL(string: "https://www.scienceweek.net.au/")!
     static var scienceWeekMenuURL = URL(string: "https://www.scienceweek.net.au/#")!
     static let rssFeedURL = URL(string: "https://www.scienceweek.net.au/event-transfer/scienceweek-events.xml")!
-    static let feedCacheURL = URL.cacheURL.appendingPathComponent("Feed.xml")
-    static let webpageCacheURL = URL.cacheURL.appendingPathComponent("Page.html")
+    static let feedCacheURL = URL.cacheURL.appendingPathComponent("feed.xml")
+    static let webpageCacheURL = URL.cacheURL.appendingPathComponent("index.html")
     static let cacheURL = try! FileManager
         .default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
 }

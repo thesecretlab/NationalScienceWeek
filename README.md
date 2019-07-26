@@ -19,7 +19,6 @@
 * doesn't cache .png files correctly
 * nice fallback image
 * spinner not showing at the right points
-* better cache spot
 
 ## Content
 

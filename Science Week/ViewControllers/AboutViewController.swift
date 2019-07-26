@@ -25,9 +25,6 @@ class AboutViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
     private let request = URLRequest(url: URL.scienceWeekURL)
     private var attemptedCache = false
     private var timer: Timer? = nil
-    private var cachedWebData: String? {
-        return UserDefaults.standard.string(forKey: "WebpageCache")
-    }
     
     // called when the view's components have completed loading
     // but before they have necessarily appeared
@@ -47,9 +44,9 @@ class AboutViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
     private func loadWebpage() {
         activityIndicator.startAnimating()
         Logger.log("Attempting load of web page.")
-        
+
         webView.load(request)
-        
+
         timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.cancelLoadWebpage), userInfo: nil, repeats: false)
     }
     
@@ -62,14 +59,14 @@ class AboutViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
         if attemptedCache { return }
         attemptedCache = true
         Logger.log("Attempting load of cached web page.")
-        
-        if let cachedHTML = cachedWebData {
+    
+        if let cachedHTML = try? String(contentsOf: URL.webpageCacheURL) {
             webView.loadHTMLString(cachedHTML, baseURL: URL.scienceWeekURL)
             Logger.log("Completed load of cached web page.")
         } else {
             summonAlertView(message: "Something has gone wrong! Make sure you're connected to the internet, then refresh.")
         }
-    
+        
         activityIndicator.stopAnimating()
     }
     
@@ -97,11 +94,10 @@ extension AboutViewController {
         if !attemptedCache {
             DispatchQueue.main.async {
                 self.webView.getContent() { content in
-                    if let content = content {
-                        UserDefaults.standard.set(content, forKey: "WebpageCache")
+                    if let content = content,
+                        let _ = try? content.write(to: URL.webpageCacheURL, atomically: true, encoding: .utf8) {
+                        Logger.log("Cached copy of webpage.")
                     }
-                    
-                    Logger.log("Cached copy of webpage.")
                 }
             }
         }
@@ -111,13 +107,11 @@ extension AboutViewController {
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         Logger.log("Failed load of web page.")
-        
         loadCachedWebpage()
     }
     
     func webView(webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: NSError) {
         Logger.log("Failed load of web page.")
-        
         loadCachedWebpage()
     }
     
