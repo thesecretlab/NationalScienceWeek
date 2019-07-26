@@ -20,6 +20,7 @@
 		41B081BF22DFC95900AF53B5 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B081BE22DFC95900AF53B5 /* AboutViewController.swift */; };
 		41B081C122DFCD0000AF53B5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B081C022DFCD0000AF53B5 /* MapViewController.swift */; };
 		41B081C322DFE19500AF53B5 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B081C222DFE19500AF53B5 /* EventsViewController.swift */; };
+		6847ED2122EAF0E700B52A73 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6847ED2022EAF0E700B52A73 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		41B081BE22DFC95900AF53B5 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		41B081C022DFCD0000AF53B5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		41B081C222DFE19500AF53B5 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		6847ED2022EAF0E700B52A73 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6847ED2122EAF0E700B52A73 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +83,7 @@
 				4178025922E384A400C3B899 /* README.md */,
 				41AACDF4224CD2E900F46460 /* Science Week */,
 				41AACDF3224CD2E900F46460 /* Products */,
+				6847ED1F22EAF0E600B52A73 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,6 +108,14 @@
 				41AACE01224CD2EC00F46460 /* Info.plist */,
 			);
 			path = "Science Week";
+			sourceTree = "<group>";
+		};
+		6847ED1F22EAF0E600B52A73 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6847ED2022EAF0E700B52A73 /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

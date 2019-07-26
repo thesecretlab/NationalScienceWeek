@@ -71,10 +71,10 @@ class AboutViewController: UIViewController, WKUIDelegate, WKNavigationDelegate 
     }
     
     private func setTheme() {
-        navigationBar.titleTextAttributes = [.foregroundColor: Theme.primaryTextColour]
-        navigationBar.tintColor = Theme.primaryAccentColour
-        navigationBar.barStyle = Theme.lightTheme ? .default : .black
-        parentView.backgroundColor = Theme.primaryBackgroundColour
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Theme.primaryTextColour]
+        self.navigationController?.navigationBar.tintColor = Theme.primaryAccentColour
+        self.navigationController?.navigationBar.barStyle = Theme.lightTheme ? .default : .black
+        parentView?.backgroundColor = Theme.primaryBackgroundColour
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

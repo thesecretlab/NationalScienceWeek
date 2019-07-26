@@ -45,11 +45,13 @@ class EventsViewController: UIViewController, EventDisplayingViewController {
     }
     
     private func setTheme() {
-        navigationBar.titleTextAttributes = [.foregroundColor: Theme.primaryTextColour]
-        navigationBar.tintColor = Theme.primaryAccentColour
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Theme.primaryTextColour]
+        self.navigationController?.navigationBar.tintColor = Theme.primaryAccentColour
+        self.navigationController?.navigationBar.barStyle = Theme.lightTheme ? .default : .black
+        
         favouritesButton.tintColor = showFavouritesOnly ? Theme.primaryAccentColour : Theme.inactiveColour
-        navigationBar.barStyle = Theme.lightTheme ? .default : .black
-        parentView.backgroundColor = Theme.primaryBackgroundColour
+        
+        parentView?.backgroundColor = Theme.primaryBackgroundColour
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
