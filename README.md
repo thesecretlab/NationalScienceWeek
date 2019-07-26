@@ -8,7 +8,6 @@
 * context detector
 * filter by state
 * handle size classes
-* save favourites to UserDefaults?
 * text encoding
 
 ## Map
