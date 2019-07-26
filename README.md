@@ -8,6 +8,8 @@
 * context detector
 * filter by state
 * handle size classes
+* save favourites to UserDefaults?
+* text encoding
 
 ## Map
 
@@ -27,9 +29,11 @@
 ## Content
 
 * parse xml stream
-* cache xml stream
-* EventsList.swift: save to file
+* cache xml stream -> save to file in cache location
+* caching needs to handle decoding HTML entities
 
 ## General
 
 * detaches from simulator on relaunch?
+* launch screen
+* app icons

@@ -60,10 +60,10 @@ public final class Theme {
 // MARK: Semantics
 
 extension URL {
-    // the URL the 'About' tab points to
     static var scienceWeekURL = URL(string: "https://www.scienceweek.net.au/")!
     static var scienceWeekMenuURL = URL(string: "https://www.scienceweek.net.au/#")!
     static let rssFeedURL = URL(string: "https://www.scienceweek.net.au/event-transfer/scienceweek-events.xml")!
+    static let cachePath = Bundle.main.url(forResource: "Feed", withExtension: "xml")!
 }
 
 public final class AppSettings {

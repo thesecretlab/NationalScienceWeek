@@ -8,6 +8,16 @@
 
 import Foundation
 
+extension XMLParserDelegate {
+    
+    func parseUpdates() {
+        if let parser = XMLParser(contentsOf: AppSettings.cachePath) {
+            parser.delegate = self
+            parser.parse()
+        }
+    }
+}
+
 final class EventsList {
     private static let shared = EventsList()
     

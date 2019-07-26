@@ -52,7 +52,11 @@ extension MasterViewController: XMLParserDelegate {
         if elementName == "Event" {
             currentEvent.validate()
             EventsList.addEvent(event: currentEvent)
+            
+            
             print(currentEvent)
+            
+            
             currentEvent = Event()
         } else if elementName == "Events" {
             DispatchQueue.main.async {
@@ -72,8 +76,8 @@ extension MasterViewController: XMLParserDelegate {
             case "EventName": currentEvent.name = data
             case "EventType": currentEvent.type = data
             case "EventCategory": currentEvent.categories.append(data)
-            //case "EventStart":
-            //case "EventEnd":
+            case "EventStart": currentEvent.start = dateFormatter.date(from: data)
+            case "EventEnd": currentEvent.end = dateFormatter.date(from: data)
             case "EventDescription": currentEvent.description = data
             //case "EventTargetAudience":
             case "EventPayment": currentEvent.payment = data

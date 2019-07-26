@@ -123,20 +123,6 @@ extension UIColour {
     }
 }
 
-// MARK: XML Parsing utilities
-
-extension XMLParserDelegate {
-    
-    func parseUpdates() {
-        if let path = Bundle.main.url(forResource: "Feed", withExtension: "xml") {
-            if let parser = XMLParser(contentsOf: path) {
-                parser.delegate = self
-                parser.parse()
-            }
-        }
-    }
-}
-
 // MARK: WebKit utilities
 
 extension WKWebView {

@@ -1,5 +1,5 @@
 //
-//  Events.swift
+//  Event.swift
 //  Science Week
 //
 //  Created by Mars Geldard on 18/6/19.
@@ -55,7 +55,7 @@ struct Contact {
     init() {}
 }
 struct Event {
-    var id: String? = nil
+    var id: String = "EVENT-ID"
     var name: String = "Event Name"
     var type: String = "Other"
     var start: Date? = nil
