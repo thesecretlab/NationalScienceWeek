@@ -22,7 +22,39 @@
 		41B081C322DFE19500AF53B5 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B081C222DFE19500AF53B5 /* EventsViewController.swift */; };
 		6847ED2122EAF0E700B52A73 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6847ED2022EAF0E700B52A73 /* WebKit.framework */; };
 		687AF90922EBE76200B924D5 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687AF90822EBE76200B924D5 /* EventDetailViewController.swift */; };
+		68F666FB22EC65C000D4EA93 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 687AF92122EC604200B924D5 /* SDWebImage.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		687AF91E22EC604200B924D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 687AF91722EC604100B924D5 /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 53761325155AD0D5005750A4;
+			remoteInfo = "SDWebImage static";
+		};
+		687AF92022EC604200B924D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 687AF91722EC604100B924D5 /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4A2CADFF1AB4BB5300B6BC39;
+			remoteInfo = SDWebImage;
+		};
+		687AF92222EC604200B924D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 687AF91722EC604100B924D5 /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 80B6DFEE2142B71600BCB334;
+			remoteInfo = SDWebImageMapKit;
+		};
+		68F666FC22EC65F000D4EA93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 687AF91722EC604100B924D5 /* SDWebImage.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4A2CADFE1AB4BB5300B6BC39;
+			remoteInfo = SDWebImage;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		411E968C22E825FA001A8A23 /* EventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsList.swift; sourceTree = "<group>"; };
@@ -43,6 +75,7 @@
 		41B081C222DFE19500AF53B5 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		6847ED2022EAF0E700B52A73 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		687AF90822EBE76200B924D5 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		687AF91722EC604100B924D5 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDWebImage.xcodeproj; path = "Third-Party/SDWebImage/SDWebImage.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68F666FB22EC65C000D4EA93 /* SDWebImage.framework in Frameworks */,
 				6847ED2122EAF0E700B52A73 /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,6 +119,7 @@
 			children = (
 				4178025922E384A400C3B899 /* README.md */,
 				41AACDF4224CD2E900F46460 /* Science Week */,
+				687AF91622EC602800B924D5 /* Third-Party */,
 				41AACDF3224CD2E900F46460 /* Products */,
 				6847ED1F22EAF0E600B52A73 /* Frameworks */,
 			);
@@ -121,6 +156,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		687AF91622EC602800B924D5 /* Third-Party */ = {
+			isa = PBXGroup;
+			children = (
+				687AF91722EC604100B924D5 /* SDWebImage.xcodeproj */,
+			);
+			name = "Third-Party";
+			sourceTree = "<group>";
+		};
+		687AF91822EC604100B924D5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				687AF91F22EC604200B924D5 /* libSDWebImage.a */,
+				687AF92122EC604200B924D5 /* SDWebImage.framework */,
+				687AF92322EC604200B924D5 /* SDWebImageMapKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,6 +188,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				68F666FD22EC65F000D4EA93 /* PBXTargetDependency */,
 			);
 			name = "Science Week";
 			productName = "Science Week";
@@ -167,12 +221,42 @@
 			mainGroup = 41AACDE9224CD2E900F46460;
 			productRefGroup = 41AACDF3224CD2E900F46460 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 687AF91822EC604100B924D5 /* Products */;
+					ProjectRef = 687AF91722EC604100B924D5 /* SDWebImage.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				41AACDF1224CD2E900F46460 /* Science Week */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		687AF91F22EC604200B924D5 /* libSDWebImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSDWebImage.a;
+			remoteRef = 687AF91E22EC604200B924D5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		687AF92122EC604200B924D5 /* SDWebImage.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SDWebImage.framework;
+			remoteRef = 687AF92022EC604200B924D5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		687AF92322EC604200B924D5 /* SDWebImageMapKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SDWebImageMapKit.framework;
+			remoteRef = 687AF92222EC604200B924D5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		41AACDF0224CD2E900F46460 /* Resources */ = {
@@ -207,6 +291,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		68F666FD22EC65F000D4EA93 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SDWebImage;
+			targetProxy = 68F666FC22EC65F000D4EA93 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		41AACDF9224CD2E900F46460 /* Main.storyboard */ = {
@@ -348,6 +440,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5V2A4389PA;
 				INFOPLIST_FILE = "Science Week/Info.plist";
@@ -367,6 +460,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5V2A4389PA;
 				INFOPLIST_FILE = "Science Week/Info.plist";

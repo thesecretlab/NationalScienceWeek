@@ -12,6 +12,8 @@ import Contacts
 
 import SafariServices
 
+import SDWebImage
+
 class EventDetailViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -21,6 +23,9 @@ class EventDetailViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
+    @IBOutlet weak var headerImageView: UIImageView!
+    @IBOutlet weak var eventImageView: UIImageView!
+    @IBOutlet weak var eventImageViewAspectRatio: NSLayoutConstraint!
     
     // Booking and social links
     @IBOutlet weak var bookOnlineButton: UIButton!
@@ -192,6 +197,32 @@ class EventDetailViewController: UIViewController, MKMapViewDelegate {
         bookOnlineButton.isHidden = event.bookingUrl == nil
         phoneButton.isHidden = event.bookingPhone == nil
         emailButton.isHidden = event.bookingEmail == nil
+        
+        if let imageURLString = event.officialImageUrl, let imageURL = URL(string:imageURLString) {
+            eventImageView.image = nil
+            eventImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+            eventImageView.backgroundColor = .darkGray
+            eventImageView!.sd_setImage(with: imageURL) { (image, error, cacheType, url) in
+                if let image = image {
+                    self.headerImageView.image = image
+
+//                    let aspectRatio = image.size.width / image.size.height
+//                    self.eventImageViewAspectRatio.isActive = false
+//
+//                    self.eventImageViewAspectRatio = self.eventImageView.widthAnchor.constraint(equalTo: self.eventImageView.heightAnchor, multiplier: aspectRatio)
+//                    self.eventImageViewAspectRatio.isActive = true
+//                    self.view.layoutIfNeeded()
+                    
+                    self.eventImageView.backgroundColor = .clear
+                } else {
+                    self.eventImageView.isHidden = true
+                }
+            }
+            eventImageView.isHidden = false
+        } else {
+            eventImageView.isHidden = true
+        }
+        
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -280,7 +311,7 @@ class EventDetailViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func showMoreInfoLink(_ sender: Any) {
         if let url = URL(string: event?.website ?? "") {
-            UIApplication.shared.open(url)            
+            UIApplication.shared.open(url)
         }
     }
     /*
