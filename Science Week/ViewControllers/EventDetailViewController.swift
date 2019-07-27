@@ -27,6 +27,22 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var linkButton: UIButton!
     
+    static var eventDateFormatter : DateFormatter = {
+        let d = DateFormatter()
+        
+        d.dateFormat = "EEEE, MMMM dd"
+        
+        return d
+    }()
+    
+    static var timeFormatter : DateFormatter = {
+        let d = DateFormatter()
+        
+        d.dateFormat = "hh:mm a"
+        
+        return d
+    }()
+    
     func addInfoLabel(title: String, text: String) {
         
         let titleLabel = UILabel(frame: CGRect.zero)
@@ -35,6 +51,7 @@ class EventDetailViewController: UIViewController {
         titleLabel.font = UIFont.preferredFont(forTextStyle: .body).bold()
         titleLabel.textColor = .white
         titleLabel.textAlignment = .right
+        titleLabel.numberOfLines = 0
         
         titleLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
         titleLabel.setContentHuggingPriority(.required, for: .horizontal)
@@ -44,6 +61,7 @@ class EventDetailViewController: UIViewController {
         textLabel.text = text
         textLabel.font = UIFont.preferredFont(forTextStyle: .body)
         textLabel.textColor = .white
+        textLabel.numberOfLines = 0
         
         textLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
         
@@ -84,9 +102,17 @@ class EventDetailViewController: UIViewController {
         titleLabel.text = event.name
         descriptionLabel.text = event.description
         
+        if let start = event.start, let end = event.end {
+            var times = "\(EventDetailViewController.eventDateFormatter.string(from: start)), \(EventDetailViewController.timeFormatter.string(from: start)) - \(EventDetailViewController.timeFormatter.string(from: end))"
+            addInfoLabel(title: "When", text: times)
+        }
+        
+        
         if let venue = event.venue, let description = venue.description {
             addInfoLabel(title: "Where", text: description)
         }
+        
+        addInfoLabel(title: "For", text: event.targetAudience.rawValue)
         
     }
     
