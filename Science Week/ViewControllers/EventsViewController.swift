@@ -89,7 +89,12 @@ extension EventsViewController {
         let primary = "\(event.name)"
         let secondary = "\(event.venue?.name  ?? "Event Venue"), \(event.state?.code ?? "Nationwide")"
         
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "EventTableViewCell")
+        let cellIdentifier = "EventTableViewCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) else {
+            fatalError("Failed to dequeue cell with identifier \(cellIdentifier)")
+        }
+        
         cell.backgroundColor = .clear
         
         cell.textLabel?.textColor = Theme.primaryTextColour
@@ -99,11 +104,5 @@ extension EventsViewController {
         cell.detailTextLabel?.text = secondary
 
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.isSelected = false
-        let event = displayedEvents[indexPath.item]
-        showToast(message: "Event selected: \(event.name)")
     }
 }
