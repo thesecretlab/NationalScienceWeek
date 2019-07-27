@@ -21,6 +21,7 @@
 		41B081C122DFCD0000AF53B5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B081C022DFCD0000AF53B5 /* MapViewController.swift */; };
 		41B081C322DFE19500AF53B5 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B081C222DFE19500AF53B5 /* EventsViewController.swift */; };
 		6847ED2122EAF0E700B52A73 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6847ED2022EAF0E700B52A73 /* WebKit.framework */; };
+		687AF90922EBE76200B924D5 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687AF90822EBE76200B924D5 /* EventDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		41B081C022DFCD0000AF53B5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		41B081C222DFE19500AF53B5 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		6847ED2022EAF0E700B52A73 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		687AF90822EBE76200B924D5 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				41B081C222DFE19500AF53B5 /* EventsViewController.swift */,
 				41B081C022DFCD0000AF53B5 /* MapViewController.swift */,
 				41B081BE22DFC95900AF53B5 /* AboutViewController.swift */,
+				687AF90822EBE76200B924D5 /* EventDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				41B081BF22DFC95900AF53B5 /* AboutViewController.swift in Sources */,
 				4178025622E1227A00C3B899 /* Event.swift in Sources */,
 				41AACDF6224CD2E900F46460 /* AppDelegate.swift in Sources */,
+				687AF90922EBE76200B924D5 /* EventDetailViewController.swift in Sources */,
 				4178025422E0E7EA00C3B899 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,6 +351,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5V2A4389PA;
 				INFOPLIST_FILE = "Science Week/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -365,6 +370,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5V2A4389PA;
 				INFOPLIST_FILE = "Science Week/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
