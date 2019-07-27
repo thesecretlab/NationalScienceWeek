@@ -83,7 +83,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     private func setTheme() {
         
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Theme.primaryTextColour]
-        self.navigationController?.navigationBar.tintColor = Theme.primaryAccentColour
+        self.navigationController?.navigationBar.tintColor = Theme.primaryAccentColour        
         self.navigationController?.navigationBar.barStyle = Theme.lightTheme ? .default : .black
         parentView?.backgroundColor = Theme.primaryBackgroundColour
     }

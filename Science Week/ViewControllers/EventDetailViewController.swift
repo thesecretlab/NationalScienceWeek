@@ -10,7 +10,9 @@ import UIKit
 import MapKit
 import Contacts
 
-class EventDetailViewController: UIViewController {
+import SafariServices
+
+class EventDetailViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -21,6 +23,7 @@ class EventDetailViewController: UIViewController {
     
     
     // Booking and social links
+    @IBOutlet weak var bookOnlineButton: UIButton!
     @IBOutlet weak var emailButton: UIButton!
     @IBOutlet weak var phoneButton: UIButton!
     @IBOutlet weak var twitterButton: UIButton!
@@ -42,7 +45,7 @@ class EventDetailViewController: UIViewController {
     static var timeFormatter : DateFormatter = {
         let d = DateFormatter()
         
-        d.dateFormat = "hh:mm a"
+        d.dateFormat = "h:mm a"
         
         return d
     }()
@@ -162,7 +165,6 @@ class EventDetailViewController: UIViewController {
                     guard let url = URL(string: "mailto:"+email) else { return }
                     UIApplication.shared.open(url)
                 }
-                
             }
         }
         
@@ -183,9 +185,16 @@ class EventDetailViewController: UIViewController {
         } else {
             mapView.isHidden = true
         }
+        
+        twitterButton.isHidden = event.twitter == nil
+        facebookButton.isHidden = event.facebook == nil
+        linkButton.isHidden = event.website == nil
+        bookOnlineButton.isHidden = event.bookingUrl == nil
+        phoneButton.isHidden = event.bookingPhone == nil
+        emailButton.isHidden = event.bookingEmail == nil
     }
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let view = MKMarkerAnnotationView()
         view.markerTintColor = Theme.mapAnnotationColour
         
@@ -225,6 +234,55 @@ class EventDetailViewController: UIViewController {
             ])
     }
 
+    @IBAction func bookOnlineTapped(_ sender: Any) {
+        if let url = URL(string: event?.bookingUrl ?? "") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    @IBAction func bookByEmailTapped(_ sender: Any) {
+        guard let email = event?.bookingEmail else { return }
+        
+        if let url = URL(string: "mailto:" + email) {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    @IBAction func bookByPhone(_ sender: Any) {
+        guard let phone = event?.bookingPhone else { return }
+        
+        if let url = URL(string: "tel:" + phone) {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    @IBAction func showTwitterTapped(_ sender: Any) {
+        
+        // Ensure we have a URL or username or _something_
+        guard let twitter = event?.twitter else { return }
+        
+        // Guess at whether this is a URL or a username. Usefully,
+        // http://twitter.com/@username and http://twitter.com/username
+        // go to the same thing, so if we don't think this is a URL, just stick what we have
+        // to the end of twitter.com and hope that'll work
+        let urlString = twitter.starts(with: "http") ? twitter : "https://twitter.com/" + twitter
+        
+        if let url = URL(string: urlString) {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    @IBAction func showFacebookTapped(_ sender: Any) {
+        if let url = URL(string: event?.facebook ?? "") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    @IBAction func showMoreInfoLink(_ sender: Any) {
+        if let url = URL(string: event?.website ?? "") {
+            UIApplication.shared.open(url)            
+        }
+    }
     /*
     // MARK: - Navigation
 

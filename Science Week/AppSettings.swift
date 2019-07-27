@@ -23,11 +23,12 @@ public final class Theme {
     
     // 2019 colours
     static let lightTheme = false
-    static var primaryBackgroundColour  = UIColour.black
-    static let primaryAccentColour      = UIColour(r: 255, g: 000, b: 164)
-    static let secondaryAccentColour    = UIColour(r: 182, g: 032, b: 224)
-    static let tertiaryAccentColour     = UIColour(r: 109, g: 212, b: 000)
-    static let inactiveColour           = UIColour.darkGray
+    static let fallbackColor = UIColor.magenta
+    static var primaryBackgroundColour  = UIColour.init(named: "PrimaryBackground") ?? fallbackColor
+    static let primaryAccentColour      = UIColour.init(named: "PrimaryAccent") ?? fallbackColor
+    static let secondaryAccentColour    = UIColour.init(named: "SecondaryAccent") ?? fallbackColor
+    static let tertiaryAccentColour     = UIColour.init(named: "TertiaryAccent") ?? fallbackColor
+    static let inactiveColour           = UIColour.init(named: "Inactive") ?? fallbackColor
     
     // 2018 colours
 //    static let lightTheme = true
