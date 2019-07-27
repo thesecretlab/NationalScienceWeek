@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Contacts
 
 class EventDetailViewController: UIViewController {
     
@@ -100,10 +101,22 @@ class EventDetailViewController: UIViewController {
         }
         
         titleLabel.text = event.name
-        descriptionLabel.text = event.description
+        
+        var descriptionText = event.description ?? ""
+        
+        if let moreInfo = event.moreInfo {
+            descriptionText += "\n" + moreInfo
+        }
+        
+        descriptionLabel.text = descriptionText
         
         if let start = event.start, let end = event.end {
-            var times = "\(EventDetailViewController.eventDateFormatter.string(from: start)), \(EventDetailViewController.timeFormatter.string(from: start)) - \(EventDetailViewController.timeFormatter.string(from: end))"
+            let startDate = EventDetailViewController.eventDateFormatter.string(from: start)
+            let startTime = EventDetailViewController.timeFormatter.string(from: start)
+            let endTime = EventDetailViewController.timeFormatter.string(from: end)
+            
+            let times = "\(startDate), \(startTime) - \(endTime)"
+            
             addInfoLabel(title: "When", text: times)
         }
         
@@ -114,10 +127,64 @@ class EventDetailViewController: UIViewController {
         
         addInfoLabel(title: "For", text: event.targetAudience.rawValue)
         
+        mapView.removeAnnotations(mapView.annotations)
+        
+        if let venue = event.venue, let coords = venue.coords {
+            mapView.isHidden = false
+            let annotation = MKPointAnnotation()
+            let centerCoordinate = CLLocationCoordinate2D(latitude: coords.latitude, longitude: coords.longitude)
+            annotation.coordinate = centerCoordinate
+            annotation.title = venue.name ?? "Event Venue"
+            mapView.addAnnotation(annotation)
+            
+            // Show a region 5 kilometers around the point
+            let region = MKCoordinateRegion(center: centerCoordinate, latitudinalMeters: 5000, longitudinalMeters: 5000)
+            
+            mapView.setRegion(region, animated: false)
+        } else {
+            mapView.isHidden = true
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView {
+        let view = MKMarkerAnnotationView()
+        view.markerTintColor = Theme.mapAnnotationColour
+        
+        if let cluster = annotation as? MKClusterAnnotation {
+            view.displayPriority = .defaultHigh
+            view.glyphText = "\(cluster.memberAnnotations.count)"
+            view.canShowCallout = false
+        } else {
+            view.displayPriority = .defaultLow
+            view.clusteringIdentifier = "event"
+            view.collisionMode = .circle
+            view.canShowCallout = true
+        }
+        
+        return view
     }
     
     
-    
+    @IBAction func mapViewTapped(_ map: Any) {
+        guard let location = event?.venue, let coords = event?.venue?.coords else { return }
+        
+        let coordinates = CLLocationCoordinate2D(latitude: coords.latitude, longitude: coords.longitude)
+        
+        let addressDictionary : [String:Any?] = [
+            CNPostalAddressStreetKey: location.streetName,
+            CNPostalAddressCityKey: location.suburb,
+            CNPostalAddressPostalCodeKey: location.postcode?.description]
+        
+        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: addressDictionary as [String : Any])
+        
+        let item = MKMapItem(placemark: placemark)
+        
+        item.name = event?.name
+        
+        item.openInMaps(launchOptions: [
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: coordinates)
+            ])
+    }
 
     /*
     // MARK: - Navigation
