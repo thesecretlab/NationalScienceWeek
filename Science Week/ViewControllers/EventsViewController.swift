@@ -75,6 +75,19 @@ class EventsViewController: UITableViewController, EventDisplayingViewController
         displayedEvents = events
         tableView.reloadData()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let cell = sender as? UITableViewCell, let row = tableView.indexPath(for: cell)?.row else {
+            fatalError("Failed to get an event for cell \(sender)")
+        }
+        
+        guard let detailViewController = segue.destination as? EventDetailViewController else {
+            fatalError("Segue expected destination to be an EventDetailViewController")
+        }
+        
+        detailViewController.event = displayedEvents[row]        
+    }
 }
 
 // MARK: UITableView functions
