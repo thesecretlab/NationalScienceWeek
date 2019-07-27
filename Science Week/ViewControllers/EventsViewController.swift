@@ -8,12 +8,13 @@
 
 import UIKit
 
-class EventsViewController: UIViewController, EventDisplayingViewController {
+class EventsViewController: UITableViewController, EventDisplayingViewController {
     
     @IBOutlet var parentView: UIView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var favouritesButton: UIBarButtonItem!
+    
     
     @IBAction func favouritesButtonPressed(_ sender: Any) {
         toggleFavouritesOnly()
@@ -22,15 +23,15 @@ class EventsViewController: UIViewController, EventDisplayingViewController {
     private(set) var showFavouritesOnly = false
     private(set) var stateFilter: State? = nil
     
+    private var displayedEvents: [Event] = EventsList.events
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTheme()
     }
     
     func refresh() {
-        if let tableViewController = children.last as? EventsTableViewController {
-            tableViewController.filterEvents(state: stateFilter, favouritesOnly: showFavouritesOnly)
-        }
+        filterEvents(state: stateFilter, favouritesOnly: showFavouritesOnly)
     }
     
     private func toggleFavouritesOnly() {
@@ -52,32 +53,14 @@ class EventsViewController: UIViewController, EventDisplayingViewController {
         favouritesButton.tintColor = showFavouritesOnly ? Theme.primaryAccentColour : Theme.inactiveColour
         
         parentView?.backgroundColor = Theme.primaryBackgroundColour
+        
+        tableView.backgroundColor = Theme.primaryBackgroundColour
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return Theme.lightTheme ? UIStatusBarStyle.default : .lightContent
     }
-}
 
-class EventsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    @IBOutlet var parentView: UIView!
-    @IBOutlet weak var tableView: UITableView!
-    
-    private var displayedEvents: [Event] = EventsList.events
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setTheme()
-        
-        tableView.delegate  = self
-        tableView.dataSource = self
-    }
-    
-    private func setTheme() {
-        tableView.backgroundColor = Theme.primaryBackgroundColour
-    }
-    
     internal func filterEvents(state: State?, favouritesOnly: Bool) {
         var events = EventsList.events
         
@@ -96,12 +79,12 @@ class EventsTableViewController: UIViewController, UITableViewDelegate, UITableV
 
 // MARK: UITableView functions
 
-extension EventsTableViewController {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension EventsViewController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayedEvents.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let event = displayedEvents[indexPath.item]
         let primary = "\(event.name)"
         let secondary = "\(event.venue?.name  ?? "Event Venue"), \(event.state?.code ?? "Nationwide")"
@@ -118,7 +101,7 @@ extension EventsTableViewController {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.isSelected = false
         let event = displayedEvents[indexPath.item]
         showToast(message: "Event selected: \(event.name)")

@@ -59,12 +59,17 @@ final class EventsList {
             if let data = data {
                 
                 // save it to disk
-                if let _ = try? data.write(to: URL.feedCacheURL) {
+                do {
+                    try data.write(to: URL.feedCacheURL)
+                    
                     EventsList.events = []
                     
                     // when complete, update mainviewcontroller
                     EventsList.delegate?.parseUpdates()
+                } catch let error {
+                    print("Error writing data to disk: \(error)")
                 }
+                
             }
         }
     }
