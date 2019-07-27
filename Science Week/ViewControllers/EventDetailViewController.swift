@@ -19,7 +19,6 @@ class EventDetailViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    @IBOutlet weak var moreInfoLabel: UILabel!
     
     // Booking and social links
     @IBOutlet weak var emailButton: UIButton!
@@ -27,6 +26,10 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var twitterButton: UIButton!
     @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var linkButton: UIButton!
+    
+    @IBOutlet weak var contactInfoView: UIStackView!
+    
+    @IBOutlet weak var contactInfoStackView: UIStackView!
     
     static var eventDateFormatter : DateFormatter = {
         let d = DateFormatter()
@@ -44,7 +47,7 @@ class EventDetailViewController: UIViewController {
         return d
     }()
     
-    func addInfoLabel(title: String, text: String) {
+    func addInfoLabel(title: String, text: String, labelWidth : CGFloat = 80, stackView : UIStackView? = nil, onClick: (() -> Void)? = nil) {
         
         let titleLabel = UILabel(frame: CGRect.zero)
         
@@ -54,7 +57,7 @@ class EventDetailViewController: UIViewController {
         titleLabel.textAlignment = .right
         titleLabel.numberOfLines = 0
         
-        titleLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        titleLabel.widthAnchor.constraint(equalToConstant: labelWidth).isActive = true
         titleLabel.setContentHuggingPriority(.required, for: .horizontal)
         
         let textLabel = UILabel(frame: CGRect.zero)
@@ -64,15 +67,22 @@ class EventDetailViewController: UIViewController {
         textLabel.textColor = .white
         textLabel.numberOfLines = 0
         
+        if let onClick = onClick {
+            textLabel.textColor = Theme.primaryAccentColour
+            textLabel.addGestureRecognizer(UITapGestureRecognizerWithClosure(closure: onClick))
+            textLabel.isUserInteractionEnabled = true
+        }
+        
         textLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
         
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, textLabel])
-        stackView.alignment = .top
-        stackView.axis = .horizontal
+        let newStackView = UIStackView(arrangedSubviews: [titleLabel, textLabel])
+        newStackView.alignment = .top
+        newStackView.axis = .horizontal
         
-        stackView.spacing = UIStackView.spacingUseSystem
+        newStackView.spacing = UIStackView.spacingUseSystem
         
-        eventInfoStackView.addArrangedSubview(stackView)
+        
+        (stackView ?? eventInfoStackView).addArrangedSubview(newStackView)
         
     }
     
@@ -125,7 +135,36 @@ class EventDetailViewController: UIViewController {
             addInfoLabel(title: "Where", text: description)
         }
         
+        addInfoLabel(title: "Is Free", text: event.isFree ? "Yes" : "No")
+        
+        if let payment = event.payment {
+            addInfoLabel(title: "Payment", text: payment)
+        }
+        
         addInfoLabel(title: "For", text: event.targetAudience.rawValue)
+        
+        contactInfoView.isHidden = event.contact == nil
+        
+        if let contact = event.contact {
+            let labelWidth : CGFloat = 120
+            contactInfoStackView.removeAllArrangedSubviews()
+            
+            if let name = contact.name { addInfoLabel(title: "Name", text: name, labelWidth: labelWidth, stackView: contactInfoStackView) }
+            if let org = contact.organisation { addInfoLabel(title: "Organisation", text: org, labelWidth: labelWidth, stackView: contactInfoStackView) }
+            if let phone = contact.phone {
+                addInfoLabel(title: "Phone", text: phone, labelWidth: labelWidth, stackView: contactInfoStackView) {
+                    guard let url = URL(string: "tel:"+phone) else { return }
+                    UIApplication.shared.open(url)
+                }
+            }
+            if let email = contact.email {
+                addInfoLabel(title: "Email", text: email, labelWidth: labelWidth, stackView: contactInfoStackView) {
+                    guard let url = URL(string: "mailto:"+email) else { return }
+                    UIApplication.shared.open(url)
+                }
+                
+            }
+        }
         
         mapView.removeAnnotations(mapView.annotations)
         
@@ -237,4 +276,30 @@ extension UIFont {
         return withTraits(traits: .traitBold, .traitItalic)
     }
     
+}
+
+class UITapGestureRecognizerWithClosure: UITapGestureRecognizer {
+    private var invokeTarget:UIGestureRecognizerInvokeTarget
+    
+    init(closure:@escaping () -> ()) {
+        // we need to make a separate class instance to pass
+        // to super.init because self is not available yet
+        self.invokeTarget = UIGestureRecognizerInvokeTarget(closure: closure)
+        super.init(target: invokeTarget, action: #selector(invokeTarget.invoke(fromTarget:)))
+    }
+}
+
+// this class defines an object with a known selector
+// that we can use to wrap our closure
+class UIGestureRecognizerInvokeTarget: NSObject {
+    private var closure:() -> ()
+    
+    init(closure:@escaping () -> ()) {
+        self.closure = closure
+        super.init()
+    }
+    
+    @objc public func invoke(fromTarget gestureRecognizer: UIGestureRecognizer) {
+        self.closure()
+    }
 }

@@ -233,7 +233,7 @@
                                         <blurEffect style="dark"/>
                                     </visualEffectView>
                                     <stackView opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Tht-Xa-MbS">
-                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="556.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="609"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v47-gr-bGC" userLabel="Spacer View">
                                                 <rect key="frame" x="176" y="20" width="672" height="64"/>
@@ -419,12 +419,42 @@
                                                     </mask>
                                                 </variation>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CU8-us-RLj">
-                                                <rect key="frame" x="176" y="516" width="672" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ToQ-Ll-J9D">
+                                                <rect key="frame" x="176" y="516" width="672" height="73"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CU8-us-RLj">
+                                                        <rect key="frame" x="0.0" y="0.0" width="672" height="24"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="yci-93-6jo">
+                                                        <rect key="frame" x="0.0" y="32" width="672" height="41"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="meb-cX-Gt6">
+                                                                <rect key="frame" x="0.0" y="0.0" width="672" height="41"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFy-Jq-aAs">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="20.5"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="xWQ-Aj-hPO"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Young Tassie Scientists Public After-School Workshop For Children’s University" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7O1-yj-MFv">
+                                                                        <rect key="frame" x="88" y="0.0" width="584" height="41"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <directionalEdgeInsets key="directionalLayoutMargins" top="20" leading="20" bottom="20" trailing="20"/>
                                     </stackView>
@@ -458,13 +488,14 @@
                         <barButtonItem key="rightBarButtonItem" image="heart" id="DkW-kz-iqF"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="contactInfoStackView" destination="yci-93-6jo" id="XyQ-yt-Ial"/>
+                        <outlet property="contactInfoView" destination="ToQ-Ll-J9D" id="sBJ-GH-obr"/>
                         <outlet property="descriptionLabel" destination="zE8-Dy-nxa" id="7uC-qn-v9V"/>
                         <outlet property="emailButton" destination="OXy-lO-Wsr" id="Ras-or-uJB"/>
                         <outlet property="eventInfoStackView" destination="rNt-cR-fxH" id="BTO-Kf-aL6"/>
                         <outlet property="facebookButton" destination="d4s-O1-sSi" id="M6q-QP-WQf"/>
                         <outlet property="linkButton" destination="zrd-M8-GRQ" id="esE-nu-4Mz"/>
                         <outlet property="mapView" destination="xHm-NN-UJd" id="9ca-ve-htx"/>
-                        <outlet property="moreInfoLabel" destination="CU8-us-RLj" id="svR-j1-AVX"/>
                         <outlet property="phoneButton" destination="HQv-Zq-OyY" id="Gbi-cD-09u"/>
                         <outlet property="titleLabel" destination="JOG-nG-53X" id="kRp-KA-t2x"/>
                         <outlet property="twitterButton" destination="CPA-w1-hgu" id="EMe-JQ-ZId"/>
