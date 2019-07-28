@@ -87,3 +87,18 @@ public class FavouriteEvents {
     }
     
 }
+
+extension Preferences {
+    
+    static let stateKey = "state"
+    
+    var selectedState : String? {
+        get {
+            return UserDefaults.standard.string(forKey: Preferences.stateKey)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: Preferences.stateKey)
+        }
+    }
+    
+}

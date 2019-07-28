@@ -16,7 +16,17 @@ class EventsViewController: UITableViewController, EventDisplayingViewController
         case allEvents, specifiedEvents
     }
     
-    var listType : ListType = .allEvents
+    var listType : ListType = .allEvents {
+        didSet {
+            switch listType {
+            case .allEvents:
+                self.navigationItem.title = "Events"
+            case .specifiedEvents:
+                self.navigationItem.title = "Events Here"
+                self.navigationItem.rightBarButtonItems = nil
+            }
+        }
+    }
     
     
     enum EventGrouping : Int {
@@ -27,13 +37,19 @@ class EventsViewController: UITableViewController, EventDisplayingViewController
     
     var events : [Event] = []
     
-    var states : [String] = []
-    
     var grouping : EventGrouping = .byDate
     
     var displayedEventGroups : [EventGroup] = []
     
-    private(set) var stateFilter: State? = nil
+    private(set) var stateFilter: State? = nil {
+        didSet {
+            if stateFilter == nil {
+                self.navigationItem.title = "Events"
+            } else {
+                self.navigationItem.title = "Events in \(self.stateFilter!.code)"
+            }
+        }
+    }
     
     private var displayedEvents: [Event] = EventsList.events
     
@@ -59,6 +75,16 @@ class EventsViewController: UITableViewController, EventDisplayingViewController
         
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = true
+        
+        if listType == .allEvents {
+            events = EventsList.events
+        } else if listType == .specifiedEvents {
+            // we will have already been given a list of events to show
+            // by the previous view controller, so don't replace that set of events here
+        }
+        
+        self.stateFilter = State(code: Preferences.shared.selectedState)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,10 +92,14 @@ class EventsViewController: UITableViewController, EventDisplayingViewController
     }
     
     func refresh() {
-        events = EventsList.events
+        if listType == .allEvents {
+            events = EventsList.events
+        }
+
         updateDisplayedEventGroups()
         
         tableView.reloadData()
+        
     }
     
     func updateDisplayedEventGroups() {
@@ -171,6 +201,13 @@ class EventsViewController: UITableViewController, EventDisplayingViewController
     }
     
     private func updateFavouritesButtonAppearance() {
+        
+        // If we're showing a list of specified events, the favourites
+        // button isn't present.
+        if listType == .specifiedEvents {
+            return
+        }
+        
         switch Preferences.shared.displayMode {
         case .all:
             favouritesButton.tintColor = Theme.inactiveColour
@@ -200,6 +237,29 @@ class EventsViewController: UITableViewController, EventDisplayingViewController
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // Prepare a State Selection view controller
+        if let stateSelectionViewController = segue.destination as? StateSelectionTableViewController {
+            
+            stateSelectionViewController.states = State.allCases.map { $0.code }
+            stateSelectionViewController.selectedState = self.stateFilter?.code
+            
+            stateSelectionViewController.didSelect = {
+                Preferences.shared.selectedState = stateSelectionViewController.selectedState
+                
+                self.stateFilter = State(code: stateSelectionViewController.selectedState ?? "")
+                
+                self.updateDisplayedEventGroups()
+                
+                self.tableView.reloadData()
+                
+                
+            }
+            
+            return
+        }
+        
+        // Prepare an EventDetailViewController
         
         guard let cell = sender as? UITableViewCell, let indexPath = self.tableView.indexPath(for: cell) else {
             fatalError("Segue sender is not a cell, or index path for cell not found")
@@ -249,6 +309,11 @@ extension EventsViewController {
         
         cell.textLabel?.text = primary
         cell.detailTextLabel?.text = secondary
+        
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = Theme.secondaryAccentColourDark
+        cell.selectedBackgroundView = bgColorView
+    
 
         return cell
     }
@@ -256,10 +321,8 @@ extension EventsViewController {
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
         if let header = view as? UITableViewHeaderFooterView {
-            if header.backgroundView == nil {
-                header.backgroundView = UIView()
-                header.backgroundView?.backgroundColor = Theme.secondaryBackgroundColour
-            }
+            header.backgroundView?.backgroundColor = Theme.secondaryAccentColour.darkened(by: 50)
+            
             header.textLabel?.textColor = Theme.primaryTextColour
         }
     }

@@ -11,6 +11,28 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
+    class EventAnnotation : NSObject, MKAnnotation {
+        var coordinate: CLLocationCoordinate2D
+        
+        var title: String?
+        
+        var event : Event
+        
+        init?(event: Event) {
+            
+            guard let position = event.venue?.coords else {
+                return nil
+            }
+            
+            self.event = event
+            self.title = event.name
+            self.coordinate = CLLocationCoordinate2D(
+                latitude: CLLocationDegrees(position.latitude),
+                longitude: CLLocationDegrees(position.longitude)
+            )
+        }
+    }
+    
     // outlets that are attached to the view elements in the
     // Interface Builder Main.storyboard
     @IBOutlet var parentView: UIView!
@@ -46,6 +68,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         annotateMap()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        for annotation in mapView.selectedAnnotations {
+            mapView.deselectAnnotation(annotation, animated: false)
+        }
+    }
+    
     func refresh() {
         let userLocation = mapView.userLocation
         mapView.removeAnnotations(mapView.annotations)
@@ -67,13 +95,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     // puts pins on map locations where known events are
     private func annotateMap() {
         for event in EventsList.events {
-            let venue = event.venue
-            
-            if let coords = venue?.coords {
-                let annotation = MKPointAnnotation()
-                let centerCoordinate = CLLocationCoordinate2D(latitude: coords.latitude, longitude: coords.longitude)
-                annotation.coordinate = centerCoordinate
-                annotation.title = venue?.name ?? "Event Venue"
+            if let annotation = EventAnnotation(event: event) {
                 mapView.addAnnotation(annotation)
             }
         }
@@ -90,6 +112,27 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return Theme.lightTheme ? UIStatusBarStyle.default : .lightContent
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let event = sender as? Event,
+            let eventController = segue.destination as? EventDetailViewController
+        {
+            // Deliver the event to the view controller
+            eventController.event = event
+        }
+        
+        if let cluster = sender as? MKClusterAnnotation,
+            let eventListController = segue.destination as? EventsViewController {
+            
+            eventListController.listType = .specifiedEvents
+            
+            let events = cluster.memberAnnotations.compactMap({ ($0 as? EventAnnotation)?.event})
+            
+            eventListController.events = events
+            
+        }
     }
 }
 
@@ -112,6 +155,17 @@ extension MapViewController {
         }
         
         return view
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let clusterAnnotation = view.annotation as? MKClusterAnnotation {
+            //NSLog("Selected cluster annotation: \(clusterAnnotation.memberAnnotations.count)")
+            self.performSegue(withIdentifier: "showEventList", sender: clusterAnnotation)
+        }
+        
+        if let eventAnnotation = view.annotation as? EventAnnotation {
+            self.performSegue(withIdentifier: "showEvent", sender: eventAnnotation.event)
+        }
     }
 }
 

@@ -144,6 +144,8 @@
                     <connections>
                         <outlet property="locationButton" destination="Cyd-10-5UY" id="JBr-GA-Bdb"/>
                         <outlet property="mapView" destination="u1j-Q7-BVs" id="aYX-a8-IPK"/>
+                        <segue destination="2Ik-Mt-fhQ" kind="show" identifier="showEvent" id="uYs-sd-vhX"/>
+                        <segue destination="vlw-1R-YX0" kind="show" identifier="showEventList" id="0A0-8r-pFg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="va0-xt-M9k" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -196,8 +198,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Events" id="TAo-X6-m4w">
+                        <barButtonItem key="backBarButtonItem" title="Events" id="fTj-Z3-jhe"/>
                         <rightBarButtonItems>
-                            <barButtonItem image="map-pin" id="iof-fl-PDs"/>
+                            <barButtonItem image="map-pin" id="iof-fl-PDs">
+                                <connections>
+                                    <segue destination="vFU-3o-iaV" kind="popoverPresentation" popoverAnchorBarButtonItem="iof-fl-PDs" id="tzH-R5-LHx">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem image="heart" id="yxd-ZI-9JS">
                                 <connections>
                                     <action selector="favouritesButtonPressed:" destination="vlw-1R-YX0" id="KJH-qD-AsL"/>
@@ -603,6 +612,44 @@
             </objects>
             <point key="canvasLocation" x="580" y="-905"/>
         </scene>
+        <!--State Selection Table View Controller-->
+        <scene sceneID="nKb-tn-Otq">
+            <objects>
+                <tableViewController id="vFU-3o-iaV" customClass="StateSelectionTableViewController" customModule="ScienceWeek" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5c4-06-lw8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" name="PrimaryBackground"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StateCell" textLabel="C4h-9L-nyD" style="IBUITableViewCellStyleDefault" id="TSm-E5-Sq2">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TSm-E5-Sq2" id="Whg-7B-TWh">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C4h-9L-nyD">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="tintColor" name="PrimaryAccent"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vFU-3o-iaV" id="Dc6-v8-9v1"/>
+                            <outlet property="delegate" destination="vFU-3o-iaV" id="WuX-3s-Sb2"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gEw-pZ-MbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1512" y="-1582"/>
+        </scene>
     </scenes>
     <resources>
         <image name="email" width="30" height="30"/>
@@ -621,8 +668,15 @@
         <namedColor name="PrimaryAccent">
             <color red="1" green="0.0" blue="0.64313725490196083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="PrimaryBackground">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
         <namedColor name="SecondaryAccent">
             <color red="0.71372549019607845" green="0.12549019607843137" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="YAy-cx-04l"/>
+        <segue reference="0A0-8r-pFg"/>
+    </inferredMetricsTieBreakers>
 </document>

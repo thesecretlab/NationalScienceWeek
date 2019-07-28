@@ -56,12 +56,12 @@ extension MasterViewController: XMLParserDelegate {
         if data.isEmpty == false {
             switch elementName {
             case "EventID": currentEvent.id = data
-            case "EventName": currentEvent.name = data
+            case "EventName": currentEvent.name = data.stringByDecodingHTMLEntities
             case "EventType": currentEvent.type = data
             case "EventCategory": currentEvent.categories.append(data)
             case "EventStart": currentEvent.start = dateFormatter.date(from: data)
             case "EventEnd": currentEvent.end = dateFormatter.date(from: data)
-            case "EventDescription": currentEvent.description = data
+            case "EventDescription": currentEvent.description = data.stringByDecodingHTMLEntities
             case "EventTargetAudience": currentEvent.targetAudience = TargetAudience(rawValue: data) ?? .allAges
             case "EventPayment": currentEvent.payment = data
             case "EventIsFree": currentEvent.isFree = Bool(data) ?? false
@@ -114,11 +114,7 @@ extension MasterViewController: XMLParserDelegate {
     
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         
-        
-        let data = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        if data.isEmpty { return }
-        
-        accumulatedString += data
+        accumulatedString += string
         
         
         

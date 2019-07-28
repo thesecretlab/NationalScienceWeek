@@ -25,6 +25,7 @@
 		68F666FB22EC65C000D4EA93 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 687AF92122EC604200B924D5 /* SDWebImage.framework */; };
 		68F6670722ED491300D4EA93 /* StringHTMLUnescaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F6670622ED491300D4EA93 /* StringHTMLUnescaping.swift */; };
 		68F6670922ED492100D4EA93 /* FavouriteEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F6670822ED492100D4EA93 /* FavouriteEvents.swift */; };
+		68F6670B22ED629F00D4EA93 /* StateSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F6670A22ED629F00D4EA93 /* StateSelectionTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		687AF91722EC604100B924D5 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDWebImage.xcodeproj; path = "Third-Party/SDWebImage/SDWebImage.xcodeproj"; sourceTree = "<group>"; };
 		68F6670622ED491300D4EA93 /* StringHTMLUnescaping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringHTMLUnescaping.swift; sourceTree = "<group>"; };
 		68F6670822ED492100D4EA93 /* FavouriteEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteEvents.swift; sourceTree = "<group>"; };
+		68F6670A22ED629F00D4EA93 /* StateSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateSelectionTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 		4178025722E12A3E00C3B899 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				68F6670A22ED629F00D4EA93 /* StateSelectionTableViewController.swift */,
 				41AACDF7224CD2E900F46460 /* MasterViewController.swift */,
 				41B081C222DFE19500AF53B5 /* EventsViewController.swift */,
 				41B081C022DFCD0000AF53B5 /* MapViewController.swift */,
@@ -284,6 +287,7 @@
 			files = (
 				411E968D22E825FA001A8A23 /* EventsList.swift in Sources */,
 				41B081C122DFCD0000AF53B5 /* MapViewController.swift in Sources */,
+				68F6670B22ED629F00D4EA93 /* StateSelectionTableViewController.swift in Sources */,
 				68F6670722ED491300D4EA93 /* StringHTMLUnescaping.swift in Sources */,
 				4178025B22E3867600C3B899 /* Feed.swift in Sources */,
 				41AACDF8224CD2E900F46460 /* MasterViewController.swift in Sources */,

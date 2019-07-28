@@ -12,6 +12,11 @@ enum State: String, CaseIterable {
     case act, nsw, nt, qld, sa, tas, vic, wa
     
     var code: String { return self.rawValue.uppercased() }
+    
+    init? (code: String?) {
+        guard let code = code else { return nil }
+        self.init(rawValue: code.lowercased())
+    }
 }
 
 enum TargetAudience: String {

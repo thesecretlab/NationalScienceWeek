@@ -56,6 +56,8 @@ public final class Theme {
         return primaryBackgroundColour.lightened(by: 30)
     }
     
+    static var secondaryAccentColourDark = secondaryAccentColour.darkened(by: 50)
+    
     private init() {}
 }
 
