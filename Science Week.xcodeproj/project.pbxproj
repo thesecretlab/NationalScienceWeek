@@ -22,40 +22,20 @@
 		41B081C322DFE19500AF53B5 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B081C222DFE19500AF53B5 /* EventsViewController.swift */; };
 		6847ED2122EAF0E700B52A73 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6847ED2022EAF0E700B52A73 /* WebKit.framework */; };
 		687AF90922EBE76200B924D5 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687AF90822EBE76200B924D5 /* EventDetailViewController.swift */; };
-		68F666FB22EC65C000D4EA93 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 687AF92122EC604200B924D5 /* SDWebImage.framework */; };
 		68F6670722ED491300D4EA93 /* StringHTMLUnescaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F6670622ED491300D4EA93 /* StringHTMLUnescaping.swift */; };
 		68F6670922ED492100D4EA93 /* FavouriteEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F6670822ED492100D4EA93 /* FavouriteEvents.swift */; };
 		68F6670B22ED629F00D4EA93 /* StateSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F6670A22ED629F00D4EA93 /* StateSelectionTableViewController.swift */; };
+		68F6671322ED79F600D4EA93 /* Science_WeekUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F6671222ED79F600D4EA93 /* Science_WeekUITests.swift */; };
+		68F6671B22ED7A0D00D4EA93 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F6671A22ED7A0D00D4EA93 /* SnapshotHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		687AF91E22EC604200B924D5 /* PBXContainerItemProxy */ = {
+		68F6671522ED79F600D4EA93 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 687AF91722EC604100B924D5 /* SDWebImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 53761325155AD0D5005750A4;
-			remoteInfo = "SDWebImage static";
-		};
-		687AF92022EC604200B924D5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 687AF91722EC604100B924D5 /* SDWebImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4A2CADFF1AB4BB5300B6BC39;
-			remoteInfo = SDWebImage;
-		};
-		687AF92222EC604200B924D5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 687AF91722EC604100B924D5 /* SDWebImage.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 80B6DFEE2142B71600BCB334;
-			remoteInfo = SDWebImageMapKit;
-		};
-		68F666FC22EC65F000D4EA93 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 687AF91722EC604100B924D5 /* SDWebImage.xcodeproj */;
+			containerPortal = 41AACDEA224CD2E900F46460 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4A2CADFE1AB4BB5300B6BC39;
-			remoteInfo = SDWebImage;
+			remoteGlobalIDString = 41AACDF1224CD2E900F46460;
+			remoteInfo = "Science Week";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -78,10 +58,13 @@
 		41B081C222DFE19500AF53B5 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		6847ED2022EAF0E700B52A73 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		687AF90822EBE76200B924D5 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
-		687AF91722EC604100B924D5 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDWebImage.xcodeproj; path = "Third-Party/SDWebImage/SDWebImage.xcodeproj"; sourceTree = "<group>"; };
 		68F6670622ED491300D4EA93 /* StringHTMLUnescaping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringHTMLUnescaping.swift; sourceTree = "<group>"; };
 		68F6670822ED492100D4EA93 /* FavouriteEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteEvents.swift; sourceTree = "<group>"; };
 		68F6670A22ED629F00D4EA93 /* StateSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateSelectionTableViewController.swift; sourceTree = "<group>"; };
+		68F6671022ED79F600D4EA93 /* Science WeekUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Science WeekUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		68F6671222ED79F600D4EA93 /* Science_WeekUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Science_WeekUITests.swift; sourceTree = "<group>"; };
+		68F6671422ED79F600D4EA93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68F6671A22ED7A0D00D4EA93 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +72,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68F666FB22EC65C000D4EA93 /* SDWebImage.framework in Frameworks */,
 				6847ED2122EAF0E700B52A73 /* WebKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68F6670D22ED79F500D4EA93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,7 +115,7 @@
 			children = (
 				4178025922E384A400C3B899 /* README.md */,
 				41AACDF4224CD2E900F46460 /* Science Week */,
-				687AF91622EC602800B924D5 /* Third-Party */,
+				68F6671122ED79F600D4EA93 /* Science WeekUITests */,
 				41AACDF3224CD2E900F46460 /* Products */,
 				6847ED1F22EAF0E600B52A73 /* Frameworks */,
 			);
@@ -136,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				41AACDF2224CD2E900F46460 /* Science Week.app */,
+				68F6671022ED79F600D4EA93 /* Science WeekUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -165,22 +155,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		687AF91622EC602800B924D5 /* Third-Party */ = {
+		68F6671122ED79F600D4EA93 /* Science WeekUITests */ = {
 			isa = PBXGroup;
 			children = (
-				687AF91722EC604100B924D5 /* SDWebImage.xcodeproj */,
+				68F6671A22ED7A0D00D4EA93 /* SnapshotHelper.swift */,
+				68F6671222ED79F600D4EA93 /* Science_WeekUITests.swift */,
+				68F6671422ED79F600D4EA93 /* Info.plist */,
 			);
-			name = "Third-Party";
-			sourceTree = "<group>";
-		};
-		687AF91822EC604100B924D5 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				687AF91F22EC604200B924D5 /* libSDWebImage.a */,
-				687AF92122EC604200B924D5 /* SDWebImage.framework */,
-				687AF92322EC604200B924D5 /* SDWebImageMapKit.framework */,
-			);
-			name = Products;
+			path = "Science WeekUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,12 +179,29 @@
 			buildRules = (
 			);
 			dependencies = (
-				68F666FD22EC65F000D4EA93 /* PBXTargetDependency */,
 			);
 			name = "Science Week";
 			productName = "Science Week";
 			productReference = 41AACDF2224CD2E900F46460 /* Science Week.app */;
 			productType = "com.apple.product-type.application";
+		};
+		68F6670F22ED79F600D4EA93 /* Science WeekUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68F6671722ED79F700D4EA93 /* Build configuration list for PBXNativeTarget "Science WeekUITests" */;
+			buildPhases = (
+				68F6670C22ED79F500D4EA93 /* Sources */,
+				68F6670D22ED79F500D4EA93 /* Frameworks */,
+				68F6670E22ED79F600D4EA93 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				68F6671622ED79F600D4EA93 /* PBXTargetDependency */,
+			);
+			name = "Science WeekUITests";
+			productName = "Science WeekUITests";
+			productReference = 68F6671022ED79F600D4EA93 /* Science WeekUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -217,6 +216,10 @@
 					41AACDF1224CD2E900F46460 = {
 						CreatedOnToolsVersion = 10.2;
 					};
+					68F6670F22ED79F600D4EA93 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 41AACDF1224CD2E900F46460;
+					};
 				};
 			};
 			buildConfigurationList = 41AACDED224CD2E900F46460 /* Build configuration list for PBXProject "Science Week" */;
@@ -230,42 +233,13 @@
 			mainGroup = 41AACDE9224CD2E900F46460;
 			productRefGroup = 41AACDF3224CD2E900F46460 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 687AF91822EC604100B924D5 /* Products */;
-					ProjectRef = 687AF91722EC604100B924D5 /* SDWebImage.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				41AACDF1224CD2E900F46460 /* Science Week */,
+				68F6670F22ED79F600D4EA93 /* Science WeekUITests */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		687AF91F22EC604200B924D5 /* libSDWebImage.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libSDWebImage.a;
-			remoteRef = 687AF91E22EC604200B924D5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		687AF92122EC604200B924D5 /* SDWebImage.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SDWebImage.framework;
-			remoteRef = 687AF92022EC604200B924D5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		687AF92322EC604200B924D5 /* SDWebImageMapKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SDWebImageMapKit.framework;
-			remoteRef = 687AF92222EC604200B924D5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		41AACDF0224CD2E900F46460 /* Resources */ = {
@@ -275,6 +249,13 @@
 				41AACE00224CD2EC00F46460 /* LaunchScreen.storyboard in Resources */,
 				41AACDFD224CD2EC00F46460 /* Assets.xcassets in Resources */,
 				41AACDFB224CD2E900F46460 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68F6670E22ED79F600D4EA93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,13 +283,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		68F6670C22ED79F500D4EA93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68F6671322ED79F600D4EA93 /* Science_WeekUITests.swift in Sources */,
+				68F6671B22ED7A0D00D4EA93 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		68F666FD22EC65F000D4EA93 /* PBXTargetDependency */ = {
+		68F6671622ED79F600D4EA93 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = SDWebImage;
-			targetProxy = 68F666FC22EC65F000D4EA93 /* PBXContainerItemProxy */;
+			target = 41AACDF1224CD2E900F46460 /* Science Week */;
+			targetProxy = 68F6671522ED79F600D4EA93 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -453,7 +443,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 5V2A4389PA;
 				INFOPLIST_FILE = "Science Week/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -461,8 +451,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "au.com.secretlab.Science-Week";
+				PRODUCT_BUNDLE_IDENTIFIER = au.net.scienceweek.ios.2013;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "All Applications";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -473,7 +464,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 5V2A4389PA;
 				INFOPLIST_FILE = "Science Week/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -481,10 +473,51 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "au.com.secretlab.Science-Week";
+				PRODUCT_BUNDLE_IDENTIFIER = au.net.scienceweek.ios.2013;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore au.net.scienceweek.ios.2013";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		68F6671822ED79F700D4EA93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5V2A4389PA;
+				INFOPLIST_FILE = "Science WeekUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "au.com.secretlab.Science-WeekUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Science Week";
+			};
+			name = Debug;
+		};
+		68F6671922ED79F700D4EA93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5V2A4389PA;
+				INFOPLIST_FILE = "Science WeekUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "au.com.secretlab.Science-WeekUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Science Week";
 			};
 			name = Release;
 		};
@@ -505,6 +538,15 @@
 			buildConfigurations = (
 				41AACE05224CD2EC00F46460 /* Debug */,
 				41AACE06224CD2EC00F46460 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		68F6671722ED79F700D4EA93 /* Build configuration list for PBXNativeTarget "Science WeekUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68F6671822ED79F700D4EA93 /* Debug */,
+				68F6671922ED79F700D4EA93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

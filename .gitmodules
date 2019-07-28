@@ -1,3 +1,0 @@
-[submodule "Third-Party/SDWebImage"]
-	path = Third-Party/SDWebImage
-	url = https://github.com/SDWebImage/SDWebImage.git

@@ -12,8 +12,6 @@ import Contacts
 
 import SafariServices
 
-import SDWebImage
-
 class EventDetailViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -221,17 +219,24 @@ class EventDetailViewController: UIViewController, MKMapViewDelegate {
         
         if let imageURLString = event.officialImageUrl, let imageURL = URL(string:imageURLString) {
             eventImageView.image = nil
-            eventImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
             eventImageView.backgroundColor = .darkGray
-            eventImageView!.sd_setImage(with: imageURL) { (image, error, cacheType, url) in
-                if let image = image {
+            
+            URLSession.shared.dataTask(with: imageURL) { data, response, error in
+                
+                DispatchQueue.main.async {
+                    guard let data = data, let image = UIImage(data: data) else {
+                        self.eventImageView.isHidden = true
+                        return
+                    }
+                    
                     self.headerImageView.image = image
                     
+                    self.eventImageView.image = image
                     self.eventImageView.backgroundColor = .clear
-                } else {
-                    self.eventImageView.isHidden = true
                 }
-            }
+                
+            }.resume()
+            
             eventImageView.isHidden = false
         } else {
             eventImageView.isHidden = true
