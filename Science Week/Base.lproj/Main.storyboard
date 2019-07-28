@@ -158,6 +158,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="PrimaryAccent"/>
                         <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="20" bottom="0.0" trailing="20"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventTableViewCell" textLabel="fHa-QG-8NH" detailTextLabel="C4O-uL-V4J" style="IBUITableViewCellStyleSubtitle" id="nRp-PT-fUn">
@@ -220,7 +221,7 @@
                                 <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="event-header" translatesAutoresizingMaskIntoConstraints="NO" id="GxY-58-PzK" userLabel="Header Image">
-                                        <rect key="frame" x="0.0" y="-210.5" width="414" height="414"/>
+                                        <rect key="frame" x="0.0" y="-210.5" width="414" height="414.00000000000011"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="GxY-58-PzK" secondAttribute="height" multiplier="1:1" id="JcS-qu-fsl"/>
                                         </constraints>
@@ -234,7 +235,7 @@
                                         <blurEffect style="dark"/>
                                     </visualEffectView>
                                     <stackView opaque="NO" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Tht-Xa-MbS">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1669"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1718"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v47-gr-bGC" userLabel="Spacer View">
                                                 <rect key="frame" x="20" y="20" width="374" height="64"/>
@@ -265,13 +266,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="5nr-pK-MvB">
-                                                <rect key="frame" x="20" y="328" width="374" height="562"/>
+                                                <rect key="frame" x="20" y="328" width="374" height="611"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RLq-wx-Fnq">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="188"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="237"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p5s-id-tIE" userLabel="Book Online">
-                                                                <rect key="frame" x="8" y="8" width="358" height="22"/>
+                                                                <rect key="frame" x="8" y="8" width="358" height="30"/>
                                                                 <color key="tintColor" name="SecondaryAccent"/>
                                                                 <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                 <state key="normal" title="Book Online" image="ticket">
@@ -282,7 +283,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXy-lO-Wsr" userLabel="Email">
-                                                                <rect key="frame" x="8" y="38" width="358" height="22"/>
+                                                                <rect key="frame" x="8" y="46" width="358" height="30"/>
                                                                 <color key="tintColor" name="SecondaryAccent"/>
                                                                 <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                 <state key="normal" title="Book via Email" image="email">
@@ -293,7 +294,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQv-Zq-OyY" userLabel="Phone">
-                                                                <rect key="frame" x="8" y="68" width="358" height="22"/>
+                                                                <rect key="frame" x="8" y="84" width="358" height="30"/>
                                                                 <color key="tintColor" name="SecondaryAccent"/>
                                                                 <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                 <state key="normal" title="Book By Phone" image="phone">
@@ -304,7 +305,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CPA-w1-hgu" userLabel="Twitter">
-                                                                <rect key="frame" x="8" y="98" width="358" height="22"/>
+                                                                <rect key="frame" x="8" y="122" width="358" height="30"/>
                                                                 <color key="tintColor" name="SecondaryAccent"/>
                                                                 <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                 <state key="normal" title="Twitter" image="twitter">
@@ -315,7 +316,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4s-O1-sSi" userLabel="Facebook">
-                                                                <rect key="frame" x="8" y="128" width="358" height="22"/>
+                                                                <rect key="frame" x="8" y="160" width="358" height="30"/>
                                                                 <color key="tintColor" name="SecondaryAccent"/>
                                                                 <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                 <state key="normal" title="Facebook" image="facebook">
@@ -326,7 +327,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zrd-M8-GRQ" userLabel="Link">
-                                                                <rect key="frame" x="8" y="158" width="358" height="22"/>
+                                                                <rect key="frame" x="8" y="198" width="358" height="31"/>
                                                                 <color key="tintColor" name="SecondaryAccent"/>
                                                                 <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                 <state key="normal" title="More Info" image="web">
@@ -340,7 +341,7 @@
                                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                     </stackView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="event-header" translatesAutoresizingMaskIntoConstraints="NO" id="nyw-2V-6al">
-                                                        <rect key="frame" x="0.0" y="188" width="374" height="374"/>
+                                                        <rect key="frame" x="0.0" y="237" width="374" height="374.00000000000011"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="nyw-2V-6al" secondAttribute="height" multiplier="1:1" id="PyS-Ch-Ikn"/>
                                                             <constraint firstAttribute="width" constant="200" id="ULF-Xx-gbB"/>
@@ -355,7 +356,7 @@
                                                 <variation key="heightClass=regular-widthClass=compact" alignment="fill" axis="vertical"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Q4m-6v-3lV">
-                                                <rect key="frame" x="20" y="898" width="374" height="650"/>
+                                                <rect key="frame" x="20" y="947" width="374" height="650"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rNt-cR-fxH">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="268"/>
@@ -482,7 +483,7 @@
                                                 </variation>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ToQ-Ll-J9D">
-                                                <rect key="frame" x="20" y="1556" width="374" height="93"/>
+                                                <rect key="frame" x="20" y="1605" width="374" height="93"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CU8-us-RLj">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="24"/>
