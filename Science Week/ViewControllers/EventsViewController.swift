@@ -61,6 +61,10 @@ class EventsViewController: UITableViewController, EventDisplayingViewController
         self.clearsSelectionOnViewWillAppear = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        refresh()
+    }
+    
     func refresh() {
         events = EventsList.events
         updateDisplayedEventGroups()
@@ -258,7 +262,6 @@ extension EventsViewController {
             }
             header.textLabel?.textColor = Theme.primaryTextColour
         }
-        
     }
 }
 

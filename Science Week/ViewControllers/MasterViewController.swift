@@ -15,6 +15,8 @@ protocol EventDisplayingViewController {
 
 class MasterViewController: UITabBarController {
     
+    private var accumulatedString : String = ""
+    
     private(set) var elementName: String = ""
     private(set) var currentEvent: Event = Event()
     private lazy var dateFormatter: DateFormatter = {
@@ -49,30 +51,10 @@ extension MasterViewController: XMLParserDelegate {
     }
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        if elementName == "Event" {
-            currentEvent.validate()
-            EventsList.addEvent(currentEvent)
-            
-            
-            //print(currentEvent)
-            
-            
-            currentEvent = Event()
-        } else if elementName == "Events" {
-            DispatchQueue.main.async {
-                if let selectedNavigationController = self.selectedViewController as? UINavigationController,
-                let displayingViewController = selectedNavigationController.topViewController as? EventDisplayingViewController {
-                    displayingViewController.refresh()
-                }
-            }
-        }
-    }
-    
-    func parser(_ parser: XMLParser, foundCharacters string: String) {
-        let data = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        if data.isEmpty { return }
         
-        switch elementName {
+        let data = accumulatedString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        if data.isEmpty == false {
+            switch elementName {
             case "EventID": currentEvent.id = data
             case "EventName": currentEvent.name = data
             case "EventType": currentEvent.type = data
@@ -105,6 +87,40 @@ extension MasterViewController: XMLParserDelegate {
             case "Attractions": currentEvent.attractions.append(data)
             case "EventOfficialImageUrl": currentEvent.officialImageUrl = data
             default: break
+            }
         }
+        
+        
+        if elementName == "Event" {
+            currentEvent.validate()
+            EventsList.addEvent(currentEvent)
+            
+            
+            //print(currentEvent)
+            
+            
+            currentEvent = Event()
+        } else if elementName == "Events" {
+            DispatchQueue.main.async {
+                if let selectedNavigationController = self.selectedViewController as? UINavigationController,
+                let displayingViewController = selectedNavigationController.topViewController as? EventDisplayingViewController {
+                    displayingViewController.refresh()
+                }
+            }
+        }
+        
+        accumulatedString = ""
+    }
+    
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
+        
+        
+        let data = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        if data.isEmpty { return }
+        
+        accumulatedString += data
+        
+        
+        
     }
 }
