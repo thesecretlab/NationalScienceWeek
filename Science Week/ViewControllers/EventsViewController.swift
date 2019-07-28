@@ -321,7 +321,7 @@ extension EventsViewController {
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
         if let header = view as? UITableViewHeaderFooterView {
-            header.backgroundView?.backgroundColor = Theme.secondaryAccentColour.darkened(by: 50)
+            header.backgroundView?.backgroundColor = Theme.secondaryBackgroundColour
             
             header.textLabel?.textColor = Theme.primaryTextColour
         }

@@ -35,14 +35,22 @@ final class EventsList {
     }
     
     private init() {
-        EventsList.refresh()
+        refresh()
     }
     
     static func addEvent(_ event: Event) {
         self.events.append(event)
     }
     
-    static func refresh() {
+    static func refreshFromCache() {
+        EventsList.events = []
+        EventsList.delegate?.parseUpdates()
+    }
+    
+    func refresh() {
+        
+        
+        
         FeedHandler.requestContent { data in
             if let data = data {
                 

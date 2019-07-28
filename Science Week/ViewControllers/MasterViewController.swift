@@ -29,6 +29,7 @@ class MasterViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         EventsList.delegate = self
+        EventsList.refreshFromCache()
         setTheme()
     }
     
