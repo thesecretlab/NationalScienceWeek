@@ -161,6 +161,8 @@ class EventsViewController: UITableViewController, EventDisplayingViewController
         
         updateDisplayedEventGroups()
         
+        updateFavouritesButtonAppearance()
+        
         tableView.reloadData()
     }
     

@@ -23,7 +23,6 @@ final class EventsList {
     
     private var sharedEvents: [Event] = []
     private var sharedDelegate: XMLParserDelegate? = nil
-    private var sharedFavouriteEventIDs: [String] = []
     
     static var delegate: XMLParserDelegate? {
         get { return EventsList.shared.sharedDelegate }
@@ -35,22 +34,11 @@ final class EventsList {
         set { EventsList.shared.sharedEvents = newValue }
     }
     
-    static var favouriteEventIDs: [String] {
-        get { return EventsList.shared.sharedFavouriteEventIDs }
-        set { EventsList.shared.sharedFavouriteEventIDs = newValue }
-    }
-    
     private init() {
         EventsList.refresh()
     }
     
     static func addEvent(_ event: Event) {
-        var event = event
-        
-        if favouriteEventIDs.contains(event.id) && !event.isFavourite {
-            event.toggleFavourite()
-        }
-        
         self.events.append(event)
     }
     

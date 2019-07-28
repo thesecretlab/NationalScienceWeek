@@ -198,7 +198,11 @@
                     <navigationItem key="navigationItem" title="Events" id="TAo-X6-m4w">
                         <rightBarButtonItems>
                             <barButtonItem image="map-pin" id="iof-fl-PDs"/>
-                            <barButtonItem image="heart" id="yxd-ZI-9JS"/>
+                            <barButtonItem image="heart" id="yxd-ZI-9JS">
+                                <connections>
+                                    <action selector="favouritesButtonPressed:" destination="vlw-1R-YX0" id="KJH-qD-AsL"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -548,7 +552,11 @@
                         <viewLayoutGuide key="safeArea" id="XJp-5O-RFA"/>
                     </view>
                     <navigationItem key="navigationItem" title="Event" id="sga-e5-Od0">
-                        <barButtonItem key="rightBarButtonItem" image="heart" id="DkW-kz-iqF"/>
+                        <barButtonItem key="rightBarButtonItem" image="heart" id="DkW-kz-iqF">
+                            <connections>
+                                <action selector="favouriteButtonTapped:" destination="2Ik-Mt-fhQ" id="1SR-na-OXq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bookOnlineButton" destination="p5s-id-tIE" id="0Nd-60-DbJ"/>
@@ -560,6 +568,7 @@
                         <outlet property="eventImageViewAspectRatio" destination="PyS-Ch-Ikn" id="awx-y9-yOo"/>
                         <outlet property="eventInfoStackView" destination="rNt-cR-fxH" id="BTO-Kf-aL6"/>
                         <outlet property="facebookButton" destination="d4s-O1-sSi" id="M6q-QP-WQf"/>
+                        <outlet property="favouriteButton" destination="DkW-kz-iqF" id="ys3-vM-DPW"/>
                         <outlet property="headerImageView" destination="GxY-58-PzK" id="l0O-Zy-L9L"/>
                         <outlet property="linkButton" destination="zrd-M8-GRQ" id="esE-nu-4Mz"/>
                         <outlet property="mapView" destination="xHm-NN-UJd" id="9ca-ve-htx"/>

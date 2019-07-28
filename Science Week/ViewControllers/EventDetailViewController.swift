@@ -37,6 +37,8 @@ class EventDetailViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var contactInfoView: UIStackView!
     
+    @IBOutlet weak var favouriteButton: UIBarButtonItem!
+    
     @IBOutlet weak var contactInfoStackView: UIStackView!
     
     static var eventDateFormatter : DateFormatter = {
@@ -110,6 +112,21 @@ class EventDetailViewController: UIViewController, MKMapViewDelegate {
         // Do any additional setup after loading the view.
     }
     
+    fileprivate func updateFavouriteButtonAppearance() {
+        
+        guard let event = self.event else {
+            return
+        }
+        
+        let isFavourited = FavouriteEvents.shared.isFavourite(id: event.id)
+        
+        if isFavourited {
+            favouriteButton.tintColor = Theme.primaryAccentColour
+        } else {
+            favouriteButton.tintColor = Theme.inactiveColour
+        }
+    }
+    
     func updateContent() {
         
         eventInfoStackView.removeAllArrangedSubviews()
@@ -117,6 +134,8 @@ class EventDetailViewController: UIViewController, MKMapViewDelegate {
         guard let event = self.event else {
             return
         }
+        
+        updateFavouriteButtonAppearance()
         
         titleLabel.text = event.name
         
@@ -205,13 +224,6 @@ class EventDetailViewController: UIViewController, MKMapViewDelegate {
             eventImageView!.sd_setImage(with: imageURL) { (image, error, cacheType, url) in
                 if let image = image {
                     self.headerImageView.image = image
-
-//                    let aspectRatio = image.size.width / image.size.height
-//                    self.eventImageViewAspectRatio.isActive = false
-//
-//                    self.eventImageViewAspectRatio = self.eventImageView.widthAnchor.constraint(equalTo: self.eventImageView.heightAnchor, multiplier: aspectRatio)
-//                    self.eventImageViewAspectRatio.isActive = true
-//                    self.view.layoutIfNeeded()
                     
                     self.eventImageView.backgroundColor = .clear
                 } else {
@@ -314,8 +326,23 @@ class EventDetailViewController: UIViewController, MKMapViewDelegate {
             UIApplication.shared.open(url)
         }
     }
+    
+    
+    @IBAction func favouriteButtonTapped(_ sender: Any) {
+        
+        guard let event = self.event else { return }
+        
+        if FavouriteEvents.shared.isFavourite(id: event.id) {
+            FavouriteEvents.shared.remove(id: event.id)
+        } else {
+            FavouriteEvents.shared.add(id: event.id)
+        }
+        
+        updateFavouriteButtonAppearance()
+    }
+    
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

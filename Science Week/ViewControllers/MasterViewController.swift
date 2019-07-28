@@ -54,7 +54,7 @@ extension MasterViewController: XMLParserDelegate {
             EventsList.addEvent(currentEvent)
             
             
-            print(currentEvent)
+            //print(currentEvent)
             
             
             currentEvent = Event()
