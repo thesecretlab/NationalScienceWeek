@@ -244,6 +244,15 @@ extension EventsViewController {
 
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
+        if let header = view as? UITableViewHeaderFooterView {
+            header.backgroundColor = Theme.secondaryBackgroundColour
+            header.textLabel?.textColor = Theme.primaryTextColour
+        }
+        
+    }
 }
 
 extension EventsViewController: UISearchResultsUpdating {
