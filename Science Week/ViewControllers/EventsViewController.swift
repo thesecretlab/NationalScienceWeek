@@ -180,6 +180,8 @@ class EventsViewController: UITableViewController, EventDisplayingViewController
         self.navigationController?.navigationBar.tintColor = Theme.primaryAccentColour
         self.navigationController?.navigationBar.barStyle = Theme.lightTheme ? .default : .black
         
+        searchController.searchBar.tintColor = Theme.primaryAccentColour
+        
         updateFavouritesButtonAppearance()
         
         let bgView = UIView()
@@ -250,7 +252,10 @@ extension EventsViewController {
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
         if let header = view as? UITableViewHeaderFooterView {
-            header.backgroundColor = Theme.secondaryBackgroundColour
+            if header.backgroundView == nil {
+                header.backgroundView = UIView()
+                header.backgroundView?.backgroundColor = Theme.secondaryBackgroundColour
+            }
             header.textLabel?.textColor = Theme.primaryTextColour
         }
         

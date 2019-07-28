@@ -57,7 +57,7 @@ class EventDetailViewController: UIViewController, MKMapViewDelegate {
         return d
     }()
     
-    func addInfoLabel(title: String, text: String, labelWidth : CGFloat = 80, stackView : UIStackView? = nil, onClick: (() -> Void)? = nil) {
+    func addInfoLabel(title: String, text: String, labelWidth : CGFloat = 120, stackView : UIStackView? = nil, onClick: (() -> Void)? = nil) {
         
         let titleLabel = UILabel(frame: CGRect.zero)
         
@@ -152,7 +152,7 @@ class EventDetailViewController: UIViewController, MKMapViewDelegate {
             let startTime = EventDetailViewController.timeFormatter.string(from: start)
             let endTime = EventDetailViewController.timeFormatter.string(from: end)
             
-            let times = "\(startDate), \(startTime) - \(endTime)"
+            let times = "\(startDate)\n\(startTime) - \(endTime)"
             
             addInfoLabel(title: "When", text: times)
         }
@@ -160,6 +160,8 @@ class EventDetailViewController: UIViewController, MKMapViewDelegate {
         
         if let venue = event.venue, let description = venue.description {
             addInfoLabel(title: "Where", text: description)
+            
+            addInfoLabel(title: "Has Disabled Access", text: venue.hasDisabledAccess ? "Yes" : "No")
         }
         
         addInfoLabel(title: "Is Free", text: event.isFree ? "Yes" : "No")
