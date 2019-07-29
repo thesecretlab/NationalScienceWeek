@@ -30,6 +30,7 @@ class MasterViewController: UITabBarController {
         super.viewDidLoad()
         EventsList.delegate = self
         EventsList.refreshFromCache()
+        EventsList.refreshFromNetwork()
         setTheme()
     }
     
