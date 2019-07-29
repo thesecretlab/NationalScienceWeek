@@ -11,7 +11,19 @@ import Foundation
 extension XMLParserDelegate {
     
     func parseUpdates() {
-        if let parser = XMLParser(contentsOf: URL.feedCacheURL) {
+        
+        let url : URL
+        
+        if FileManager.default.fileExists(atPath: URL.feedCacheURL.path) {
+            NSLog("Reading events data from cache.")
+            url = URL.feedCacheURL
+        } else {
+            NSLog("Reading events from built-in data")
+            url = URL.builtInDataURL
+            
+        }
+        
+        if let parser = XMLParser(contentsOf: url) {
             parser.delegate = self
             parser.parse()
         }
@@ -52,16 +64,21 @@ final class EventsList {
         
         
         FeedHandler.requestContent { data in
+            NSLog("Finished loading data.")
             if let data = data {
                 
                 // save it to disk
                 do {
                     try data.write(to: URL.feedCacheURL)
                     
+                    NSLog("Wrote data to cache.")
+                    
                     EventsList.events = []
                     
                     // when complete, update mainviewcontroller
                     EventsList.delegate?.parseUpdates()
+                    
+                    NSLog("Finished parsing event data.")
                 } catch let error {
                     print("Error writing data to disk: \(error)")
                 }

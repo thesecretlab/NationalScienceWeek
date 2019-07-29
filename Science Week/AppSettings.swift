@@ -71,6 +71,8 @@ extension URL {
     static let webpageCacheURL = URL.cacheURL.appendingPathComponent("index.html")
     static let cacheURL = try! FileManager
         .default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+    
+    static let builtInDataURL = Bundle.main.url(forResource: "scienceweek-events", withExtension: "xml")!
 }
 
 public final class AppSettings {

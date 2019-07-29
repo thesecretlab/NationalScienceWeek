@@ -27,6 +27,7 @@
 		68F6670B22ED629F00D4EA93 /* StateSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F6670A22ED629F00D4EA93 /* StateSelectionTableViewController.swift */; };
 		68F6671322ED79F600D4EA93 /* Science_WeekUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F6671222ED79F600D4EA93 /* Science_WeekUITests.swift */; };
 		68F6671B22ED7A0D00D4EA93 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F6671A22ED7A0D00D4EA93 /* SnapshotHelper.swift */; };
+		68F6672222EEA29900D4EA93 /* scienceweek-events.xml in Resources */ = {isa = PBXBuildFile; fileRef = 68F6672122EEA29900D4EA93 /* scienceweek-events.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		68F6671222ED79F600D4EA93 /* Science_WeekUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Science_WeekUITests.swift; sourceTree = "<group>"; };
 		68F6671422ED79F600D4EA93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68F6671A22ED7A0D00D4EA93 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		68F6672122EEA29900D4EA93 /* scienceweek-events.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "scienceweek-events.xml"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				4178025722E12A3E00C3B899 /* ViewControllers */,
 				4178025822E12A5400C3B899 /* Content */,
 				41AACDF9224CD2E900F46460 /* Main.storyboard */,
+				68F6672122EEA29900D4EA93 /* scienceweek-events.xml */,
 				41AACDFC224CD2EC00F46460 /* Assets.xcassets */,
 				41AACDFE224CD2EC00F46460 /* LaunchScreen.storyboard */,
 				41AACE01224CD2EC00F46460 /* Info.plist */,
@@ -247,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41AACE00224CD2EC00F46460 /* LaunchScreen.storyboard in Resources */,
+				68F6672222EEA29900D4EA93 /* scienceweek-events.xml in Resources */,
 				41AACDFD224CD2EC00F46460 /* Assets.xcassets in Resources */,
 				41AACDFB224CD2E900F46460 /* Main.storyboard in Resources */,
 			);
@@ -475,7 +479,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = au.net.scienceweek.ios.2013;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore au.net.scienceweek.ios.2013";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore au.net.scienceweek.ios.2013 1564368463";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
