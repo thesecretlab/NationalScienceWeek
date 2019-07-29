@@ -39,29 +39,34 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var locationButton: UIBarButtonItem!
     
+    let locationManager = CLLocationManager()
+    
     // called when top right button pressed
     @IBAction func locationButtonPressed(_ sender: Any) {
-        locationManager.requestLocation()
+        let location = self.mapView.userLocation
+        
+        let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 5000, longitudinalMeters: 5000)
+        
+        self.mapView.setRegion(region, animated: true)
     }
-    
-    private var locationManager = CLLocationManager()
     
     // called when the view's components have completed loading
     // but before they have necessarily appeared
     override func viewDidLoad() {
         super.viewDidLoad()
         setTheme()
+        
+        locationManager.delegate = self
+        
+        locationManager.requestWhenInUseAuthorization()
+        
+        
 
         // we're the thing that wants to know about how the map view is doing
         mapView.delegate = self
 
-        // we're the thing that wants to know how asking for location data is doing
-        locationManager.delegate = self
-        
         // we want to be able to see the user's location if possible
         mapView.showsUserLocation = true
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
         // load the map!
         updateLocationControls()
@@ -89,7 +94,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     // disable the location button if user location is not permitted or available
     private func updateLocationControls() {
-        locationButton.isEnabled = CLLocationManager.locationServicesEnabled()
+        locationButton.isEnabled = CLLocationManager.authorizationStatus() == .authorizedWhenInUse
     }
     
     // puts pins on map locations where known events are
@@ -147,11 +152,13 @@ extension MapViewController {
             view.displayPriority = .defaultHigh
             view.glyphText = "\(cluster.memberAnnotations.count)"
             view.canShowCallout = false
-        } else {
+        } else if let annotation = annotation as? EventAnnotation {
             view.displayPriority = .defaultLow
             view.clusteringIdentifier = "event"
             view.collisionMode = .circle
             view.canShowCallout = true
+        } else {
+            return nil
         }
         
         return view
@@ -173,21 +180,6 @@ extension MapViewController {
 
 extension MapViewController {
     
-    // called when a locate request yields a result
-    internal func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let coords = locations.last?.coordinate {
-            let center = CLLocationCoordinate2D(latitude: coords.latitude, longitude: coords.longitude)
-            let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-            let region = MKCoordinateRegion(center: center, span: span)
-            updateMapViewRegion(to: region)
-        }
-    }
-    
-    // called when a locate request fails to yield a result
-    internal func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        // ⚠️ do nothing because it will either try again or disable the button anyway
-        // but we need this function here, else the app hard crashes (Thanks, Apple! 😂)
-    }
     
     // called when the user either allows or disallows location tracking
     internal func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
