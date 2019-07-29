@@ -16,17 +16,7 @@ class Science_WeekUITests: XCTestCase {
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         
-        addUIInterruptionMonitor(withDescription: "Location Services") {
-            (alert) -> Bool in
-            
-            print("Interrupted!")
-            
-            if alert.buttons["Allow"].exists {
-                alert.buttons["Allow"].tap()
-                print("Tapping Allow!")
-            }
-            return true
-        }
+        
 
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         let app = XCUIApplication()
@@ -54,9 +44,19 @@ class Science_WeekUITests: XCTestCase {
         
         snapshot("2-EventDetail")
         
-        app.tabBars.buttons["Map"].tap()
+        addUIInterruptionMonitor(withDescription: "Location Services") {
+            (alert) -> Bool in
+            
+            print("Interrupted!")
+            
+            if alert.buttons["Allow"].exists {
+                alert.buttons["Allow"].tap()
+                print("Tapping Allow!")
+            }
+            return true
+        }
         
-        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        app.tabBars.buttons["Map"].tap()
         
 //        let allowBtn = springboard.buttons["Allow"]
 //        if allowBtn.exists {

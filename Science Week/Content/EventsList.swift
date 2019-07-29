@@ -35,7 +35,7 @@ final class EventsList {
     }
     
     private init() {
-        refresh()
+        
     }
     
     static func addEvent(_ event: Event) {
@@ -47,7 +47,7 @@ final class EventsList {
         EventsList.delegate?.parseUpdates()
     }
     
-    func refresh() {
+    static func refreshFromNetwork() {
         
         
         
