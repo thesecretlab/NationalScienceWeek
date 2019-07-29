@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="ipad12_9rounded" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.15"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,19 +15,28 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="etc-Fw-146">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-background" translatesAutoresizingMaskIntoConstraints="NO" id="etc-Fw-146">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-logo" translatesAutoresizingMaskIntoConstraints="NO" id="fiX-A1-MQF">
+                                <rect key="frame" x="256" y="548.5" width="512" height="273"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="fiX-A1-MQF" secondAttribute="height" multiplier="15:8" id="alR-Al-UGJ"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="fiX-A1-MQF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="00L-Fn-E1Y"/>
                             <constraint firstItem="etc-Fw-146" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="1cl-wJ-T82"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="etc-Fw-146" secondAttribute="trailing" id="MTN-JX-Dw7"/>
                             <constraint firstAttribute="bottom" secondItem="etc-Fw-146" secondAttribute="bottom" id="Mtc-IJ-AUM"/>
+                            <constraint firstItem="fiX-A1-MQF" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Pzd-ga-RMm"/>
                             <constraint firstItem="etc-Fw-146" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="drl-ha-1aH"/>
+                            <constraint firstItem="fiX-A1-MQF" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.5" id="eJE-vg-Ylf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -36,6 +47,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="splash" width="1024" height="1024"/>
+        <image name="splash-background" width="1920" height="1920"/>
+        <image name="splash-logo" width="966" height="566"/>
     </resources>
 </document>
