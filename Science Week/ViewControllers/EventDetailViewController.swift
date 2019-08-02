@@ -180,7 +180,10 @@ class EventDetailViewController: UIViewController, MKMapViewDelegate {
             if let org = contact.organisation { addInfoLabel(title: "Organisation", text: org, labelWidth: labelWidth, stackView: contactInfoStackView) }
             if let phone = contact.phone {
                 addInfoLabel(title: "Phone", text: phone, labelWidth: labelWidth, stackView: contactInfoStackView) {
-                    guard let url = URL(string: "tel:"+phone) else { return }
+                    guard let phone = phone.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed),
+                        let url = URL(string: "tel:"+phone) else {
+                            return                        
+                    }
                     UIApplication.shared.open(url)
                 }
             }
@@ -299,9 +302,9 @@ class EventDetailViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func bookByPhone(_ sender: Any) {
-        guard let phone = event?.bookingPhone else { return }
+        guard let phone = event?.bookingPhone?.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) else { return }
         
-        if let url = URL(string: "tel:" + phone) {
+        if let url = URL(string: "tel:" + phone ) {
             UIApplication.shared.open(url)
         }
     }
