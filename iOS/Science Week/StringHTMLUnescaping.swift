@@ -5,6 +5,8 @@
 //  Created by Jon Manning on 2/7/18.
 //  Copyright © 2018 Secret Lab. All rights reserved.
 //
+//  This file is released under the terms of the MIT License.
+//  Please see LICENSE.md in the root directory.
 
 import Foundation
 
