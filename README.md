@@ -1,27 +1,12 @@
-#  National Science Week 2019
+#  National Science Week
 
-## Events
+This is the official app for [National Science Week](http://www.scienceweek.net.au), for iOS and Android. This app was built by [Secret Lab](https://secretlab.com.au) The first version of this app was created in 2013, by [Nic Wittison](https://twitter.com/nicwinton); development was continued by [Jon Manning](https://twitter.com/desplesda), and then by [Mars Geldard](https://twitter.com/TheMartianLife).
 
-* filter by state
-* event info/detail view
-* add/show spinner activityview when no events
-* handle size classes
-* table view visual polish
-* check text encoding and context detectors
+There are four main directories:
 
-## Map
+* **Art** contains logos, icon source files, and other assets used in the apps and in the store presence.
+* **Documentation** contains overview documentation for both apps.
+* **iOS** contains the iOS application, written in Swift.
+* **Android** contains the Android application, written in Java.
 
-* show event info/detail view on select single pin
-* on non-connection/unable to get map data => disable location button
-
-## About
-
-* doesn't cache .png files correctly
-* spinner activityview not showing at the right points
-* nice fallback image
-
-## Content
-
-* caching needs to handle decoding HTML entities
-* check refresh working even in non-active tabs
-* where to put XML file to ship with if it needs to go in ~/Library/cache
+This repository is licensed under the terms of the MIT License. Please see the file LICENSE.md for more information.
