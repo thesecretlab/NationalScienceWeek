@@ -1,4 +1,4 @@
-//  This file is released under the terms of the MIT License.
+// This file is released under the terms of the MIT License.
 // Please see LICENSE.md in the root directory.
 
 package au.net.scienceweek.scienceweek;
