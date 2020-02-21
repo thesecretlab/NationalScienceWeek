@@ -10,6 +10,7 @@
 
 import UIKit
 
+/// The state that a Venue is located in.
 enum State: String, CaseIterable {
     case act, nsw, nt, qld, sa, tas, vic, wa
     
@@ -21,12 +22,14 @@ enum State: String, CaseIterable {
     }
 }
 
+/// The target audience for an event.
 enum TargetAudience: String {
     case allAges = "All ages"
     case kids = "Kids"
     case adults = "Adults"
 }
 
+/// The venue that an event is taking place in.
 struct Venue {
     var name: String? = nil
     var streetName: String? = nil
@@ -61,6 +64,7 @@ struct Venue {
     init() {}
 }
 
+/// The contact information for an Event.
 struct Contact {
     var name: String? = nil
     var organisation: String? = nil
@@ -72,6 +76,8 @@ struct Contact {
     
     init() {}
 }
+
+/// An event associated with National Science Week.
 struct Event {
     var id: String = "EVENT-ID"
     var name: String = "Event Name"

@@ -11,6 +11,7 @@
 import os.log
 import WebKit
 
+/// A simple wrapper that exposes the `os_log` method.
 class Logger {
     
     private init() {}
