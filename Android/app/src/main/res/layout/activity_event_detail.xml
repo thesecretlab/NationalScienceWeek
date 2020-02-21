@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+<RelativeLayout  android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="au.net.scienceweek.scienceweek.EventDetailActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Event Date"
+        android:id="@+id/eventDateLabel"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        android:id="@+id/eventDescriptionLabel"
+        android:layout_below="@+id/eventDateLabel"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:autoLink="all" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Audience: "
+        android:id="@+id/eventAudienceTextLabel"
+        android:layout_below="@+id/eventDescriptionLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Event Audience"
+        android:id="@+id/eventAudienceLabel"
+        android:layout_alignTop="@+id/eventAudienceTextLabel"
+        android:layout_toRightOf="@+id/eventAudienceTextLabel"
+        android:layout_toEndOf="@+id/eventAudienceTextLabel" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Price: "
+        android:id="@+id/eventPriceTextLabel"
+        android:layout_below="@+id/eventAudienceTextLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Contact Name"
+        android:id="@+id/eventContactNameLabel"
+        android:layout_below="@+id/eventPriceLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Contact Organisation"
+        android:id="@+id/eventContactOrganisationLabel"
+        android:layout_below="@+id/eventContactNameLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Contact Phone Number"
+        android:id="@+id/eventContactPhoneNumberLabel"
+        android:layout_below="@+id/eventContactOrganisationLabel"
+        android:autoLink="phone"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Contact Email Address"
+        android:autoLink="email"
+        android:id="@+id/eventContactEmailAddressLabel"
+        android:layout_below="@+id/eventContactPhoneNumberLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Event Price"
+        android:id="@+id/eventPriceLabel"
+        android:layout_alignTop="@+id/eventPriceTextLabel"
+        android:layout_toRightOf="@+id/eventPriceTextLabel"
+        android:layout_toEndOf="@+id/eventPriceTextLabel" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/eventContactEmailAddressLabel"
+        android:id="@+id/eventVenue">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Venue Name"
+        android:id="@+id/eventVenueName"
+
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Venue Street Name"
+        android:id="@+id/eventVenueStreetName"
+        android:layout_below="@+id/eventVenueName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Venue Suburb"
+        android:id="@+id/eventVenueSuburb"
+        android:layout_below="@+id/eventVenueStreetName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Venue Postcode"
+        android:id="@+id/eventVenuePostCode"
+        android:layout_marginLeft="4dp"
+        android:layout_alignTop="@+id/eventVenueSuburb"
+        android:layout_toRightOf="@+id/eventVenueSuburb"
+         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Venue More Info"
+        android:id="@+id/eventVenueMoreInfo"
+        android:layout_below="@+id/eventVenuePostCode"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:autoLink="all" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/eventVenue"
+        android:id="@+id/eventBooking" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Booking URL"
+            android:id="@+id/bookingURL"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:autoLink="web" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Booking Phone"
+            android:id="@+id/bookingPhone"
+            android:layout_below="@+id/bookingURL"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:autoLink="phone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Booking Email"
+            android:id="@+id/bookingEmail"
+            android:layout_below="@+id/bookingPhone"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:autoLink="email" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/eventBooking">
+
+        <Button
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:text="More Information"
+            android:layout_weight="1.0"
+            android:id="@+id/eventMoreInfoButton" />
+
+        <Button
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:text="Show Map"
+            android:layout_weight="1.0"
+            android:id="@+id/eventShowMapButton" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
+</ScrollView>
